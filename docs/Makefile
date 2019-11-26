@@ -13,7 +13,7 @@ pdf:
 	cd "$(SOURCE_DIR)" && cp "$(BASEFILENAME).pdf" ..
 
 html:
-	cd "${SOURCE_DIR}" && pandoc "${BASEFILENAME}.tex" -f latex -t html -s -o "${BASEFILENAME}.html"
+	cd "${SOURCE_DIR}" && pandoc "${BASEFILENAME}.tex" -f latex -t html -s -o "${BASEFILENAME}.html" --template _template.html -V lang=it -V title="System Documentation" --table-of-contents
 	cd "$(SOURCE_DIR)" && cp "$(BASEFILENAME).html" ..
 
 clean: 
