@@ -29,6 +29,12 @@
 \newcommand\@doctype{}
 \newcommand\license[1]{\renewcommand\@license{#1}}
 \newcommand\@license{}
+\newcommand\version[1]{\renewcommand\@version{#1}}
+\newcommand\@version{}
+\newcommand\authorsid[1]{\renewcommand\@authorsid{#1}}
+\newcommand\@authorsid{}
+\newcommand\authorsmail[1]{\renewcommand\@authorsmail{#1}}
+\newcommand\@authorsmail{}
 
 \makeatletter
 \def\maketitle{
@@ -37,24 +43,35 @@
     \begin{center}
       
       \vspace*{0.5 cm}
-      \textsc{\large \@course{}}\\[0.5 cm]
-    \textsc{\Large \@doctype{}}\\[1 cm]
+      \textsc{\Large \@doctype{}}\\[0.5 cm]
+      \textsc{\large \@course{}}\\[1 cm]
     % University or Project Logo:
     \includegraphics[height=4cm]{logo.png}\\[0.5 cm]
     
     \rule{\linewidth}{0.2 mm}\\[0.4 cm]
     % Document Title:
     { \huge \bfseries \textsc{\@title}}\\
-    \rule{\linewidth}{0.2 mm}\\[1.5 cm]
+    \rule{\linewidth}{0.2 mm}\\[0.5 cm]
+    % \vspace{1cm}
+    % \vspace*{\fill}
     
-    \vfill
+    {\large Versione \@version, pubblicata il \@date}\\[2 cm]
     
-    \begin{minipage}{0.4\textwidth}
+    \vspace*{\fill}
+    
     \begin{center} \large %originally flushleft
-      \textbf{\underline{\GetTranslation{the-team}}}\\
-    \@author
+      \begin{tabular}{@{}lcr@{}}
+        Nome e Cognome & Matricola & E-Mail\\
+        \midrule
+        Alessandro Annese & \texttt{676964} & \texttt{a.annese23@studenti.uniba.it}\\
+        Davide De Salvo & \texttt{676502} & \texttt{d.desalvo@studenti.uniba.it}\\
+        Andrea Esposito & \texttt{677021} & \texttt{a.esposito39@studenti.uniba.it}\\
+        Graziano Montanaro & \texttt{677909} & \texttt{g.montanaro16@studenti.uniba.it}\\
+        Regina Zaccaria & \texttt{675888} & \texttt{r.zaccaria14@studenti.uniba.it}
+      \end{tabular}
+    %   \textbf{\underline{\GetTranslation{the-team}}}\\
+    % \@author
   \end{center}
-\end{minipage}~
 %        \begin{minipage}{0.4\textwidth}
   %            \begin{flushright} \large % Your Student Number
     %                \textbf{\underline{Matricole:}} \\
@@ -65,10 +82,8 @@
     %                677909
   %            \end{flushright}
 %        \end{minipage}
-\\[2 cm]
+% \\[2 cm]
 % Date or Degree Course:
-{\large \@date}\\[2 cm]
-
     \clearpage
     \topskip0pt
     \vspace*{\fill}
@@ -80,6 +95,8 @@
     \begin{flushleft}
       \begin{minipage}{\textwidth}%0.75
         \begin{quote}
+          {v. \@version, \@date}
+          \vskip15pt
           \@license{}
         \end{quote}
     \end{minipage}
