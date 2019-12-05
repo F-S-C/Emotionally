@@ -34,71 +34,72 @@
 \def\maketitle{
     \null
     \pagestyle{empty}
-    \centering
-
-    \vspace*{0.5 cm}
-    \textsc{\large \@course{}}\\[0.5 cm]
+    \begin{center}
+      
+      \vspace*{0.5 cm}
+      \textsc{\large \@course{}}\\[0.5 cm]
     \textsc{\Large \@doctype{}}\\[1 cm]
     % University or Project Logo:
     \includegraphics[height=4cm]{logo.png}\\[0.5 cm]
-
+    
     \rule{\linewidth}{0.2 mm}\\[0.4 cm]
     % Document Title:
     { \huge \bfseries \textsc{\@title}}\\
     \rule{\linewidth}{0.2 mm}\\[1.5 cm]
-
+    
     \vfill
-
+    
     \begin{minipage}{0.4\textwidth}
     \begin{center} \large %originally flushleft
-    \textbf{\underline{\GetTranslation{the-team}}}\\
+      \textbf{\underline{\GetTranslation{the-team}}}\\
     \@author
-    \end{center}
-    \end{minipage}~
-    %        \begin{minipage}{0.4\textwidth}
-    %            \begin{flushright} \large % Your Student Number
+  \end{center}
+\end{minipage}~
+%        \begin{minipage}{0.4\textwidth}
+  %            \begin{flushright} \large % Your Student Number
     %                \textbf{\underline{Matricole:}} \\
     %                675888\\
     %                676502\\
     %                676964\\
     %                677021\\
     %                677909
-    %            \end{flushright}
-    %        \end{minipage}
-    \\[2 cm]
-    % Date or Degree Course:
-    {\large \@date}\\[2 cm]
+  %            \end{flushright}
+%        \end{minipage}
+\\[2 cm]
+% Date or Degree Course:
+{\large \@date}\\[2 cm]
 
     \clearpage
     \topskip0pt
     \vspace*{\fill}
     \includegraphics[height=0.4\textwidth]{Logo_FSC_WhiteBg.png}\\[0.5cm]
     \textit{\textbf{F.S.C.} --- Five Students of Computer Science}
-
+    
     \vspace*{5cm}
-
+    
     \begin{flushleft}
-    \begin{minipage}{\textwidth}%0.75
-    \begin{quote}
-    \@license{}
-    \end{quote}
+      \begin{minipage}{\textwidth}%0.75
+        \begin{quote}
+          \@license{}
+        \end{quote}
     \end{minipage}
-    \end{flushleft}
-
-    \vspace*{\fill}
-}
-\makeatother
-
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{\leftmark}
-\fancyhead[RE,LO]{\rightmark}
-\fancyfoot[CE,CO]{}
-\fancyfoot[LE,RO]{\thepage}
-\renewcommand{\headrulewidth}{1pt}
+  \end{flushleft}
+  
+  \vspace*{\fill}
+\end{center}
+  }
+  \makeatother
+  
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyhead[LE,RO]{\leftmark}
+  \fancyhead[RE,LO]{\rightmark}
+  \fancyfoot[CE,CO]{}
+  \fancyfoot[LE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{1pt}
   \renewcommand{\footrulewidth}{1pt}
-
-\fancypagestyle{plain}{ %
+  
+  \fancypagestyle{plain}{ %
   \fancyhf{} % remove everything
   \fancyfoot[LE,RO]{\thepage}
   \renewcommand{\headrulewidth}{0pt} % remove lines as well

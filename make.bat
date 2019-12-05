@@ -8,13 +8,13 @@ goto error
 	pushd docs
     call make.bat
     popd
-    goto eof
+    goto EOF
 
 :serve
 	pushd src
     php artisan serve
     popd
-    goto eof
+    goto EOF
 
 :error
     if "%1"=="" (
