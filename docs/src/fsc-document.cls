@@ -2,6 +2,7 @@
 \ProvidesClass{fsc-document}[2019/11/11 FSC's document]
 \LoadClass[a4paper,twoside,openright,11pt]{book}
 \RequirePackage[inner=3.5cm, outer=2.5cm]{geometry}
+\RequirePackage[italian]{babel}
 \RequirePackage{amssymb}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[table,xcdraw]{xcolor}
@@ -55,7 +56,7 @@
     % \vspace{1cm}
     % \vspace*{\fill}
     
-    {\large Versione \@version, pubblicata il \@date}\\[2 cm]
+    {\large Versione \@version, \@date}\\[2 cm]
     
     \vspace*{\fill}
     
@@ -95,7 +96,7 @@
     \begin{flushleft}
       \begin{minipage}{\textwidth}%0.75
         \begin{quote}
-          {v. \@version, \@date}
+          {Versione \@version, pubblicata il: \@date}
           \vskip15pt
           \@license{}
         \end{quote}

@@ -1,12 +1,16 @@
 ---
-author: FSC - Five Students of Computer Science
+author: Alessandro Annese Davide De Salvo Andrea Esposito Graziano Montanaro Regina Zaccaria
 layout: page
 lang: it
 title: System Documentation
 ---
 
 <header id="title-block-header">
-            <p class="author">FSC - Five Students of Computer Science</p>
+            <p class="author">Alessandro Annese<br />
+Davide De Salvo<br />
+Andrea Esposito<br />
+Graziano Montanaro<br />
+Regina Zaccaria</p>
         </header>
 <nav id="TOC" role="doc-toc">
     <h1 id="table-of-contents" class="unnumbered">Indice</h1>
@@ -30,6 +34,17 @@ title: System Documentation
     <li><a href="#sec:requisiti-di-accessibilita">Requisiti di accessibilità</a></li>
     <li><a href="#sec:requisiti-di-usabilita">Requisiti di usabilità</a></li>
     </ul></li>
+    <li><a href="#requisiti-di-gestione-del-progetto">Requisiti di gestione del progetto</a><ul>
+    <li><a href="#tempi-e-risorse">Tempi e risorse</a></li>
+    <li><a href="#gruppo-di-progetto">Gruppo di progetto</a></li>
+    <li><a href="#responsabilità-del-committente">Responsabilità del committente</a></li>
+    <li><a href="#documentazione-prevista">Documentazione prevista</a></li>
+    <li><a href="#verifiche-e-convalide">Verifiche e convalide</a></li>
+    <li><a href="#consegna-finale-e-pubblicazione">Consegna finale e pubblicazione</a></li>
+    <li><a href="#ambiente-di-sviluppo">Ambiente di sviluppo</a></li>
+    <li><a href="#altri-requisiti">Altri requisiti</a></li>
+    </ul></li>
+    <li><a href="#analisi-della-concorrenza">Analisi della concorrenza</a></li>
     </ul></li>
     <li><a href="#part:appendice">Appendice</a><ul>
     <li><a href="#chap:gnu-free-documentation-license">GNU Free Documentation License</a></li>
@@ -38,11 +53,31 @@ title: System Documentation
 </nav>
 <h1 id="part:documento-dei-requisiti">Documento dei requisiti</h1>
 <h2 id="chap:sommario" class="unnumbered">Sommario</h2>
+<p>Il presente documento riassume i requisiti del sistema “Emotionally” emersi in seguito ad analisi dei sistemi concorrenti e a brainstorming condotti dal team di sviluppo, validati con il committente.</p>
+<p>Il documento viene reso disponibile a tutti i possibili utilizzatori del sistema, con licenza GNU FDL, allo scopo di raccogliere ulteriori commenti e suggerimenti.</p>
+<p>Per ogni osservazione, si prega di contattare il referente del team per il presente progetto, Alessandro Annese.</p>
+<p>Il documento sarà costantemente aggiornato nel corso del progetto, per includere eventuali variazioni decise in corso d’opera. La versione corrente e la sua data di rilascio sono incluse in copertina e nella seconda di copertina.</p>
 <h2 id="chap:generalita">Generalità</h2>
+<p>Il sistema “Emotionally” ha l’obiettivo di semplificare la <em>sentiment analysis</em> agli analisti di tutti i campi. Il nome del sistema deriva dalla contrazione delle parole inglesi “<span class="smallcaps">emotional</span> ana<span class="smallcaps">ly</span>sis”.</p>
 <h3 id="sec:il-committente">Il committente</h3>
+<p>L’analisi delle emozioni è, a oggi, una componente importante per lo studio dell’impatto di prodotti e servizi sugli utenti finali. Avere a disposizione un <em>tool</em> che ne permette la semi-automatizzazione è senz’altro di un’utilità indiscutibile.</p>
+<p>Il committente di questo progetto è il professor Giuseppe Desolda dell’Università degli Studi di Bari, che ha come obiettivo quello di realizzare un sistema in grado di analizzare le emozioni degli utenti analizzando dei video. La richiesta del committente è quella di utilizzare le API del sistema Affectiva, uno dei migliori tool di questa tipologia.</p>
 <h3 id="sec:situazione-attuale">Situazione attuale</h3>
+<p>Al momento non si ha una base su cui poter effettuare delle analisi. Per questo, seguendo il flusso di sviluppo scelto, si procederà all’analisi della concorrenza.</p>
 <h3 id="sec:obiettivi-generali-del-nuovo-sito">Obiettivi generali del nuovo sito</h3>
+<h4 id="subsec:obiettivi-generali">Obiettivi generali</h4>
+<p>Ad oggi sono pochi i sistemi che permettono di esaminare le emozioni attraverso flussi di video raccogliendo le analisi in formato statistico. I dati raccolti possono essere utili per analizzare campi applicativi più o meno vasti (ad esempio Marketing, Produzione Multimediale, Usabilità, Accessibilità <em>etc...</em>).</p>
+<h4 id="subsec:obiettivi-specifici">Obiettivi specifici</h4>
+<p>Gli obiettivi che il team si è posto di raggiungere per la prima release del sistema sono:</p>
+<ul>
+<li><p>L’analisi delle emozioni provate dai soggetti di un video</p></li>
+<li><p>Riportare le analisi effettuate in forma più o meno dettagliata</p></li>
+<li><p>Creare e gestire progetti con uno o più video</p></li>
+<li><p>Permettere di aggregare i dati di due o più video di uno stesso progetto</p></li>
+<li><p>Permettere la condivisione di un progetto con più utenti</p></li>
+</ul>
 <h3 id="sec:gli-utenti">Gli utenti</h3>
+<p>Gli Utenti utilizzatori della piattaforma si dividono principalmente in due categorie: <code>Analista</code> e <code>Designer</code>. Le relazioni che intercorrono fra le due categorie, sono rappresentate in .</p>
 <h3 id="sec:scenari-duso">Scenari d’uso</h3>
 <h3 id="sec:posizionamento-competitivo">Posizionamento competitivo</h3>
 <h2 id="chap:requisiti-del-sito">Requisiti del sito</h2>
@@ -53,6 +88,16 @@ title: System Documentation
 <h3 id="sec:requisiti-di-gestione">Requisiti di gestione</h3>
 <h3 id="sec:requisiti-di-accessibilita">Requisiti di accessibilità</h3>
 <h3 id="sec:requisiti-di-usabilita">Requisiti di usabilità</h3>
+<h2 id="requisiti-di-gestione-del-progetto">Requisiti di gestione del progetto</h2>
+<h3 id="tempi-e-risorse">Tempi e risorse</h3>
+<h3 id="gruppo-di-progetto">Gruppo di progetto</h3>
+<h3 id="responsabilità-del-committente">Responsabilità del committente</h3>
+<h3 id="documentazione-prevista">Documentazione prevista</h3>
+<h3 id="verifiche-e-convalide">Verifiche e convalide</h3>
+<h3 id="consegna-finale-e-pubblicazione">Consegna finale e pubblicazione</h3>
+<h3 id="ambiente-di-sviluppo">Ambiente di sviluppo</h3>
+<h3 id="altri-requisiti">Altri requisiti</h3>
+<h2 id="analisi-della-concorrenza">Analisi della concorrenza</h2>
 <h1 id="part:appendice">Appendice</h1>
 <h2 id="chap:gnu-free-documentation-license" class="unnumbered">GNU Free Documentation License</h2>
 <p>Version 1.3, 3 November 2008</p>
