@@ -6,10 +6,10 @@ BASEFILENAME = Emotionally
 all: pdf html clean
 
 pdf:
-	cd "${SOURCE_DIR}" && pdflatex "${BASEFILENAME}.tex" -synctex=1 -interaction=batchmode --shell-escape
+	cd "${SOURCE_DIR}" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "${BASEFILENAME}.tex"
 	cd "$(SOURCE_DIR)" && biber "$(BASEFILENAME)"
-	cd "${SOURCE_DIR}" && pdflatex "${BASEFILENAME}.tex" -synctex=1 -interaction=batchmode --shell-escape
-	cd "${SOURCE_DIR}" && pdflatex "${BASEFILENAME}.tex" -synctex=1 -interaction=batchmode --shell-escape
+	cd "${SOURCE_DIR}" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "${BASEFILENAME}.tex"
+	cd "${SOURCE_DIR}" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "${BASEFILENAME}.tex"
 	cd "$(SOURCE_DIR)" && cp "$(BASEFILENAME).pdf" ..
 
 html:

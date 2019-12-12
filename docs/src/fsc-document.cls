@@ -11,6 +11,7 @@
 \RequirePackage{soul}
 \RequirePackage{fourier}
 \RequirePackage{booktabs}
+\RequirePackage{colortbl}
 \RequirePackage{float}
 \RequirePackage{wrapfig}
 \RequirePackage[labelfont=bf]{caption}
@@ -123,3 +124,27 @@
   \renewcommand{\headrulewidth}{0pt} % remove lines as well
   \renewcommand{\footrulewidth}{1pt}
 }
+
+\RequirePackage[explicit]{titlesec}
+\RequirePackage[outline]{contour}
+\contourlength{0.15pt}
+\newcommand*\chapterlabel{}
+\titleformat{\chapter}
+{\gdef\chapterlabel{}
+	\normalfont\Huge\bfseries\scshape}
+{\gdef\chapterlabel{\thechapter.\ }}{0pt}
+{\begin{tikzpicture}[remember picture,overlay]
+	\node[yshift=-3cm] at (current page.north west)
+	{\begin{tikzpicture}[remember picture, overlay]
+		\draw[fill=secondary-color, draw=none] (0,0) rectangle
+    (\paperwidth,3cm);
+    \draw[draw=black, line width=1.5pt] (0,0)--(\paperwidth,0);
+		\node[anchor=east,xshift=.95\paperwidth,rectangle,
+		rounded corners=20pt,inner sep=15pt,
+		fill=emotionally-color, draw=black, line width=1.5pt]
+		{\contour{black}{\color{white}\chapterlabel#1}};
+		\end{tikzpicture}
+	};
+\end{tikzpicture}
+}
+\titlespacing*{\chapter}{0pt}{50pt}{-60pt}
