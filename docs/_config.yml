@@ -30,7 +30,11 @@ theme: minima
 plugins:
   - jekyll-feed
 
+sass:
+  style: compressed
+
 header_pages:
+  - index.md
   - Emotionally.html
 
 # Exclude from processing.
@@ -47,3 +51,4 @@ exclude:
   - LICENSE
   - Makefile
   - make.bat
+  - src/

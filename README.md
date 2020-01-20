@@ -1,4 +1,4 @@
-# <img src="./logo/512x512.png" alt="Emotionally's logo" width="50px"> Emotionally<!-- omit in toc -->
+# <img src="./logo/logo.png" alt="Emotionally's logo" width="50px"> Emotionally<!-- omit in toc -->
 
 [![License](https://img.shields.io/github/license/F-S-C/Emotionally.svg?style=for-the-badge)](https://github.com/F-S-C/Emotionally/blob/master/LICENSE)
 [![Latest release](https://img.shields.io/github/release/F-S-C/Emotionally.svg?style=for-the-badge)](https://github.com/F-S-C/Emotionally/releases)

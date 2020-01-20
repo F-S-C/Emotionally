@@ -1,0 +1,27 @@
+dist: trusty
+language: php
+php:
+  - "7.3"
+addons:
+  sonarcloud:
+    organization: "f-s-c"
+    token: $SONAR_TOKEN
+services:
+  - mysql
+before_script:
+  - cd src
+  - mysql -e 'CREATE DATABASE fsc_emotionally;'
+  - cp .env.example .env
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan key:generate
+  - php artisan migrate
+  - php artisan serve &
+script:
+  # - php artisan dusk
+  - cd ..
+  - sonar-scanner
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'

@@ -1,7 +1,7 @@
 ---
 layout: home
 lang: en
-title: Welcome to Emotionally
+title: Home
 ---
 
 Welcome on the web version of the documentation of Emotionally. From here, you can visit both the code documentation and the system's documentation. Use the navigation bar above or the following links to easily browse the website.
