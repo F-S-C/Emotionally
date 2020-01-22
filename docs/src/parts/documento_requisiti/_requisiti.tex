@@ -10,9 +10,115 @@
 
 \section{Requisiti di architettura}\label{sec:requisiti-di-architettura}
 
+L'architettura informativa illustrata successivamente definisce una struttura 
+generale dello \textit{schema gerarchico} indicante la logica di 
+\textit{navigazione} suddividendo la web app in sezioni e sottosezioni:
+
+% TODO: Insert an architectural structure.
+
+Indicativamente, la struttura di navigazione delle pagine più importante è 
+definita mediante le seguenti \textit{gabbie logiche grafiche minimali}. Si 
+riserverà al web designer il compito di definire meccanismi di navigazione e 
+layout grafici più avanzati che ne determineranno il risultato finale.
+
+% TODO: Insert a logical cages.
+
 \section{Requisiti di comunicazione}\label{sec:requisiti-di-comunicazione}
+Le pagine interne della piattaforma web Emotionally dovranno essere 
+graficamente coerenti tra di loro, fatta eccezione per la pagina di landing che 
+dovrà presentare la piattaforma all'utente. La piattaforma web sarà bilingue 
+(italiano e inglese).
+
+Ogni pagina del sistema Emotionally dovrà:
+\begin{itemize}
+	\item contenere il logo del sistema stesso posizionato in alto a sinistra,
+	\item avere un comportamento responsive: il sito deve ridimensionarsi 
+	automaticamente al variare della risoluzionie video e della dimnesione 
+	della finestra del browser,
+	\item contenere caratteri la cui dimensione dovrà essere modificabile 
+	dall'utente,
+	\item avere una funzione accessibile, almeno di livello AA.
+\end{itemize}
+La landing page presenta, attraverso un'interfaccia chiara e usabile, le 
+funzionalità del sistema e permette all'utente di approcciare il riconoscimento 
+delle emozioni. 
+
+Inoltre, per sottolineare la divisione tra il sistema e la landing page si è 
+deciso di utilizzare un bottone di login differente rispetto allo stile dei 
+link presenti nella navbar. A seguito del click del bottone, l'utente viene 
+reindirizzato alla pagina di login che rappresenta, seppur in parte, lo stile 
+grafico del sistema.
 
 \section{Requisiti funzionali}\label{sec:requisiti-funzionali}
+
+In questa sezione vengono illustrati i casi d'uso e le relative 
+rappresentazioni tabellari riferiti alle diverse funzionalità che Emotionally 
+offre ai suoi utenti. 
+
+\subsection{Casi d'uso}
+% TODO: Modify use cases
+\begin{tikzpicture} 
+\begin{umlsystem}[x=6, y=20]{Emotionally} 
+% Define uses case of the GUEST
+ 	\umlusecase[y=-2, name=Registration]{Registration} 
+ 	\umlusecase[y=-3, name=TestAnalysis]{Test analysis}
+% Define uses case of the USER
+ 	\umlusecase[y=-4, name=Login]{Login}
+ 	\umlusecase[y=-5, name=Logout]{Logout}
+ 	\umlusecase[y=-6, name=ProjectCreation]{Project creation}
+ 	\umlusecase[x=6, y=-5, name=ProjectEditing]{Project editing}
+ 	\umlusecase[x=6, y=-6, name=ProjectRemoval]{Project removal}
+ 	\umlusecase[y=-7, name=ProjectView]{Project view}
+ 	\umlusecase[x=6, y=-7, name=VideoUpload]{Video upload}
+ 	\umlusecase[x=6, y=-8, name=VideoEditing]{Video editing}
+ 	\umlusecase[x=6, y=-9, name=VideoRemoval]{Video removal}
+ 	\umlusecase[x=6, y=-10, name=SharingProject]{Sharing project}
+ 	\umlusecase[y=-8, name=ReportView]{Report view}
+ 	\umlusecase[x=6, y=-7, name=VideoReportView]{Video report view}
+ 	\umlusecase[x=6, y=-8, name=ProjectReportView]{Project report view}
+ 	\umlusecase[x=6, y=-9, name=ReportDownload]{Report download}
+ 	\umlusecase[y=-9, name=UserDataUpdate]{User data update}
+ 	\umlusecase[y=-10, name=DeleteAccount]{Delete account}
+\end{umlsystem} 
+
+% Define actor
+\umlactor[x=1, y=17.5]{Guest}
+\umlactor[x=1, y=14.5]{User}
+\umlactor[y=10.5]{Designer}
+\umlactor[x=2, y=10.5]{Analyst}
+
+% Define generalizzation between actor
+\umlinherit{User}{Guest}
+\umlinherit{Designer}{User}
+\umlinherit{Analyst}{User}
+
+% Define associations between actors and use cases
+\umlassoc{Guest}{Registration} 
+\umlassoc{Guest}{TestAnalysis} 
+\umlassoc{User}{Login} 
+\umlassoc{User}{Logout} 
+\umlassoc{User}{ProjectCreation}
+\umlassoc{User}{ProjectView}
+\umlassoc{User}{ReportView}
+\umlassoc{User}{UserDataUpdate}
+\umlassoc{User}{DeleteAccount}
+
+%Define extensions between use cases
+\umlVHextend{ProjectEditing}{ProjectView}
+\umlVHextend{ProjectRemoval}{ProjectView} 
+\umlVHextend{SharingProject}{ProjectView} 
+\umlVHextend{VideoUpload}{ProjectView} 
+\umlVHextend{VideoEditing}{ProjectView} 
+\umlVHextend{VideoRemoval}{ProjectView}  
+\umlVHextend{ReportDownload}{ReportView}
+ 
+% Define generalizzation between use cases
+\umlinherit{VideoReportView}{ReportView}
+\umlinherit{ProjectReportView}{ReportView}
+
+\end{tikzpicture}
+
+\subsection{Rappresentazione tabellare}
 
 \section{Requisiti di contenuto}\label{sec:requisiti-di-contenuto}
 
