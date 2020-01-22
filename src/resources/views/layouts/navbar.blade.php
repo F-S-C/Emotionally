@@ -1,11 +1,19 @@
 @extends('layouts.master')
 
+@section('head')
+    <style>
+        body {
+            padding-top: 56px; /* Padding for the navbar */
+        }
+    </style>
+@endsection
+
 @section('body')
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark el-8dp fixed-top" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                    <img src="https://raw.githubusercontent.com/F-S-C/Emotionally/master/logo/logo.png" width="30" height="30"
                          class="d-inline-block align-top" alt="Emotionally's logo">
                     Emotionally
                 </a>
@@ -20,7 +28,7 @@
         </nav>
     </header>
 
-    <main class="content" style="padding-top: 56px;" id="main">
+    <main class="content" id="main">
         @yield('content')
     </main>
 @endsection

@@ -14,20 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with Emotionally.  If not, see <http://www.gnu.org/licenses/>.
  */
+// Some accessibility classes
+@import "_accessibility";
 
-.skip-navigation {
-  @include sr-only;
-  @include sr-only-focusable;
-  @extend .btn;
-  @extend .btn-primary;
-  @extend .p-3;
-  position: absolute !important;
-  z-index: $zindex-fixed + 1;
-  color: white;
-  background-color: black;
+a {
+  :not(#main-navigation) & {
+    text-decoration: underline;
 
-  &:active, &:focus {
-    color: white;
-    background-color: black;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }

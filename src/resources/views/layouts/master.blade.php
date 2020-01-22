@@ -9,17 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    @yield('head', '')
 
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <title>@yield('title')</title>
 </head>
 <body>
-    <a class="skip-navigation" href="#main">Skip to main content</a>
+    <nav aria-labelledby="skip-navigation-link">
+        <a id="skip-navigation-link" class="skip-navigation" href="#main" role="button">Skip to main content</a>
+    </nav>
     @yield('body')
-    <footer class="bg-dark text-light">
-        <div class="footer-content py-2 bg-secondary">
+    <footer class="el-8dp text-light">
+        <div class="footer-content py-2 el-4dp">
             <div class="container">
                 <div class="row">
                     <div class="col-4">
