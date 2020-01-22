@@ -17,11 +17,11 @@
                          class="d-inline-block align-top" alt="Emotionally's logo">
                     Emotionally
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation"
-                        aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation-content"
+                        aria-controls="main-navigation-content" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="main-navigation">
+                <div class="collapse navbar-collapse" id="main-navigation-content">
                     @yield('navbar-content')
                 </div>
             </div>
