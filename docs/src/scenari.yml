@@ -12,9 +12,9 @@
 #     - action: "Action 1"
 #       subactions:
 #       - action: "Sub action"
-#         subactions: 
+#         subactions:
 #       - action: "Sub action"
-#         subactions: 
+#         subactions:
 #     - action: "Action 2"
 #       subactions:
 #     - action: "Action 3"
@@ -38,25 +38,22 @@
     - action: "Il guest chiede al sistema di potersi registrare alla piattaforma"
     - action: "Il sistema permette la registrazione chiedendo informazioni utili per la registrazione"
       subactions:
-      - action: "Fintantochè l'utente non inserisce una corretta email"
-        subactions: 
-      - action: "Il sistema chiede l'email"
-        subactions:
-      - action: "L'utente inserisce l'email"
+        - action: "Fintantochè l'utente non inserisce una corretta email"
+        - action: "Il sistema chiede l'email"
+        - action: "L'utente inserisce l'email"
     - action: "Fintantochè l'utente non inserisce una password valida"
       subactions:
-      - action: "Il sistema chiede la password"
-      subaction:
-      - action: "L'utente inserisce la password"
+        - action: "Il sistema chiede la password"
+        - action: "L'utente inserisce la password"
     - action: "Il sistema chiede il nome dell'utente"
       subactions:
-      - actions: "L'utente inserisce il nome"
+        - action: "L'utente inserisce il nome"
     - action: "Il sistema chiede il cognome dell'utente"
       subactions:
-      - action: "L'utente inserisce il cognome"
+        - action: "L'utente inserisce il cognome"
     - action: "Il sistema chiede il sesso dell'utente"
       subactions:
-      - action: "L'utente inserisce il sesso"
+        - action: "L'utente inserisce il sesso"
   postconditions:
     - "L'utente è registrato alla piattaforma"
   alternative:
@@ -93,15 +90,12 @@
     - action: "Il sistema chiede all'utente di inserire le informazioni necessarie per effettuare l'accesso"
     - action: "Fintantochè l'utente non inserisce un'email valida"
       subactions:
-      - action: "Il sistema chiede all'utente di inserire l'email"
-        subactions: 
-      - action: "L'utente inserisce l'email"
-        subactions: 
+        - action: "Il sistema chiede all'utente di inserire l'email"
+        - action: "L'utente inserisce l'email"
     - action: "Fintantochè l'utente non inserisce una password valida"
       subactions:
-      - action: "Il sistema chiede all'utente di inserire la password"
-      subactions:
-      - action: "L'utente inserisce la password"
+        - action: "Il sistema chiede all'utente di inserire la password"
+        - action: "L'utente inserisce la password"
     - action: "Il sistema fa accedere l'utente alla piattaforma"
   postconditions:
     - "L'utente ha effettuato il login"
@@ -122,10 +116,10 @@
     - action: "Il sistema chiede all'utente la conferma di logout"
     - action: "Se l'utente conferma"
       subactions:
-      - action: "Il sistema permetterà l'uscita dalla piattaforma"
+        - action: "Il sistema permetterà l'uscita dalla piattaforma"
     - action: "Altrimenti"
-        subactions: 
-      - action: "Il sistema fermerà il processo di logout"
+      subactions:
+        - action: "Il sistema fermerà il processo di logout"
   postconditions:
     - "L'utente ha effettuato il logout"
   alternative:
@@ -144,17 +138,13 @@
     - action: "Il sistema chiede delle informazioni relative al nuovo progetto"
     - action: "Fintantochè l'utente non inserisce un nome di progetto valido"
       subactions:
-      - action: "Il sistema chiede all'utente di inserire il nome di progetto"
-        subactions: 
-      - action: "L'utente inserisce il nome di progetto"
-        subactions: 
+        - action: "Il sistema chiede all'utente di inserire il nome di progetto"
+        - action: "L'utente inserisce il nome di progetto"
     - action: "Fintantochè l'utente non inserisce una cartella padre valido"
       subactions:
-      - action: "Il sistema chiede all'utente di inserire la cartella padre del progetto"
-        subactions: 
-      - action: "L'utente inserisce la cartella padre del progetto"
+        - action: "Il sistema chiede all'utente di inserire la cartella padre del progetto"
+        - action: "L'utente inserisce la cartella padre del progetto"
     - action: "Il sistema effettua la creazione del nuovo progetto"
-      subactions:
   postconditions:
     - "L'utente ha creato un nuovo progetto"
   alternative:

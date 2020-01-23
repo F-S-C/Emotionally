@@ -1,19 +1,99 @@
 \begin{table}[H]
 	\centering
+	\caption{Use Case: Registration}
+	\label{tab:use-case-registration}
+	\rowcolors{2}{gray!25}{white!0}
+	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.2\textwidth}|m{.7\textwidth}|@{}}
+		\hline
+		\rowcolor{emotionally-color!35}
+		{\textbf{Nome caso d'uso}} & {\textbf{Registration (ID: 1)}} \\\hline
+		\endfirsthead
+		Descrizione & L'utente visitatore si registra alla piattaforma Emotionally.\\
+		Attori & \begin{tabular}{l}~~\llap{\textbullet}~~Guest\\\end{tabular}\\
+		Pre-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente non deve essere già registrato alla piattaforma\\\end{tabular}\\
+		Sequenza delle azioni & \begin{tabular}{l}1.~~Il guest chiede al sistema di potersi registrare alla piattaforma\\2.~~Il sistema permette la registrazione chiedendo informazioni utili per la registrazione\\~~2.1.~~Fintantochè l'utente non inserisce una corretta email\\~~2.2.~~Il sistema chiede l'email\\~~2.3.~~L'utente inserisce l'email\\3.~~Fintantochè l'utente non inserisce una password valida\\~~3.1.~~Il sistema chiede la password\\~~3.2.~~L'utente inserisce la password\\4.~~Il sistema chiede il nome dell'utente\\~~4.1.~~L'utente inserisce il nome\\5.~~Il sistema chiede il cognome dell'utente\\~~5.1.~~L'utente inserisce il cognome\\6.~~Il sistema chiede il sesso dell'utente\\~~6.1.~~L'utente inserisce il sesso\\\end{tabular}\\
+		Post-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente è registrato alla piattaforma\\\end{tabular}\\
+		Scenario alternativo & \begin{tabular}{l}~~\llap{\textbullet}~~Uno scenario alternativo viene attivato al punto 2: il sistema informa l'utente che l'email inserita non è valida o corretta\\~~\llap{\textbullet}~~Uno scenario alternativo viene attivato al punto 3: il sistema informa l'utente che la password inserita non è valida\\\end{tabular}\\\hline
+		
+	\end{longtable}
+\end{table}
+
+\begin{table}[H]
+	\centering
 	\caption{Use Case: Test analysis}
 	\label{tab:use-case-test-analysis}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.2\textwidth}|m{.7\textwidth}|@{}}
 		\hline
 		\rowcolor{emotionally-color!35}
-		{\textbf{Nome caso d'uso}} & {\textbf{Test analysis (ID: 1)}} \\\hline
+		{\textbf{Nome caso d'uso}} & {\textbf{Test analysis (ID: 2)}} \\\hline
 		\endfirsthead
-		Descrizione & Breve descrizione del caso d'uso.\\
-		Attori & \begin{tabular}{l}~~\llap{\textbullet}~~Attore 1\\~~\llap{\textbullet}~~Attore 2\\\end{tabular}\\
-		Pre-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~Precondizione 1\\~~\llap{\textbullet}~~Precondizione 2\\\end{tabular}\\
-		Sequenza delle azioni & \begin{tabular}{l}1.~~Action 1\\~~1.1.~~Sub action\\~~1.2.~~Sub action\\2.~~Action 2\\3.~~Action 3\\\end{tabular}\\
-		Post-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~Postcondizione 1\\~~\llap{\textbullet}~~Postcondizione 2\\\end{tabular}\\
-		Scenario alternativo & \begin{tabular}{l}~~\llap{\textbullet}~~Alternativa 1\\~~\llap{\textbullet}~~Alternativa 2\\\end{tabular}\\\hline
+		Descrizione & L'utente visitatore vuole effettuare un test di prova di analisi delle emozioni\\
+		Attori & \begin{tabular}{l}~~\llap{\textbullet}~~Guest\\~~\llap{\textbullet}~~User\\\end{tabular}\\
+		Pre-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente non deve essere loggato alla piattaforma\\\end{tabular}\\
+		Sequenza delle azioni & \begin{tabular}{l}1.~~L'utente chiede al sistema di poter effettuare un'analisi di prova delle emozioni\\2.~~Il sistema permette l'analisi di prova richiesta\\\end{tabular}\\
+		Post-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'analisi di prova delle emozioni è stata effettuata.\\\end{tabular}\\
+		Scenario alternativo & \begin{tabular}{l}~~\llap{\textbullet}~~Nessuno\\\end{tabular}\\\hline
+		
+	\end{longtable}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\caption{Use Case: Login}
+	\label{tab:use-case-login}
+	\rowcolors{2}{gray!25}{white!0}
+	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.2\textwidth}|m{.7\textwidth}|@{}}
+		\hline
+		\rowcolor{emotionally-color!35}
+		{\textbf{Nome caso d'uso}} & {\textbf{Login (ID: 3)}} \\\hline
+		\endfirsthead
+		Descrizione & L'utente vuole effettuare l'accesso alla piattaforma Emotionally\\
+		Attori & \begin{tabular}{l}~~\llap{\textbullet}~~User\\\end{tabular}\\
+		Pre-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente deve aver già effettuato la registrazione\\\end{tabular}\\
+		Sequenza delle azioni & \begin{tabular}{l}1.~~L'utente chiede al sistema di poter effettuare il login\\2.~~Il sistema chiede all'utente di inserire le informazioni necessarie per effettuare l'accesso\\3.~~Fintantochè l'utente non inserisce un'email valida\\~~3.1.~~Il sistema chiede all'utente di inserire l'email\\~~3.2.~~L'utente inserisce l'email\\4.~~Fintantochè l'utente non inserisce una password valida\\~~4.1.~~Il sistema chiede all'utente di inserire la password\\~~4.2.~~L'utente inserisce la password\\5.~~Il sistema fa accedere l'utente alla piattaforma\\\end{tabular}\\
+		Post-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente ha effettuato il login\\\end{tabular}\\
+		Scenario alternativo & \begin{tabular}{l}~~\llap{\textbullet}~~Uno scenario alternativo viene innescato al punto 3: il sistema avvisa l'utente che l'email inserita non è valida.\\~~\llap{\textbullet}~~Uno scenario alternativo viene innescato al punto 4: il sistema avvisa l'utente che la password inserita non è valida.\\\end{tabular}\\\hline
+		
+	\end{longtable}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\caption{Use Case: Logout}
+	\label{tab:use-case-logout}
+	\rowcolors{2}{gray!25}{white!0}
+	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.2\textwidth}|m{.7\textwidth}|@{}}
+		\hline
+		\rowcolor{emotionally-color!35}
+		{\textbf{Nome caso d'uso}} & {\textbf{Logout (ID: 4)}} \\\hline
+		\endfirsthead
+		Descrizione & L'utente vuole uscire dalla piattaforma Emotionally.\\
+		Attori & \begin{tabular}{l}~~\llap{\textbullet}~~User\\\end{tabular}\\
+		Pre-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente deve essere già loggato alla piattaforma\\\end{tabular}\\
+		Sequenza delle azioni & \begin{tabular}{l}1.~~L'utente chiede al sistema di porter effettuare il logout\\2.~~Il sistema chiede all'utente la conferma di logout\\3.~~Se l'utente conferma\\~~3.1.~~Il sistema permetterà l'uscita dalla piattaforma\\4.~~Altrimenti\\~~4.1.~~Il sistema fermerà il processo di logout\\\end{tabular}\\
+		Post-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente ha effettuato il logout\\\end{tabular}\\
+		Scenario alternativo & \begin{tabular}{l}~~\llap{\textbullet}~~Nessuno\\\end{tabular}\\\hline
+		
+	\end{longtable}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\caption{Use Case: Create project}
+	\label{tab:use-case-create-project}
+	\rowcolors{2}{gray!25}{white!0}
+	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.2\textwidth}|m{.7\textwidth}|@{}}
+		\hline
+		\rowcolor{emotionally-color!35}
+		{\textbf{Nome caso d'uso}} & {\textbf{Create project (ID: 5)}} \\\hline
+		\endfirsthead
+		Descrizione & L'utente vuole creare un nuovo progetto.\\
+		Attori & \begin{tabular}{l}~~\llap{\textbullet}~~User\\\end{tabular}\\
+		Pre-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente deve essere loggato alla piattaforma\\\end{tabular}\\
+		Sequenza delle azioni & \begin{tabular}{l}1.~~L'utente chiede al sistema di poter creare un nuovo progetto\\2.~~Il sistema chiede delle informazioni relative al nuovo progetto\\3.~~Fintantochè l'utente non inserisce un nome di progetto valido\\~~3.1.~~Il sistema chiede all'utente di inserire il nome di progetto\\~~3.2.~~L'utente inserisce il nome di progetto\\4.~~Fintantochè l'utente non inserisce una cartella padre valido\\~~4.1.~~Il sistema chiede all'utente di inserire la cartella padre del progetto\\~~4.2.~~L'utente inserisce la cartella padre del progetto\\5.~~Il sistema effettua la creazione del nuovo progetto\\\end{tabular}\\
+		Post-condizioni & \begin{tabular}{l}~~\llap{\textbullet}~~L'utente ha creato un nuovo progetto\\\end{tabular}\\
+		Scenario alternativo & \begin{tabular}{l}~~\llap{\textbullet}~~Uno scenario alternativo viene innescato al punto 3: il sistema avvisa l'utente di aver inserito un nome di progetto non valido.\\~~\llap{\textbullet}~~Uno scenario alternativo viene innescato al punto 4: Il sistema avvisa l'utente di aver inserito una cartella padre errate\\\end{tabular}\\\hline
 		
 	\end{longtable}
 \end{table}
