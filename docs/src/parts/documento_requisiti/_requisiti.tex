@@ -26,8 +26,7 @@ Per quanto riguarda l'area pubblica si prevede quanto segue:
 \end{itemize}
 Per quanto riguarda l'area privata, ovvero per ogni utente loggato si prevede 
 quanto segue (\textit{con (*) viene indicata la molteplice quantità 
-dell'oggetto a 
-cui è affiancato}): 
+dell'oggetto a cui è affiancato}): 
 \begin{itemize}
 	\item \textbf{Home}
 	\begin{itemize}
@@ -96,7 +95,7 @@ offre ai suoi utenti.
 \input{parts/documento_requisiti/_scenari.tex}
 
 \subsection{Modello dei dati}
-Di seguito è riportato il diagramma entità relazioni concettuale:
+Di seguito è riportato il modello concettuale della base di dati:
 \input{images/er.tex}
 
 \subsection{Sicurezza e privacy}
@@ -116,8 +115,6 @@ quindi effettuare una prima fase di registrazione dove dovrà fornire dati
 sensibili quali email, password, nome, cognome e sesso.
 
 \section{Requisiti di contenuto}\label{sec:requisiti-di-contenuto}
-% TODO: Complete table of contents
-
 \begin{table}[H]
 	\centering
 	\caption{Contenuti di Emotionally.}
@@ -169,7 +166,38 @@ verranno riportate descrizioni delle funzionalità del sistema, concordati con
 il committente.
 
 \section{Requisiti di accessibilità}\label{sec:requisiti-di-accessibilita}
-% TODO: Insert accessibility requirements
+Si vuole creare un sistema che rispetti le linee guida WCAG con livello AA. 
+Inoltre deve essere fornito all'utente la possibilità di modificare la 
+dimensione dei caratteri.
+
+Per quanto concerne le prestazioni del sito, non è possibile stabilire a priori 
+il traffico e l'ampiezza di banda necessaria. Per quanto riguarda gli accessi 
+contemporanei al sito, invece, si presuppone un numero non troppo ampio di 
+visitatori nell'area pubblica in quanto funge solo da vetrina per i visitatori 
+sporadici (compresa la funzionalità di ``analisi di test'', per cui non si 
+prevede un elevato numero di accessi concorrenti). L'area privata è invece 
+diversa, ma i problemi sono limitati in quanto i diversi utenti non hanno 
+accesso a progetti di altri utenti (fatte poche eccezioni), riducendo al minimo 
+i problemi legati agli accessi concorrenti.
+
+È garantita la compatibilità con i maggiori browser attualmente in uso (Google 
+Chrome, Mozilla Firefox). Il funzionamento su altri browser non specificati o 
+con vari plugin o impostazioni personalizzate non è garantito. Per qualsiasi 
+problema è comunque possibile contattare il team FSC al fine di provvedere alla 
+manutenzione.
 
 \section{Requisiti di usabilità}\label{sec:requisiti-di-usabilita}
-% TODO: Insert usability requirements
+La piattaforma web cerca di garantire l'usabilità (secondo lo standard ISO 
+9241) delle sue funzionalità nel migliore modo possibile. A tale fine, il team 
+si impegna a utilizzare un processo che garantisca la \textit{usability by 
+design}.
+
+Per quanto riguarda le operazioni di visualizzazione, fatta eccezione per 
+problemi legati alla connettività, il team garantisce una discreta velocità e 
+un'interfaccia visiva facilmente comprensibile.
+
+Per quanto riguarda le operazioni di salvataggio delle modifiche e upload di 
+file, il team garantisce (fatta eccezione per problemi legati alla 
+connettività) un alto tasso di successo (qualora le informazioni fornite 
+rispettino i vincoli imposti dal team). L'errato inserimento di un dato sarà 
+notificato all'utente mediante un messaggio di errore facilmente comprensibile.
