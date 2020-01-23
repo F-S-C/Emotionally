@@ -48,7 +48,7 @@
       \textsc{\Large \@doctype{}}\\[0.5 cm]
       \textsc{\large \@course{}}\\[1 cm]
     % University or Project Logo:
-    \includegraphics[height=4cm]{logo.png}\\[0.5 cm]
+    \includegraphics[height=5cm]{logo.png}\\[0.5 cm]
     
     \rule{\linewidth}{0.2 mm}\\[0.4 cm]
     % Document Title:
