@@ -12,9 +12,35 @@
 
 L'architettura informativa illustrata successivamente definisce una struttura 
 generale dello \textit{schema gerarchico} indicante la logica di 
-\textit{navigazione} suddividendo la web app in sezioni e sottosezioni:
+\textit{navigazione} suddividendo la web app in sezioni e sottosezioni. 
 
-% TODO: Insert an architectural structure.
+Per quanto riguarda l'area pubblica si prevede quanto segue:
+\begin{itemize}
+	\item \textbf{Landing page}
+	\begin{itemize}
+		\item \textbf{Funzionalità}
+		\item \textbf{Su di noi}
+	\end{itemize}
+\item \textbf{Login}
+\item \textbf{Registrazione}
+\end{itemize}
+
+Per quanto riguarda l'area privata, ovvero per ogni utente loggato si prevede 
+quanto segue (\textit{con * viene indita la molteplice quantità dell'oggetto a 
+cui è affiancato}): 
+\begin{itemize}
+	\item \textbf{Home}
+	\begin{itemize}
+		\item \textbf{Progetti *} 
+		\begin{itemize}
+			\item \textbf{Sottoprogetti *}
+			\begin{itemize}
+				\item \textbf{Video *}
+			\end{itemize}
+		\item \textbf{Video *}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
 
 Indicativamente, la struttura di navigazione delle pagine più importante è 
 definita mediante le seguenti \textit{gabbie logiche grafiche minimali}. Si 
@@ -414,7 +440,7 @@ sensibili quali email, password, nome, cognome e sesso.
 
 \begin{table}[H]
 	\centering
-	\caption{I bisogni degli utenti di Emotionally.}
+	\caption{Contenuti di Emotionally.}
 	\label{tab:bisogni-utenti}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.25\textwidth}|m{.25\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
@@ -425,6 +451,19 @@ sensibili quali email, password, nome, cognome e sesso.
 		contenuto}} & {\color{white} \textbf{Dove trovare le informazioni}} 
 		\\\hline
 		\endfirsthead
+		\cellcolor{white!0}  & Try me & Questa sezione ha lo scopo di far 
+		effettuare un'analisi delle emozioni di prova agli utenti visitatori 
+		della piattaforma web. & Non sono previste informazioni. \\
+		\cellcolor{white!0}  & Funzionalità & Questa sezione ha lo scopo di 
+		presentare 
+		le funzionalità offerte da Emotionally attraverso una breve descrizione 
+		delle stesse. & Non è possibile reperire le informazioni in quanto sono 
+		state create dal team FSC.\\
+		\multirow{-2}{*}{Landing page} & Su di noi & Questa sezione ha lo scopo 
+		di 
+		presentare i componenti del team sviluppatore di Emotionally. & In 
+		quanto le informazioni riguardano i componenti del team, non è 
+		possibile reperire tali informazioni. \\		
 		\hline
 	\end{longtable}
 \end{table}
