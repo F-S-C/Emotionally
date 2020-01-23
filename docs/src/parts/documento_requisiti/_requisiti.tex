@@ -56,67 +56,15 @@ rappresentazioni tabellari riferiti alle diverse funzionalità che Emotionally
 offre ai suoi utenti. 
 
 \subsection{Casi d'uso}
-% TODO: Modify use cases
-\begin{tikzpicture} 
-\begin{umlsystem}[x=6, y=20]{Emotionally} 
-% Define uses case of the GUEST
- 	\umlusecase[y=-2, name=Registration]{Registration} 
- 	\umlusecase[y=-3, name=TestAnalysis]{Test analysis}
-% Define uses case of the USER
- 	\umlusecase[y=-4, name=Login]{Login}
- 	\umlusecase[y=-5, name=Logout]{Logout}
- 	\umlusecase[y=-6, name=ProjectCreation]{Project creation}
- 	\umlusecase[x=6, y=-5, name=ProjectEditing]{Project editing}
- 	\umlusecase[x=6, y=-6, name=ProjectRemoval]{Project removal}
- 	\umlusecase[y=-7, name=ProjectView]{Project view}
- 	\umlusecase[x=6, y=-7, name=VideoUpload]{Video upload}
- 	\umlusecase[x=6, y=-8, name=VideoEditing]{Video editing}
- 	\umlusecase[x=6, y=-9, name=VideoRemoval]{Video removal}
- 	\umlusecase[x=6, y=-10, name=SharingProject]{Sharing project}
- 	\umlusecase[y=-8, name=ReportView]{Report view}
- 	\umlusecase[x=6, y=-7, name=VideoReportView]{Video report view}
- 	\umlusecase[x=6, y=-8, name=ProjectReportView]{Project report view}
- 	\umlusecase[x=6, y=-9, name=ReportDownload]{Report download}
- 	\umlusecase[y=-9, name=UserDataUpdate]{User data update}
- 	\umlusecase[y=-10, name=DeleteAccount]{Delete account}
-\end{umlsystem} 
 
-% Define actor
-\umlactor[x=1, y=17.5]{Guest}
-\umlactor[x=1, y=14.5]{User}
-\umlactor[y=10.5]{Designer}
-\umlactor[x=2, y=10.5]{Analyst}
-
-% Define generalizzation between actor
-\umlinherit{User}{Guest}
-\umlinherit{Designer}{User}
-\umlinherit{Analyst}{User}
-
-% Define associations between actors and use cases
-\umlassoc{Guest}{Registration} 
-\umlassoc{Guest}{TestAnalysis} 
-\umlassoc{User}{Login} 
-\umlassoc{User}{Logout} 
-\umlassoc{User}{ProjectCreation}
-\umlassoc{User}{ProjectView}
-\umlassoc{User}{ReportView}
-\umlassoc{User}{UserDataUpdate}
-\umlassoc{User}{DeleteAccount}
-
-%Define extensions between use cases
-\umlVHextend{ProjectEditing}{ProjectView}
-\umlVHextend{ProjectRemoval}{ProjectView} 
-\umlVHextend{SharingProject}{ProjectView} 
-\umlVHextend{VideoUpload}{ProjectView} 
-\umlVHextend{VideoEditing}{ProjectView} 
-\umlVHextend{VideoRemoval}{ProjectView}  
-\umlVHextend{ReportDownload}{ReportView}
- 
-% Define generalizzation between use cases
-\umlinherit{VideoReportView}{ReportView}
-\umlinherit{ProjectReportView}{ReportView}
-
-\end{tikzpicture}
+\begin{figure}[H]
+	\centering
+    \caption{I casi d'uso del sistema.}
+    \label{fig:casi-duso}
+    \resizebox{\textwidth}{!}{%
+        \input{images/casi-duso.tex}
+    }
+\end{figure}
 
 \subsection{Rappresentazione tabellare}
 % TODO: Complete use case scenarios
@@ -194,12 +142,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Project creation}
+	\caption{Use Case: Create project}
 	\label{tab:use-case-project-creation}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Project Creation \\
+		Nome caso d'uso & Create project \\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -212,12 +160,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Project view}
+	\caption{Use Case: View project}
 	\label{tab:use-case-project-view}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Project view \\
+		Nome caso d'uso & View project \\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -230,12 +178,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Project editing}
+	\caption{Use Case: Edit project}
 	\label{tab:use-case-project-editing}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Project editing \\
+		Nome caso d'uso & Edit project \\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -248,12 +196,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Project removal}
+	\caption{Use Case: Remove project}
 	\label{tab:use-case-project-removal}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Project removal \\
+		Nome caso d'uso & Remove project \\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -266,12 +214,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Sharing project}
+	\caption{Use Case: Share project}
 	\label{tab:use-case-sharing-project}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Sharing project \\
+		Nome caso d'uso & Share project \\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -284,12 +232,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Video upload}
+	\caption{Use Case: Upload video}
 	\label{tab:use-case-video-upload}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Video upload \\
+		Nome caso d'uso & Upload video\\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -302,12 +250,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Video editing}
+	\caption{Use Case: Edit video}
 	\label{tab:use-case-video-editing}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Video editing \\
+		Nome caso d'uso & Edit video\\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -320,12 +268,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Video removal}
+	\caption{Use Case: Remove video}
 	\label{tab:use-case-video-removal}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Registration \\
+		Nome caso d'uso & Remove video\\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -338,12 +286,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Report view}
+	\caption{Use Case: view report}
 	\label{tab:use-case-report-view}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Report view \\
+		Nome caso d'uso & View report \\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -356,12 +304,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Video report view}
+	\caption{Use Case: View video report}
 	\label{tab:use-case-video-report-view}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Video report view \\
+		Nome caso d'uso & View video report \\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -374,12 +322,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Project report view}
+	\caption{Use Case: View project report}
 	\label{tab:use-case-project-report-view}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Project report view \\
+		Nome caso d'uso & View project report\\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -392,12 +340,12 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: Report download}
+	\caption{Use Case: Download report}
 	\label{tab:use-case-report-download}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
 		
-		Nome caso d'uso & Report download \\
+		Nome caso d'uso & Download report\\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
@@ -410,11 +358,11 @@ offre ai suoi utenti.
 
 \begin{table}[H]
 	\centering
-	\caption{Use Case: User data update}
+	\caption{Use Case: Update user data}
 	\label{tab:use-case-user-data-update}
 	\rowcolors{2}{gray!25}{white!0}
 	\begin{longtable}{@{}|>{\centering\arraybackslash}m{.25\textwidth}|m{.5\textwidth}|>{\centering\arraybackslash}m{.1\textwidth}|@{}}
-		Nome caso d'uso & User data update \\
+		Nome caso d'uso & Update user data \\
 		Descrizione & \\
 		Attori & \\
 		Pre-condizioni & \\
