@@ -47,8 +47,8 @@ def scenarios():
 	\\rowcolors{{2}}{{gray!25}}{{white!0}}
 	\\begin{{longtable}}{{@{{}}|>{{\\centering\\arraybackslash}}m{{.2\\textwidth}}|m{{.7\\textwidth}}|@{{}}}}
 		\hline
-		\\rowcolor{{emotionally-color}}
-		{{\\color{{white}} \\textbf{{Nome caso d'uso}}}} & {{\\color{{white}} \\textbf{{{scenario['usecase']} (ID: {scenario['id']})}}}} \\\\\hline
+		\\rowcolor{{emotionally-color!35}}
+		{{\\textbf{{Nome caso d'uso}}}} & {{\\textbf{{{scenario['usecase']} (ID: {scenario['id']})}}}} \\\\\hline
 		\\endfirsthead
 		Descrizione & {scenario['description']}\\\\
 		Attori & \\begin{{tabular}}{{l}}{list_to_string(scenario['actors'])}\end{{tabular}}\\\\
