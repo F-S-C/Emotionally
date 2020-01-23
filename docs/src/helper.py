@@ -27,9 +27,9 @@ def actions_to_string(l, current_action="", level=1):
     for i in range(len(l)):
         index = f"{'~~' * (level - 1)}{current_action}{i + 1}."
         string += f"{index}~~{l[i]['action']}\\\\"
-        string += actions_to_string(l[i]['subactions'], index, level + 1)
+        if 'subactions' in l[i]:
+            string += actions_to_string(l[i]['subactions'], index, level + 1)
     return string 
-
 
 def scenarios():
     with open(os.path.join(os.path.dirname(__file__), 'scenari.yml'), 'r') as f:
@@ -58,9 +58,9 @@ def scenarios():
 		Scenario alternativo & \\begin{{tabular}}{{l}}{list_to_string(scenario['alternative'])}\end{{tabular}}\\\\\hline
 		
 	\end{{longtable}}
-\end{{table}}'''
+\end{{table}}\n\n'''
     with open(os.path.join(os.path.dirname(__file__), 'parts/documento_requisiti/_scenari.tex'), 'w') as f:
-        f.write(content)
+        f.write(content[:-1])
 
 
 def main():
