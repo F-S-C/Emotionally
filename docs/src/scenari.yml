@@ -1,0 +1,27 @@
+- id: 1
+  usecase: "Test analysis"
+  description: >-
+    Breve descrizione del caso d'uso.
+  actors:
+    - "Attore 1"
+    - "Attore 2"
+  preconditions:
+    - "Precondizione 1"
+    - "Precondizione 2"
+  actions:
+    - action: "Action 1"
+      subactions:
+      - action: "Sub action"
+        subactions: 
+      - action: "Sub action"
+        subactions: 
+    - action: "Action 2"
+      subactions:
+    - action: "Action 3"
+      subactions:
+  postconditions:
+    - "Postcondizione 1"
+    - "Postcondizione 2"
+  alternative:
+    - "Alternativa 1"
+    - "Alternativa 2"
