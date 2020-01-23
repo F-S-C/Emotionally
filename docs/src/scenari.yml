@@ -1,27 +1,162 @@
+# - id: 1
+#   usecase: "Test analysis"
+#   description: >-
+#     Breve descrizione del caso d'uso.
+#   actors:
+#     - "Attore 1"
+#     - "Attore 2"
+#   preconditions:
+#     - "Precondizione 1"
+#     - "Precondizione 2"
+#   actions:
+#     - action: "Action 1"
+#       subactions:
+#       - action: "Sub action"
+#         subactions: 
+#       - action: "Sub action"
+#         subactions: 
+#     - action: "Action 2"
+#       subactions:
+#     - action: "Action 3"
+#       subactions:
+#   postconditions:
+#     - "Postcondizione 1"
+#     - "Postcondizione 2"
+#   alternative:
+#     - "Alternativa 1"
+#     - "Alternativa 2"
+
 - id: 1
+  usecase: "Registration"
+  description: >-
+    L'utente visitatore si registra alla piattaforma Emotionally.
+  actors:
+    - "Guest"
+  preconditions:
+    - "L'utente non deve essere già registrato alla piattaforma"
+  actions:
+    - action: "Il guest chiede al sistema di potersi registrare alla piattaforma"
+    - action: "Il sistema permette la registrazione chiedendo informazioni utili per la registrazione"
+      subactions:
+      - action: "Fintantochè l'utente non inserisce una corretta email"
+        subactions: 
+      - action: "Il sistema chiede l'email"
+        subactions:
+      - action: "L'utente inserisce l'email"
+    - action: "Fintantochè l'utente non inserisce una password valida"
+      subactions:
+      - action: "Il sistema chiede la password"
+      subaction:
+      - action: "L'utente inserisce la password"
+    - action: "Il sistema chiede il nome dell'utente"
+      subactions:
+      - actions: "L'utente inserisce il nome"
+    - action: "Il sistema chiede il cognome dell'utente"
+      subactions:
+      - action: "L'utente inserisce il cognome"
+    - action: "Il sistema chiede il sesso dell'utente"
+      subactions:
+      - action: "L'utente inserisce il sesso"
+  postconditions:
+    - "L'utente è registrato alla piattaforma"
+  alternative:
+    - "Uno scenario alternativo viene attivato al punto 2: il sistema informa l'utente che l'email inserita non è valida o corretta"
+    - "Uno scenario alternativo viene attivato al punto 3: il sistema informa l'utente che la password inserita non è valida"
+
+- id: 2
   usecase: "Test analysis"
   description: >-
-    Breve descrizione del caso d'uso.
+    L'utente visitatore vuole effettuare un test di prova di analisi delle emozioni
   actors:
-    - "Attore 1"
-    - "Attore 2"
+    - "Guest"
+    - "User"
   preconditions:
-    - "Precondizione 1"
-    - "Precondizione 2"
+    - "L'utente non deve essere loggato alla piattaforma"
   actions:
-    - action: "Action 1"
+    - action: "L'utente chiede al sistema di poter effettuare un'analisi di prova delle emozioni"
+    - action: "Il sistema permette l'analisi di prova richiesta"
+  postconditions:
+    - "L'analisi di prova delle emozioni è stata effettuata."
+  alternative:
+    - "Nessuno"
+
+- id: 3
+  usecase: "Login"
+  description: >-
+    L'utente vuole effettuare l'accesso alla piattaforma Emotionally
+  actors:
+    - "User"
+  preconditions:
+    - "L'utente deve aver già effettuato la registrazione"
+  actions:
+    - action: "L'utente chiede al sistema di poter effettuare il login"
+    - action: "Il sistema chiede all'utente di inserire le informazioni necessarie per effettuare l'accesso"
+    - action: "Fintantochè l'utente non inserisce un'email valida"
       subactions:
-      - action: "Sub action"
+      - action: "Il sistema chiede all'utente di inserire l'email"
         subactions: 
-      - action: "Sub action"
+      - action: "L'utente inserisce l'email"
         subactions: 
-    - action: "Action 2"
+    - action: "Fintantochè l'utente non inserisce una password valida"
       subactions:
-    - action: "Action 3"
+      - action: "Il sistema chiede all'utente di inserire la password"
+      subactions:
+      - action: "L'utente inserisce la password"
+    - action: "Il sistema fa accedere l'utente alla piattaforma"
+  postconditions:
+    - "L'utente ha effettuato il login"
+  alternative:
+    - "Uno scenario alternativo viene innescato al punto 3: il sistema avvisa l'utente che l'email inserita non è valida."
+    - "Uno scenario alternativo viene innescato al punto 4: il sistema avvisa l'utente che la password inserita non è valida."
+
+- id: 4
+  usecase: "Logout"
+  description: >-
+    L'utente vuole uscire dalla piattaforma Emotionally.
+  actors:
+    - "User"
+  preconditions:
+    - "L'utente deve essere già loggato alla piattaforma"
+  actions:
+    - action: "L'utente chiede al sistema di porter effettuare il logout"
+    - action: "Il sistema chiede all'utente la conferma di logout"
+    - action: "Se l'utente conferma"
+      subactions:
+      - action: "Il sistema permetterà l'uscita dalla piattaforma"
+    - action: "Altrimenti"
+        subactions: 
+      - action: "Il sistema fermerà il processo di logout"
+  postconditions:
+    - "L'utente ha effettuato il logout"
+  alternative:
+    - "Nessuno"
+
+- id: 5
+  usecase: "Create project"
+  description: >-
+    L'utente vuole creare un nuovo progetto.
+  actors:
+    - "User"
+  preconditions:
+    - "L'utente deve essere loggato alla piattaforma"
+  actions:
+    - action: "L'utente chiede al sistema di poter creare un nuovo progetto"
+    - action: "Il sistema chiede delle informazioni relative al nuovo progetto"
+    - action: "Fintantochè l'utente non inserisce un nome di progetto valido"
+      subactions:
+      - action: "Il sistema chiede all'utente di inserire il nome di progetto"
+        subactions: 
+      - action: "L'utente inserisce il nome di progetto"
+        subactions: 
+    - action: "Fintantochè l'utente non inserisce una cartella padre valido"
+      subactions:
+      - action: "Il sistema chiede all'utente di inserire la cartella padre del progetto"
+        subactions: 
+      - action: "L'utente inserisce la cartella padre del progetto"
+    - action: "Il sistema effettua la creazione del nuovo progetto"
       subactions:
   postconditions:
-    - "Postcondizione 1"
-    - "Postcondizione 2"
+    - "L'utente ha creato un nuovo progetto"
   alternative:
-    - "Alternativa 1"
-    - "Alternativa 2"
+    - "Uno scenario alternativo viene innescato al punto 3: il sistema avvisa l'utente di aver inserito un nome di progetto non valido."
+    - "Uno scenario alternativo viene innescato al punto 4: Il sistema avvisa l'utente di aver inserito una cartella padre errate"
