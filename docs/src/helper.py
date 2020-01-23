@@ -25,8 +25,8 @@ def actions_to_string(l, current_action="", level=1):
     if l is None or len(l) == 0:
         return ''
     for i in range(len(l)):
-        index = f"{'~~' * (level - 1)}{current_action}{i + 1}."
-        string += f"{index}~~{l[i]['action']}\\\\"
+        index = f"\hspace{{{0.5 * (level - 1)}cm}}{current_action}{i + 1}."
+        string += f"{index} {l[i]['action']}\\\\"
         if 'subactions' in l[i]:
             string += actions_to_string(l[i]['subactions'], index, level + 1)
     return string 
@@ -51,11 +51,11 @@ def scenarios():
 		{{\\textbf{{Nome caso d'uso}}}} & {{\\textbf{{{scenario['usecase']} (ID: {scenario['id']})}}}} \\\\\hline
 		\\endfirsthead
 		Descrizione & {scenario['description']}\\\\
-		Attori & \\begin{{tabular}}{{l}}{list_to_string(scenario['actors'])}\end{{tabular}}\\\\
-		Pre-condizioni & \\begin{{tabular}}{{l}}{list_to_string(scenario['preconditions'])}\end{{tabular}}\\\\
-		Sequenza delle azioni & \\begin{{tabular}}{{l}}{actions_to_string(scenario['actions'])}\end{{tabular}}\\\\
-		Post-condizioni & \\begin{{tabular}}{{l}}{list_to_string(scenario['postconditions'])}\end{{tabular}}\\\\
-		Scenario alternativo & \\begin{{tabular}}{{l}}{list_to_string(scenario['alternative'])}\end{{tabular}}\\\\\hline
+		Attori & \\begin{{tabular}}{{m{{0.9\\linewidth}}}}{list_to_string(scenario['actors'])}\end{{tabular}}\\\\
+		Pre-condizioni & \\begin{{tabular}}{{m{{0.9\\linewidth}}}}{list_to_string(scenario['preconditions'])}\end{{tabular}}\\\\
+		Sequenza delle azioni & \\begin{{tabular}}{{m{{0.9\\linewidth}}}}{actions_to_string(scenario['actions'])}\end{{tabular}}\\\\
+		Post-condizioni & \\begin{{tabular}}{{m{{0.9\\linewidth}}}}{list_to_string(scenario['postconditions'])}\end{{tabular}}\\\\
+		Scenario alternativo & \\begin{{tabular}}{{m{{0.9\\linewidth}}}}{list_to_string(scenario['alternative'])}\end{{tabular}}\\\\\hline
 		
 	\end{{longtable}}
 \end{{table}}\n\n'''
