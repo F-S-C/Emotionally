@@ -178,18 +178,18 @@
     - action: "Il sistema permette all'utente di modificare il progetto richiesto"
     - action: "Se l'utente chiede di rinominare il progetto"
       subactions:
-      - action: "Fintantochè il nuovo nome del progetto non è valido"
-        subactions:
-          - action: "Il sistema chiede all'utente di inserire il nuovo nome del progetto"
-          - action: "L'utente inserisce il nuovo nome del progetto"
+        - action: "Fintantochè il nuovo nome del progetto non è valido"
+          subactions:
+            - action: "Il sistema chiede all'utente di inserire il nuovo nome del progetto"
+            - action: "L'utente inserisce il nuovo nome del progetto"
     - action: "Se l'utente chiede di spostare un video"
-      subactions: 
+      subactions:
         - action: "Il sistema chiede all'utente in quale progetto vuole spostarlo"
         - action: "Se il video è già presente nel progetto in cui si intende spostarlo"
-          subactions: 
+          subactions:
             - action: "Il sistema chiede all'utente conferma per lo spostamento del video"
         - action: "Altrimenti"
-          subsections: 
+          subsections:
             -action: "Il sistema effettua lo spostamento del video nel progetto scelto dall'utente"
   postconditions:
     - "Il progetto scelto è stato modificato"
@@ -210,7 +210,7 @@
     - action: "Il sistema chiede all'utente conferma dell'eliminazione del progetto scelto"
     - action: "Se l'utente confema"
       subactions:
-      - action: "Il sistema provvede all'eliminazione del progetto scelto"
+        - action: "Il sistema provvede all'eliminazione del progetto scelto"
     - action: "Altrimenti"
       subactions:
         - action: "Il sistema annullerà l'operazione"
@@ -233,15 +233,15 @@
     - action: "L'utente richiede al sistema di poter inserire un nuovo video"
     - action: "Finantochè l'utente non confermi o non annulli l'operazione"
       subactions:
-      - action: "Il sistema chiede all'utente di inserire il video"
-      - action: "L'utente inserisce il video che vuole caricare"
-      - action: "Se l'utente vuole modificare il nome del video da caricare"
-        subactions:
-          - action: "Il sistema permette all'utente di modificare il nome del video"
-          - action: "L'utente inserisce il nome del video"
-      - action: "Altrimenti"
-        subactions:
-          - action: "Il sistema lascerà il nome del video al suo stesso inserimento"
+        - action: "Il sistema chiede all'utente di inserire il video"
+        - action: "L'utente inserisce il video che vuole caricare"
+        - action: "Se l'utente vuole modificare il nome del video da caricare"
+          subactions:
+            - action: "Il sistema permette all'utente di modificare il nome del video"
+            - action: "L'utente inserisce il nome del video"
+        - action: "Altrimenti"
+          subactions:
+            - action: "Il sistema lascerà il nome del video al suo stesso inserimento"
   postconditions:
     - "L'utente ha inserito un nuovo video"
   alternative:
@@ -261,13 +261,13 @@
     - action: "Il sistema permette all'utente di modificare le informazioni inerenti al video"
     - action: "Fintantochè l'utente non salvi le modifiche o annulli l'operazione"
       subactions:
-      - action: "Se l'utente vuole modificare il nome del video selezionato"
-        subactions:
-          - action: "Fintantochè l'utente non inserisce un nome del video valido"
-            subactions:
-              - action: "Il sistema chiede all'utente il nuovo nome del video"
-              - action: "L'utente inserisce il nome del video"
-      - action: "Se l'utente vuole modificare l'intervallo di analisi del video"
+        - action: "Se l'utente vuole modificare il nome del video selezionato"
+          subactions:
+            - action: "Fintantochè l'utente non inserisce un nome del video valido"
+              subactions:
+                - action: "Il sistema chiede all'utente il nuovo nome del video"
+                - action: "L'utente inserisce il nome del video"
+        - action: "Se l'utente vuole modificare l'intervallo di analisi del video"
           subactions:
             - action: "Il sistema chiede all'utente di selezionare un intervallo di analisi"
             - action: "L'utente inserisce l'intervallo di analisi del video richiesto"
@@ -290,7 +290,7 @@
     - action: "Il sistema chiede conferma di eliminazione all'utente"
     - action: "Se l'utente conferma"
       subactions:
-      - action: "Il sistema provvedere a rimuovere il video selezionato dalla piattaforma"
+        - action: "Il sistema provvedere a rimuovere il video selezionato dalla piattaforma"
     - action: "Altrimenti"
       subactions:
         - action: "Il sistema annulla l'operazione"
@@ -336,11 +336,11 @@
         - action: "Il sistema richiede all'utente che condivide il progetto di inserire i permessi che essi potranno avere sul progetto"
         - action: "L'utente seleziona i permessi"
         - action: "Se l'utente conferma la condivisione"
-            subactions:
-              - action: "Il sistema permette la condivisione del progetto scelto"
+          subactions:
+            - action: "Il sistema permette la condivisione del progetto scelto"
     - action: "Altrimenti"
-        subactions:
-          - action: "Il sistema annulla l'operazione di condivisione"
+      subactions:
+        - action: "Il sistema annulla l'operazione di condivisione"
   postconditions:
     - "L'utente ha condiviso il proprio progetto con altri"
   alternative:
@@ -359,10 +359,10 @@
     - action: "Il sistema chiede conferma all'utente"
     - action: "Se l'utente conferma"
       subactions:
-      - action: "Il sistema provvederà a eliminare l'account dell'utente richiedente"
+        - action: "Il sistema provvederà a eliminare l'account dell'utente richiedente"
     - action: "Altrimenti"
       subactions:
-       - action: "Il sistema annullerà l'operazione di eliminazione account"
+        - action: "Il sistema annullerà l'operazione di eliminazione account"
   postconditions:
     - "L'account dell'utente richiedente è eliminato"
   alternative:
@@ -381,24 +381,24 @@
     - action: "Il sistema permette la modifica dei dati dell'utente richiedente"
     - action: "Fintantochè l'utente non salvi le informazioni aggiornate o non annulli l'operazione di modifica"
       subactions:
-      - action: "Se l'utente decide di modificare il nome"
-        subactions:
-          - action: "L'utente modifica il nome" 
-      - action: "Altrimenti"
-        subactions:
-          - action: "Il nome non verrà variato da quello già presente"
-      - action: "Se l'utente decide di modificare il cognome"
-        subactions:
-          - action: "L'utente modifica il cognome"
-      - action: "Altrimenti"
-        subactions: 
-          - action: "Il cognome non verrà variato da quello già presente"
-      - action: "Se l'utente vuole modificare il sesso"
-        subactions:
-          - action: "L'utente modifica il sesso"
-      - action: "Altrimenti"
-        subactions:
-          - action: "Il sesso non verrà variato da quello già presente"
+        - action: "Se l'utente decide di modificare il nome"
+          subactions:
+            - action: "L'utente modifica il nome"
+        - action: "Altrimenti"
+          subactions:
+            - action: "Il nome non verrà variato da quello già presente"
+        - action: "Se l'utente decide di modificare il cognome"
+          subactions:
+            - action: "L'utente modifica il cognome"
+        - action: "Altrimenti"
+          subactions:
+            - action: "Il cognome non verrà variato da quello già presente"
+        - action: "Se l'utente vuole modificare il sesso"
+          subactions:
+            - action: "L'utente modifica il sesso"
+        - action: "Altrimenti"
+          subactions:
+            - action: "Il sesso non verrà variato da quello già presente"
     - action: "Se l'utente chiede di modificare la propria password"
       subactions:
         - action: "Fintantochè l'utente non inserisce la vecchia password valida"
@@ -406,7 +406,7 @@
             - action: "Il sistema chiede all'utente la password vecchia"
             - action: "L'utente inserisce la vecchia password"
         - action: "Fintantochè l'utente non inserisce una nuova password valida"
-          subsections: 
+          subsections:
             - action: "Il sistema chiede all'utente di inserire la nuova password"
             - action: "L'utente inserisce la nuova password"
         - action: "Fintantochè l'utente non re-inserisce correttamente la nuova password"
@@ -415,7 +415,7 @@
             - action: "L'utente re-inserisce la nuova password"
         - action: "Il sistema provvederà alla modifica della password"
     - action: "Altrimenti"
-      subsections: 
+      subsections:
         - action: "Se l'utente decide di annullare l'operazioni di modifica"
           subactions:
             - action: "Il sistema annullerà l'operazione di modifica"
@@ -459,10 +459,10 @@
   actions:
     - action: "L'utente chiede al sistema di poter scaricare il report di un suo progetto o di un suo video"
     - action: "Il sistema chiede all'utente in che formato vuole scaricare il pdf"
-      subsections: 
+      subsections:
         - action: "L'utente informa il sistema del formato con cui vuole scaricare il report"
         - action: "Se l'utente conferma"
-          subsections: 
+          subsections:
             - action: "Il sistema provvederà ad avviare il download del report nel formato scelto dall'utente"
         - action: "Altrimenti"
           subsections:
@@ -471,4 +471,3 @@
     - "L'utente scarica il report richiesto."
   alternative:
     - "Nessuno"
-
