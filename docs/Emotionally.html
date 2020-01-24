@@ -40,9 +40,7 @@ Regina Zaccaria</p>
     <li><a href="#responsabilità-del-committente">Responsabilità del committente</a></li>
     <li><a href="#documentazione-prevista">Documentazione prevista</a></li>
     <li><a href="#verifiche-e-convalide">Verifiche e convalide</a></li>
-    <li><a href="#consegna-finale-e-pubblicazione">Consegna finale e pubblicazione</a></li>
     <li><a href="#ambiente-di-sviluppo">Ambiente di sviluppo</a></li>
-    <li><a href="#altri-requisiti">Altri requisiti</a></li>
     </ul></li>
     <li><a href="#analisi-della-concorrenza">Analisi della concorrenza</a></li>
     </ul></li>
@@ -61,14 +59,14 @@ Regina Zaccaria</p>
 <p>Il sistema “Emotionally” ha l’obiettivo di semplificare la <em>sentiment analysis</em> agli analisti di tutti i campi. Il nome del sistema deriva dalla contrazione delle parole inglesi “<span class="smallcaps">emotional</span> ana<span class="smallcaps">ly</span>sis”.</p>
 <h3 id="sec:il-committente">Il committente</h3>
 <p>L’analisi delle emozioni è, a oggi, una componente importante per lo studio dell’impatto di prodotti e servizi sugli utenti finali. Avere a disposizione un <em>tool</em> che ne permette la semi-automatizzazione è senz’altro di un’utilità indiscutibile.</p>
-<p>Il committente di questo progetto è il professor Giuseppe Desolda dell’Università degli Studi di Bari, che ha come obiettivo quello di realizzare un sistema in grado di analizzare le emozioni degli utenti analizzando dei video. La richiesta del committente è quella di utilizzare le API del sistema Affectiva, uno dei migliori tool di questa tipologia.</p>
+<p>Il committente di questo progetto è il Professor Giuseppe Desolda dell’Università degli Studi di Bari, che ha come obiettivo quello di realizzare un sistema in grado di analizzare le emozioni degli utenti analizzando dei video. La richiesta del committente è quella di utilizzare le API del sistema Affectiva, uno dei migliori tool di questa tipologia.</p>
 <h3 id="sec:situazione-attuale">Situazione attuale</h3>
 <p>Al momento non si ha una base su cui poter effettuare delle analisi. Per questo, seguendo il flusso di sviluppo scelto, si procederà all’analisi della concorrenza.</p>
 <h3 id="sec:obiettivi-generali-del-nuovo-sito">Obiettivi generali del nuovo sito</h3>
 <h4 id="subsec:obiettivi-generali">Obiettivi generali</h4>
-<p>Ad oggi sono pochi i sistemi che permettono di esaminare le emozioni attraverso flussi di video raccogliendo le analisi in formato statistico. I dati raccolti possono essere utili per analizzare campi applicativi più o meno vasti (ad esempio Marketing, Produzione Multimediale, Usabilità, Accessibilità <em>etc...</em>).</p>
+<p>Ad oggi sono pochi i sistemi che permettono di esaminare le emozioni attraverso flussi di video raccogliendo le analisi in formato statistico. I dati raccolti possono essere utili in vari campi applicativi (ad esempio Marketing, Produzione Multimediale, Usabilità, Accessibilità <em>etc...</em>), in misura più o meno vasta.</p>
 <h4 id="subsec:obiettivi-specifici">Obiettivi specifici</h4>
-<p>Gli obiettivi che il team si è posto di raggiungere per la prima release del sistema sono:</p>
+<p>Gli obiettivi che il team si è posto di raggiungere per la prima <em>release</em> del sistema sono:</p>
 <ul>
 <li><p>L’analisi delle emozioni provate dai soggetti di un video</p></li>
 <li><p>Riportare le analisi effettuate in forma più o meno dettagliata</p></li>
@@ -77,26 +75,1786 @@ Regina Zaccaria</p>
 <li><p>Permettere la condivisione di un progetto con più utenti</p></li>
 </ul>
 <h3 id="sec:gli-utenti">Gli utenti</h3>
-<p>Gli Utenti utilizzatori della piattaforma si dividono principalmente in due categorie: <code>Analista</code> e <code>Designer</code>. Le relazioni che intercorrono fra le due categorie, sono rappresentate in .</p>
+<p>Gli Utenti utilizzatori della piattaforma si dividono principalmente in due categorie: <strong>Analista</strong> e <strong>Designer</strong>. Le relazioni che intercorrono fra le due categorie, sono rappresentate in .</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span><strong>Categoria di utente</strong></span></th>
+<th style="text-align: left;"><span><strong>Bisogni principali in relazione al sito</strong></span></th>
+<th style="text-align: left;"><span><strong>Priorità</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Analizzare video o gruppi di video</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Visualizzare dei report delle analisi effettuate</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Esportare i report delle analisi effettuate</td>
+<td style="text-align: left;">Media</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Condividere i progetti creati con altri utenti</td>
+<td style="text-align: left;">Media</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Analizzare dei video registrati in tempo reale</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Visualizzare i report di analisi effettuate da altri utenti</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Visualizzazione dei dati in formati strutturati e formali (es. JSON)</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span><strong>Categoria di utente</strong></span></th>
+<th style="text-align: left;"><span><strong>Obiettivi del commitente</strong></span></th>
+<th style="text-align: left;"><span><strong>Priorità</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Rendere efficiente l’analisi di singoli video o gruppi di video</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Generare automaticamente i report delle analisi effettuate</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Migliorare la comunicazione attraverso la condivisione di progetto</td>
+<td style="text-align: left;">Media</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Generare automaticamente i report in formati strutturati e formali (es. JSON)</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Migliorare la comunicazione attraverso la condivisione di progetto</td>
+<td style="text-align: left;">Media</td>
+</tr>
+</tbody>
+</table>
 <h3 id="sec:scenari-duso">Scenari d’uso</h3>
+<p>Dei possibili scenari d’uso possono essere:</p>
+<ul>
+<li><p>Un analista utilizza questo sistema per poter effettuare un’analisi delle emozioni degli utenti che visualizzano una pubblicità, un sito web o quant’altro e ricavare dei risultati da utilizzare per poter capire ciò che piace all’utente, quali emozioni hanno provato, quale riscontro ha l’elemento in analisi nei confronti dell’utente e così via.</p></li>
+<li><p>Un designer utilizza questo sistema per poter accedere ai report precedentemente generati (solitamente da un analista) e scaricarne i risultati in vari formati compatibili con strumenti di design e programmazione per poterli utilizzare nei propri progetti.</p></li>
+</ul>
 <h3 id="sec:posizionamento-competitivo">Posizionamento competitivo</h3>
+<p>Il posizionamento competitivo di Emotionally è di offrire una piattaforma Open Source tentando di contrastare il “monopolio” di tool a pagamento offrendo una piattaforma utilizzabile gratuitamente. Uno dei bonus rispetto ai competitor è la natura web del sistema che non richiede alcun tipo di settaggio. Inoltre, si sfruttano le API di Affectiva, uno dei migliori <em>engine</em> di <em>sentiment analysis</em>.</p>
 <h2 id="chap:requisiti-del-sito">Requisiti del sito</h2>
 <h3 id="sec:requisiti-di-architettura">Requisiti di architettura</h3>
+<p>L’architettura informativa illustrata successivamente definisce una struttura generale dello <em>schema gerarchico</em> indicante la logica di <em>navigazione</em> suddividendo la web app in sezioni e sottosezioni.</p>
+<p>Per quanto riguarda l’area pubblica si prevede quanto segue:</p>
+<ul>
+<li><p><strong>Landing page</strong></p>
+<ul>
+<li><p><strong>Funzionalità</strong></p></li>
+<li><p><strong>Su di noi</strong></p></li>
+</ul></li>
+<li><p><strong>Login</strong></p></li>
+<li><p><strong>Registrazione</strong></p></li>
+</ul>
+<p>Per quanto riguarda l’area privata, ovvero per ogni utente loggato si prevede quanto segue (<em>con (*) viene indicata la molteplice quantità dell’oggetto a cui è affiancato</em>):</p>
+<ul>
+<li><p><strong>Home</strong></p>
+<ul>
+<li><p><strong>Progetti (*)</strong></p>
+<ul>
+<li><p><strong>Sottoprogetti (*)</strong></p>
+<ul>
+<li><p><strong>Video (*)</strong></p></li>
+</ul></li>
+<li><p><strong>Video (*)</strong></p></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Indicativamente, la struttura di navigazione delle pagine più importante è definita mediante le seguenti <em>gabbie logiche grafiche minimali</em>. Si riserverà al web designer il compito di definire meccanismi di navigazione e layout grafici più avanzati che ne determineranno il risultato finale.</p>
+<figure>
+<img src="images/gabbie-di-massima/Landing" id="fig:gabbie-massima:landing-page" alt="" /><figcaption>Gabbia di occupazione di massima della landing page.<span label="fig:gabbie-massima:landing-page"></span></figcaption>
+</figure>
+<figure>
+<img src="images/gabbie-di-massima/Login" id="fig:gabbie-massima:login" alt="" /><figcaption>Gabbia di occupazione di massima della pagina di login.<span label="fig:gabbie-massima:login"></span></figcaption>
+</figure>
+<figure>
+<img src="images/gabbie-di-massima/Registrazione" id="fig:gabbie-massima:registrazione" alt="" /><figcaption>Gabbia di occupazione di massima della pagina di registrazione.<span label="fig:gabbie-massima:registrazione"></span></figcaption>
+</figure>
+<figure>
+<img src="images/gabbie-di-massima/Home" id="fig:gabbie-massima:home-page" alt="" /><figcaption>Gabbia di occupazione di massima della home page.<span label="fig:gabbie-massima:home-page"></span></figcaption>
+</figure>
+<figure>
+<img src="images/gabbie-di-massima/Progetto" id="fig:gabbie-massima:project" alt="" /><figcaption>Gabbia di occupazione di massima della pagina di un progetto.<span label="fig:gabbie-massima:project"></span></figcaption>
+</figure>
+<figure>
+<img src="images/gabbie-di-massima/Video" id="fig:gabbie-massima:video" alt="" /><figcaption>Gabbia di occupazione di massima della pagina di un video.<span label="fig:gabbie-massima:video"></span></figcaption>
+</figure>
 <h3 id="sec:requisiti-di-comunicazione">Requisiti di comunicazione</h3>
+<p>Le pagine interne della piattaforma web Emotionally dovranno essere graficamente coerenti tra di loro, fatta eccezione per la pagina di landing che dovrà presentare la piattaforma all’utente. La piattaforma web sarà bilingue (italiano e inglese).</p>
+<p>Ogni pagina del sistema Emotionally dovrà:</p>
+<ul>
+<li><p>contenere il logo del sistema stesso posizionato in alto a sinistra,</p></li>
+<li><p>avere un comportamento responsive: il sito deve ridimensionarsi automaticamente al variare della risoluzionie video e della dimnesione della finestra del browser,</p></li>
+<li><p>contenere caratteri la cui dimensione dovrà essere modificabile dall’utente,</p></li>
+<li><p>avere una funzione accessibile, almeno di livello AA.</p></li>
+</ul>
+<p>La landing page presenta, attraverso un’interfaccia chiara e usabile, le funzionalità del sistema e permette all’utente di approcciare il riconoscimento delle emozioni.</p>
+<p>Inoltre, per sottolineare la divisione tra il sistema e la landing page si è deciso di utilizzare un bottone di login differente rispetto allo stile dei link presenti nella navbar. A seguito del click del bottone, l’utente viene reindirizzato alla pagina di login che rappresenta, seppur in parte, lo stile grafico del sistema.</p>
 <h3 id="sec:requisiti-funzionali">Requisiti funzionali</h3>
+<p>In questa sezione vengono illustrati i casi d’uso e le relative rappresentazioni tabellari riferiti alle diverse funzionalità che Emotionally offre ai suoi utenti.</p>
+<h4 id="casi-duso">Casi d’uso</h4>
+<h4 id="rappresentazione-tabellare">Rappresentazione tabellare</h4>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Registration (ID: 1)</strong></span><br />
+Descrizione &amp; L’utente visitatore si registra alla piattaforma Emotionally.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Registration<span label="tab:use-case-registration"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Guest</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Registration<span label="tab:use-case-registration"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente non deve essere già registrato alla piattaforma</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Registration<span label="tab:use-case-registration"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. Il guest chiede al sistema di potersi registrare alla piattaforma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema permette la registrazione chiedendo informazioni utili per la registrazione</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.1. Fintantochè l’utente non inserisce una corretta email</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.2. Il sistema chiede l’email</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.3. L’utente inserisce l’email</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3. Fintantochè l’utente non inserisce una password valida</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.1. Il sistema chiede la password</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.2. L’utente inserisce la password</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Il sistema chiede il nome dell’utente</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.1. L’utente inserisce il nome</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5. Il sistema chiede il cognome dell’utente</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5.1. L’utente inserisce il cognome</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6. Il sistema chiede il sesso dell’utente</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6.1. L’utente inserisce il sesso</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Registration<span label="tab:use-case-registration"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente è registrato alla piattaforma</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Registration<span label="tab:use-case-registration"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Uno scenario alternativo viene attivato al punto 2: il sistema informa l’utente che l’email inserita non è valida o corretta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Uno scenario alternativo viene attivato al punto 3: il sistema informa l’utente che la password inserita non è valida</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Test analysis (ID: 2)</strong></span><br />
+Descrizione &amp; L’utente visitatore vuole effettuare un test di prova di analisi delle emozioni<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Test analysis<span label="tab:use-case-test-analysis"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Guest</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Test analysis<span label="tab:use-case-test-analysis"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente non deve essere loggato alla piattaforma</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Test analysis<span label="tab:use-case-test-analysis"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter effettuare un’analisi di prova delle emozioni</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema permette l’analisi di prova richiesta</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Test analysis<span label="tab:use-case-test-analysis"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’analisi di prova delle emozioni è stata effettuata.</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Test analysis<span label="tab:use-case-test-analysis"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Login (ID: 3)</strong></span><br />
+Descrizione &amp; L’utente vuole effettuare l’accesso alla piattaforma Emotionally<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Login<span label="tab:use-case-login"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Login<span label="tab:use-case-login"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve aver già effettuato la registrazione</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Login<span label="tab:use-case-login"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter effettuare il login</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema chiede all’utente di inserire le informazioni necessarie per effettuare l’accesso</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Fintantochè l’utente non inserisce un’email valida</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Il sistema chiede all’utente di inserire l’email</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.2. L’utente inserisce l’email</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. Fintantochè l’utente non inserisce una password valida</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.1. Il sistema chiede all’utente di inserire la password</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2. L’utente inserisce la password</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5. Il sistema fa accedere l’utente alla piattaforma</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Login<span label="tab:use-case-login"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente ha effettuato il login</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Login<span label="tab:use-case-login"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Uno scenario alternativo viene innescato al punto 3: il sistema avvisa l’utente che l’email inserita non è valida.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Uno scenario alternativo viene innescato al punto 4: il sistema avvisa l’utente che la password inserita non è valida.</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Logout (ID: 4)</strong></span><br />
+Descrizione &amp; L’utente vuole uscire dalla piattaforma Emotionally.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Logout<span label="tab:use-case-logout"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Logout<span label="tab:use-case-logout"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve essere già loggato alla piattaforma</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Logout<span label="tab:use-case-logout"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di porter effettuare il logout</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema chiede all’utente la conferma di logout</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Se l’utente conferma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Il sistema permetterà l’uscita dalla piattaforma</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Altrimenti</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.1. Il sistema fermerà il processo di logout</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Logout<span label="tab:use-case-logout"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente ha effettuato il logout</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Logout<span label="tab:use-case-logout"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Create project (ID: 5)</strong></span><br />
+Descrizione &amp; L’utente vuole creare un nuovo progetto.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Create project<span label="tab:use-case-create-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Create project<span label="tab:use-case-create-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve essere loggato alla piattaforma</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Create project<span label="tab:use-case-create-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter creare un nuovo progetto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema chiede delle informazioni relative al nuovo progetto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Fintantochè l’utente non inserisce un nome di progetto valido</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Il sistema chiede all’utente di inserire il nome di progetto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.2. L’utente inserisce il nome di progetto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. Fintantochè l’utente non inserisce una cartella padre valido</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.1. Il sistema chiede all’utente di inserire la cartella padre del progetto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2. L’utente inserisce la cartella padre del progetto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5. Il sistema effettua la creazione del nuovo progetto</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Create project<span label="tab:use-case-create-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente ha creato un nuovo progetto</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Create project<span label="tab:use-case-create-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Uno scenario alternativo viene innescato al punto 3: il sistema avvisa l’utente di aver inserito un nome di progetto non valido.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Uno scenario alternativo viene innescato al punto 4: Il sistema avvisa l’utente di aver inserito una cartella padre errate</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>View project (ID: 6)</strong></span><br />
+Descrizione &amp; L’utente vuole visualizzare uno dei suoi progetti.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View project<span label="tab:use-case-view-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View project<span label="tab:use-case-view-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve aver effettuato la procedura di login</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    L’utente deve aver già creato il progetto che vuole visualizzare</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View project<span label="tab:use-case-view-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter visualizzare un suo progetto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema permette la visualizzazione del progetto scelto all’utente richiedente</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View project<span label="tab:use-case-view-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente visualizza il progetto</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View project<span label="tab:use-case-view-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Edit project (ID: 7)</strong></span><br />
+Descrizione &amp; L’utente vuole modificare un progetto da lui scelto.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit project<span label="tab:use-case-edit-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit project<span label="tab:use-case-edit-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve essere loggato alla piattaforma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il progetto scelto dall’utente deve essere già stato creato</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit project<span label="tab:use-case-edit-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di porter modificare il progetto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema permette all’utente di modificare il progetto richiesto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Se l’utente chiede di rinominare il progetto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Fintantochè il nuovo nome del progetto non è valido</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.1.1. Il sistema chiede all’utente di inserire il nuovo nome del progetto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1.2. L’utente inserisce il nuovo nome del progetto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Se l’utente chiede di spostare un video</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.1. Il sistema chiede all’utente in quale progetto vuole spostarlo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.2. Se il video è già presente nel progetto in cui si intende spostarlo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2.1. Il sistema chiede all’utente conferma per lo spostamento del video</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3. Altrimenti</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit project<span label="tab:use-case-edit-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Il progetto scelto è stato modificato</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit project<span label="tab:use-case-edit-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Uno scenario alternativo viene innescato al punto 4.2: Il sistema chiede all’utente se vuole rinominare il video, se vuole sovrascrivere il video con lo stesso nome di quello che si vuole spostare o se si vuole annullare l’operazione</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Remove project (ID: 8)</strong></span><br />
+Descrizione &amp; L’utente vuole rimuovere un suo progetto dalla piattaforma.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove project<span label="tab:use-case-remove-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove project<span label="tab:use-case-remove-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve aver effettuato la procedura di login</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il progetto da eliminare deve essere stato già creato dall’utente</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove project<span label="tab:use-case-remove-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter rimuovere il progetto scelto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema chiede all’utente conferma dell’eliminazione del progetto scelto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Se l’utente confema</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Il sistema provvede all’eliminazione del progetto scelto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Altrimenti</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.1. Il sistema annullerà l’operazione</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove project<span label="tab:use-case-remove-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Il progetto scelto dall’utente è stato eliminato</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove project<span label="tab:use-case-remove-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Upload video (ID: 9)</strong></span><br />
+Descrizione &amp; L’utente vuole inserire un nuovo video.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Upload video<span label="tab:use-case-upload-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Upload video<span label="tab:use-case-upload-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve essere loggato nel sistema</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il progetto in cui inserire il video deve essere stato già creato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">    Il video non deve essere stato già inserito nel progetto in cui lo vuole caricare</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Upload video<span label="tab:use-case-upload-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente richiede al sistema di poter inserire un nuovo video</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Finantochè l’utente non confermi o non annulli l’operazione</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.1. Il sistema chiede all’utente di inserire il video</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.2. L’utente inserisce il video che vuole caricare</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.3. Se l’utente vuole modificare il nome del video da caricare</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.3.1. Il sistema permette all’utente di modificare il nome del video</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.3.2. L’utente inserisce il nome del video</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.4. Altrimenti</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.4.1. Il sistema lascerà il nome del video al suo stesso inserimento</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Upload video<span label="tab:use-case-upload-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente ha inserito un nuovo video</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Upload video<span label="tab:use-case-upload-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Edit video (ID: 10)</strong></span><br />
+Descrizione &amp; L’utente vuole modificare un video da lui scelto.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit video<span label="tab:use-case-edit-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit video<span label="tab:use-case-edit-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve aver effettuato la procedura di login</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il video deve essere stato già caricato</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit video<span label="tab:use-case-edit-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter effettuare modifiche al video selezionato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema permette all’utente di modificare le informazioni inerenti al video</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Fintantochè l’utente non salvi le modifiche o annulli l’operazione</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Se l’utente vuole modificare il nome del video selezionato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.1.1. Fintantochè l’utente non inserisce un nome del video valido</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1.1.1. Il sistema chiede all’utente il nuovo nome del video</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.1.1.2. L’utente inserisce il nome del video</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.2. Se l’utente vuole modificare l’intervallo di analisi del video</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.2.1. Il sistema chiede all’utente di selezionare un intervallo di analisi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.2.2. L’utente inserisce l’intervallo di analisi del video richiesto</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit video<span label="tab:use-case-edit-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente ha modificato il video selezionato</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Edit video<span label="tab:use-case-edit-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Uno scenario alternativo si innesca nel punto 3.1.1: il sistema avverte l’utente che il nome inserito non è valido</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Remove video (ID: 11)</strong></span><br />
+Descrizione &amp; L’utente vuole rimuove un video dalla piattaforma Emotionally.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove video<span label="tab:use-case-remove-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove video<span label="tab:use-case-remove-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve aver effettuato il login</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il video deve essere stato già caricato sulla piattaforma</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove video<span label="tab:use-case-remove-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di rimuovere un video da lui scelto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema chiede conferma di eliminazione all’utente</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Se l’utente conferma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Il sistema provvedere a rimuovere il video selezionato dalla piattaforma</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Altrimenti</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.1. Il sistema annulla l’operazione</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove video<span label="tab:use-case-remove-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Il video richiesto dall’utente è stato rimosso</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Remove video<span label="tab:use-case-remove-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>View video (ID: 12)</strong></span><br />
+Descrizione &amp; L’utente vuole visionare un video da lui scelto.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View video<span label="tab:use-case-view-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View video<span label="tab:use-case-view-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve essere loggato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il video deve essere già stato caricato nella piattaforma</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View video<span label="tab:use-case-view-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter visionare un video</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema permette la visione del video scelto dall’utente</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View video<span label="tab:use-case-view-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente visualizza il video selezionato</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View video<span label="tab:use-case-view-video"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Share project (ID: 13)</strong></span><br />
+Descrizione &amp; L’utente vuole condividere un proprio progetto con un altro o con altri utenti.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Share project<span label="tab:use-case-share-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Share project<span label="tab:use-case-share-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente che condivide il suo progetto deve aver effettuato la procedura di login</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il progetto deve essere stato già creato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">    L’utente o gli utenti con cui codividere il progetto devono essere registrati alla piattaforma Emotionally</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Share project<span label="tab:use-case-share-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente richiede al sistema di poter condividere il progetto selezionato con uno o più utenti</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema richiede all’utente alcune informazioni riguardanti gli utenti da “invitare”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Se l’utente non annulla l’operazione di condivisione</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Il sistema richiede l’e-mail degli utenti a cui condividere il progetto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.2. L’utente inserisce l’email degli utenti</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.3. Il sistema richiede all’utente che condivide il progetto di inserire i permessi che essi potranno avere sul progetto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.4. L’utente seleziona i permessi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.5. Se l’utente conferma la condivisione</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.5.1. Il sistema permette la condivisione del progetto scelto</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. Altrimenti</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.1. Il sistema annulla l’operazione di condivisione</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Share project<span label="tab:use-case-share-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente ha condiviso il proprio progetto con altri</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Share project<span label="tab:use-case-share-project"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Delete account (ID: 14)</strong></span><br />
+Descrizione &amp; L’utente vuole eliminare il suo account dalla piattaforma Emotionally.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Delete account<span label="tab:use-case-delete-account"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Delete account<span label="tab:use-case-delete-account"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve essere loggato all’interno del sistema</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Delete account<span label="tab:use-case-delete-account"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter eliminare il suo account dalla piattaforma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema chiede conferma all’utente</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Se l’utente conferma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Il sistema provvederà a eliminare l’account dell’utente richiedente</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Altrimenti</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.1. Il sistema annullerà l’operazione di eliminazione account</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Delete account<span label="tab:use-case-delete-account"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’account dell’utente richiedente è eliminato</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Delete account<span label="tab:use-case-delete-account"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Update user data (ID: 15)</strong></span><br />
+Descrizione &amp; L’utente vuole aggiornare i propri dati inseriti in fase di registrazione.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Update user data<span label="tab:use-case-update-user-data"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Update user data<span label="tab:use-case-update-user-data"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve aver effettuato già la procedura di login</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Update user data<span label="tab:use-case-update-user-data"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter modificare i propri dati</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema permette la modifica dei dati dell’utente richiedente</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Fintantochè l’utente non salvi le informazioni aggiornate o non annulli l’operazione di modifica</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.1. Se l’utente decide di modificare il nome</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.1.1. L’utente modifica il nome</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.2. Altrimenti</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.2.1. Il nome non verrà variato da quello già presente</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.3. Se l’utente decide di modificare il cognome</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.3.1. L’utente modifica il cognome</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.4. Altrimenti</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.4.1. Il cognome non verrà variato da quello già presente</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.5. Se l’utente vuole modificare il sesso</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.5.1. L’utente modifica il sesso</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.6. Altrimenti</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.6.1. Il sesso non verrà variato da quello già presente</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. Se l’utente chiede di modificare la propria password</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.1. Fintantochè l’utente non inserisce la vecchia password valida</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.2. Fintantochè l’utente non inserisce una nuova password valida</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3. Fintantochè l’utente non re-inserisce correttamente la nuova password</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.3.1. Il sistema chiede all’utente di re-inserire la nuova password</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4.3.2. L’utente re-inserisce la nuova password</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4.4. Il sistema provvederà alla modifica della password</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5. Altrimenti</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Update user data<span label="tab:use-case-update-user-data"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    I dati richiesti dall’utente sono stati modificati.</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Update user data<span label="tab:use-case-update-user-data"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Uno scenario alternativo viene innescato nel punto 4.1: il sistema avvisa l’utente che la vecchia password non è stata inserita correttamente.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Uno scenario alternativo viene innescato nel punto 4.2: il sistema avvisa l’utente che la nuova password inserita non è valida.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">    Uno scenario alternativo viene innescato nel punto 4.3: il sistema avvisa l’utente che la nuova password non è stata re-inserita correttamente.</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>View report (ID: 16)</strong></span><br />
+Descrizione &amp; L’utente vuole visualizzare un report.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View report<span label="tab:use-case-view-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View report<span label="tab:use-case-view-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve essere loggato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il progetto deve essere stato già creato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">    Il video deve essere stato già caricato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il progetto deve contenere almeno un video</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View report<span label="tab:use-case-view-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter visualizzare il report</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema permette la visualizzazione del report richiesto</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View report<span label="tab:use-case-view-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente visualizza il report</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: View report<span label="tab:use-case-view-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span>@|&gt;m<span>.2</span>|m<span>.7</span>|@</span> <span><strong>Nome caso d’uso</strong></span> &amp; <span><strong>Download report (ID: 19)</strong></span><br />
+Descrizione &amp; L’utente vuole scaricare il report di un suo progetto o di un suo video.<br />
+Attori &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Download report<span label="tab:use-case-download-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    User</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Pre-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Download report<span label="tab:use-case-download-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente deve essere loggato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il progetto deve essere stato già creato</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">    Il video deve essere stato già caricato</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">    Il progetto deve contenere almeno un video</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Sequenza delle azioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Download report<span label="tab:use-case-download-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. L’utente chiede al sistema di poter scaricare il report di un suo progetto o di un suo video</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Il sistema chiede all’utente in che formato vuole scaricare il pdf</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Post-condizioni &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Download report<span label="tab:use-case-download-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    L’utente scarica il report richiesto.</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+Scenario alternativo &amp;</p>
+<table style="width:90%;">
+<caption>Use Case: Download report<span label="tab:use-case-download-report"></span></caption>
+<colgroup>
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">    Nessuno</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<h4 id="modello-dei-dati">Modello dei dati</h4>
+<p>Di seguito è riportato il modello concettuale della base di dati:</p>
+<h4 id="sicurezza-e-privacy">Sicurezza e privacy</h4>
+<p>Per quanto riguarda i sistemi di sicurezza, la piattaforma web è suddivisa in due macrosezioni: l’area pubblica (landing page) e l’area privata.</p>
+<p>Nella landing page, ogni visitatore può accedervi liberamente con lo scopo di visionare quello che la web app offre prima di effettuare la registrazione. In questa area pubblica, inoltre, è possibile effettuare dei test delle emozioni senza, per quanto riguarda il team e la finalità di questo progetto, salvare dati sensibili.</p>
+<p>Per quanto riguarda l’area privata, l’accesso è consentito solo attraverso il login. Da qui l’utente loggato avrà a disposizione di tutti gli strumenti utili per poter effettuare un’analisi. L’utente, inoltre, per poter accedere dovrà quindi effettuare una prima fase di registrazione dove dovrà fornire dati sensibili quali email, password, nome, cognome e sesso.</p>
 <h3 id="sec:requisiti-di-contenuto">Requisiti di contenuto</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span><strong>Sezione</strong></span></th>
+<th style="text-align: left;"><span><strong>Sottosezione</strong></span></th>
+<th style="text-align: left;"><span><strong>Requisiti di contenuto</strong></span></th>
+<th style="text-align: left;"><span><strong>Dove trovare le informazioni</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Try me</td>
+<td style="text-align: left;">Questa sezione ha lo scopo di far effettuare un’analisi delle emozioni di prova agli utenti visitatori della piattaforma web.</td>
+<td style="text-align: left;">Non sono previste informazioni.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Funzionalità</td>
+<td style="text-align: left;">Questa sezione ha lo scopo di presentare le funzionalità offerte da Emotionally attraverso una breve descrizione delle stesse.</td>
+<td style="text-align: left;">Non è possibile reperire le informazioni in quanto sono state create dal team FSC.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Su di noi</td>
+<td style="text-align: left;">Questa sezione ha lo scopo di presentare i componenti del team sviluppatore di Emotionally.</td>
+<td style="text-align: left;">In quanto le informazioni riguardano i componenti del team, non è possibile reperire tali informazioni.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="sec:requisiti-di-gestione">Requisiti di gestione</h3>
+<p>La memorizzazzione dei dati sensibili dell’utente e dei suoi progetti verrà effettuata su una base di dati creata dal team FSC. Gli stessi verranno sottoposti a backup sistematici per evitare la loro perdita nel momento in cui il sistema si interrompa per qualsiasi causa.</p>
+<p>Il team FSC, posto dal committente come gruppo produttore della piattaforma web, si occuperà della manutenzione ordinaria e straordinaria del sistema, affinchè gli obiettivi definiti di comune accordo non cessino di funzionare.</p>
+<p>Per quanto riguarda la gestione dei contenuti di Emotionally, saranno gli utenti stessi che inseriranno i contenuti che saranno i video da analizzare per le proprie analisi senza doversi preoccupare della struttura architetturale implementata, permettendo la semplicità nelle operazioni di upload. Il sistema all’analisi di un progetto o di un singolo video renderà disponibile un report che l’utente può visionare e, se vuole, scaricare. Sarà compito del team FSC a redigere i contenuti della landing page, dove verranno riportate descrizioni delle funzionalità del sistema, concordati con il committente.</p>
 <h3 id="sec:requisiti-di-accessibilita">Requisiti di accessibilità</h3>
+<p>Si vuole creare un sistema che rispetti le linee guida WCAG con livello AA. Inoltre deve essere fornito all’utente la possibilità di modificare la dimensione dei caratteri.</p>
+<p>Per quanto concerne le prestazioni del sito, non è possibile stabilire a priori il traffico e l’ampiezza di banda necessaria. Per quanto riguarda gli accessi contemporanei al sito, invece, si presuppone un numero non troppo ampio di visitatori nell’area pubblica in quanto funge solo da vetrina per i visitatori sporadici (compresa la funzionalità di “analisi di test”, per cui non si prevede un elevato numero di accessi concorrenti). L’area privata è invece diversa, ma i problemi sono limitati in quanto i diversi utenti non hanno accesso a progetti di altri utenti (fatte poche eccezioni), riducendo al minimo i problemi legati agli accessi concorrenti.</p>
+<p>È garantita la compatibilità con i maggiori browser attualmente in uso (Google Chrome, Mozilla Firefox). Il funzionamento su altri browser non specificati o con vari plugin o impostazioni personalizzate non è garantito. Per qualsiasi problema è comunque possibile contattare il team FSC al fine di provvedere alla manutenzione.</p>
 <h3 id="sec:requisiti-di-usabilita">Requisiti di usabilità</h3>
+<p>La piattaforma web cerca di garantire l’usabilità (secondo lo standard ISO 9241) delle sue funzionalità nel migliore modo possibile. A tale fine, il team si impegna a utilizzare un processo che garantisca la <em>usability by design</em>.</p>
+<p>Per quanto riguarda le operazioni di visualizzazione, fatta eccezione per problemi legati alla connettività, il team garantisce una discreta velocità e un’interfaccia visiva facilmente comprensibile.</p>
+<p>Per quanto riguarda le operazioni di salvataggio delle modifiche e upload di file, il team garantisce (fatta eccezione per problemi legati alla connettività) un alto tasso di successo (qualora le informazioni fornite rispettino i vincoli imposti dal team). L’errato inserimento di un dato sarà notificato all’utente mediante un messaggio di errore facilmente comprensibile.</p>
 <h2 id="requisiti-di-gestione-del-progetto">Requisiti di gestione del progetto</h2>
 <h3 id="tempi-e-risorse">Tempi e risorse</h3>
+<p>Il rilascio della piattaforma web avverrà entro il giorno 21-02-2020, definendo un arco temporale di 15 giorni per lo sviluppo del prodotto commissionato.</p>
+<p>Il budget disponibile è nullo in quanto il prodotto commissionato è un progetto a fine dell’esame di Programmazione per il Web nell’Università degli studi “Aldo Moro” con sede a Taranto.</p>
 <h3 id="gruppo-di-progetto">Gruppo di progetto</h3>
+<p>Il team di sviluppo della piattaforma web è il gruppo FSC. Il project manager è Alessandro Annese. Gli altri componenti del team sono Davide De Salvo, Andrea Esposito, Graziano Montanaro e Regina Zaccaria.</p>
 <h3 id="responsabilità-del-committente">Responsabilità del committente</h3>
+<p>Il committente del progetto è il professor Giuseppe Desolda, docente del corso di Programmazione per il Web. Egli, dopo aver visionato i requisiti proposti dal team in aggiunta a quegli richiesti, ha dato la propria conferma sul procedere per la creazione del sistema Emotionally.</p>
 <h3 id="documentazione-prevista">Documentazione prevista</h3>
+<p>La documentazione prevista in fase di rilascio è composta dal documento dei requisiti, dal documento di progettazione e da un manuale d’uso.</p>
 <h3 id="verifiche-e-convalide">Verifiche e convalide</h3>
-<h3 id="consegna-finale-e-pubblicazione">Consegna finale e pubblicazione</h3>
+<p>Per la fase di verifica e convalida si fa riferimento al capitolo riguardante tale fase del documento di progettazione. Inoltre, per poter verificare la buona scrittura del codice, verrà utilizzato SonarQube. Per poter verificare i requisiti di accessibilità verrà utilizzato un tool offerto dal committente.</p>
 <h3 id="ambiente-di-sviluppo">Ambiente di sviluppo</h3>
-<h3 id="altri-requisiti">Altri requisiti</h3>
+<p>Per lo sviluppo della piattaforma web si usa l’IDE PhpStorm (licenza gratuita per studenti), utilizzando il framework PHP Laravel (versione 5.8) come strumento di codifica. Per poter gestire le dipendenze di JavaScript viene utilizzato il package manager di Node NPM.</p>
+<p>Per la stesura della documentazione viene utilizzato il linguaggio di markup LaTeX, utilizzando l’editor con licenza gratuita TeXstudio. Con lo stesso linguaggio di markup verranno creati i diagrammi UML.</p>
+<p>Per la creazione dei mockup delle varie interfacce grafiche viene utilizzato il tool Adobe XD con licenza gratuita.</p>
+<p>Per la gestione del commit del progetto viene utilizzato il sistema GitHub. Per l’istallazione del web server portatile è utilizzata l’applicazione UwAmp.</p>
+<p>Vengono sfruttate le API di Affectiva per poter effettuare l’analisi dei sentimenti.</p>
 <h2 id="analisi-della-concorrenza">Analisi della concorrenza</h2>
 <h1 id="part:appendice">Appendice</h1>
 <h2 id="chap:gnu-free-documentation-license" class="unnumbered">GNU Free Documentation License</h2>
