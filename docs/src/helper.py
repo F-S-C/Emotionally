@@ -8,7 +8,7 @@ def setup_args():
 
     parser.add_argument(
         'command',
-        choices=['build-scenarios']
+        choices=['scenarios']
     )
     return parser.parse_args()
 
@@ -66,7 +66,7 @@ def scenarios():
 def main():
     args = setup_args()
 
-    if args.command == 'build-scenarios':
+    if args.command == 'scenarios':
         scenarios()
 
 
