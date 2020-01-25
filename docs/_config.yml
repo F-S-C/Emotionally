@@ -52,3 +52,6 @@ exclude:
   - Makefile
   - make.bat
   - src/
+
+include:
+  - src/images/
