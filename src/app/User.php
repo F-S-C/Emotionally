@@ -36,4 +36,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * This function use to view permissions of the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function permissions(){
+        return $this->belongsToMany('App\Project');
+    }
+
+    /**
+     * This function use to view projects that an user create.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects(){
+        return $this->hasMany('App\Project');
+    }
+
+    /**
+     * This fuction use to view videos that an user upload.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function videos(){
+        return $this->hasMany('App\Video');
+    }
+
 }
