@@ -1,48 +1,49 @@
 @echo off
 
-set SOURCE_DIR=.\src
-set BASEFILENAME=Emotionally
+SET SOURCE_DIR=.\src\
+SET BASEFILENAME=Emotionally
 
-if "%1"=="pdf" goto pdf
-if "%1"=="html" goto html
-if "%1"=="clean" goto clean
-if "%1"=="" goto all
-goto error
-
-REM .PHONY: pdf html clean
-
-REM all: pdf clean
+IF /I "%1"=="all" GOTO all
+IF /I "%1"=="pre" GOTO pre
+IF /I "%1"=="pdf" GOTO pdf
+IF /I "%1"=="html" GOTO html
+IF /I "%1"=="clean" GOTO clean
+IF /I "%1"=="" GOTO all
+GOTO error
 
 :all
-    set ALL=true
-    goto :pdf
+	CALL make.bat pdf
+	CALL make.bat html
+	CALL make.bat clean
+	GOTO :EOF
+
+:pre
+	PUSHD "%SOURCE_DIR%" && py -3 helper.py scenarios && POPD
+	GOTO :EOF
 
 :pdf
-    pushd "%SOURCE_DIR%"
-    pdflatex "%BASEFILENAME%.tex" -synctex=1 -interaction=batchmode --shell-escape
-    biber "%BASEFILENAME%"
-    pdflatex "%BASEFILENAME%.tex" -synctex=1 -interaction=batchmode --shell-escape
-    pdflatex "%BASEFILENAME%.tex" -synctex=1 -interaction=batchmode --shell-escape
-    xcopy "%BASEFILENAME%.pdf" .. /Y
-    popd
-    if "%ALL%"=="true" goto html
-    goto end
+	CALL make.bat pre
+	PUSHD "%SOURCE_DIR%" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex" && POPD
+	PUSHD "%SOURCE_DIR%" && biber "%BASEFILENAME%" && POPD
+	PUSHD "%SOURCE_DIR%" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex" && POPD
+	PUSHD "%SOURCE_DIR%" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex" && POPD
+	PUSHD "%SOURCE_DIR%" && XCOPY /Y "%BASEFILENAME%.pdf" .. && POPD
+	GOTO :EOF
 
 :html
-    pushd "%SOURCE_DIR%"
-    pandoc "%BASEFILENAME%.tex" -f latex -t html -s -o "%BASEFILENAME%.html" --template _template.html -V lang=it -V title="System Documentation" --table-of-contents
-    xcopy "%BASEFILENAME%.html" .. /Y
-    popd
-    if "%ALL%"=="true" goto clean
-    goto end
+	CALL make.bat pre
+	PUSHD "%SOURCE_DIR%" && pandoc "%BASEFILENAME%.tex" -f latex -t html -s -o "%BASEFILENAME%.html" --template _template.html -V lang=it -V title="System Documentation" --table-of-contents && POPD
+	PUSHD "%SOURCE_DIR%" && XCOPY /Y "%BASEFILENAME%.html" .. && POPD
+	GOTO :EOF
 
 :clean
-    pushd "%SOURCE_DIR%"
-    del /Q /F *.bcf *.run.xml *.aux *.glo *.idx *.log *.toc *.ist *.acn *.acr *.alg *.bbl *.blg *.dvi *.glg *.gls *.ilg *.ind *.lof *.lot *.maf *.mtc *.mtc1 *.out *.synctex.gz "*.synctex(busy)" *.thm
-    popd
-    goto end
+	PUSHD "%SOURCE_DIR%" && DEL /Q *.bcf *.run.xml *.aux *.glo *.idx *.log *.toc *.ist *.acn *.acr *.alg *.bbl *.blg *.dvi *.glg *.gls *.ilg *.ind *.lof *.lot *.maf *.mtc *.mtc1 *.out *.synctex.gz "*.synctex(busy)" *.thm /F && POPD
+	GOTO :EOF
 
 :error
-    echo make: *** No rule to make target '%1%'. Stop.
-
-:end
+    IF "%1"=="" (
+        ECHO make: *** No targets specified and no makefile found.  Stop.
+    ) ELSE (
+        ECHO make: *** No rule to make target '%1%'. Stop.
+    )
+    GOTO :EOF
