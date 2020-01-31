@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
+Route::view('/', 'landing')->name('landing');
 
-Route::get('/home', function () {
-    return view('home');
+Route::name('system.')->prefix('system')->group(function () {
+    Route::view('/', 'home')->name('home');
+
+    Route::redirect('/home', '/system/');
 });
