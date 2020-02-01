@@ -105,7 +105,7 @@
                 <a class="sidebar-brand text-center w-100" href="#">
                     <img src="https://raw.githubusercontent.com/F-S-C/Emotionally/master/logo/logo.png" width="64"
                          height="64"
-                         class="d-inline-block d-md-block align-top mx-auto" alt="Emotionally's logo">
+                         class="d-inline-block d-md-inline-block align-center mx-auto" alt="Emotionally's logo">
                     <span class="d-none d-md-inline">Emotionally</span>
                 </a>
             </div>
@@ -133,6 +133,8 @@
         </main>
     </div>
 @endsection
+
+@section('footer-class', 'fixed-bottom')
 
 @section('scripts')
     <script type="text/javascript">

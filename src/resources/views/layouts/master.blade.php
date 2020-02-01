@@ -19,22 +19,9 @@
         <a id="skip-navigation-link" class="skip-navigation" href="#main" role="button">Skip to main content</a>
     </nav>
     @yield('body')
-    <footer class="el-8dp text-light">
-        <div class="footer-content py-2 el-4dp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-4">
-                        Emotionally
-                    </div>
-                    <div class="col-4">
-                        Informazioni
-                    </div>
-                    <div class="col-4">
-                        Altri link
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <footer class="el-8dp text-light @yield('footer-class', '')">
+    @section('footer')
         <div class="copyright text-white-50 py-2">
             <div class="container">
                 Copyright &copy; 2019,
@@ -42,6 +29,7 @@
                 @lang('metadata.copyright')
             </div>
         </div>
+    @show
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

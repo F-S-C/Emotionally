@@ -10,14 +10,17 @@
 
 @section('body')
     <header>
-        <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark el-8dp fixed-top" aria-label="Main navigation">
+        <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark el-8dp fixed-top"
+             aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="https://raw.githubusercontent.com/F-S-C/Emotionally/master/logo/logo.png" width="30" height="30"
+                    <img src="https://raw.githubusercontent.com/F-S-C/Emotionally/master/logo/logo.png" width="30"
+                         height="30"
                          class="d-inline-block align-top" alt="Emotionally's logo">
                     Emotionally
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation-content"
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#main-navigation-content"
                         aria-controls="main-navigation-content" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -31,4 +34,23 @@
     <main class="content" id="main">
         @yield('content')
     </main>
+@endsection
+
+@section('footer')
+    <div class="footer-content py-2 el-4dp">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    Emotionally
+                </div>
+                <div class="col-4">
+                    Informazioni
+                </div>
+                <div class="col-4">
+                    Altri link
+                </div>
+            </div>
+        </div>
+    </div>
+    @parent
 @endsection
