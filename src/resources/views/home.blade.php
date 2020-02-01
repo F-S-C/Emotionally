@@ -22,21 +22,8 @@
 @section('content')
     @parent
 
-    <section id="landing">
-        <div class="splash-screen">
-            <div class="inner el-12dp">
-                <h1 itemprop="name">Emotionally</h1>
-                <p itemprop="headline">{{ trans('metadata.description') }}</p>
-                <div style="margin-top: 1rem;">
-                    <a class="btn btn-outline-white btn-rounded waves-effect scroll-down" href="#content">
-                        <span class="fas fa-chevron-down"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="container" id="content">
-        robes
+        TODO: IMPLEMENT
     </section>
     {{--
         @todo Complete implementation

@@ -69,7 +69,7 @@
         </div>
     </section>
     <section class="container" id="content">
-        robes
+        TODO: IMPLEMENT
     </section>
     {{--
         @todo Complete implementation
