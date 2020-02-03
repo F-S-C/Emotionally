@@ -13,7 +13,7 @@ class Project extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('App\User')
+        return $this->belongsToMany('Emotionally\User')
             ->withPivot(['read', 'modify', 'add', 'remove'])
             ->withTimestamps();
     }
