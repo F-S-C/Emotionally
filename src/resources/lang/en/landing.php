@@ -18,4 +18,12 @@
 
 return [
     'features' => 'Features',
+    'features1' => 'Grafical emotion analysis',
+    'features2' => 'Real-time and video analysis',
+    'features3' => 'Progect Management',
+    'features4' => 'Export the analysis results',
+    'descriptionfeatures1' => 'Graziano Montanaro',
+    'descriptionfeatures2' => 'Fragagnano per sempre',
+    'descriptionfeatures3' => 'La vita secondo Polillo',
+    'descriptionfeatures4' => '100 cose che odio di polillo',
 ];

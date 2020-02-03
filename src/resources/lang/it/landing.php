@@ -18,4 +18,13 @@
 
 return [
     'features' => 'Caratteristiche',
+    'features1' => 'Analisi grafica delle emozioni',
+    'features2' => 'Analisi in tempo reale e di video',
+    'features3' => 'Gestisci progetti',
+    'features4' => 'Esporta i risultati',
+    'descriptionfeatures1' => 'Graziano Montanaro',
+    'descriptionfeatures2' => 'Fragagnano per sempre',
+    'descriptionfeatures3' => 'La vita secondo Polillo',
+    'descriptionfeatures4' => '100 cose che odio di polillo',
+
 ];

@@ -73,23 +73,23 @@
         <div class="row text-center mt-5">
             <div class="col-sm-3">
                 <i class="fas fa-file-video fa-4x"></i>
-                <p class="my-4 h5">Analisi</p>
-                <p>Lorem ipsum</p>
+                <p class="my-4 h5">@lang('landing.features1')</p>
+                <p>@lang('landing.descriptionfeatures1')</p>
             </div>
             <div class="col-sm-3">
                 <i class="fas fa-file-video fa-4x"></i>
-                <p class="my-4 h5">Analisi</p>
-                <p>Lorem ipsum</p>
+                <p class="my-4 h5">@lang('landing.features2')</p>
+                <p>@lang('landing.descriptionfeatures2')</p>
             </div>
             <div class="col-sm-3">
                 <i class="fas fa-folder-open fa-4x"></i>
-                <p class="my-4 h5">Analisi</p>
-                <p>Lorem ipsum</p>
+                <p class="my-4 h5">@lang('landing.features3')</p>
+                <p>@lang('landing.descriptionfeatures3')</p>
             </div>
             <div class="col-sm-3">
-                <i class="fas fa-folder-open fa-4x"></i>
-                <p class="my-4 h5">Analisi</p>
-                <p>Lorem ipsum</p>
+                <i class="fas fa-file-download fa-4x"></i>
+                <p class="my-4 h5">@lang('landing.features4')</p>
+                <p>@lang('landing.descriptionfeatures4')</p>
             </div>
         </div>
     </section>
