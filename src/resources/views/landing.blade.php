@@ -30,6 +30,10 @@
             max-width: 150px;
             border-radius: 50%;
         }
+
+        .emotionally_color{
+            color: #e55100;
+        }
     </style>
 @endsection
 
@@ -72,22 +76,22 @@
         <h2>@lang('landing.features')</h2>
         <div class="row text-center mt-5">
             <div class="col-sm-3">
-                <i class="fas fa-file-video fa-4x"></i>
+                <i class="fas fa-grin-alt fa-4x emotionally_color"></i>
                 <p class="my-4 h5">@lang('landing.features1')</p>
                 <p>@lang('landing.descriptionfeatures1')</p>
             </div>
             <div class="col-sm-3">
-                <i class="fas fa-file-video fa-4x"></i>
+                <i class="fas fa-file-video fa-4x emotionally_color"></i>
                 <p class="my-4 h5">@lang('landing.features2')</p>
                 <p>@lang('landing.descriptionfeatures2')</p>
             </div>
             <div class="col-sm-3">
-                <i class="fas fa-folder-open fa-4x"></i>
+                <i class="fas fa-folder fa-4x emotionally_color"></i>
                 <p class="my-4 h5">@lang('landing.features3')</p>
                 <p>@lang('landing.descriptionfeatures3')</p>
             </div>
             <div class="col-sm-3">
-                <i class="fas fa-file-download fa-4x"></i>
+                <i class="fas fa-file-export fa-4x emotionally_color"></i>
                 <p class="my-4 h5">@lang('landing.features4')</p>
                 <p>@lang('landing.descriptionfeatures4')</p>
             </div>
