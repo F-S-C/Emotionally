@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 $factory->define(\Emotionally\Project::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence(rand(1, 3)),
-        'father_id' => factory(\Emotionally\Project::class)->create()->id,
-        'user_id'=>factory(\Emotionally\User::class)->create()->id,
+        'father_id' => null,
+        'user_id' => factory(\Emotionally\User::class)->create()->id,
     ];
 });
