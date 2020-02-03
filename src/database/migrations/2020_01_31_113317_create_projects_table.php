@@ -22,6 +22,11 @@ class CreateProjectsTable extends Migration
                 ->references('id')
                 ->on('users');
 
+            $table->unsignedBigInteger('father_id')->nullable();
+            $table->foreign('father_id')
+                ->references('id')
+                ->on('projects');
+
             $table->timestamps();
         });
     }
