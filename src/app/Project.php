@@ -14,7 +14,7 @@ class Project extends Model
     public function users()
     {
         return $this->belongsToMany('App\User')
-            ->withPivot('read', 'modify', 'add', 'remove')
+            ->withPivot(['read', 'modify', 'add', 'remove'])
             ->withTimestamps();
     }
 
@@ -25,7 +25,7 @@ class Project extends Model
      */
     public function creator()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('Emotionally\User');
     }
 
     /**
@@ -34,7 +34,7 @@ class Project extends Model
      */
     public function videos()
     {
-        return $this->hasMany('App\Video');
+        return $this->hasMany('Emotionally\Video');
     }
 
     /**
@@ -44,7 +44,7 @@ class Project extends Model
      */
     public function sub_projects()
     {
-        return $this->hasMany('App\Project', 'father_id');
+        return $this->hasMany('Emotionally\Project', 'father_id');
     }
 
     /**
@@ -53,6 +53,6 @@ class Project extends Model
      */
     public function father_project()
     {
-        return $this->belongsTo('App\Project', 'father_id');
+        return $this->belongsTo('Emotionally\Project', 'father_id');
     }
 }

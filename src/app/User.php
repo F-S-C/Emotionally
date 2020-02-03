@@ -44,7 +44,7 @@ class User extends Authenticatable
      */
     public function permissions()
     {
-        return $this->belongsToMany('App\Project')
+        return $this->belongsToMany('Emotionally\Project')
             ->withPivot('read', 'modify', 'add', 'remove')
             ->withTimestamps();
     }
@@ -56,7 +56,7 @@ class User extends Authenticatable
      */
     public function projects()
     {
-        return $this->hasMany('App\Project');
+        return $this->hasMany('Emotionally\Project');
     }
 
     /**
@@ -66,7 +66,7 @@ class User extends Authenticatable
      */
     public function videos()
     {
-        return $this->hasMany('App\Video');
+        return $this->hasMany('Emotionally\Video');
     }
 
 }

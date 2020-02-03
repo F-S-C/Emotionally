@@ -13,7 +13,7 @@ class Video extends Model
      */
     public function author()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('Emotionally\User');
     }
 
     /**
@@ -22,6 +22,6 @@ class Video extends Model
      */
     public function project()
     {
-        return $this->belongsTo('App\Project');
+        return $this->belongsTo('Emotionally\Project');
     }
 }
