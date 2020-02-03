@@ -1,4 +1,5 @@
-/*!
+<?php
+/**
  * This file is part of Emotionally.
  *
  * Emotionally is free software: you can redistribute it and/or modify
@@ -14,35 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Emotionally.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Some accessibility classes
-@import "_accessibility";
 
-a {
-    text-decoration: underline;
-
-    &:hover {
-        text-decoration: none;
-    }
-
-    #main-navigation & {
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &[target='_blank']::after {
-        font-weight: 900;
-        font-family: "Font Awesome 5 Free", sans-serif;
-        font-size: xx-small;
-        content: '\f35d';
-        vertical-align: super;
-        margin-left: .5em;
-    }
-}
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-weight: 800;
-    color: white;
-}
+return [
+    'features' => 'Features',
+];

@@ -68,8 +68,33 @@
             </div>
         </div>
     </section>
-    <section class="container" id="content">
-        TODO: IMPLEMENT
+    <section class="container my-5" id="content">
+        <h2>@lang('landing.features')</h2>
+        <div class="row text-center mt-5">
+            <div class="col-sm-3">
+                <i class="fas fa-file-video fa-4x"></i>
+                <p class="my-4 h5">Analisi</p>
+                <p>Lorem ipsum</p>
+            </div>
+            <div class="col-sm-3">
+                <i class="fas fa-file-video fa-4x"></i>
+                <p class="my-4 h5">Analisi</p>
+                <p>Lorem ipsum</p>
+            </div>
+            <div class="col-sm-3">
+                <i class="fas fa-folder-open fa-4x"></i>
+                <p class="my-4 h5">Analisi</p>
+                <p>Lorem ipsum</p>
+            </div>
+            <div class="col-sm-3">
+                <i class="fas fa-folder-open fa-4x"></i>
+                <p class="my-4 h5">Analisi</p>
+                <p>Lorem ipsum</p>
+            </div>
+        </div>
+    </section>
+    <section class="container my-5">
+        <h2>About</h2>
     </section>
     {{--
         @todo Complete implementation
