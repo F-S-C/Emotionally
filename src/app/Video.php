@@ -11,7 +11,8 @@ class Video extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author(){
+    public function author()
+    {
         return $this->belongsTo('App\User');
     }
 
@@ -19,7 +20,8 @@ class Video extends Model
      * This function use to view video's father project.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function project(){
+    public function project()
+    {
         return $this->belongsTo('App\Project');
     }
 }

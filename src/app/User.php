@@ -42,8 +42,11 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function permissions(){
-        return $this->belongsToMany('App\Project');
+    public function permissions()
+    {
+        return $this->belongsToMany('App\Project')
+            ->withPivot('read', 'modify', 'add', 'remove')
+            ->withTimestamps();
     }
 
     /**
@@ -51,7 +54,8 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function projects(){
+    public function projects()
+    {
         return $this->hasMany('App\Project');
     }
 
@@ -60,7 +64,8 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function videos(){
+    public function videos()
+    {
         return $this->hasMany('App\Video');
     }
 

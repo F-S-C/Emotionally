@@ -11,8 +11,11 @@ class Project extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function users(){
-        return $this->belongsToMany('App\User');
+    public function users()
+    {
+        return $this->belongsToMany('App\User')
+            ->withPivot('read', 'modify', 'add', 'remove')
+            ->withTimestamps();
     }
 
     /**
@@ -20,7 +23,8 @@ class Project extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function creator(){
+    public function creator()
+    {
         return $this->belongsTo('App\User');
     }
 
@@ -28,7 +32,8 @@ class Project extends Model
      * This function use to view project's videos.
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function videos(){
+    public function videos()
+    {
         return $this->hasMany('App\Video');
     }
 
@@ -37,7 +42,8 @@ class Project extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function sub_projects(){
+    public function sub_projects()
+    {
         return $this->hasMany('App\Project', 'father_id');
     }
 
@@ -45,7 +51,8 @@ class Project extends Model
      * This function use to view a sub project's father project.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function father_project(){
+    public function father_project()
+    {
         return $this->belongsTo('App\Project', 'father_id');
     }
 }
