@@ -38,14 +38,14 @@ class Project extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function sub_projects(){
-        return $this->hasMany('App\Project');
+        return $this->hasMany('App\Project', 'father_id');
     }
 
     /**
      * This function use to view a sub project's father project.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function project(){
-        return $this->belongsTo('App\Project');
+    public function father_project(){
+        return $this->belongsTo('App\Project', 'father_id');
     }
 }
