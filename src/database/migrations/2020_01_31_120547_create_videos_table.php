@@ -34,6 +34,8 @@ class CreateVideosTable extends Migration
                 ->on('users');
 
             $table->timestamps();
+
+            $table->unique(['project_id', 'name']);
         });
     }
 
