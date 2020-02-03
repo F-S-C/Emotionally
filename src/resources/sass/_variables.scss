@@ -1,10 +1,12 @@
-// Body
-$body-bg: #f8fafc;
+@import "custom/_dark-theme";
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+//$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Raleway', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+$primary: #FF9800;
 
 // Colors
 $blue: #3490dc;
