@@ -28,6 +28,8 @@ class CreateProjectsTable extends Migration
                 ->on('projects');
 
             $table->timestamps();
+
+            $table->unique(['user_id', 'name']);
         });
     }
 
