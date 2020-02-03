@@ -13,11 +13,13 @@
         <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark el-8dp fixed-top"
              aria-label="Main navigation">
             <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="https://raw.githubusercontent.com/F-S-C/Emotionally/master/logo/logo.png" width="30"
+                <a class="navbar-brand" style="text-decoration: none;" href="#">
+                    <img src="./logo.png" width="30"
                          height="30"
                          class="d-inline-block align-top" alt="Emotionally's logo">
-                    Emotionally
+                    <img src="./app_name.svg" width="150"
+                         height="30"
+                         class="d-inline-block align-top" alt="Emotionally">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#main-navigation-content"

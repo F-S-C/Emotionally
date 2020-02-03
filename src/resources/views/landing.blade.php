@@ -56,8 +56,8 @@
     <section id="landing">
         <div class="splash-screen">
             <div class="inner el-12dp">
-                <img class="logo" src="https://raw.githubusercontent.com/F-S-C/Emotionally/master/logo/logo.png"
-                     alt="Logo">
+                <img class="logo" src="logo.png"
+                     alt="Emotionally's Logo">
                 <h1 itemprop="name">Emotionally</h1>
                 <p itemprop="headline">{{ trans('metadata.description') }}</p>
                 <div style="margin-top: 1rem;">
