@@ -14,7 +14,6 @@ class CreateProjectUserTable extends Migration
     public function up()
     {
         Schema::create('project_user', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->boolean('read')->default(false);
             $table->boolean('modify')->default(false);
             $table->boolean('add')->default(false);
@@ -30,6 +29,8 @@ class CreateProjectUserTable extends Migration
                 ->references('id')
                 ->on('projects');
             $table->timestamps();
+
+            $table->primary(['user_id', 'project_id'], 'project_user_pk');
         });
     }
 
