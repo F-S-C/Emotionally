@@ -11572,7 +11572,7 @@ a:hover {
 }
 
 #main-navigation a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a[target=_blank]::after {
