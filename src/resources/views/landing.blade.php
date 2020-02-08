@@ -45,7 +45,7 @@
             <a class="nav-link text-center" href="#">About</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-outline-primary nav-link" href="#">Log in</a>
+            <a class="btn btn-outline-primary nav-link" href="{{ route('login') }}">Log in</a>
         </li>
     </ul>
 @endsection

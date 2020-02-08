@@ -13,8 +13,18 @@
 
 Route::view('/', 'landing')->name('landing');
 
-Route::name('system.')->prefix('system')->group(function () {
+Route::name('system.')->middleware('auth')->prefix('system')->group(function () {
     Route::view('/', 'home')->name('home');
 
     Route::redirect('/home', '/system/');
 });
+
+Auth::routes();
+
+Route::get('/logout', function(){
+    Auth::logout();
+
+    return redirect()->route('landing');
+})->name('logout');
+
+Route::get('/home', 'HomeController@index')->name('home');
