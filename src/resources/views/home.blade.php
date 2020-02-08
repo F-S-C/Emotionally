@@ -64,7 +64,7 @@
     @parent
     <script>
         $(document).ready(function () {
-            $('#example').DataTable({
+            let table = $('#example').DataTable({
                 "order": [[0, "asc"]],
                 "paging": false,
                 "info": false,
@@ -77,8 +77,12 @@
                         "targets": 6,
                         "orderable": false
                     },
-                ]
+                ],
+                "dom": '<"top"i>rt<"bottom"><"clear">',
             });
+            $('#mySearchText').on( 'keyup click enter', function () {
+                table.search($('#mySearchText').val()).draw();
+            } );
         });
     </script>
 @endsection
