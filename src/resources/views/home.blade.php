@@ -10,37 +10,47 @@
             <h1 class="d-block d-md-inline">Home</h1>
             <nav id="breadcrumbs" class="breadcrumb-container" aria-label="breadcrumbs">
                 <ol class="breadcrumb bg-transparent">
-                    <li class="breadcrumb-item" aria-current="page"><span class="fas fa-home" aria-hidden="true"></span> Home</li>
+                    <li class="breadcrumb-item" aria-current="page"><span class="fas fa-home" aria-hidden="true"></span>
+                        Home
+                    </li>
                     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                 </ol>
             </nav>
         </header>
         <div class="table-responsive">
-            <table id="table_id" class="table table-striped table-bordered">
-                <thead>
+            <table id="example" class="display w-100 table table-striped table-borderless">
+                <thead class="text-uppercase">
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
-                    <th>Created at</th>
-                    <th>Modified at</th>
-                    <th>Videos</th>
-                    <th>Subprojects</th>
-                    <th>Average emotion</th>
-                    <th class="sr-only">Go to report</th>
-                    <th class="sr-only">More</th>
+                    <th class="text-center">Created at</th>
+                    <th class="text-center">Modified at</th>
+                    <th class="text-center">Videos</th>
+                    <th class="text-center">Subprojects</th>
+                    <th class="text-center">Average emotion</th>
+                    <th><span class="sr-only">Go to report</span></th>
+                    <th><span class="sr-only">More</span></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($projects as $project)
                     <tr>
 
-                        <td>{{$project['id']}}</td>
                         <td>{{$project['name']}}</td>
-                        <td>{{$project['created_at']}}</td>
-                        <td>{{$project['updated_at']}}</td>
-                        <td>{{$project['number_videos']??'X'}}</td>
-                        <td>{{$project['number_subprojects']??'X'}}</td>
-                        <td>{{$project['emotion'] ??'=)'}}</td>
+                        <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
+                        <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
+                        <td class="text-center">{{$project->number_of_videos}}</td>
+                        <td class="text-center">{{$project->number_of_subprojects}}</td>
+                        <td class="text-center">{{$project->emotion ??'=)'}}</td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-md-text"
+                               aria-label="Go to report page of project {{ $project->name }}">Report</a>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-light border-0 rounded-circle">
+                                <span class="fas fa-ellipsis-v" aria-hidden="true" title="More options"></span>
+                                <span class="sr-only">More options</span>
+                            </button>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -54,7 +64,21 @@
     @parent
     <script>
         $(document).ready(function () {
-            $('#table_id').DataTable();
+            $('#example').DataTable({
+                "order": [[0, "asc"]],
+                "paging": false,
+                "info": false,
+                "columnDefs": [
+                    {
+                        "targets": 7,
+                        "orderable": false
+                    },
+                    {
+                        "targets": 6,
+                        "orderable": false
+                    },
+                ]
+            });
         });
     </script>
 @endsection

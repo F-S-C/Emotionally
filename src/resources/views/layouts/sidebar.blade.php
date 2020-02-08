@@ -100,7 +100,7 @@
 
 @section('body')
     <div class="wrapper">
-        <nav class="sidebar el-8dp" id="main-navigation">
+        <nav class="sidebar el-8dp" id="main-navigation" aria-label="Sidebar">
             <div class="sidebar-header">
                 <a class="sidebar-brand text-center w-100" style="text-decoration: none;" href="#">
                     <img src="logo.png" width="64"
