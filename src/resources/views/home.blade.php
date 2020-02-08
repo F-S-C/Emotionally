@@ -17,7 +17,7 @@
                 </ol>
             </nav>
         </header>
-        <div class="table-responsive">
+        <div class="table-responsive mt-3">
             <table id="example" class="display w-100 table table-striped table-borderless">
                 <thead class="text-uppercase">
                 <tr>
@@ -34,7 +34,6 @@
                 <tbody>
                 @foreach($projects as $project)
                     <tr>
-
                         <td>{{$project['name']}}</td>
                         <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
                         <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
@@ -80,9 +79,9 @@
                 ],
                 "dom": '<"top"i>rt<"bottom"><"clear">',
             });
-            $('#mySearchText').on( 'keyup click enter', function () {
+            $('#mySearchText').on('keydown click', function () {
                 table.search($('#mySearchText').val()).draw();
-            } );
+            });
         });
     </script>
 @endsection
