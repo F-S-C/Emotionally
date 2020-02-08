@@ -5,7 +5,7 @@
 @section('content')
     @parent
 
-    <section class="container" id="content">
+    <section class="container-fluid" id="content">
         <header>
             <h1 class="d-block d-md-inline">Home</h1>
             <nav id="breadcrumbs" class="breadcrumb-container" aria-label="breadcrumbs">
