@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
 
-    protected $appends = ['number_of_subprojects', 'number_of_videos'];
+    protected $appends = ['number_of_subprojects', 'number_of_videos', 'average_emotion'];
 
     /**
      * This function use to view users of the project.
@@ -75,6 +75,15 @@ class Project extends Model
     public function getNumberOfVideosAttribute()
     {
         return 5;
+    }
+
+    /**
+     * Get the average emotion of the project.
+     * @return string The average emotion.
+     */
+    public function getAverageEmotionAttribute()
+    {
+        return ':-)'; // TODO: Implement
     }
 
 }

@@ -40,7 +40,7 @@
                         <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
                         <td class="text-center">{{$project->number_of_videos}}</td>
                         <td class="text-center">{{$project->number_of_subprojects}}</td>
-                        <td class="text-center">{{$project->emotion ??'=)'}}</td>
+                        <td class="text-center">{{$project->average_emotion}}</td>
                         <td class="text-center">
                             <a href="#" class="btn btn-md-text"
                                aria-label="Go to report page of project {{ $project->name }}">Report</a>
