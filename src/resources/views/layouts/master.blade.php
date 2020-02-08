@@ -11,6 +11,7 @@
 
     @yield('head', '')
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <title>@yield('title')</title>
 </head>
@@ -21,19 +22,21 @@
     @yield('body')
 
     <footer class="el-8dp text-light @yield('footer-class', '')">
-    @section('footer')
-        <div class="copyright text-white-50 py-2">
-            <div class="container-fluid px-3">
-                <p class="d-inline-block mt-md-1">
-                    Copyright &copy; 2019,
-                    <a href="https://F-S-C.github.io/" target="_blank">FSC</a>.
-                    @lang('metadata.copyright')
-                </p>
-                <img src="fsc_logo_text.png" width="140" alt="Five Students of Computer Science" class="float-md-right d-md-inline-block mr-md-3 d-none">
-                <img src="fsc_logo.svg" width="35" alt="Five Students of Computer Science" class="float-sm-right float-none d-md-none d-sm-inline-block d-none">
+        @section('footer')
+            <div class="copyright text-white-50 py-2">
+                <div class="container-fluid px-3">
+                    <p class="d-inline-block mt-md-1">
+                        Copyright &copy; 2019,
+                        <a href="https://F-S-C.github.io/" target="_blank">FSC</a>.
+                        @lang('metadata.copyright')
+                    </p>
+                    <img src="fsc_logo_text.png" width="140" alt="Five Students of Computer Science"
+                         class="float-md-right d-md-inline-block mr-md-3 d-none">
+                    <img src="fsc_logo.svg" width="35" alt="Five Students of Computer Science"
+                         class="float-sm-right float-none d-md-none d-sm-inline-block d-none">
+                </div>
             </div>
-        </div>
-    @show
+        @show
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -45,6 +48,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
 
     @yield('scripts', '')
 </body>

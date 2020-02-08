@@ -5626,7 +5626,7 @@ input[type=button].btn-block {
   display: inline-block;
   padding-right: 0.5rem;
   color: #6c757d;
-  content: "/";
+  content: "\2013";
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
@@ -7678,7 +7678,9 @@ button.bg-dark:focus {
   display: none !important;
 }
 
-.d-inline {
+.d-inline,
+.breadcrumb-container .breadcrumb .breadcrumb-item,
+.breadcrumb-container .breadcrumb {
   display: inline !important;
 }
 
@@ -7686,7 +7688,8 @@ button.bg-dark:focus {
   display: inline-block !important;
 }
 
-.d-block {
+.d-block,
+.breadcrumb-container {
   display: block !important;
 }
 
@@ -7757,7 +7760,8 @@ button.bg-dark:focus {
     display: none !important;
   }
 
-  .d-md-inline {
+  .d-md-inline,
+  .breadcrumb-container {
     display: inline !important;
   }
 
@@ -8979,7 +8983,8 @@ button.bg-dark:focus {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.m-0 {
+.m-0,
+.breadcrumb-container .breadcrumb {
   margin: 0 !important;
 }
 
@@ -8999,6 +9004,7 @@ button.bg-dark:focus {
 }
 
 .ml-0,
+.breadcrumb-container,
 .mx-0 {
   margin-left: 0 !important;
 }
@@ -9123,7 +9129,8 @@ button.bg-dark:focus {
   margin-left: 3rem !important;
 }
 
-.p-0 {
+.p-0,
+.breadcrumb-container .breadcrumb {
   padding: 0 !important;
 }
 
@@ -9963,6 +9970,7 @@ button.bg-dark:focus {
   }
 
   .ml-md-4,
+  .breadcrumb-container,
   .mx-md-4 {
     margin-left: 1.5rem !important;
   }
@@ -11491,6 +11499,35 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+/*!
+ * This file is part of Emotionally.
+ *
+ * Emotionally is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Emotionally is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Emotionally.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+table.table thead tr {
+  background-color: rgba(255, 255, 255, 0.11);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: transparent !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 /*!

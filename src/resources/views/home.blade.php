@@ -2,31 +2,59 @@
 
 @section('title', 'Emotionally')
 
-@section('navbar-content')
-    <ul class="ml-auto navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link text-center" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-center" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-center" href="#">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-outline-primary nav-link" href="#">Log in</a>
-        </li>
-    </ul>
-@endsection
-
 @section('content')
     @parent
 
     <section class="container" id="content">
-        TODO: IMPLEMENT
+        <header>
+            <h1 class="d-block d-md-inline">Home</h1>
+            <nav id="breadcrumbs" class="breadcrumb-container" aria-label="breadcrumbs">
+                <ol class="breadcrumb bg-transparent">
+                    <li class="breadcrumb-item" aria-current="page"><span class="fas fa-home" aria-hidden="true"></span> Home</li>
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                </ol>
+            </nav>
+        </header>
+        <div class="table-responsive">
+            <table id="table_id" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Created at</th>
+                    <th>Modified at</th>
+                    <th>Videos</th>
+                    <th>Subprojects</th>
+                    <th>Average emotion</th>
+                    <th class="sr-only">Go to report</th>
+                    <th class="sr-only">More</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($projects as $project)
+                    <tr>
+
+                        <td>{{$project['id']}}</td>
+                        <td>{{$project['name']}}</td>
+                        <td>{{$project['created_at']}}</td>
+                        <td>{{$project['updated_at']}}</td>
+                        <td>{{$project['number_videos']??'X'}}</td>
+                        <td>{{$project['number_subprojects']??'X'}}</td>
+                        <td>{{$project['emotion'] ??'=)'}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+
     </section>
-    {{--
-        @todo Complete implementation
-        @body Complete the layout as designed.
-    --}}
+@endsection
+
+@section('scripts')
+    @parent
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>
 @endsection
