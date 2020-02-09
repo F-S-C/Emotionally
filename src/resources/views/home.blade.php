@@ -7,28 +7,31 @@
 
     <section class="container-fluid" id="content">
         <header>
-            <h1 class="d-block d-md-inline">Home</h1>
+            <h1 class="d-block d-md-inline">@lang('dashboard.home')</h1>
             <nav id="breadcrumbs" class="breadcrumb-container" aria-label="breadcrumbs">
                 <ol class="breadcrumb bg-transparent">
                     <li class="breadcrumb-item" aria-current="page"><span class="fas fa-home" aria-hidden="true"></span>
-                        Home
+                        @lang('dashboard.home')
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @lang('dashboard.dashboard')
+                    </li>
                 </ol>
             </nav>
         </header>
         <div class="table-responsive mt-3">
-            <table id="example" class="display w-100 table table-striped table-borderless" aria-label="Your projects">
+            <table id="project-table" class="display w-100 table table-striped table-borderless"
+                   aria-label="@lang('dashboard.your_projects')">
                 <thead class="text-uppercase">
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col" class="text-center">Created at</th>
-                    <th scope="col" class="text-center">Modified at</th>
-                    <th scope="col" class="text-center">Videos</th>
-                    <th scope="col" class="text-center">Subprojects</th>
-                    <th scope="col" class="text-center">Average emotion</th>
-                    <th scope="col"><span class="sr-only">Go to report</span></th>
-                    <th scope="col"><span class="sr-only">More</span></th>
+                    <th scope="col">@lang('dashboard.name')</th>
+                    <th scope="col" class="text-center">@lang('dashboard.created_at')</th>
+                    <th scope="col" class="text-center">@lang('dashboard.updated_at')</th>
+                    <th scope="col" class="text-center">@lang('dashboard.videos')</th>
+                    <th scope="col" class="text-center">@lang('dashboard.subprojects')</th>
+                    <th scope="col" class="text-center">@lang('dashboard.average_emotion')</th>
+                    <th scope="col"><span class="sr-only">@lang('dashboard.go_to_report')</span></th>
+                    <th scope="col"><span class="sr-only">@lang('dashboard.more')</span></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,12 +45,12 @@
                         <td class="text-center">{{$project->average_emotion}}</td>
                         <td class="text-center">
                             <a href="#" class="btn btn-md-text"
-                               aria-label="Go to report page of project {{ $project->name }}">Report</a>
+                               aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
                         </td>
                         <td>
                             <button class="btn btn-outline-light border-0 rounded-circle">
-                                <span class="fas fa-ellipsis-v" aria-hidden="true" title="More options"></span>
-                                <span class="sr-only">More options</span>
+                                <span class="fas fa-ellipsis-v" aria-hidden="true" title="@lang('dashboard.more_options')"></span>
+                                <span class="sr-only">@lang('dashboard.more_options')</span>
                             </button>
                         </td>
                     </tr>
@@ -63,7 +66,7 @@
     @parent
     <script>
         $(document).ready(function () {
-            let table = $('#example').DataTable({
+            let table = $('#project-table').DataTable({
                 "order": [[0, "asc"]],
                 "paging": false,
                 "info": false,
@@ -79,8 +82,8 @@
                 ],
                 "dom": '<"top"i>rt<"bottom"><"clear">',
             });
-            $('#mySearchText').on('keydown click', function () {
-                table.search($('#mySearchText').val()).draw();
+            $('#search-bar').on('keydown click', function () {
+                table.search($('#search-bar').val()).draw();
             });
         });
     </script>

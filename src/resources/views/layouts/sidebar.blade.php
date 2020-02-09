@@ -143,7 +143,7 @@
         <div class="content sidebar-content">
             <nav class="navbar navbar-expand-lg navbar-dark el-0dp" style="padding: 20px 30px;" aria-label="navbar">
                 <div class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" id="mySearchText">
+                    <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" id="search-bar">
                 </div>
 {{--                <button class="navbar-toggler" type="button" data-toggle="collapse"--}}
 {{--                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"--}}
