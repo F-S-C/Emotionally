@@ -55,17 +55,11 @@ class ReportController extends Controller
 
     /**
      * Get the average report from a list of reports.
-     * @param string|array $json The report
-     * @return array
+     * @param string|array ...$reports The reports.
+     * @return array The average report.
      */
-    public static function average($json)
+    public static function average(...$reports)
     {
-        if (is_string($json)) {
-            $json = json_decode($json, true);
-        } else if (!is_array($json)) {
-            throw new \InvalidArgumentException("The input isn't a string or a JSON");
-        }
-
         $averageReport = [
             self::JOY_KEY => 0,
             self::SADNESS_KEY => 0,
@@ -101,11 +95,18 @@ class ReportController extends Controller
         ];
 
         $iterated = 0;
-        foreach ($json as $row) {
-            foreach ($averageReport as $key => &$item) {
-                $item += $row[$key];
+        foreach ($reports as $json) {
+            if (is_string($json)) {
+                $json = json_decode($json, true);
+            } elseif (!is_array($json)) {
+                throw new \InvalidArgumentException("The input isn't a JSON string or an array:" . json_encode($json));
             }
-            $iterated++;
+            foreach ($json as $row) {
+                foreach ($averageReport as $key => &$item) {
+                    $item += $row[$key];
+                }
+                $iterated++;
+            }
         }
 
         foreach ($averageReport as &$value) {
@@ -115,9 +116,15 @@ class ReportController extends Controller
         return $averageReport;
     }
 
-    public static function highestEmotion($json)
+    /**
+     * Extract the emotion with the highest value from a list of reports.
+     * @param string|array ...$reports The reports.
+     * @return string The emotion with the highest value in the average report (derived from the given reports).
+     */
+    public static function highestEmotion(...$reports)
     {
-        $averageReport = [
+        $totalAverageReport = self::average(...$reports);
+        $useful_values = [
             self::JOY_KEY => 0,
             self::SADNESS_KEY => 0,
             self::DISGUST_KEY => 0,
@@ -126,10 +133,9 @@ class ReportController extends Controller
             self::FEAR_KEY => 0,
             self::SURPRISE_KEY => 0
         ];
-        $totalAverageReport = self::average($json);
-        foreach ($averageReport as $key => &$value) {
+        foreach ($useful_values as $key => &$value) {
             $value = $totalAverageReport[$key];
         }
-        return array_keys($averageReport, max($averageReport))[0];
+        return array_keys($useful_values, max($useful_values))[0];
     }
 }
