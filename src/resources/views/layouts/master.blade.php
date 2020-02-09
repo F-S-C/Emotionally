@@ -12,7 +12,7 @@
     @yield('head', '')
 
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-    <title>@yield('title')</title>
+    <title>@yield('title') | Emotionally</title>
 </head>
 <body>
     <nav aria-labelledby="skip-navigation-link">

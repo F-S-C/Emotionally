@@ -1,6 +1,6 @@
 @extends('layouts.sidebar')
 
-@section('title', 'Emotionally')
+@section('title', trans('dashboard.dashboard'))
 
 @section('content')
     @parent
