@@ -29,7 +29,7 @@
             </thead>
             <tbody>
             @foreach($projects as $project)
-                <tr class="clickable" data-href="/system/project/{{$project->id}}">
+                <tr class="clickable" data-href="{{route('system.project-details', $project->id)}}">
                     <td>{{$project['name']}}</td>
                     <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
                     <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
@@ -74,13 +74,14 @@
                 ],
                 "dom": '<"top"i>rt<"bottom"><"clear">',
             });
+            
             $('#search-bar').on('keydown click', function () {
                 table.search($('#search-bar').val()).draw();
             });
 
             $('.clickable').click(function (event) {
-                //prevent execution from bubbling
-                if (event.target === this) {
+                // prevent execution from bubbling if a link or a button were clicked
+                if (event.target.tagName.toLowerCase() !== 'a' && event.target.tagName.toLowerCase() !== 'button') {
                     window.location = $(this).data('href');
                 }
             })
