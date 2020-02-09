@@ -108,7 +108,8 @@
             @foreach($videos as $video)
                 <div class="col mb-4">
                     <div class="card h-100 el-8dp text-white square">
-                        <div class="card-img-top bg-video-placeholder" style="background-image: url('http://lorempixel.com/800/800/people/')"></div>
+                        <div class="card-img-top bg-video-placeholder"
+                             style="background-image: url('{{$video->thumbnail}}')"></div>
                         <div class="video-background card-img-top"></div>
                         <div class="card-img-overlay">
                             <span class="sr-only">Video: </span>
