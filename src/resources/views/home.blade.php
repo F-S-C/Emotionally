@@ -18,17 +18,17 @@
             </nav>
         </header>
         <div class="table-responsive mt-3">
-            <table id="example" class="display w-100 table table-striped table-borderless">
+            <table id="example" class="display w-100 table table-striped table-borderless" aria-label="Your projects">
                 <thead class="text-uppercase">
                 <tr>
-                    <th>Name</th>
-                    <th class="text-center">Created at</th>
-                    <th class="text-center">Modified at</th>
-                    <th class="text-center">Videos</th>
-                    <th class="text-center">Subprojects</th>
-                    <th class="text-center">Average emotion</th>
-                    <th><span class="sr-only">Go to report</span></th>
-                    <th><span class="sr-only">More</span></th>
+                    <th scope="col">Name</th>
+                    <th scope="col" class="text-center">Created at</th>
+                    <th scope="col" class="text-center">Modified at</th>
+                    <th scope="col" class="text-center">Videos</th>
+                    <th scope="col" class="text-center">Subprojects</th>
+                    <th scope="col" class="text-center">Average emotion</th>
+                    <th scope="col"><span class="sr-only">Go to report</span></th>
+                    <th scope="col"><span class="sr-only">More</span></th>
                 </tr>
                 </thead>
                 <tbody>
