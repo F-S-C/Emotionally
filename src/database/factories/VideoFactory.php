@@ -46,7 +46,7 @@ $factory->define(Video::class, function (Faker $faker) {
     ];
     for ($i = 0; $i < rand(50, 150); $i++) {
         foreach ($basic_report as &$value) {
-            $value = rand(0, 1);
+            $value = $faker->randomFloat(20, 0, 1);
         }
         array_push($report, $basic_report);
     }
