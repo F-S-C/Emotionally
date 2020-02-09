@@ -20,7 +20,7 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{route('system.home')}}">Home</a>
 
                 </li>
                 <li class="nav-item">
