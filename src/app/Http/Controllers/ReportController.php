@@ -26,7 +26,12 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function average(array $json)
+    /**
+     * Get the average emotion from a report.
+     * @param string|array $json The report
+     * @return array
+     */
+    public function average($json)
     {
         $iterated = 0;
         $a = 0;

@@ -11,24 +11,24 @@ class VideoController extends Controller
 {
     /**
      * This function get and rename a video
-     * @param Video $video
+     * @param Video $video The video
+     * @param string $name The new name
      */
-    public function renameVideo(Video $video):void
+    public function renameVideo(Video $video, string $name):void
     {
-        $id=$video->id;
-        $name=$video->name;
-        Video::where('id', $id)->update('name', $name);
+        $video->name = $name;
+        $video->save();
     }
 
 
     /**
      * This function get and delete a video
-     * @param Video $video
+     * @param Video $video The video.
+     * @throws \Exception
      */
     public function deleteVideo(Video $video):void
     {
-        $id=$video->id;
-        Video::destroy($id);
+        $video->delete();
     }
 
 
