@@ -53,12 +53,16 @@ class ReportController extends Controller
      * @param Request $request
      * @return false|string
      */
-    public function uploadVideo(Request $request):void
+    public function uploadVideo(Request $request,int $project_id,int $user_id):void
     {
-        $name = $request->input('name');
-        $report=$request->input('report');
-        $path=$request->file('video')->store('public');
-        
+        $video=new Video();
+        $video->name = $request->input('name');
+        $video->report=$request->input('report');
+        $video->url=$request->file('video')->store('public');
+        $video->project_id=$project_id;
+        $video->user_id=$user_id;
+        $video->start=0;
+
     }
 
 
