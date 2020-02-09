@@ -1,6 +1,6 @@
 @extends('layouts.navbar')
 
-@section('title', 'Emotionally')
+@section('title', 'Landing')
 
 @section('head')
     @parent
