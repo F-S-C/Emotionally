@@ -19,31 +19,6 @@
 @import "_sidebar";
 @import "_cards";
 
-a {
-    text-decoration: underline;
-
-    &:hover {
-        text-decoration: none;
-    }
-
-    #main-navigation &, .breadcrumb &, .dropdown-menu & {
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &[target='_blank']::after {
-        font-weight: 900;
-        font-family: "Font Awesome 5 Free", sans-serif;
-        font-size: xx-small;
-        content: '\f35d';
-        vertical-align: super;
-        margin-left: .5em;
-    }
-}
-
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 800;
     color: white;
@@ -82,4 +57,27 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .dropdown.more-icon button::after {
     content: none
+}
+
+.nav-item {
+    .collapse-button-container{
+        &>a {display: inline;}
+    .collapse-button{
+        &::before{
+            font-family: "Font Awesome 5 Free", fantasy;
+            font-weight: 900;
+            margin-inline-end: 5px;
+        }
+
+        &[aria-expanded="false"]::before{
+            content: "\f054";
+        }
+        &[aria-expanded="true"]::before{
+            content: "\f078";
+        }
+    }}
+
+    ul>li {
+        @extend .ml-4;
+    }
 }

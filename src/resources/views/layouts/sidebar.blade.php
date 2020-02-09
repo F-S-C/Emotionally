@@ -20,8 +20,32 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('system.home')}}">Home</a>
-
+                    <div class="nav-link collapse-button-container">
+                        <a type="button" class="collapse-button" data-toggle="collapse" href="#projects-container" role="button" aria-expanded="false" aria-controls="projects-container"></a>
+                        <a href="{{route('system.home')}}">Projects</a>
+                    </div>
+                    <ul class="collapse el-3dp nav flex-column" id="projects-container">
+                        <li class="nav-item">
+                            <div class="nav-link collapse-button-container">
+                                <a type="button" class="collapse-button" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample"></a>
+                                <a href="#">Projects</a>
+                            </div>
+                            <ul class="collapse el-3dp nav flex-column" id="collapseExample2">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>

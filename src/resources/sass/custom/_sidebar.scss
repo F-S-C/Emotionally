@@ -44,14 +44,31 @@
             padding: 10px;
         }
 
-        li a {
-            padding: 10px;
-            font-size: 1.1em;
-            display: block;
-        }
+        li {
+            a {
+                color: rgba(255, 255, 255, 0.8) !important;
+                text-decoration: none;
+                &:hover, &:focus{
+                    text-decoration: none;
+                }
+            }
+            &:hover{
+                background-color: rgba($primary, 0.03);
+            }
 
-        li.active > a {
-            color: #fff;
+            .nav-link {
+                padding: 10px;
+                font-size: 1.1em;
+                display: block;
+            }
+
+            &.active {
+                background-color: rgba($primary, 0.08);
+
+                & > .nav-link {
+                    color: #fff;
+                }
+            }
         }
     }
 }
@@ -105,8 +122,7 @@ a[data-toggle="collapse"] {
         width: 70px;
     }
 
-    .sidebar-content
-    {
+    .sidebar-content {
         width: calc(100% - 70px);
     }
 

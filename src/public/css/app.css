@@ -9133,6 +9133,7 @@ button.bg-dark:focus {
 }
 
 .ml-4,
+.nav-item ul > li,
 .mx-4 {
   margin-left: 1.5rem !important;
 }
@@ -11632,6 +11633,35 @@ table.table thead tr {
   background-color: black;
 }
 
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#main-navigation a,
+.breadcrumb a,
+.dropdown-menu a {
+  text-decoration: none;
+}
+
+#main-navigation a:hover,
+.breadcrumb a:hover,
+.dropdown-menu a:hover {
+  text-decoration: underline;
+}
+
+a[target=_blank]::after {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free", fantasy;
+  font-size: xx-small;
+  content: "\F35D";
+  vertical-align: super;
+  margin-left: 0.5em;
+}
+
 /*!
  * This file is part of Emotionally.
  *
@@ -11681,12 +11711,30 @@ table.table thead tr {
 }
 
 .sidebar ul li a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  text-decoration: none;
+}
+
+.sidebar ul li:hover {
+  background-color: rgba(255, 152, 0, 0.03);
+}
+
+.sidebar ul li .nav-link {
   padding: 10px;
   font-size: 1.1em;
   display: block;
 }
 
-.sidebar ul li.active > a {
+.sidebar ul li.active {
+  background-color: rgba(255, 152, 0, 0.08);
+}
+
+.sidebar ul li.active > .nav-link {
   color: #fff;
 }
 
@@ -11858,35 +11906,6 @@ a[data-toggle=collapse] {
   content: "\F03D";
 }
 
-a {
-  text-decoration: underline;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-#main-navigation a,
-.breadcrumb a,
-.dropdown-menu a {
-  text-decoration: none;
-}
-
-#main-navigation a:hover,
-.breadcrumb a:hover,
-.dropdown-menu a:hover {
-  text-decoration: underline;
-}
-
-a[target=_blank]::after {
-  font-weight: 900;
-  font-family: "Font Awesome 5 Free", sans-serif;
-  font-size: xx-small;
-  content: "\F35D";
-  vertical-align: super;
-  margin-left: 0.5em;
-}
-
 h1,
 h2,
 h3,
@@ -11914,5 +11933,24 @@ h6,
 
 .dropdown.more-icon button::after {
   content: none;
+}
+
+.nav-item .collapse-button-container > a {
+  display: inline;
+}
+
+.nav-item .collapse-button-container .collapse-button::before {
+  font-family: "Font Awesome 5 Free", fantasy;
+  font-weight: 900;
+  -webkit-margin-end: 5px;
+          margin-inline-end: 5px;
+}
+
+.nav-item .collapse-button-container .collapse-button[aria-expanded=false]::before {
+  content: "\F054";
+}
+
+.nav-item .collapse-button-container .collapse-button[aria-expanded=true]::before {
+  content: "\F078";
 }
 
