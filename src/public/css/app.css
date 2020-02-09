@@ -7464,7 +7464,8 @@ a.close.disabled {
   vertical-align: top !important;
 }
 
-.align-middle {
+.align-middle,
+.table td {
   vertical-align: middle !important;
 }
 
@@ -11918,5 +11919,6 @@ h6,
 
 .emojis {
   color: white;
+  font-size: 2em;
 }
 
