@@ -78,8 +78,11 @@
                 table.search($('#search-bar').val()).draw();
             });
 
-            $('.clickable').click(function () {
-                window.location = $(this).data('href');
+            $('.clickable').click(function (event) {
+                //prevent execution from bubbling
+                if (event.target === this) {
+                    window.location = $(this).data('href');
+                }
             })
         });
     </script>
