@@ -16,6 +16,8 @@
  */
 // Some accessibility classes
 @import "_accessibility";
+@import "_sidebar";
+@import "_cards";
 
 a {
     text-decoration: underline;
@@ -24,7 +26,7 @@ a {
         text-decoration: none;
     }
 
-    #main-navigation & {
+    #main-navigation &, .breadcrumb &, .dropdown-menu & {
         text-decoration: none;
 
         &:hover {
@@ -45,4 +47,39 @@ a {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 800;
     color: white;
+}
+
+.breadcrumb-container {
+    @extend .d-block ;
+    @extend .d-md-inline ;
+    @extend .ml-0 ;
+    @extend .ml-md-4;
+
+    .breadcrumb {
+        @extend .p-0;
+        @extend .m-0;
+        @extend .d-inline;
+
+        .breadcrumb-item {
+            @extend .d-inline;
+        }
+    }
+}
+
+.btn.btn-md-text {
+    @extend .btn-outline-primary;
+    @extend .text-uppercase;
+    @extend .text-decoration-none;
+    @extend .border-0;
+    @extend .shadow-none;
+
+    font-weight: 500;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.dropdown.more-icon button::after {
+    content: none
 }

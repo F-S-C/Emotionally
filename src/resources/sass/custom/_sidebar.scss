@@ -1,0 +1,121 @@
+/*!
+ * This file is part of Emotionally.
+ *
+ * Emotionally is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Emotionally is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Emotionally.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    color: #fff;
+    transition: all 0.3s;
+
+    .sidebar-header {
+        padding: 20px;
+    }
+
+    ul {
+        &.components {
+            padding: 20px 0;
+        }
+
+        p {
+            color: #fff;
+            padding: 10px;
+        }
+
+        li a {
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+        }
+
+        li.active > a {
+            color: #fff;
+        }
+    }
+}
+
+a[aria-expanded="true"] {
+    color: #fff;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.sidebar-content {
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#main {
+    padding: 15px;
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.sidebar-brand {
+    display: inline-block;
+    padding-top: 0.32rem;
+    padding-bottom: 0.32rem;
+    /* margin-right: 1rem; */
+    font-size: 1.125rem;
+    line-height: inherit;
+    white-space: nowrap;
+
+    img {
+        transition: width 0.5s ease, height 0.5s ease;
+    }
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: 0;
+        width: 70px;
+    }
+
+    .sidebar-content
+    {
+        width: calc(100% - 70px);
+    }
+
+    #main {
+        width: 100%;
+    }
+
+    .sidebar-brand img {
+        width: 30px;
+        height: 30px;
+    }
+}
