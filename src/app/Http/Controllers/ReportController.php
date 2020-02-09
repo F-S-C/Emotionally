@@ -18,11 +18,6 @@
 
 namespace Emotionally\Http\Controllers;
 
-use Emotionally\Project;
-use Emotionally\User;
-use Emotionally\Video;
-use Illuminate\Http\Request;
-
 
 class ReportController extends Controller
 {
@@ -33,6 +28,12 @@ class ReportController extends Controller
      */
     public function average($json)
     {
+        if (is_string($json)) {
+            $json = json_decode($json);
+        } else if (!is_array($json)) {
+            throw new \InvalidArgumentException("The input isn't a string or a JSON");
+        }
+
         $iterated = 0;
         $a = 0;
         $b = 0;
