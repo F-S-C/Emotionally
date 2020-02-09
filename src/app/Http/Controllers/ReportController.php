@@ -51,19 +51,78 @@ class ReportController extends Controller
 
     /**
      * @param Request $request
-     * @return false|string
+     * @param int $project_id
+     * @param int $user_id
      */
     public function uploadVideo(Request $request,int $project_id,int $user_id):void
     {
         $video=new Video();
         $video->name = $request->input('name');
-        $video->report=$request->input('report');
+        $video->report=array();
         $video->url=$request->file('video')->store('public');
         $video->project_id=$project_id;
         $video->user_id=$user_id;
         $video->start=0;
-
+        $video->end=;
+        $video->framerate=;
+        $video->duration=;
+        $video->save();
     }
+
+    public function getAllVideosUser(User $user)
+    {
+        $owned_videos = $user->videos;
+        return view('#')->with('videos', $owned_videos);
+    }
+
+    public function getAllVideosProject(Project $project)
+    {
+        $project_videos = $project->videos;
+        return view('#')->with('videos', $project_videos);
+    }
+
+    public function getReportVideo(int $id)
+    {
+        $video = Video::find($id);
+        return $video->report;
+    }
+
+
+    public function avarage(array $json)
+    {
+        $iterated=0;
+        $a=0;
+        $b=0;
+        $c=0;
+        $d=0;
+        $e=0;
+        $f=0;
+        $g=0;
+            foreach ($json as $row)
+            {
+                $a=$row['a']+$a;
+                $b=$row['a']+$b;
+                $c=$row['a']+$c;
+                $d=$row['a']+$d;
+                $e=$row['a']+$e;
+                $f=$row['a']+$f;
+                $g=$row['a']+$g;
+                $iterated++;
+            }
+        $avarageReport = [
+            'a' => $a/$iterated,
+            'b' => $b/$iterated,
+            'c' => $c/$iterated,
+            'd' => $d/$iterated,
+            'e' => $e/$iterated,
+            'f' => $f/$iterated,
+            'g' => $g/$iterated
+        ];
+            return $avarageReport;
+    }
+
+
+
 
 
 
