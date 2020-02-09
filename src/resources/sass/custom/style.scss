@@ -17,6 +17,7 @@
 // Some accessibility classes
 @import "_accessibility";
 @import "_sidebar";
+@import "_cards";
 
 a {
     text-decoration: underline;
@@ -25,16 +26,12 @@ a {
         text-decoration: none;
     }
 
-    #main-navigation & {
+    #main-navigation &, .breadcrumb &, .dropdown-menu & {
         text-decoration: none;
 
         &:hover {
             text-decoration: underline;
         }
-    }
-
-    .breadcrumb & {
-        text-decoration: none;
     }
 
     &[target='_blank']::after {
