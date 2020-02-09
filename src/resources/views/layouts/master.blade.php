@@ -29,9 +29,9 @@
                         <a href="https://F-S-C.github.io/" target="_blank">FSC</a>.
                         @lang('metadata.copyright')
                     </p>
-                    <img src="fsc_logo_text.png" width="140" alt="Five Students of Computer Science"
+                    <img src="{{asset('/fsc_logo_text.png')}}" width="140" alt="Five Students of Computer Science"
                          class="float-md-right d-md-inline-block mr-md-3 d-none">
-                    <img src="fsc_logo.svg" width="35" alt="Five Students of Computer Science"
+                    <img src="{{asset('/fsc_logo.svg')}}" width="35" alt="Five Students of Computer Science"
                          class="float-sm-right float-none d-md-none d-sm-inline-block d-none">
                 </div>
             </div>
