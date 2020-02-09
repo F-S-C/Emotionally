@@ -113,10 +113,10 @@
         <nav class="sidebar el-8dp" id="main-navigation" aria-label="Sidebar">
             <div class="sidebar-header">
                 <a class="sidebar-brand text-center w-100" style="text-decoration: none;" href="#">
-                    <img src="logo.png" width="64"
+                    <img src="{{asset('/logo.png')}}" width="64"
                          height="64"
                          class="d-inline-block d-md-inline-block align-center mx-auto" alt="Emotionally's logo">
-                    <img src="./app_name.svg" width="150"
+                    <img src="{{asset('/app_name.svg')}}" width="150"
                          height="30"
                          class="d-none d-md-inline" alt="Emotionally">
                 </a>
