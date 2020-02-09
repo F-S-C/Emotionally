@@ -46,9 +46,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     @extend .text-uppercase;
     @extend .text-decoration-none;
     @extend .border-0;
-    @extend .shadow-none;
+    box-shadow: none;
 
     font-weight: 500;
+
+    &:focus{
+        @extend .btn-outline-primary;
+    }
 }
 
 .clickable {
@@ -57,27 +61,4 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .dropdown.more-icon button::after {
     content: none
-}
-
-.nav-item {
-    .collapse-button-container{
-        &>a {display: inline;}
-    .collapse-button{
-        &::before{
-            font-family: "Font Awesome 5 Free", fantasy;
-            font-weight: 900;
-            margin-inline-end: 5px;
-        }
-
-        &[aria-expanded="false"]::before{
-            content: "\f054";
-        }
-        &[aria-expanded="true"]::before{
-            content: "\f078";
-        }
-    }}
-
-    ul>li {
-        @extend .ml-4;
-    }
 }

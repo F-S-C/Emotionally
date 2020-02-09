@@ -44,15 +44,23 @@
             padding: 10px;
         }
 
-        li {
+        .nav-item {
+            border-radius: 5px;
+
+            ul > li {
+                @extend .ml-4;
+            }
+
             a {
                 color: rgba(255, 255, 255, 0.8) !important;
                 text-decoration: none;
-                &:hover, &:focus{
+
+                &:hover, &:focus {
                     text-decoration: none;
                 }
             }
-            &:hover{
+
+            &:hover {
                 background-color: rgba($primary, 0.03);
             }
 
@@ -71,14 +79,59 @@
             }
         }
     }
-}
 
-a[aria-expanded="true"] {
-    color: #fff;
-}
+    & > .nav > .nav-item {
+        margin-left: auto;
+        margin-right: auto;
+        width: 95%;
 
-a[data-toggle="collapse"] {
-    position: relative;
+        & > .nav-link, & > .btn-group > .nav-link {
+            padding: 20px;
+
+            &.collapse-button {
+                padding-right: 5px;
+            }
+        }
+    }
+
+    .collapse-button {
+        & + .nav-link .project-sidebar-icon {
+            @extend .fas;
+        }
+
+        &[aria-expanded="false"] + .nav-link .project-sidebar-icon {
+            @extend .fa-folder;
+        }
+
+        &[aria-expanded="true"] + .nav-link .project-sidebar-icon {
+            @extend .fa-folder-open;
+        }
+    }
+
+    .collapse-button-container {
+        width: 100%;
+
+        & > a:not(.collapse-button) {
+            padding-left: 5px !important;
+            width: 100%;
+        }
+
+        .collapse-button {
+            &::before {
+                font-family: "Font Awesome 5 Free", fantasy;
+                font-weight: 900;
+                margin-inline-end: 5px;
+            }
+
+            &[aria-expanded="false"]::before {
+                content: "\f054";
+            }
+
+            &[aria-expanded="true"]::before {
+                content: "\f078";
+            }
+        }
+    }
 }
 
 .sidebar-content {
@@ -88,13 +141,6 @@ a[data-toggle="collapse"] {
     position: absolute;
     top: 0;
     right: 0;
-}
-
-#main {
-    padding: 15px;
-    width: 100%;
-    min-height: 100vh;
-    transition: all 0.3s;
 }
 
 .sidebar-brand {
