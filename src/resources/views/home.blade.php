@@ -20,8 +20,8 @@
             </nav>
         </header>
         <div class="table-responsive mt-3">
-            <table id="project-table" class="display w-100 table table-striped table-borderless"
-                   aria-label="@lang('dashboard.your_projects')">
+            <table id="project-table" class="display w-100 table table-striped table-borderless">
+                <caption class="sr-only">@lang('dashboard.your_projects')</caption>
                 <thead class="text-uppercase">
                 <tr>
                     <th scope="col">@lang('dashboard.name')</th>
