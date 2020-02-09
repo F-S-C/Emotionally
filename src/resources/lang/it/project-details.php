@@ -20,5 +20,7 @@ return [
     "project" => "Progetto",
     "video" => "Video",
     "more_options_project" => "Altre opzioni (progetto: ':name')",
-    "more_options_video" => "Altre opzioni (video: ':name')"
+    "more_options_video" => "Altre opzioni (video: ':name')",
+    "short-empty-project" => "Progetto vuoto",
+    "empty-project" => "Questo progetto è vuoto. Perché non <a href='#'>aggiungi un sotto-progetto</a> o <a href='#'>carichi qualcosa</a>?"
 ];

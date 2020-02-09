@@ -20,5 +20,7 @@ return [
     "project" => "Project",
     "video" => "Video",
     "more_options_project" => "More options (project: ':name')",
-    "more_options_video" => "More options (video: ':name')"
+    "more_options_video" => "More options (video: ':name')",
+    "short-empty-project" => "Empty project",
+    "empty-project" => "This project is empty. Why don't you <a href='#'>add a sub project</a> or <a href='#'>upload something</a>?"
 ];

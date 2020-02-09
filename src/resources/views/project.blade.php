@@ -27,8 +27,13 @@
 @endsection
 
 @section('inner-content')
-    @if(!isset($subprojects) && !isset($videos))
-        <p>ERRORE</p> {{-- TODO: Change error message --}}
+    @if($subprojects->isEmpty() && $videos->isEmpty())
+        <div class="text-center">
+            <img style="height: 40vh" class="mb-3" aria-hidden="true"
+                 src="{{asset('/images/undraw_sentiment_analysis.svg')}}"
+                 alt="@lang('project-details.short-empty-project')">
+            <p>@lang('project-details.empty-project')</p>
+        </div>
     @else
         <div class="row row-cols-1 row-cols-md-5">
             @each('partials.project-card', $subprojects, 'project')
