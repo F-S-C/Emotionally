@@ -8,7 +8,7 @@
     <div class="wrapper">
         <nav class="sidebar el-8dp" id="main-navigation" aria-label="Sidebar">
             <div class="sidebar-header">
-                <a class="sidebar-brand text-center w-100" style="text-decoration: none;" href="#">
+                <a class="sidebar-brand text-center w-100" style="text-decoration: none;" href="{{route('system.home')}}">
                     <img src="{{asset('/logo.png')}}" width="64"
                          height="64"
                          class="d-inline-block d-md-inline-block align-center mx-auto" alt="Emotionally's logo">
