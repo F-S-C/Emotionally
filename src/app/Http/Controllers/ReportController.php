@@ -53,6 +53,20 @@ class ReportController extends Controller
     private const CHEEK_RAISE_KEY = "cheekRaise";
     private const LIP_STRETCH_KEY = "lipStretch";
 
+    private const EMOJIS = [
+        self::JOY_KEY => '&#x1F602;',
+        self::SADNESS_KEY => '&#x1F622;',
+        self::DISGUST_KEY => '&#x1F922;',
+        self::CONTEMPT_KEY => '&#x1F928;',
+        self::ANGER_KEY => '&#x1F621;',
+        self::FEAR_KEY => '&#x1F628;',
+        self::SURPRISE_KEY => '&#x1F62E;'
+    ];
+
+    public static function get_emoji($emotion){
+        return html_entity_decode(self::EMOJIS[$emotion]);
+    }
+
     /**
      * Get the average report from a list of reports.
      * @param string|array ...$reports The reports.

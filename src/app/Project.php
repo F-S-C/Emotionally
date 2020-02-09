@@ -80,7 +80,7 @@ class Project extends Model
 
     public function getReportAttribute()
     {
-        $REPORTS = $this->videos()->get()->map(function($element){
+        $REPORTS = $this->videos()->get()->map(function ($element) {
             return json_decode($element['report'], true);
         })->toArray();
         return ReportController::average(...$REPORTS);
@@ -92,7 +92,7 @@ class Project extends Model
      */
     public function getAverageEmotionAttribute()
     {
-        return ReportController::highestEmotion($this->report); // TODO: Implement
+        return ReportController::highestEmotion($this->report);
     }
 
 }
