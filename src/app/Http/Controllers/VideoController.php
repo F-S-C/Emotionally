@@ -32,25 +32,21 @@ class VideoController extends Controller
     }
 
 
-    /**
-     * @param Request $request
-     * @param int $project_id
-     * @param int $user_id
-     */
-    public function uploadVideo(Request $request,int $project_id,int $user_id):void
-    {
-        $video=new Video();
-        $video->name = $request->input('name');
-        $video->report=array();
-        $video->url=$request->file('video')->store(User::findOrFail($user_id));
-        $video->project_id=$project_id;
-        $video->user_id=$user_id;
-        $video->start=0;
-        $video->end=;
-        $video->framerate=;
-        $video->duration=;
-        $video->save();
-    }
+    // public function uploadVideo(Request $request,int $project_id,int $user_id):void
+    // {
+    //     TODO: To be implemented by Graziano Montanaro
+    //     $video=new Video();
+    //     $video->name = $request->input('name');
+    //     $video->report=array();
+    //     $video->url=$request->file('video')->store(User::findOrFail($user_id));
+    //     $video->project_id=$project_id;
+    //     $video->user_id=$user_id;
+    //     $video->start=0;
+    //     $video->end=;
+    //     $video->framerate=;
+    //     $video->duration=;
+    //     $video->save();
+    // }
 
     public function getAllVideosUser(User $user)
     {
