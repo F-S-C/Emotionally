@@ -32,6 +32,10 @@ a {
         }
     }
 
+    .breadcrumb & {
+        text-decoration: none;
+    }
+
     &[target='_blank']::after {
         font-weight: 900;
         font-family: "Font Awesome 5 Free", sans-serif;
@@ -72,4 +76,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     @extend .shadow-none;
 
     font-weight: 500;
+}
+
+.clickable {
+    cursor: pointer;
 }

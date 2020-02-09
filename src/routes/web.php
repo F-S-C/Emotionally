@@ -15,6 +15,7 @@ Route::view('/', 'landing')->name('landing');
 
 Route::name('system.')->prefix('system')->group(function () {
     Route::get('/', 'ProjectController@getDashboard')->name('home');
-
     Route::redirect('/home', '/system/');
+
+    Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
 });

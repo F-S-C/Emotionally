@@ -29,7 +29,7 @@
             </thead>
             <tbody>
             @foreach($projects as $project)
-                <tr>
+                <tr class="clickable" data-href="/system/project/{{$project->id}}">
                     <td>{{$project['name']}}</td>
                     <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
                     <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
@@ -77,6 +77,10 @@
             $('#search-bar').on('keydown click', function () {
                 table.search($('#search-bar').val()).draw();
             });
+
+            $('.clickable').click(function () {
+                window.location = $(this).data('href');
+            })
         });
     </script>
 @endsection

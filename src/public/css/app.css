@@ -23,43 +23,43 @@
  */
 
 .el-0dp {
-  background-color: #121212;
+  background-color: #121212 !important;
 }
 
 .el-1dp {
-  background-color: #1e1e1e;
+  background-color: #1e1e1e !important;
 }
 
 .el-2dp {
-  background-color: #232323;
+  background-color: #232323 !important;
 }
 
 .el-3dp {
-  background-color: #252525;
+  background-color: #252525 !important;
 }
 
 .el-4dp {
-  background-color: #272727;
+  background-color: #272727 !important;
 }
 
 .el-6dp {
-  background-color: #2c2c2c;
+  background-color: #2c2c2c !important;
 }
 
 .el-8dp {
-  background-color: #2e2e2e;
+  background-color: #2e2e2e !important;
 }
 
 .el-12dp {
-  background-color: #333333;
+  background-color: #333333 !important;
 }
 
 .el-16dp {
-  background-color: #363636;
+  background-color: #363636 !important;
 }
 
 .el-24dp {
-  background-color: #383838;
+  background-color: #383838 !important;
 }
 
 /*!
@@ -11645,6 +11645,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.breadcrumb a {
+  text-decoration: none;
+}
+
 a[target=_blank]::after {
   font-weight: 900;
   font-family: "Font Awesome 5 Free", sans-serif;
@@ -11673,5 +11677,9 @@ h6,
 .btn.btn-md-text,
 .btn-md-text.skip-navigation {
   font-weight: 500;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
