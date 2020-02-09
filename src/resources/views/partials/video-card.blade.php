@@ -6,18 +6,19 @@
         </div>
         <div class="video-background card-img-top"></div>
         <div class="card-img-overlay project-detail-card-title" id="card-title-video-{{$video->id}}">
-            <span class="sr-only">Video: </span>
+            <span class="sr-only">@lang('project-details.video'): </span>
             <h5 class="card-title">{{$video->name}}</h5>
         </div>
         {{-- TODO: Change route --}}
-        <a class="project-card-link" href="{{route('system.project-details', $video->id)}}" aria-labelledby="card-title-video-{{$video->id}}"></a>
+        <a class="project-card-link" href="{{route('system.project-details', $video->id)}}"
+           aria-labelledby="card-title-video-{{$video->id}}"></a>
         <div class="card-img-overlay project-detail-card-options">
             <div class="dropdown">
                 <button class="btn btn-outline-light border-0 rounded-circle dropdown-toggle"
                         type="button" id="more-video-{{$video->id}}" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"
-                        title="More options (video {{$video->name}})">
-                    <span class="sr-only">More options (video {{$video->name}})</span>
+                        title="@lang('project-details.more_options_video', ['name'=>$video->name])">
+                    <span class="sr-only">@lang('project-details.more_options_video', ['name'=>$video->name])</span>
                     <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="more-video-{{$video->id}}">
