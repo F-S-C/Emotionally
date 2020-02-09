@@ -41,6 +41,7 @@
                            aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
                     </td>
                     <td>
+                        {{-- TODO: Insert dropdown menu --}}
                         <button class="btn btn-outline-light border-0 rounded-circle">
                             <span class="fas fa-ellipsis-v" aria-hidden="true"
                                   title="@lang('dashboard.more_options')"></span>
@@ -74,7 +75,7 @@
                 ],
                 "dom": '<"top"i>rt<"bottom"><"clear">',
             });
-            
+
             $('#search-bar').on('keydown click', function () {
                 table.search($('#search-bar').val()).draw();
             });
