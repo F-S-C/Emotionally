@@ -9,20 +9,7 @@
         <a class="project-card-link" href="{{route('system.project-details', $project->id)}}"
            aria-labelledby="card-title-project-{{$project->id}}"></a>
         <div class="card-img-overlay project-detail-card-options">
-            <div class="dropdown">
-                <button class="btn btn-outline-light border-0 rounded-circle dropdown-toggle"
-                        type="button" id="more-project-{{$project->id}}" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"
-                        title="@lang('project-details.more_options_project', ['name'=>$project->name])">
-                    <span class="sr-only">@lang('project-details.more_options_project', ['name'=>$project->name])</span>
-                    <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="more-project-{{$project->id}}">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </div>
+            @include('shared.dropdown-options-menu', ['id'=>'more-project-'.$project->id,'title'=>trans('project-details.more_options_project', ['name'=>$project->name])])
         </div>
     </div>
 </div>

@@ -11809,10 +11809,6 @@ a[data-toggle=collapse] {
   text-align: right;
 }
 
-.project-detail-card .project-detail-card-options .dropdown button::after {
-  content: none;
-}
-
 .project-detail-card .bg-video-placeholder-container {
   position: absolute;
   height: 100%;
@@ -11914,5 +11910,9 @@ h6,
 
 .clickable {
   cursor: pointer;
+}
+
+.dropdown.more-icon button::after {
+  content: none;
 }
 

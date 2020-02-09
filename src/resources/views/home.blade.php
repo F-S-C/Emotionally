@@ -41,12 +41,7 @@
                            aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
                     </td>
                     <td>
-                        {{-- TODO: Insert dropdown menu --}}
-                        <button class="btn btn-outline-light border-0 rounded-circle">
-                            <span class="fas fa-ellipsis-v" aria-hidden="true"
-                                  title="@lang('dashboard.more_options')"></span>
-                            <span class="sr-only">@lang('dashboard.more_options')</span>
-                        </button>
+                        @include('shared.dropdown-options-menu', ['id'=>'more-project-'.$project->id,'title'=>trans('dashboard.more_options')])
                     </td>
                 </tr>
             @endforeach
