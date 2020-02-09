@@ -37,6 +37,6 @@ $elevations: (
 
 @each $elevation, $opacity in $elevations {
   .el-#{$elevation} {
-    background-color: mix(white, $body-bg, $opacity);
+    background-color: mix(white, $body-bg, $opacity) !important;
   }
 }

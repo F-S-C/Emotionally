@@ -17,6 +17,7 @@
 // Some accessibility classes
 @import "_accessibility";
 @import "_sidebar";
+@import "_cards";
 
 a {
     text-decoration: underline;
@@ -25,7 +26,7 @@ a {
         text-decoration: none;
     }
 
-    #main-navigation & {
+    #main-navigation &, .breadcrumb &, .dropdown-menu & {
         text-decoration: none;
 
         &:hover {
@@ -73,4 +74,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     @extend .shadow-none;
 
     font-weight: 500;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.dropdown.more-icon button::after {
+    content: none
 }

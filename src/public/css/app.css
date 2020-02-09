@@ -23,43 +23,46 @@
  */
 
 .el-0dp {
-  background-color: #121212;
+  background-color: #121212 !important;
 }
 
 .el-1dp {
-  background-color: #1e1e1e;
+  background-color: #1e1e1e !important;
 }
 
-.el-2dp {
-  background-color: #232323;
+.el-2dp,
+.project-detail-card {
+  background-color: #232323 !important;
 }
 
 .el-3dp {
-  background-color: #252525;
+  background-color: #252525 !important;
 }
 
 .el-4dp {
-  background-color: #272727;
+  background-color: #272727 !important;
 }
 
 .el-6dp {
-  background-color: #2c2c2c;
+  background-color: #2c2c2c !important;
 }
 
-.el-8dp {
-  background-color: #2e2e2e;
+.el-8dp,
+.project-detail-card:hover,
+.project-detail-card:focus {
+  background-color: #2e2e2e !important;
 }
 
 .el-12dp {
-  background-color: #333333;
+  background-color: #333333 !important;
 }
 
 .el-16dp {
-  background-color: #363636;
+  background-color: #363636 !important;
 }
 
 .el-24dp {
-  background-color: #383838;
+  background-color: #383838 !important;
 }
 
 /*!
@@ -11629,6 +11632,232 @@ table.table thead tr {
   background-color: black;
 }
 
+/*!
+ * This file is part of Emotionally.
+ *
+ * Emotionally is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Emotionally is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Emotionally.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.wrapper {
+  display: -webkit-box;
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  color: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.sidebar .sidebar-header {
+  padding: 20px;
+}
+
+.sidebar ul.components {
+  padding: 20px 0;
+}
+
+.sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+.sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+.sidebar ul li.active > a {
+  color: #fff;
+}
+
+a[aria-expanded=true] {
+  color: #fff;
+}
+
+a[data-toggle=collapse] {
+  position: relative;
+}
+
+.sidebar-content {
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#main {
+  padding: 15px;
+  width: 100%;
+  min-height: 100vh;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.sidebar-brand {
+  display: inline-block;
+  padding-top: 0.32rem;
+  padding-bottom: 0.32rem;
+  /* margin-right: 1rem; */
+  font-size: 1.125rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.sidebar-brand img {
+  -webkit-transition: width 0.5s ease, height 0.5s ease;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .sidebar {
+    margin-left: 0;
+    width: 70px;
+  }
+
+  .sidebar-content {
+    width: calc(100% - 70px);
+  }
+
+  #main {
+    width: 100%;
+  }
+
+  .sidebar-brand img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/*!
+ * This file is part of Emotionally.
+ *
+ * Emotionally is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Emotionally is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Emotionally.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.project-detail-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.project-detail-card.square {
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.project-detail-card .project-card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.project-detail-card .card-title {
+  margin: 0;
+}
+
+.project-detail-card .project-detail-card-title {
+  top: unset;
+  bottom: 0;
+  text-align: center;
+}
+
+.project-detail-card .project-detail-card-options {
+  top: 0;
+  bottom: unset;
+  text-align: right;
+}
+
+.project-detail-card .bg-video-placeholder-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+
+.project-detail-card .bg-video-placeholder-container .bg-video-placeholder {
+  position: absolute;
+  height: 130%;
+  width: 130%;
+  left: -15%;
+  top: -15%;
+  background-size: cover;
+  background-position: center;
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+  opacity: 0.5;
+}
+
+.project-detail-card .folder-background::before {
+  opacity: 0.75;
+  font-size: 4rem;
+  position: absolute;
+  font-family: "Font Awesome 5 Free Regular", fantasy;
+  font-weight: 400;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  content: "\F07B";
+}
+
+.project-detail-card .video-background::before {
+  opacity: 0.75;
+  font-size: 4rem;
+  position: absolute;
+  font-family: "Font Awesome 5 Free", fantasy;
+  font-weight: 900;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  content: "\F03D";
+}
+
 a {
   text-decoration: underline;
 }
@@ -11637,11 +11866,15 @@ a:hover {
   text-decoration: none;
 }
 
-#main-navigation a {
+#main-navigation a,
+.breadcrumb a,
+.dropdown-menu a {
   text-decoration: none;
 }
 
-#main-navigation a:hover {
+#main-navigation a:hover,
+.breadcrumb a:hover,
+.dropdown-menu a:hover {
   text-decoration: underline;
 }
 
@@ -11673,5 +11906,13 @@ h6,
 .btn.btn-md-text,
 .btn-md-text.skip-navigation {
   font-weight: 500;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.dropdown.more-icon button::after {
+  content: none;
 }
 

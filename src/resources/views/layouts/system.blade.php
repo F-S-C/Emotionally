@@ -4,7 +4,7 @@
     @parent
 
     <section class="container-fluid" id="content">
-        <header>
+        <header class="mb-3">
             <h1 class="d-block d-md-inline">@yield('title')</h1>
             <nav id="breadcrumbs" class="breadcrumb-container" aria-label="breadcrumbs">
                 <ol class="breadcrumb bg-transparent">
