@@ -21,30 +21,24 @@
     @yield('body')
 
     <footer class="el-8dp text-light @yield('footer-class', '')">
-    @section('footer')
-        <div class="copyright text-white-50 py-2">
-            <div class="container-fluid px-3">
-                <p class="d-inline-block mt-md-1">
-                    Copyright &copy; 2019,
-                    <a href="https://F-S-C.github.io/" target="_blank">FSC</a>.
-                    @lang('metadata.copyright')
-                </p>
-                <img src="fsc_logo_text.png" width="140" alt="Five Students of Computer Science" class="float-md-right d-md-inline-block mr-md-3 d-none">
-                <img src="fsc_logo.svg" width="35" alt="Five Students of Computer Science" class="float-sm-right float-none d-md-none d-sm-inline-block d-none">
+        @section('footer')
+            <div class="copyright text-white-50 py-2">
+                <div class="container-fluid px-3">
+                    <p class="d-inline-block mt-md-1">
+                        Copyright &copy; 2019,
+                        <a href="https://F-S-C.github.io/" target="_blank">FSC</a>.
+                        @lang('metadata.copyright')
+                    </p>
+                    <img src="fsc_logo_text.png" width="140" alt="Five Students of Computer Science"
+                         class="float-md-right d-md-inline-block mr-md-3 d-none">
+                    <img src="fsc_logo.svg" width="35" alt="Five Students of Computer Science"
+                         class="float-sm-right float-none d-md-none d-sm-inline-block d-none">
+                </div>
             </div>
-        </div>
-    @show
+        @show
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
+    <script src="{{mix('/js/app.js')}}" type="text/javascript"></script>
 
     @yield('scripts', '')
 </body>
