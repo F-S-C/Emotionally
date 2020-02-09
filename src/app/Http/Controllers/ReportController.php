@@ -30,7 +30,7 @@ class ReportController extends Controller
      * This function get and rename a video
      * @param Video $video
      */
-    public function renameVideo(Video $video)
+    public function renameVideo(Video $video):void
     {
         $id=$video->id;
         $name=$video->name;
@@ -42,17 +42,30 @@ class ReportController extends Controller
      * This function get and delete a video
      * @param Video $video
      */
-    public function deleteVideo(Video $video)
+    public function deleteVideo(Video $video):void
     {
         $id=$video->id;
         Video::destroy($id);
     }
 
 
-    public function uploadVideo(Request $request)
+    /**
+     * @param Request $request
+     * @return false|string
+     */
+    public function uploadVideo(Request $request):void
     {
-        echo $request->file('video')->store('public');
+        $name = $request->input('name');
+        $report=$request->input('report');
+        $path=$request->file('video')->store('public');
+        
     }
+
+
+
+
+
+
 
 
 
