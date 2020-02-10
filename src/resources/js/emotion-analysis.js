@@ -19,42 +19,61 @@
 
 $ = require('jquery');
 
+/**
+ * A callback to be used at the end of an analysis.
+ * @callback AnalysisCompletedCallback
+ * @param report {string} The generated report.
+ */
+
 const EmotionAnalysis = {
     /**
      * Analyze a video.
-     * @param filename {string} The path to the video file.
+     * @param {string} filename The path to the video file.
      * This is relative to the current location in the server.
-     * @param secs {number} Where to start (in seconds)
-     * @param sec_step {number} The step size of extracting emotion (in seconds).
-     * @param stop_sec {number} Where to stop (in seconds). If undefined or less or equal to secs, the entire video will be analyzed.
+     * @param {AnalysisCompletedCallback} [callback] A callback.
+     * @param {Object} [options] The configuration of the analysis.
+     * @param {number} [options.secs=0] Where to start (in seconds)
+     * @param {number} [options.sec_step=0.1] The step size of extracting emotion (in seconds).
+     * @param {number} [options.stop_sec=undefined] Where to stop (in seconds). If undefined or less or equal to secs, the entire video will be analyzed.
      */
-    analyzeVideo: function (filename, secs = 0, sec_step = 0.1, stop_sec = undefined) {
+    analyzeVideo: function (filename, callback = undefined, options = undefined) {
         // Set verbose = true to print images and detection succes, false if you don't want info
-        var verbose = false;
+        if (options === undefined) {
+            options = {
+                secs: 0,
+                sec_step: 0,
+                stop_sec: undefined,
+            };
+        }
+
+        const verbose = false;
+        let secs = options.secs;
+        let sec_step = options.sec_step;
+        let stop_sec = options.stop_sec;
 
         // Decide whether your video has large or small face
-        var faceMode = affdex.FaceDetectorMode.SMALL_FACES;
+        const faceMode = affdex.FaceDetectorMode.SMALL_FACES;
         // var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
 
         // Decide which detector to use photo or stream
         // var detector = new affdex.PhotoDetector(faceMode);
-        var detector = new affdex.FrameDetector(faceMode);
+        const detector = new affdex.FrameDetector(faceMode);
 
         // Initialize Emotion and Expression detectors
         detector.detectAllEmotions();
         detector.detectAllExpressions();
 
         // Init variable to save results
-        var detection_results = []; // for logging all detection results.
+        let detection_results = []; // for logging all detection results.
         if (typeof stop_sec === 'undefined' || stop_sec <= secs) {
             stop_sec = Infinity
         }
 
         // Get video duration and set as global variable;
-        var me = this, video = document.createElement('video');
+        let me = this, video = document.createElement('video');
         video.src = filename;
         // video.crossOrigin = 'anonymous';
-        var duration;
+        let duration;
         // print success message when duration of video is loaded.
         video.onloadedmetadata = function () {
             duration = this.duration;
@@ -75,7 +94,7 @@ const EmotionAnalysis = {
         function getVideoImage(secs) {
             video.currentTime = Math.min(Math.max(0, (secs < 0 ? video.duration : 0) + secs), video.duration);
             video.onseeked = function (e) {
-                var canvas = document.createElement('canvas');
+                let canvas = document.createElement('canvas');
                 canvas.crossOrigin = 'anonymous';
                 canvas.height = canvas.height;
                 canvas.width = canvas.width;
@@ -105,8 +124,8 @@ const EmotionAnalysis = {
         detector.addEventListener("onImageResultsSuccess", function (faces, image, timestamp) {
             // drawImage(image);
             $('#results').html("");
-            var time_key = "Timestamp";
-            var time_val = timestamp;
+            const time_key = "Timestamp";
+            const time_val = timestamp;
             console.log('#results', "Timestamp: " + timestamp.toFixed(2));
             console.log('#results', "Number of faces found: " + faces.length);
             if (verbose) {
@@ -116,7 +135,7 @@ const EmotionAnalysis = {
                 // Append timestamp
                 faces[0].emotions[time_key] = time_val;
                 // Save both emotions and expressions
-                var json = JSON.stringify(Object.assign({}, faces[0].emotions, faces[0].expressions));
+                const json = JSON.stringify(Object.assign({}, faces[0].emotions, faces[0].expressions));
                 detection_results.push(json);
             } else {
                 // If face is not detected skip entry.
@@ -130,7 +149,7 @@ const EmotionAnalysis = {
                 console.log("EndofDuration");
                 let report = JSON.stringify(detection_results);
                 // var blob = new Blob(report, {type: "application/json"});
-                console.log(report);
+                if (callback) callback(report);
                 // var saveAs = window.saveAs;
                 // saveAs(blob, filename.split(".")[0].concat(".json"));
             }
@@ -144,7 +163,7 @@ const EmotionAnalysis = {
         }
 
         function precisionRound(number, precision) {
-            var factor = Math.pow(10, precision);
+            const factor = Math.pow(10, precision);
             return Math.round(number * factor) / factor;
         }
     }

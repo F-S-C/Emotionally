@@ -54,7 +54,7 @@
     @parent
     <script>(function ($) {
             $(document).ready(function () {
-                EmotionAnalysis.analyzeVideo("http://localhost:8000/data/sample_vid.mp4");
+                EmotionAnalysis.analyzeVideo("http://localhost:8000/data/sample_vid.mp4", console.log);
                 let table = $('#project-table').DataTable({
                     "order": [[0, "asc"]],
                     "paging": false,

@@ -57768,21 +57768,40 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/**
+ * A callback to be used at the end of an analysis.
+ * @callback AnalysisCompletedCallback
+ * @param report {string} The generated report.
+ */
+
 var EmotionAnalysis = {
   /**
    * Analyze a video.
-   * @param filename {string} The path to the video file.
+   * @param {string} filename The path to the video file.
    * This is relative to the current location in the server.
-   * @param secs {number} Where to start (in seconds)
-   * @param sec_step {number} The step size of extracting emotion (in seconds).
-   * @param stop_sec {number} Where to stop (in seconds). If undefined or less or equal to secs, the entire video will be analyzed.
+   * @param {AnalysisCompletedCallback} [callback] A callback.
+   * @param {Object} [options] The configuration of the analysis.
+   * @param {number} [options.secs=0] Where to start (in seconds)
+   * @param {number} [options.sec_step=0.1] The step size of extracting emotion (in seconds).
+   * @param {number} [options.stop_sec=undefined] Where to stop (in seconds). If undefined or less or equal to secs, the entire video will be analyzed.
    */
   analyzeVideo: function analyzeVideo(filename) {
-    var secs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var sec_step = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.1;
-    var stop_sec = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : undefined;
+    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
+
     // Set verbose = true to print images and detection succes, false if you don't want info
-    var verbose = false; // Decide whether your video has large or small face
+    if (options === undefined) {
+      options = {
+        secs: 0,
+        sec_step: 0,
+        stop_sec: undefined
+      };
+    }
+
+    var verbose = false;
+    var secs = options.secs;
+    var sec_step = options.sec_step;
+    var stop_sec = options.stop_sec; // Decide whether your video has large or small face
 
     var faceMode = affdex.FaceDetectorMode.SMALL_FACES; // var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
     // Decide which detector to use photo or stream
@@ -57882,7 +57901,7 @@ var EmotionAnalysis = {
         console.log("EndofDuration");
         var report = JSON.stringify(detection_results); // var blob = new Blob(report, {type: "application/json"});
 
-        console.log(report); // var saveAs = window.saveAs;
+        if (callback) callback(report); // var saveAs = window.saveAs;
         // saveAs(blob, filename.split(".")[0].concat(".json"));
       }
     });
