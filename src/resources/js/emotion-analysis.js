@@ -19,8 +19,13 @@
 
 $ = require('jquery');
 
+/**
+ * The interface to the emotion analysis's engine.
+ */
+class EmotionAnalysis {
+    constructor() {
+    }
 
-const EmotionAnalysis = {
     /**
      * A callback to be used at the end of an analysis.
      * @callback AnalysisCompletedCallback
@@ -37,7 +42,7 @@ const EmotionAnalysis = {
      * @param {number} [options.sec_step=0.1] The step size of extracting emotion (in seconds).
      * @param {number} [options.stop_sec=undefined] Where to stop (in seconds). If undefined or less or equal to secs, the entire video will be analyzed.
      */
-    analyzeVideo: function (filename, callback = undefined, options = undefined) {
+    static analyzeVideo(filename, callback = undefined, options = undefined) {
         // Set verbose = true to print images and detection succes, false if you don't want info
         if (options === undefined) {
             options = {
@@ -168,7 +173,7 @@ const EmotionAnalysis = {
             return Math.round(number * factor) / factor;
         }
     }
-};
+}
 
 
 exports.default = EmotionAnalysis;
