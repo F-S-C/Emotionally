@@ -19,13 +19,14 @@
 
 $ = require('jquery');
 
-/**
- * A callback to be used at the end of an analysis.
- * @callback AnalysisCompletedCallback
- * @param report {string} The generated report.
- */
 
 const EmotionAnalysis = {
+    /**
+     * A callback to be used at the end of an analysis.
+     * @callback AnalysisCompletedCallback
+     * @param report {string} The generated report.
+     */
+
     /**
      * Analyze a video.
      * @param {string} filename The path to the video file.
@@ -41,7 +42,7 @@ const EmotionAnalysis = {
         if (options === undefined) {
             options = {
                 secs: 0,
-                sec_step: 0,
+                sec_step: 0.1,
                 stop_sec: undefined,
             };
         }

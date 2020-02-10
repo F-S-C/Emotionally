@@ -57768,13 +57768,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/**
- * A callback to be used at the end of an analysis.
- * @callback AnalysisCompletedCallback
- * @param report {string} The generated report.
- */
-
 var EmotionAnalysis = {
+  /**
+   * A callback to be used at the end of an analysis.
+   * @callback AnalysisCompletedCallback
+   * @param report {string} The generated report.
+   */
+
   /**
    * Analyze a video.
    * @param {string} filename The path to the video file.
@@ -57793,7 +57793,7 @@ var EmotionAnalysis = {
     if (options === undefined) {
       options = {
         secs: 0,
-        sec_step: 0,
+        sec_step: 0.1,
         stop_sec: undefined
       };
     }
