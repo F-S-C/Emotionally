@@ -29,6 +29,11 @@
     z-index: 999;
     color: #fff;
     transition: all 0.3s;
+    overflow-y: auto;
+
+    .scroll-element {
+        z-index: 1000;
+    }
 
     .sidebar-header {
         padding: 20px;

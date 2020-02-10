@@ -18,16 +18,16 @@
 
 @section('body')
     <div class="wrapper">
-        <nav class="sidebar el-8dp" id="main-navigation" aria-label="Sidebar">
+        <nav class="sidebar el-8dp scrollbar-inner" id="main-navigation" aria-label="Sidebar">
             <div class="sidebar-header">
-                <a class="sidebar-brand text-center w-100" style="text-decoration: none;"
+                <a class="sidebar-brand text-center w-100  d-flex" style="text-decoration: none;"
                    href="{{route('system.home')}}">
                     <img src="{{asset('/logo.png')}}" width="64"
                          height="64"
                          class="d-inline-block d-md-inline-block align-center mx-auto" alt="Emotionally's logo">
-                    <img src="{{asset('/app_name.svg')}}" width="150"
-                         height="30"
-                         class="d-none d-md-inline" alt="Emotionally">
+                    <img src="{{asset('/app_name.svg')}}" width="16"
+                         height="64"
+                         class="d-none d-md-inline-block flex-fill" alt="Emotionally">
                 </a>
             </div>
 
@@ -56,13 +56,13 @@
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="#">
-                    <span aria-hidden="true" class="fas fa-file-alt mr-0 mr-md-1 text-md-center"></span>
+                        <span aria-hidden="true" class="fas fa-file-alt mr-0 mr-md-1 text-md-center"></span>
                         <span class="d-none d-md-inline">Portfolio</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="#">
-                    <span aria-hidden="true" class="fas fa-phone-alt mr-0 mr-md-1 text-md-center"></span>
+                        <span aria-hidden="true" class="fas fa-phone-alt mr-0 mr-md-1 text-md-center"></span>
                         <span class="d-none d-md-inline">Contact</span>
                     </a>
                 </li>
@@ -111,6 +111,7 @@
                     $('.collapse.in').toggleClass('in');
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
+                $('.sidebar').scrollbar();
             });
         })(jQuery);
     </script>
