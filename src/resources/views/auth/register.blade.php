@@ -1,91 +1,85 @@
-@extends('layouts.app')
+@extends('auth.style')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+@section('title','Sign Up')
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+@section('head')
+    @parent
+    <style>
+        .input-color {
+            background-color: #232323 !important;
+            color: white !important;
+        }
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0px 1000px #232323 inset;
+            -webkit-text-fill-color: white;
+            caret-color: white;
+        }
+    </style>
+@endsection
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+@section('form-name')
+    @lang('auth.sign-up')
+@endsection
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname">
-
-                                @error('surname')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+@section('form')
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            <div class="form-group">
+                <label for="name">@lang('auth.name')</label>
+                <input type="text" class="form-control input-color @error('name') border border-danger @enderror"
+                       id="name" name="name" autocomplete="name"
+                       value="{{ old('name') }}" placeholder="Name" required>
+                @error('name')<p class="text-center text-danger">{{ $message }}</p>@enderror
             </div>
-        </div>
-    </div>
-</div>
+            <div class="form-group">
+                <label for="surname">@lang('auth.surname')</label>
+                <input type="text" class="form-control input-color @error('surname') border border-danger @enderror"
+                       id="surname" name="surname" autocomplete="surname"
+                       value="{{ old('surname') }}" placeholder="Surname" required>
+                @error('surname')<p class="text-center text-danger">{{ $message }}</p>@enderror
+            </div>
+            <div class="form-group">
+                <label for="email">@lang('auth.email-address')</label>
+                <input type="text" class="form-control input-color @error('email') border border-danger @enderror"
+                       id="email" name="email" aria-describedby="email-icon" autocomplete="email"
+                       value="{{ old('email') }}" placeholder="email@email.com" required>
+                @error('email')<p class="text-center text-danger">{{ $message }}</p>@enderror
+            </div>
+            <div class="form-group">
+                <label for="password">{{ __('Password') }}</label>
+                <input type="password"
+                       class="form-control input-color @error('password') border border-danger @enderror" id="password"
+                       name="password" autocomplete="new-password"
+                       placeholder="••••••••" required>
+            </div>
+            <div class="form-group">
+                <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                <input type="password"
+                       class="form-control input-color @error('password') border border-danger @enderror" id="password-confirm"
+                       name="password_confirmation" autocomplete="new-password"
+                       placeholder="••••••••" required>
+                @error('password')<p class="text-center text-danger">{{ $message }}</p>@enderror
+            </div>
+            <button type="submit" class="btn btn-primary w-100" style="color: white;">@lang('auth.sign-up')</button>
+        </form>
+        <p id="login" class="text-center mt-3">@lang('auth.ext-user') <a
+                href="{{ route('login') }}">@lang('auth.login')</a></p>
+@endsection
+
+@section('scripts')
+    @parent
+    <script>
+        $(document).ready(function () {
+            @if($errors->has('email'))
+            $("#second-part").removeClass('m-fadeOut').addClass('m-fadeIn');
+            $("#forgot").removeClass('m-fadeOut').addClass('m-fadeIn');
+            $("#signup").removeClass('m-fadeIn').addClass('m-fadeOut');
+            $("#go").removeAttr('href').attr('style', 'color:grey;');
+            @endif
+        });
+    </script>
 @endsection

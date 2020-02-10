@@ -38,4 +38,7 @@ return [
     'bad-login' => 'Email o Password errati',
     'new-user' => 'Nuovo su Emotionally?',
     'sign-up' => 'Registrati',
+    'name' => 'Nome',
+    'surname' => 'Cognome',
+    'ext-user' => 'Gi&agrave; registrato?',
 ];

@@ -22,4 +22,7 @@ return [
     'bad-login' => 'Wrong Email or Password',
     'new-user' => 'New to Emotionally?',
     'sign-up' => 'Sign Up',
+    'name' => 'Name',
+    'surname' => 'Surname',
+    'ext-user' => 'Already registered?',
 ];

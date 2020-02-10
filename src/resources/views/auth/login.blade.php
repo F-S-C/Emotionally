@@ -1,6 +1,6 @@
 @extends('auth.style')
 
-@section('title','Log-in')
+@section('title','Login')
 
 @section('head')
     @parent
@@ -40,7 +40,7 @@
 @endsection
 
 @section('form')
-    <form method="POST" action="{{ route('login') }}" autocomplete="off" autofill="off">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
         @error('email')<p class="text-center text-danger">@lang('auth.bad-login')</p>@enderror
         <div class="form-group">
