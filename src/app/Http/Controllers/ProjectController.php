@@ -60,5 +60,13 @@ class ProjectController extends Controller
 
         return $owned_projects->merge($shared_projects);
     }
+    public function getReportProject(int $id)
+    {
+        $project = Project::find($id);
+        $videos=$project->videos;
+        foreach ($videos as $video) {
+            return $video->report;
+        }
+    }
 
 }
