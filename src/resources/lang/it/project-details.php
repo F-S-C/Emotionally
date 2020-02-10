@@ -17,18 +17,10 @@
  */
 
 return [
-    "home" => "Home",
-    "dashboard" => "Dashboard",
-    "your_projects" => "Your projects",
-    "name" => "Name",
-    "created_at" => "Created at",
-    "updated_at" => "Updated at",
-    "videos" => "Videos",
-    "subprojects" => "Subprojects",
-    "average_emotion" => "Average emotion",
-    "go_to_report" => "Go to report",
-    "more" => "More",
-    "go_to_project_report" => "Go to report page of project ':name'",
-    "report" => "Report",
-    "more_options" => "More options"
+    "project" => "Progetto",
+    "video" => "Video",
+    "more_options_project" => "Altre opzioni (progetto: ':name')",
+    "more_options_video" => "Altre opzioni (video: ':name')",
+    "short-empty-project" => "Progetto vuoto",
+    "empty-project" => "Questo progetto è vuoto. Perché non <a href='#'>aggiungi un sotto-progetto</a> o <a href='#'>carichi qualcosa</a>?"
 ];

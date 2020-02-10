@@ -19,16 +19,16 @@
 return [
     "home" => "Home",
     "dashboard" => "Dashboard",
-    "your_projects" => "Your projects",
-    "name" => "Name",
-    "created_at" => "Created at",
-    "updated_at" => "Updated at",
-    "videos" => "Videos",
-    "subprojects" => "Subprojects",
-    "average_emotion" => "Average emotion",
-    "go_to_report" => "Go to report",
-    "more" => "More",
-    "go_to_project_report" => "Go to report page of project ':name'",
+    "your_projects" => "I tuoi progetti",
+    "name" => "Nome",
+    "created_at" => "Creato il",
+    "updated_at" => "Modificato il",
+    "videos" => "Video",
+    "subprojects" => "Sotto-progetti",
+    "average_emotion" => "Emozione media",
+    "go_to_report" => "Vai al report",
+    "more" => "Altro",
+    "go_to_project_report" => "Vai alla pagina del report del progetto ':name'",
     "report" => "Report",
-    "more_options" => "More options"
+    "more_options" => "Altre opzioni"
 ];

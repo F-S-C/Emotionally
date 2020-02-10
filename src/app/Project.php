@@ -74,7 +74,7 @@ class Project extends Model
      */
     public function getNumberOfVideosAttribute()
     {
-        return 5;
+        return $this->videos()->count();
     }
 
     /**

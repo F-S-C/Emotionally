@@ -16,31 +16,8 @@
  */
 // Some accessibility classes
 @import "_accessibility";
-
-a {
-    text-decoration: underline;
-
-    &:hover {
-        text-decoration: none;
-    }
-
-    #main-navigation & {
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &[target='_blank']::after {
-        font-weight: 900;
-        font-family: "Font Awesome 5 Free", sans-serif;
-        font-size: xx-small;
-        content: '\f35d';
-        vertical-align: super;
-        margin-left: .5em;
-    }
-}
+@import "_sidebar";
+@import "_cards";
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 800;
@@ -69,7 +46,19 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     @extend .text-uppercase;
     @extend .text-decoration-none;
     @extend .border-0;
-    @extend .shadow-none;
+    box-shadow: none;
 
     font-weight: 500;
+
+    &:focus{
+        @extend .btn-outline-primary;
+    }
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.dropdown.more-icon button::after {
+    content: none
 }

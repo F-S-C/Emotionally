@@ -28,9 +28,9 @@
             </tr>
             </thead>
             <tbody>
-            @if (isset($projects))
+            @if(isset($projects))
                 @foreach($projects as $project)
-                    <tr>
+                    <tr class="clickable" data-href="{{route('system.project-details', $project->id)}}">
                         <td>{{$project['name']}}</td>
                         <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
                         <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
@@ -42,11 +42,7 @@
                                aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
                         </td>
                         <td>
-                            <button class="btn btn-outline-light border-0 rounded-circle">
-                                <span class="fas fa-ellipsis-v" aria-hidden="true"
-                                      title="@lang('dashboard.more_options')"></span>
-                                <span class="sr-only">@lang('dashboard.more_options')</span>
-                            </button>
+                            @include('shared.dropdown-options-menu', ['id'=>'more-project-'.$project->id,'title'=>trans('dashboard.more_options')])
                         </td>
                     </tr>
                 @endforeach
@@ -76,9 +72,17 @@
                 ],
                 "dom": '<"top"i>rt<"bottom"><"clear">',
             });
+
             $('#search-bar').on('keydown click', function () {
                 table.search($('#search-bar').val()).draw();
             });
+
+            $('.clickable').click(function (event) {
+                // prevent execution from bubbling if a link or a button were clicked
+                if (event.target.tagName.toLowerCase() !== 'a' && event.target.tagName.toLowerCase() !== 'button') {
+                    window.location = $(this).data('href');
+                }
+            })
         });
     </script>
 @endsection

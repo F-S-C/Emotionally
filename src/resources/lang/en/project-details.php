@@ -17,18 +17,10 @@
  */
 
 return [
-    "home" => "Home",
-    "dashboard" => "Dashboard",
-    "your_projects" => "Your projects",
-    "name" => "Name",
-    "created_at" => "Created at",
-    "updated_at" => "Updated at",
-    "videos" => "Videos",
-    "subprojects" => "Subprojects",
-    "average_emotion" => "Average emotion",
-    "go_to_report" => "Go to report",
-    "more" => "More",
-    "go_to_project_report" => "Go to report page of project ':name'",
-    "report" => "Report",
-    "more_options" => "More options"
+    "project" => "Project",
+    "video" => "Video",
+    "more_options_project" => "More options (project: ':name')",
+    "more_options_video" => "More options (video: ':name')",
+    "short-empty-project" => "Empty project",
+    "empty-project" => "This project is empty. Why don't you <a href='#'>add a sub project</a> or <a href='#'>upload something</a>?"
 ];

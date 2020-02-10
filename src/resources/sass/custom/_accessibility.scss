@@ -31,3 +31,28 @@
     background-color: black;
   }
 }
+
+a {
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    #main-navigation &, .breadcrumb &, .dropdown-menu & {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &[target='_blank']::after {
+        font-weight: 900;
+        font-family: "Font Awesome 5 Free", fantasy;
+        font-size: xx-small;
+        content: '\f35d';
+        vertical-align: super;
+        margin-left: .5em;
+    }
+}
