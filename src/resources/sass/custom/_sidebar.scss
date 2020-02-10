@@ -44,40 +44,108 @@
             padding: 10px;
         }
 
-        li a {
-            padding: 10px;
-            font-size: 1.1em;
-            display: block;
+        .nav-item {
+            border-radius: 5px;
+
+            ul > li {
+                @extend .ml-4;
+            }
+
+            a {
+                color: rgba(255, 255, 255, 0.8) !important;
+                text-decoration: none;
+
+                &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+
+            &:hover {
+                background-color: rgba($primary, 0.03);
+            }
+
+            .nav-link {
+                padding: 10px;
+                font-size: 1.1em;
+                display: block;
+            }
+
+            &.active {
+                background-color: rgba($primary, 0.08);
+
+                & > .nav-link {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    & > .nav > .nav-item {
+        margin-left: auto;
+        margin-right: auto;
+        width: 95%;
+
+        & > .nav-link, & > .btn-group > .nav-link {
+            padding: 20px;
+
+            &.collapse-button {
+                padding-right: 5px;
+            }
+        }
+    }
+
+    .collapse-button {
+        & + .nav-link .project-sidebar-icon {
+            @extend .fas;
         }
 
-        li.active > a {
-            color: #fff;
+        &[aria-expanded="false"] + .nav-link .project-sidebar-icon {
+            @extend .fa-folder;
+        }
+
+        &[aria-expanded="true"] + .nav-link .project-sidebar-icon {
+            @extend .fa-folder-open;
+        }
+    }
+
+    .collapse-button-container {
+        width: 100%;
+
+        & > a:not(.collapse-button) {
+            width: 100%;
+        }
+
+        @include media-breakpoint-up(md) {
+            & > a:not(.collapse-button) {
+                padding-left: 5px !important;
+            }
+        }
+
+        .collapse-button {
+            &::before {
+                font-family: "Font Awesome 5 Free", fantasy;
+                font-weight: 900;
+                margin-inline-end: 5px;
+            }
+
+            &[aria-expanded="false"]::before {
+                content: "\f054";
+            }
+
+            &[aria-expanded="true"]::before {
+                content: "\f078";
+            }
         }
     }
 }
 
-a[aria-expanded="true"] {
-    color: #fff;
-}
-
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
 .sidebar-content {
     width: calc(100% - 250px);
-    min-height: 100vh;
+    overflow-x: hidden;
     transition: all 0.3s;
     position: absolute;
     top: 0;
     right: 0;
-}
-
-#main {
-    padding: 15px;
-    width: 100%;
-    min-height: 100vh;
-    transition: all 0.3s;
 }
 
 .sidebar-brand {
@@ -99,19 +167,14 @@ a[data-toggle="collapse"] {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
+@include media-breakpoint-down(sm) {
     .sidebar {
         margin-left: 0;
         width: 70px;
     }
 
-    .sidebar-content
-    {
+    .sidebar-content {
         width: calc(100% - 70px);
-    }
-
-    #main {
-        width: 100%;
     }
 
     .sidebar-brand img {
