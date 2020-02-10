@@ -18,10 +18,10 @@
         <div class="row">
             <div class="col p-5">
                     <div class="row">
-                        <img src="{{ asset('/logo.png') }}" class="mx-auto d-block mt-5" width="110">
+                        <img src="{{ asset('/logo.png') }}" class="mx-auto d-block mt-5" width="110" alt="Emotionally's Logo">
                     </div>
                     <div class="row">
-                        <img src="{{ asset('/app_name.svg') }}" class="mx-auto d-block" width="150">
+                        <img src="{{ asset('/app_name.svg') }}" class="mx-auto d-block" width="150" alt="Emotionally">
                     </div>
             </div>
             <div class="w-100"></div>
