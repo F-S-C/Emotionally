@@ -15,8 +15,16 @@
  * along with Emotionally.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-const EmotionAnalysis = {
+require('jquery');
 
-};
+jQuery.noConflict(function ($) {
+    $.getScript("https://download.affectiva.com/js/3.2/affdex.js", function () {
+        const EmotionAnalysis = {
+            analyzeVideo : function() {
+
+            }
+        };
+    });
+});
 
 module.exports = EmotionAnalysis;

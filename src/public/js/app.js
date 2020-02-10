@@ -57712,7 +57712,10 @@ try {
 
   __webpack_require__(/*! datatables.net-responsive-bs4 */ "./node_modules/datatables.net-responsive-bs4/js/responsive.bootstrap4.js")();
 
-  __webpack_require__(/*! datatables.net-searchpanes-bs4 */ "./node_modules/datatables.net-searchpanes-bs4/js/searchPanes.bootstrap4.js")();
+  __webpack_require__(/*! datatables.net-searchpanes-bs4 */ "./node_modules/datatables.net-searchpanes-bs4/js/searchPanes.bootstrap4.js")(); // Import custom Affectiva Interface
+
+
+  window.EmotionAnalysis = __webpack_require__(/*! ./emotion-analysis */ "./resources/js/emotion-analysis.js");
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -57736,6 +57739,42 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/emotion-analysis.js":
+/*!******************************************!*\
+  !*** ./resources/js/emotion-analysis.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ * This file is part of Emotionally.
+ *
+ * Emotionally is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Emotionally is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Emotionally.  If not, see <http://www.gnu.org/licenses/>.
+ */
+__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+jQuery.noConflict(function ($) {
+  $.getScript("https://download.affectiva.com/js/3.2/affdex.js", function () {
+    var EmotionAnalysis = {
+      analyzeVideo: function analyzeVideo() {}
+    };
+  });
+});
+module.exports = EmotionAnalysis;
 
 /***/ }),
 
