@@ -35,15 +35,15 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text input-color @error('email') border border-danger @enderror"
-                          id="email-icon"><i class="fas fa-envelope" style="padding: 0 1px;"></i></span>
+                          id="email-icon"><em class="fas fa-envelope" style="padding: 0 1px;"></em></span>
                 </div>
                 <input type="email" class="form-control input-color @error('email') border border-danger @enderror"
                        id="email" name="email" aria-describedby="email-icon" autocomplete="email"
                        value="{{ old('email') }}" placeholder="email@email.com" required>
                 <div class="input-group-append">
                     <span class="input-group-text input-color @error('email') border border-danger @enderror"><a id="go"
-                                                                                                                 href="#"><i
-                                class="fas fa-arrow-right" style="padding: 0 1px;"></i></a></span>
+                                                                                                                 href="#"><em
+                                class="fas fa-arrow-right" style="padding: 0 1px;"></em></a></span>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text input-color @error('email') border border-danger @enderror"
-                              id="password-icon"><i class="fas fa-lock" style="padding: 0 2px;"></i></span>
+                              id="password-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
                     </div>
                     <input type="password"
                            class="form-control input-color @error('email') border border-danger @enderror" id="password"
@@ -70,7 +70,7 @@
         </div>
     </form>
     <p id="forgot" class="text-center mt-3 m-fadeOut"><a
-            href="#">@lang('auth.forgot-password')</a></p>
+            href="{{ route('password.request') }}">@lang('auth.forgot-password')</a></p>
     <p id="signup" class="text-center mt-3 m-fadeIn">@lang('auth.new-user') <a
             href="{{ route('register') }}">@lang('auth.sign-up')</a></p>
 @endsection
@@ -101,14 +101,6 @@
                 }
             });
             @endif
-            $("#forgot").click(function () {
-                var email = $("#email").val();
-                if (typeof email !== typeof undefined && email !== "")
-                    window.location.replace("{{ route('password.request') }}?email=" + email);
-                else
-                    window.location.replace("{{ route('password.request') }}");
-
-            })
         });
     </script>
 @endsection
