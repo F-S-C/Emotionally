@@ -20,6 +20,9 @@ try {
     require('datatables.net-fixedheader-bs4')();
     require('datatables.net-responsive-bs4')();
     require('datatables.net-searchpanes-bs4')();
+
+    // Import custom Affectiva Interface
+    window.EmotionAnalysis = require('./emotion-analysis');
 } catch (e) {
 }
 
