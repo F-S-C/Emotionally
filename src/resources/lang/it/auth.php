@@ -34,4 +34,8 @@ return [
     'forgot-password' => 'Hai dimenticato la password?',
     'login' => 'Accedi',
     'remember' => 'Ricordami',
+    'email-address' => 'Indirizzo Email',
+    'bad-login' => 'Email o Password errati',
+    'new-user' => 'Nuovo su Emotionally?',
+    'sign-up' => 'Registrati',
 ];

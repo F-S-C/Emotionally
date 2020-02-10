@@ -18,4 +18,8 @@ return [
     'forgot-password' => 'Forgot your password?',
     'login' => 'Login',
     'remember' => 'Remember me',
+    'email-address' => 'Email Address',
+    'bad-login' => 'Wrong Email or Password',
+    'new-user' => 'New to Emotionally?',
+    'sign-up' => 'Sign Up',
 ];

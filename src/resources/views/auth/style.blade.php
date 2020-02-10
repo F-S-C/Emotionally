@@ -26,7 +26,7 @@
             </div>
             <div class="w-100"></div>
             <div class="col px-4 px-md-5 pt-4 pb-3 mx-4 mx-sm-0 rounded el-2dp shadow-sm">
-                <h1 class="text-center mb-3">@yield('form-name')</h1>
+                <h2 class="text-center mb-3">@yield('form-name')</h2>
                 @yield('form')
             </div>
         </div>
