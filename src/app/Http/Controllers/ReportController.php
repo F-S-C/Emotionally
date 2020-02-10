@@ -74,6 +74,7 @@ class ReportController extends Controller
      */
     public static function average(...$reports)
     {
+        // TODO: Fix the average report generation: if there's multiple reports, the total average report must be generated using the single average reports.
         $averageReport = [
             self::JOY_KEY => 0,
             self::SADNESS_KEY => 0,
