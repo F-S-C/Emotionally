@@ -66,8 +66,11 @@
                         <span class="d-none d-md-inline">Contact</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                <li class="nav-item text-center text-md-left">
+                    <a class="nav-link" href="{{ route('logout') }}">
+                        <span aria-hidden="true" class="fas fa-sign-out-alt mr-0 mr-md-1 text-md-center"></span>
+                        <span class="d-none d-md-inline">Logout</span>
+                    </a>
                 </li>
             </ul>
 
