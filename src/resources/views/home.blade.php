@@ -28,27 +28,29 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($projects as $project)
-                <tr>
-                    <td>{{$project['name']}}</td>
-                    <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
-                    <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
-                    <td class="text-center">{{$project->number_of_videos}}</td>
-                    <td class="text-center">{{$project->number_of_subprojects}}</td>
-                    <td class="text-center">{{$project->average_emotion}}</td>
-                    <td class="text-center">
-                        <a href="#" class="btn btn-md-text"
-                           aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-light border-0 rounded-circle">
-                            <span class="fas fa-ellipsis-v" aria-hidden="true"
-                                  title="@lang('dashboard.more_options')"></span>
-                            <span class="sr-only">@lang('dashboard.more_options')</span>
-                        </button>
-                    </td>
-                </tr>
-            @endforeach
+            @if (isset($projects))
+                @foreach($projects as $project)
+                    <tr>
+                        <td>{{$project['name']}}</td>
+                        <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
+                        <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
+                        <td class="text-center">{{$project->number_of_videos}}</td>
+                        <td class="text-center">{{$project->number_of_subprojects}}</td>
+                        <td class="text-center">{{$project->average_emotion}}</td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-md-text"
+                               aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-light border-0 rounded-circle">
+                                <span class="fas fa-ellipsis-v" aria-hidden="true"
+                                      title="@lang('dashboard.more_options')"></span>
+                                <span class="sr-only">@lang('dashboard.more_options')</span>
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>
