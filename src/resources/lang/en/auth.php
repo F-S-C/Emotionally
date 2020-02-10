@@ -29,4 +29,5 @@ return [
     'send-reset-link' => 'Send Password Reset Link',
     'change-mind' => 'Did you change your mind?',
     'go-to-landing' => 'Go to landing page',
+    'password-confirm' => 'Confirm Password',
 ];

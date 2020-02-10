@@ -11,6 +11,20 @@
             background-position: center;
         }
 
+        .input-color {
+            background-color: #232323 !important;
+            color: white !important;
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0px 1000px #232323 inset;
+            -webkit-text-fill-color: white;
+            caret-color: white;
+        }
+
         .w-small{
             width: 60%!important;
         }
@@ -40,7 +54,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col px-md-5 pt-4 pb-3 mb-2 rounded el-2dp shadow-sm">
+            <div class="col px-md-5 pt-4 pb-3 mb-2 rounded el-2dp shadow">
                 <h2 class="text-center mb-3">@yield('form-name')</h2>
                 @yield('form')
             </div>

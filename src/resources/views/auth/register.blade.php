@@ -2,25 +2,6 @@
 
 @section('title','Sign Up')
 
-@section('head')
-    @parent
-    <style>
-        .input-color {
-            background-color: #232323 !important;
-            color: white !important;
-        }
-
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
-        input:-webkit-autofill:active {
-            -webkit-box-shadow: 0 0 0px 1000px #232323 inset;
-            -webkit-text-fill-color: white;
-            caret-color: white;
-        }
-    </style>
-@endsection
-
 @section('form-name')
     @lang('auth.sign-up')
 @endsection
@@ -57,7 +38,7 @@
                    placeholder="••••••••" required>
         </div>
         <div class="form-group">
-            <label for="password-confirm">{{ __('Confirm Password') }}</label>
+            <label for="password-confirm">@lang('auth.password-confirm')</label>
             <input type="password"
                    class="form-control input-color @error('password') border border-danger @enderror"
                    id="password-confirm"

@@ -45,4 +45,5 @@ return [
     'send-reset-link' => 'Invia il link di reset',
     'change-mind' => 'Hai cambiato idea?',
     'go-to-landing' => 'Vai alla pagina principale',
+    'password-confirm' => 'Reinserisci la Password',
 ];
