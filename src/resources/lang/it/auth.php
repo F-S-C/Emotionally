@@ -41,4 +41,8 @@ return [
     'name' => 'Nome',
     'surname' => 'Cognome',
     'ext-user' => 'Gi&agrave; registrato?',
+    'reset-password' => 'Reimposta la tua password',
+    'send-reset-link' => 'Invia il link di reset',
+    'change-mind' => 'Hai cambiato idea?',
+    'go-to-landing' => 'Vai alla pagina principale',
 ];

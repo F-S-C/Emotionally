@@ -13,13 +13,13 @@
 
 Route::view('/', 'landing')->name('landing');
 
-Route::name('system.')->middleware('auth')->prefix('system')->group(function () {
+Route::name('system.')->middleware('auth')->middleware('verified')->prefix('system')->group(function () {
     Route::get('/', 'ProjectController@getDashboard')->name('home');
 
     Route::redirect('/home', '/system/');
 });
 
-Auth::routes();
+Auth::routes(/*['verify' => true]*/);
 
 Route::get('/logout', function(){
     Auth::logout();

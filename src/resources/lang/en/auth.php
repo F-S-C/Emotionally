@@ -25,4 +25,8 @@ return [
     'name' => 'Name',
     'surname' => 'Surname',
     'ext-user' => 'Already registered?',
+    'reset-password' => 'Reset your Password',
+    'send-reset-link' => 'Send Password Reset Link',
+    'change-mind' => 'Did you change your mind?',
+    'go-to-landing' => 'Go to landing page',
 ];
