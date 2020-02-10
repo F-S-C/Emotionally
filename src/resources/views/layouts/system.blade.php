@@ -17,3 +17,8 @@
 
     </section>
 @endsection
+
+@section("scripts")
+    @parent
+    <script type="text/javascript" src="https://download.affectiva.com/js/3.2/affdex.js"></script>
+@endsection

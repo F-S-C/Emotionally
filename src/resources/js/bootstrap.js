@@ -15,14 +15,14 @@ try {
     // Import jQuery.Scrollbar (https://www.npmjs.com/package/jquery.scrollbar)
     require('jquery.scrollbar');
 
+    // Import custom Affectiva Interface
+    window.EmotionAnalysis = require('./emotion-analysis').default;
+
     // Import datatables
     require('datatables.net-bs4')();
     require('datatables.net-fixedheader-bs4')();
     require('datatables.net-responsive-bs4')();
     require('datatables.net-searchpanes-bs4')();
-
-    // Import custom Affectiva Interface
-    window.EmotionAnalysis = require('./emotion-analysis');
 } catch (e) {
 }
 
