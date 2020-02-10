@@ -62,11 +62,13 @@ class ProjectController extends Controller
     }
     public function getReportProject(int $id)
     {
+        $json = array();
         $project = Project::find($id);
         $videos=$project->videos;
         foreach ($videos as $video) {
-            return $video->report;
+            array_unshift($json, $video->report);
         }
+        return $json;
     }
 
 }
