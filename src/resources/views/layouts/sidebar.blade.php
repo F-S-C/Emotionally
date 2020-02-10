@@ -6,8 +6,12 @@
         #main {
             padding: 15px;
             width: 100%;
-            min-height: 100vh;
+            min-height: 100%;
             transition: all 0.3s;
+        }
+
+        #main {
+            width: 100%;
         }
     </style>
 @endsection
@@ -34,8 +38,8 @@
                         <a type="button" class="nav-link collapse-button d-none d-md-block" data-toggle="collapse"
                            href="#projects-container"
                            role="button" aria-expanded="false" aria-controls="projects-container"></a>
-                        <a class="nav-link text-center text-md-left px-0" href="{{route('system.home')}}">
-                            <span aria-hidden="true" class="fas fa-home mr-1 text-md-center"></span>
+                        <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
+                            <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
                             <span class="d-none d-md-inline">Projects</span>
                         </a>
                     </div>
@@ -44,14 +48,23 @@
                         @each('partials.project-tree-view', \Emotionally\User::first()->projects->where('father_id', null), 'main_project')
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                <li class="nav-item text-center text-md-left">
+                    <a class="nav-link text-center text-md-left" href="#">
+                        <span aria-hidden="true" class="fas fa-info-circle mr-0 mr-md-1 text-md-center"></span>
+                        <span class="d-none d-md-inline">About</span>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
+                <li class="nav-item text-center text-md-left">
+                    <a class="nav-link" href="#">
+                    <span aria-hidden="true" class="fas fa-file-alt mr-0 mr-md-1 text-md-center"></span>
+                        <span class="d-none d-md-inline">Portfolio</span>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                <li class="nav-item text-center text-md-left">
+                    <a class="nav-link" href="#">
+                    <span aria-hidden="true" class="fas fa-phone-alt mr-0 mr-md-1 text-md-center"></span>
+                        <span class="d-none d-md-inline">Contact</span>
+                    </a>
                 </li>
             </ul>
 

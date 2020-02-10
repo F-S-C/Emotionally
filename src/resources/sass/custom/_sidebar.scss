@@ -112,8 +112,13 @@
         width: 100%;
 
         & > a:not(.collapse-button) {
-            padding-left: 5px !important;
             width: 100%;
+        }
+
+        @include media-breakpoint-up(md) {
+            & > a:not(.collapse-button) {
+                padding-left: 5px !important;
+            }
         }
 
         .collapse-button {
@@ -136,7 +141,7 @@
 
 .sidebar-content {
     width: calc(100% - 250px);
-    min-height: 100vh;
+    overflow-x: hidden;
     transition: all 0.3s;
     position: absolute;
     top: 0;
@@ -162,7 +167,7 @@
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
+@include media-breakpoint-down(sm) {
     .sidebar {
         margin-left: 0;
         width: 70px;
@@ -170,10 +175,6 @@
 
     .sidebar-content {
         width: calc(100% - 70px);
-    }
-
-    #main {
-        width: 100%;
     }
 
     .sidebar-brand img {
