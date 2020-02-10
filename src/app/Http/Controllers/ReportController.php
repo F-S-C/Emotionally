@@ -125,7 +125,8 @@ class ReportController extends Controller
         }
 
         foreach ($averageReport as &$value) {
-            $value /= $iterated;
+            if($iterated == 0) $value = 0;
+            else $value /= $iterated;
         }
 
         return $averageReport;

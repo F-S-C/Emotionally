@@ -42,7 +42,7 @@
                         </span>
                     </td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-md-text"
+                        <a href="{{route('system.report-project', $project->id)}}" class="btn btn-md-text"
                            aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
                     </td>
                     <td>

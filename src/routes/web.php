@@ -18,4 +18,9 @@ Route::name('system.')->prefix('system')->group(function () {
     Route::redirect('/home', '/system/');
 
     Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+
+    Route::get('/report-video/{id}', 'VideoController@getReportVideo')->name('report-video');
+
+    Route::get('/report-project/{id}', 'ProjectController@getReportProject')->name('report-project');
 });
+
