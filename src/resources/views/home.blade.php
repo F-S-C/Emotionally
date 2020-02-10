@@ -28,23 +28,25 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($projects as $project)
-                <tr class="clickable" data-href="{{route('system.project-details', $project->id)}}">
-                    <td>{{$project['name']}}</td>
-                    <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
-                    <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
-                    <td class="text-center">{{$project->number_of_videos}}</td>
-                    <td class="text-center">{{$project->number_of_subprojects}}</td>
-                    <td class="text-center">{{$project->average_emotion}}</td>
-                    <td class="text-center">
-                        <a href="#" class="btn btn-md-text"
-                           aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
-                    </td>
-                    <td>
-                        @include('shared.dropdown-options-menu', ['id'=>'more-project-'.$project->id,'title'=>trans('dashboard.more_options')])
-                    </td>
-                </tr>
-            @endforeach
+            @if(isset($projects))
+                @foreach($projects as $project)
+                    <tr class="clickable" data-href="{{route('system.project-details', $project->id)}}">
+                        <td>{{$project['name']}}</td>
+                        <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
+                        <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
+                        <td class="text-center">{{$project->number_of_videos}}</td>
+                        <td class="text-center">{{$project->number_of_subprojects}}</td>
+                        <td class="text-center">{{$project->average_emotion}}</td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-md-text"
+                               aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
+                        </td>
+                        <td>
+                            @include('shared.dropdown-options-menu', ['id'=>'more-project-'.$project->id,'title'=>trans('dashboard.more_options')])
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>
