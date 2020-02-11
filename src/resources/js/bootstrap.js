@@ -15,6 +15,9 @@ try {
     // Import jQuery.Scrollbar (https://www.npmjs.com/package/jquery.scrollbar)
     require('jquery.scrollbar');
 
+    // Import Chart.js
+    require('chart.js');
+
     // Import datatables
     require('datatables.net-bs4')();
     require('datatables.net-fixedheader-bs4')();
