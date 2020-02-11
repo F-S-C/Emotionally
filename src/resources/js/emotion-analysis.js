@@ -203,6 +203,8 @@ class EmotionAnalysis {
      * Analyze a real-time recording using the webcam.
      * @param {AnalysisCompletedCallback} [callback] A callback.
      * @param {Configuration} [options] The configuration of the analysis
+     * @return {{start:function, end:function, reset:function}} A series of
+     * references to functions to start, stop and reset the analysis.
      */
     static analyzeCamera(callback = undefined, options = undefined) {
         if (options === undefined) {
