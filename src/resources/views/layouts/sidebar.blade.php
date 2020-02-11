@@ -4,7 +4,7 @@
     @parent
     <style>
         #main {
-            padding: 15px;
+            padding: 15px 15px 64px;
             width: 100%;
             min-height: 100%;
             transition: all 0.3s;
@@ -33,15 +33,22 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item active">
-                    <div class="btn-group collapse-button-container">
-                        <a type="button" class="nav-link collapse-button d-none d-md-block" data-toggle="collapse"
-                           href="#projects-container"
-                           role="button" aria-expanded="false" aria-controls="projects-container"></a>
+                    @if(!Auth::user()->projects->isEmpty())
+                        <div class="btn-group collapse-button-container">
+                            <a type="button" class="nav-link collapse-button d-none d-md-block" data-toggle="collapse"
+                               href="#projects-container"
+                               role="button" aria-expanded="false" aria-controls="projects-container"></a>
+                            <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
+                                <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
+                                <span class="d-none d-md-inline">Projects</span>
+                            </a>
+                        </div>
+                    @else
                         <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                             <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
                             <span class="d-none d-md-inline">Projects</span>
                         </a>
-                    </div>
+                    @endif
                     <ul class="collapse el-3dp nav flex-column flex-nowrap" id="projects-container">
                         @each('partials.project-tree-view', Auth::user()->projects->where('father_id', null), 'main_project')
                     </ul>

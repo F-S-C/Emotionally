@@ -56,7 +56,7 @@
     <section id="landing">
         <div class="splash-screen">
             <div class="inner el-12dp">
-                <img class="logo" src="logo.png"
+                <img class="logo" src="{{asset('/logo.png')}}"
                      alt="Emotionally's Logo">
                 <h1 itemprop="name">Emotionally</h1>
                 <p itemprop="headline">{{ trans('metadata.description') }}</p>
