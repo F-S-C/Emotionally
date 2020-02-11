@@ -71,20 +71,22 @@
 
 @section('scripts')
     <script>
-        var radar = document.getElementById("radar").getContext("2d");
-        var bar = document.getElementById("bar").getContext("2d");
+        let data = @json($report);
+
+        let radar = document.getElementById("radar").getContext("2d");
+        let bar = document.getElementById("bar").getContext("2d");
 
         new Chart(radar, {
             type: 'radar',
             data: {
-                labels: ['Anger', 'Contempt', 'Disgust', 'Fear', 'Joy', 'Sadness', 'Surprise'],
-                datasets: [1].map(function (i) {
-                    return {
+                labels: Object.keys(data[0]).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                datasets: [
+                    {
                         label: 'Video test',
-                        data: [0, 0, 0, 0, 0, 0, 0].map(Math.random),
+                        data: Object.keys(data[0]).map(el => data[0][el]),
                         fill: true
-                    };
-                })
+                    }
+                ]
             },
             options: {
                 scale: {
@@ -119,14 +121,14 @@
         new Chart(bar, {
             type: 'bar',
             data: {
-                labels: ['Anger', 'Contempt', 'Disgust', 'Fear', 'Joy', 'Sadness', 'Surprise'],
-                datasets: [1].map(function (i) {
-                    return {
+                labels: Object.keys(data[0]).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                datasets: [
+                    {
                         label: 'Emotions',
-                        data: [0, 0, 0, 0, 0, 0, 0].map(Math.random),
+                        data: Object.keys(data[0]).map(el => data[0][el]),
                         fill: false
-                    };
-                })
+                    }
+                ]
             },
             options: {
                 scales: {

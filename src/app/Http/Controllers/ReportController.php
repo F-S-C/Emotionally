@@ -164,4 +164,40 @@ class ReportController extends Controller
         }
         return array_keys($useful_values, max($useful_values))[0];
     }
+
+    /**
+     * Get the emotion section from a report.
+     * @param array|string $report The report.
+     * @return array The emotions recorded in the report
+     */
+    public static function getEmotionValues($report)
+    {
+        if (is_string($report)) {
+            $report = json_decode($report, true);
+        } elseif (!is_array($report)) {
+            throw new \InvalidArgumentException("The input isn't a JSON string or an array:" . json_encode($report));
+        }
+
+        if (substr(json_encode($report), 0, 1) == "{") {
+            $report = array($report);
+        }
+
+        $final = array();
+        foreach ($report as $single_report) {
+            $useful_values = [
+                self::JOY_KEY => 0,
+                self::SADNESS_KEY => 0,
+                self::DISGUST_KEY => 0,
+                self::CONTEMPT_KEY => 0,
+                self::ANGER_KEY => 0,
+                self::FEAR_KEY => 0,
+                self::SURPRISE_KEY => 0
+            ];
+            foreach ($useful_values as $key => &$value) {
+                $value = $single_report[$key];
+            }
+            array_push($final, $useful_values);
+        }
+        return $final;
+    }
 }

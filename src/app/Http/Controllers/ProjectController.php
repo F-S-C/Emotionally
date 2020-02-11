@@ -73,6 +73,7 @@ class ProjectController extends Controller
         $current_project = Project::findOrFail($id);
         return view('report-project')
             ->with('project', $current_project)
+            ->with('report', ReportController::getEmotionValues($current_project->report))
             ->with('path', self::getProjectChain($current_project));
     }
 
