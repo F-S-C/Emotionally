@@ -103,7 +103,7 @@ class EmotionAnalysis {
         }
 
         // Get video duration and set as global variable;
-        let me = this, video = document.createElement('video');
+        let video = document.createElement('video');
         video.src = filename;
         // video.crossOrigin = 'anonymous';
         let duration;
@@ -124,17 +124,17 @@ class EmotionAnalysis {
         });
 
 // This portion grabs image from the video
-        function getVideoImage(secs) {
-            video.currentTime = Math.min(Math.max(0, (secs < 0 ? video.duration : 0) + secs), video.duration);
+        function getVideoImage(seconds) {
+            video.currentTime = Math.min(Math.max(0, (seconds < 0 ? video.duration : 0) + seconds), video.duration);
             video.onseeked = function (e) {
                 let canvas = document.createElement('canvas');
                 canvas.crossOrigin = 'anonymous';
                 // canvas.width = 640;
                 // canvas.height = 480;
 
-                var ctx = canvas.getContext('2d');
+                let ctx = canvas.getContext('2d');
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                var img = new Image();
+                let img = new Image();
                 img.src = canvas.toDataURL();
                 if (verbose) {
                     document.getElementById("logs").appendChild(img);
@@ -142,8 +142,8 @@ class EmotionAnalysis {
                 }
                 // Pass the image to the detector to track emotions
                 if (detector && detector.isRunning) {
-                    log("#logs", "Processing second : ".concat(precisionRound(secs, 3).toString()));
-                    detector.process(ctx.getImageData(0, 0, canvas.width, canvas.height), secs);
+                    log("#logs", "Processing second : ".concat(precisionRound(seconds, 3).toString()));
+                    detector.process(ctx.getImageData(0, 0, canvas.width, canvas.height), seconds);
                 }
 
             };
@@ -254,7 +254,7 @@ class EmotionAnalysis {
                 detector.stop();
             }
             callback(detection_results);
-        };
+        }
 
         //function executes when the Reset button is pushed.
         function onReset() {
@@ -264,7 +264,7 @@ class EmotionAnalysis {
                 // $('#results').html("");
             }
             detection_results = [];
-        };
+        }
 
         //Add a callback to notify when camera access is allowed
         detector.addEventListener("onWebcamConnectSuccess", function () {
@@ -273,7 +273,7 @@ class EmotionAnalysis {
 
         //Add a callback to notify when camera access is denied
         detector.addEventListener("onWebcamConnectFailure", function (er) {
-            console.log("Webcam access denied" +er);
+            console.log("Webcam access denied" + er);
         });
 
         //Add a callback to notify when detector is stopped
@@ -312,7 +312,7 @@ class EmotionAnalysis {
 
             let hRatio = contxt.canvas.width / img.width;
             let vRatio = contxt.canvas.height / img.height;
-            let ratio = Math.min(hRatio, vRatio);
+            // let ratio = Math.min(hRatio, vRatio);
 
             contxt.strokeStyle = "#FFFFFF";
             for (let id in featurePoints) {
