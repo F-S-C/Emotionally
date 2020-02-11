@@ -57775,20 +57775,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /**
- * A collection of possible face modes.
- * @typedef {number} FaceMode
- * @enum {number}
- * @readonly
- */
-
-var _FaceMode = {
-  /** A value to be used if the video has large faces */
-  LARGE_FACES: affdex.FaceDetectorMode.LARGE_FACES,
-
-  /** A value to be used if the video has small faces */
-  SMALL_FACES: affdex.FaceDetectorMode.SMALL_FACES
-};
-/**
  * The interface to the emotion analysis's engine.
  */
 
@@ -57798,6 +57784,13 @@ function () {
   function EmotionAnalysis() {
     _classCallCheck(this, EmotionAnalysis);
   }
+  /**
+   * A collection of possible face modes.
+   * @typedef {number} FaceMode
+   * @enum {number}
+   * @readonly
+   */
+
 
   _createClass(EmotionAnalysis, null, [{
     key: "getDefaultConfiguration",
@@ -57975,12 +57968,17 @@ function () {
     value: function analyzeCamera() {
       var callback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-      // SDK Needs to create video and canvas nodes in the DOM in order to function
+
+      if (options === undefined) {
+        options = EmotionAnalysis.getDefaultConfiguration();
+      } // SDK Needs to create video and canvas nodes in the DOM in order to function
       // Here we are adding those nodes a predefined div.
+
+
       var divRoot = $("#affdex_elements")[0];
       var width = 640;
       var height = 480;
-      var faceMode = affdex.FaceDetectorMode.LARGE_FACES; //Construct a CameraDetector and specify the image width / height and face detector mode.
+      var faceMode = options.faceMode; //Construct a CameraDetector and specify the image width / height and face detector mode.
 
       var detector = new affdex.CameraDetector(divRoot, width, height, faceMode); //Enable detection of all Expressions, Emotions and Emojis classifiers.
 
@@ -57997,7 +57995,7 @@ function () {
       });
 
       function log(node_name, msg) {
-        $(node_name).append("<span>" + msg + "</span><br />");
+        console.log(msg);
       } //function executes when Start button is pushed.
 
 
@@ -58026,8 +58024,7 @@ function () {
         log('#logs', "Clicked the reset button");
 
         if (detector && detector.isRunning) {
-          detector.reset();
-          $('#results').html("");
+          detector.reset(); // $('#results').html("");
         }
       }
 
@@ -58043,14 +58040,13 @@ function () {
       }); //Add a callback to notify when detector is stopped
 
       detector.addEventListener("onStopSuccess", function () {
-        log('#logs', "The detector reports stopped");
-        $("#results").html("");
+        log('#logs', "The detector reports stopped"); // $("#results").html("");
       }); //Add a callback to receive the results from processing an image.
       //The faces object contains the list of the faces detected in an image.
       //Faces object contains probabilities for all the different expressions, emotions and appearance metrics
 
       detector.addEventListener("onImageResultsSuccess", function (faces, image, timestamp) {
-        $('#results').html("");
+        // $('#results').html("");
         log('#results', "Timestamp: " + timestamp.toFixed(2));
         log('#results', "Number of faces found: " + faces.length);
 
@@ -58080,11 +58076,23 @@ function () {
           contxt.stroke();
         }
       }
+
+      return {
+        start: onStart,
+        reset: onReset,
+        stop: onStop
+      };
     }
   }, {
     key: "FaceMode",
     get: function get() {
-      return _FaceMode;
+      return {
+        /** A value to be used if the video has large faces */
+        LARGE_FACES: affdex.FaceDetectorMode.LARGE_FACES,
+
+        /** A value to be used if the video has small faces */
+        SMALL_FACES: affdex.FaceDetectorMode.SMALL_FACES
+      };
     }
   }]);
 
