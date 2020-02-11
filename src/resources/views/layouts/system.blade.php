@@ -20,5 +20,6 @@
 
 @section("scripts")
     @parent
-    <script type="text/javascript" src="https://download.affectiva.com/js/3.2/affdex.js"></script>
+    <script type="text/javascript" src="{{mix('/js/vendor/affdex.js')}}"></script>
+    <script type="text/javascript" src="{{mix('/js/emotion-analysis.js')}}"></script>
 @endsection

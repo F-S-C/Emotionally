@@ -334,6 +334,6 @@ class EmotionAnalysis {
     }
 }
 
-
-exports.default = EmotionAnalysis;
+window.EmotionAnalysis = EmotionAnalysis;
+// exports.default = EmotionAnalysis;
 // export default EmotionAnalysis;
