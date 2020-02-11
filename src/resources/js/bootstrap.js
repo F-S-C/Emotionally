@@ -17,6 +17,7 @@ try {
 
     // Import Chart.js
     window.Chart = require('chart.js');
+    require('chartjs-plugin-colorschemes');
 
     // Import datatables
     require('datatables.net-bs4')();
