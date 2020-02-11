@@ -24,7 +24,10 @@ Route::name('system.')
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
 
-        Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+        Route::middleware('permissions')
+            ->group(function () {
+                Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+            });
     });
 
 Auth::routes(/*['verify' => true]*/);
