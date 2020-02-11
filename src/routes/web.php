@@ -11,6 +11,9 @@
 |
 */
 
+// TODO: Remove
+Route::view('/test-webcam', 'test-webcam')->name('webcam');
+
 Route::view('/', 'landing')->name('landing');
 
 Route::name('system.')->prefix('system')->group(function () {

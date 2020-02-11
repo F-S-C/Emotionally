@@ -47,10 +47,6 @@
             @endforeach
             </tbody>
         </table>
-
-        <div class="col-md-8" id="affdex_elements" style="width:680px;height:480px;position:absolute; top:64px;right:0; border:1px solid white;"></div>
-        <button id="start">Start</button>
-        <button id="stop">Stop</button>
     </div>
 @endsection
 
@@ -58,9 +54,6 @@
     @parent
     <script>(function ($) {
             $(document).ready(function () {
-                let functions = EmotionAnalysis.analyzeCamera(console.log);
-                $('#start').click(functions.start);
-                $('#stop').click(function(){functions.stop(); functions.reset();});
                 let table = $('#project-table').DataTable({
                     "order": [[0, "asc"]],
                     "paging": false,

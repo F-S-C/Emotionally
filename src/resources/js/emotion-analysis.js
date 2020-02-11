@@ -220,6 +220,8 @@ class EmotionAnalysis {
         //Construct a CameraDetector and specify the image width / height and face detector mode.
         const detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
 
+        let detection_results = [];
+
         //Enable detection of all Expressions, Emotions and Emojis classifiers.
         detector.detectAllEmotions();
         detector.detectAllExpressions();
@@ -241,7 +243,6 @@ class EmotionAnalysis {
         //function executes when Start button is pushed.
         function onStart() {
             if (detector && !detector.isRunning) {
-                $("#logs").html("");
                 detector.start();
             }
             log('#logs', "Clicked the start button");
@@ -254,6 +255,7 @@ class EmotionAnalysis {
                 detector.removeEventListener();
                 detector.stop();
             }
+            callback(detection_results);
         };
 
         //function executes when the Reset button is pushed.
@@ -261,9 +263,9 @@ class EmotionAnalysis {
             log('#logs', "Clicked the reset button");
             if (detector && detector.isRunning) {
                 detector.reset();
-
                 // $('#results').html("");
             }
+            detection_results = [];
         };
 
         //Add a callback to notify when camera access is allowed
@@ -272,15 +274,13 @@ class EmotionAnalysis {
         });
 
         //Add a callback to notify when camera access is denied
-        detector.addEventListener("onWebcamConnectFailure", function () {
-            log('#logs', "webcam denied");
-            console.log("Webcam access denied");
+        detector.addEventListener("onWebcamConnectFailure", function (er) {
+            console.log("Webcam access denied" +er);
         });
 
         //Add a callback to notify when detector is stopped
         detector.addEventListener("onStopSuccess", function () {
             log('#logs', "The detector reports stopped");
-            // $("#results").html("");
         });
 
         //Add a callback to receive the results from processing an image.
@@ -291,16 +291,20 @@ class EmotionAnalysis {
             log('#results', "Timestamp: " + timestamp.toFixed(2));
             log('#results', "Number of faces found: " + faces.length);
             if (faces.length > 0) {
-                log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
-                log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function (key, val) {
-                    return val.toFixed ? Number(val.toFixed(0)) : val;
-                }));
-                log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function (key, val) {
-                    return val.toFixed ? Number(val.toFixed(0)) : val;
-                }));
-                log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);
-                if ($('#face_video_canvas')[0] != null)
-                    drawFeaturePoints(image, faces[0].featurePoints);
+                // detection_results = faces[0];
+                let json = JSON.stringify(Object.assign({}, faces[0].emotions, faces[0].expressions));
+                // log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
+                // log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function (key, val) {
+                //     return val.toFixed ? Number(val.toFixed(0)) : val;
+                // }));
+                // log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function (key, val) {
+                //     return val.toFixed ? Number(val.toFixed(0)) : val;
+                // }));
+                // log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);
+                // if ($('#face_video_canvas')[0] != null) {
+                //     drawFeaturePoints(image, faces[0].featurePoints);
+                // }
+                detection_results.push(json)
             }
         });
 
