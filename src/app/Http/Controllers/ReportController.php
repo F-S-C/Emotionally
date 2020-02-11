@@ -149,7 +149,17 @@ class ReportController extends Controller
      */
     public static function highestEmotion(...$reports)
     {
-        $totalAverageReport = self::average(...$reports);
+        if (is_string($reports)) {
+            $report = json_decode($reports, true);
+        } elseif (!is_array($reports)) {
+            throw new \InvalidArgumentException("The input isn't a JSON string or an array:" . json_encode($reports));
+        }
+
+        if (substr(json_encode($reports), 0, 1) == "{") {
+            $reports = array($reports);
+        }
+        $totalAverageReport = sizeof($reports) > 1 ? self::average(...$reports) : $reports[0];
+
         $useful_values = [
             self::JOY_KEY => 0,
             self::SADNESS_KEY => 0,
@@ -160,7 +170,7 @@ class ReportController extends Controller
             self::SURPRISE_KEY => 0
         ];
         foreach ($useful_values as $key => &$value) {
-            $value = $totalAverageReport[$key];
+            $value = $totalAverageReport[$key] * 100;
         }
         return array_keys($useful_values, max($useful_values))[0];
     }
