@@ -83,7 +83,7 @@
                 datasets: [
                     {
                         label: 'Video test',
-                        data: Object.keys(data[0]).map(el => data[0][el]),
+                        data: Object.keys(data[0]).map(el => data[0][el] * 100),
                         fill: true
                     }
                 ]
@@ -125,7 +125,7 @@
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(data[0]).map(el => data[0][el]),
+                        data: Object.keys(data[0]).map(el => data[0][el] * 100),
                         fill: false
                     }
                 ]
