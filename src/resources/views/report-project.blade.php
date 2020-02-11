@@ -29,7 +29,6 @@
             <div class="col-4">
                 <h3>Spider Chart</h3>
                 <canvas id="radar"></canvas>
-                {{ higestEmotion($project->report) }}
             </div>
             <div class="col-4">
                 <h3>Line Chart</h3>
