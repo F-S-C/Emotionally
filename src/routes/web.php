@@ -11,8 +11,8 @@
 |
 */
 
-// TODO: Remove
-Route::view('/test-webcam', 'test-webcam')->name('webcam');
+// Route to test Affectiva
+//Route::view('/test-webcam', 'test-webcam')->name('webcam');
 
 Route::view('/', 'landing')->name('landing');
 
