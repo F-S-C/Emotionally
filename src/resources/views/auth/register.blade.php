@@ -9,41 +9,73 @@
 @section('form')
     <form method="POST" action="{{ route('register') }}">
         @csrf
-        <div class="form-group">
-            <label for="name">@lang('auth.name')</label>
-            <input type="text" class="form-control input-color @error('name') border border-danger @enderror"
-                   id="name" name="name" autocomplete="name"
-                   value="{{ old('name') }}" placeholder="Name" required>
-            @error('name')<p class="text-center text-danger">{{ $message }}</p>@enderror
-        </div>
-        <div class="form-group">
-            <label for="surname">@lang('auth.surname')</label>
-            <input type="text" class="form-control input-color @error('surname') border border-danger @enderror"
-                   id="surname" name="surname" autocomplete="surname"
-                   value="{{ old('surname') }}" placeholder="Surname" required>
-            @error('surname')<p class="text-center text-danger">{{ $message }}</p>@enderror
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">@lang('auth.name')</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                              id="password-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
+                    </div>
+                    <input type="text" class="form-control input-color @error('name') border border-danger @enderror"
+                           id="name" name="name" autocomplete="name"
+                           value="{{ old('name') }}" placeholder="Name" required>
+                </div>
+                @error('name')<p class="text-center text-danger">{{ $message }}</p>@enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label for="surname">@lang('auth.surname')</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                              id="password-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
+                    </div>
+                    <input type="text" class="form-control input-color @error('surname') border border-danger @enderror"
+                           id="surname" name="surname" autocomplete="surname"
+                           value="{{ old('surname') }}" placeholder="Surname" required>
+                </div>
+                @error('surname')<p class="text-center text-danger">{{ $message }}</p>@enderror
+            </div>
         </div>
         <div class="form-group">
             <label for="email">@lang('auth.email-address')</label>
-            <input type="email" class="form-control input-color @error('email') border border-danger @enderror"
-                   id="email" name="email" aria-describedby="email-icon" autocomplete="email"
-                   value="{{ old('email') }}" placeholder="email@email.com" required>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                              id="password-icon"><em class="fas fa-envelope" style="padding: 0 2px;"></em></span>
+                </div>
+                <input type="email" class="form-control input-color @error('email') border border-danger @enderror"
+                       id="email" name="email" aria-describedby="email-icon" autocomplete="email"
+                       value="{{ old('email') }}" placeholder="email@email.com" required>
+            </div>
             @error('email')<p class="text-center text-danger">{{ $message }}</p>@enderror
         </div>
         <div class="form-group">
             <label for="password">{{ __('Password') }}</label>
-            <input type="password"
-                   class="form-control input-color @error('password') border border-danger @enderror" id="password"
-                   name="password" autocomplete="new-password"
-                   placeholder="••••••••" required>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                              id="password-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
+                </div>
+                <input type="password"
+                       class="form-control input-color @error('password') border border-danger @enderror" id="password"
+                       name="password" autocomplete="new-password"
+                       placeholder="••••••••" required>
+            </div>
         </div>
         <div class="form-group">
             <label for="password-confirm">@lang('auth.password-confirm')</label>
-            <input type="password"
-                   class="form-control input-color @error('password') border border-danger @enderror"
-                   id="password-confirm"
-                   name="password_confirmation" autocomplete="new-password"
-                   placeholder="••••••••" required>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                              id="password-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
+                </div>
+                <input type="password"
+                       class="form-control input-color @error('password') border border-danger @enderror"
+                       id="password-confirm"
+                       name="password_confirmation" autocomplete="new-password"
+                       placeholder="••••••••" required>
+            </div>
             @error('password')<p class="text-center text-danger">{{ $message }}</p>@enderror
         </div>
         <button type="submit" class="btn btn-primary w-100" style="color: white;">@lang('auth.sign-up')</button>
