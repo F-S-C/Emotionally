@@ -60,9 +60,11 @@ class VideoController extends Controller
         return view('#')->with('videos', $project_videos);
     }
 
-    public function getReportVideo(int $id)
+    public function getVideoReport(int $id)
     {
-        $video = Video::find($id);
-        return $video->report;
+        $current_video = Video::findOrFail($id);
+        return view('report-video')
+            ->with('video', $current_video)
+            ->with('path', $this->getVideoReport($current_video));
     }
 }

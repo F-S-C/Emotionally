@@ -61,15 +61,12 @@ class ProjectController extends Controller
         return $owned_projects->merge($shared_projects);
     }
 
-    public function getReportProject(int $id)
+    public function getProjectReport(int $id)
     {
-        $json = array();
-        $project = Project::find($id);
-        $videos=$project->videos;
-        foreach ($videos as $video) {
-            array_unshift($json, $video->report);
-        }
-        return $json;
+        $current_project=Project::findOrFail($id);
+        return view('report-project')
+            ->with('project', $current_project)
+            ->with('path',$this->getProjectChain($current_project));
     }
 
 }

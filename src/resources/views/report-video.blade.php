@@ -1,6 +1,6 @@
 @extends('layouts.system')
 
-@section('title', trans('dashboard.dashboard'))
+@section('title', $project->name)
 
 @section('breadcrumbs')
     <li class="breadcrumb-item">
@@ -10,21 +10,17 @@
         </a>
     </li>
     @foreach($path as $father)
-        @if(!$loop->last)
-            <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}">
-                <a href="{{route('system.project-details', $father->id)}}">
-                    <span class="fas fa-folder" aria-hidden="true"></span>
-                    {{$father->name}}
-                </a>
-            </li>
-        @else
-            <li class="breadcrumb-item active" aria-current="page">
+        <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}">
+            <a href="{{route('system.project-details', $father->id)}}">
                 <span class="fas fa-folder" aria-hidden="true"></span>
                 {{$father->name}}
-            </li>
-        @endif
+            </a>
+        </li>
     @endforeach
-
+    <li class="breadcrumb-item active" aria-current="page">
+        <span class="fas fa-file" aria-hidden="true"></span>
+        {{$video->name}}
+    </li>
 @endsection
 
 @section('inner-content')
