@@ -84,7 +84,12 @@
                     {
                         label: 'Video test',
                         data: Object.keys(data[0]).map(el => data[0][el] * 100),
-                        fill: true
+                        fill: true,
+                        backgroundColor: 'rgba(255, 152, 0, 0.2)',
+                        borderColor: 'rgba(255, 152, 0, 0.2)',
+                        pointBackgroundColor: 'rgba(255, 152, 0, 0.2)',
+                        pointBorderColor: 'rgba(255, 255, 255, 0.9)',
+                        
                     }
                 ]
             },
@@ -108,11 +113,6 @@
                 legend: {
                     labels: {
                         fontColor: '#aaa'
-                    }
-                },
-                plugins: {
-                    colorschemes: {
-                        scheme: 'tableau.Classic10'
                     }
                 }
             }
