@@ -203,7 +203,7 @@ class EmotionAnalysis {
      * Analyze a real-time recording using the webcam.
      * @param {AnalysisCompletedCallback} [callback] A callback.
      * @param {Configuration} [options] The configuration of the analysis
-     * @return {{start:function, end:function, reset:function}} A series of
+     * @return {{start, end, reset}} A series of
      * references to functions to start, stop and reset the analysis.
      */
     static analyzeCamera(callback = undefined, options = undefined) {
@@ -309,22 +309,22 @@ class EmotionAnalysis {
         });
 
         //Draw the detected facial feature points on the image
-        function drawFeaturePoints(img, featurePoints) {
-            let contxt = $('#face_video_canvas')[0].getContext('2d');
-
-            let hRatio = contxt.canvas.width / img.width;
-            let vRatio = contxt.canvas.height / img.height;
-            // let ratio = Math.min(hRatio, vRatio);
-
-            contxt.strokeStyle = "#FFFFFF";
-            for (let id in featurePoints) {
-                contxt.beginPath();
-                contxt.arc(featurePoints[id].x,
-                    featurePoints[id].y, 2, 0, 2 * Math.PI);
-                contxt.stroke();
-
-            }
-        }
+        // function drawFeaturePoints(img, featurePoints) {
+        //     let contxt = $('#face_video_canvas')[0].getContext('2d');
+        //
+        //     // let hRatio = contxt.canvas.width / img.width;
+        //     // let vRatio = contxt.canvas.height / img.height;
+        //     // let ratio = Math.min(hRatio, vRatio);
+        //
+        //     contxt.strokeStyle = "#FFFFFF";
+        //     for (let id in featurePoints) {
+        //         contxt.beginPath();
+        //         contxt.arc(featurePoints[id].x,
+        //             featurePoints[id].y, 2, 0, 2 * Math.PI);
+        //         contxt.stroke();
+        //
+        //     }
+        // }
 
         return {
             start: onStart,
