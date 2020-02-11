@@ -4,7 +4,7 @@
     @parent
     <style>
         #main {
-            padding: 15px;
+            padding: 15px 15px 64px;
             width: 100%;
             min-height: 100%;
             transition: all 0.3s;
