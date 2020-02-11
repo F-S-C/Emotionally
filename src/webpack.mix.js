@@ -13,5 +13,5 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/emotion-analysis.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .js('resources/js/vendor/affdex.js', 'public/js/vendor');
+    .js('resources/js/vendor/affdex.js', 'public/js/vendor')
+    .sass('resources/sass/app.scss', 'public/css');
