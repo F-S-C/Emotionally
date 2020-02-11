@@ -60,6 +60,7 @@ class ProjectController extends Controller
 
         return $owned_projects->merge($shared_projects);
     }
+
     public function getReportProject(int $id)
     {
         $json = array();

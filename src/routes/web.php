@@ -19,8 +19,8 @@ Route::name('system.')->prefix('system')->group(function () {
 
     Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
 
-    Route::get('/report-video/{id}', 'VideoController@getReportVideo')->name('report-video');
-
-    Route::get('/report-project/{id}', 'ProjectController@getReportProject')->name('report-project');
 });
 
+Route::get('/report-project/{id}', function ($id){
+    return view('report-project',[ 'uses' => 'ProjectController@getReportProject', 'as' => 'reportProject']);
+})->name('report-project');

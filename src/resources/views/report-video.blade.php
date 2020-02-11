@@ -1,4 +1,3 @@
-<?php
 @extends('layouts.system')
 
 @section('title', trans('dashboard.dashboard'))
