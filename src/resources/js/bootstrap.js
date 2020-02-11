@@ -16,7 +16,7 @@ try {
     require('jquery.scrollbar');
 
     // Import Chart.js
-    require('chart.js');
+    window.Chart = require('chart.js');
 
     // Import datatables
     require('datatables.net-bs4')();
