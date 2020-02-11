@@ -26,37 +26,17 @@
 @section('inner-content')
     <div class="container-fluid">
         <div class="row mb-5">
-            <div class="col-8">
+            <div class="col-4">
                 <h3>Spider Chart</h3>
                 <canvas id="radar"></canvas>
             </div>
             <div class="col-4">
-                <h3>Most frequent emotion</h3>
-                <img class="mx-auto d-block m-3" src="
-                @switch(\Emotionally\Http\Controllers\ReportController::average($video->report))
-                @case('joy')
-                {{ asset('images/emotions/joy.png') }}
-                @break
-                @case('sadness')
-                {{ asset('images/emotions/sadness.png') }}
-                @break
-                @case('anger')
-                {{ asset('images/emotions/anger.png') }}
-                @break
-                @case('contempt')
-                {{ asset('images/emotions/contempt.png') }}
-                @break
-                @case('disgust')
-                {{ asset('images/emotions/disgust.png') }}
-                @break
-                @case('fear')
-                {{ asset('images/emotions/fear.png') }}
-                @break
-                @case('surprise')
-                {{ asset('images/emotions/surprise.png') }}
-                @break
-                @default
-                @endswitch">
+                <h3>Line Chart</h3>
+                <canvas id="bar"></canvas>
+            </div>
+            <div class="col-4">
+                <h3>Video</h3>
+
             </div>
         </div>
         <div class="row">
@@ -74,6 +54,7 @@
 
         let radar = document.getElementById("radar").getContext("2d");
         let line = document.getElementById("line").getContext("2d");
+        let bar = document.getElementById("bar").getContext("2d");
 
         new Chart(radar, {
             type: 'radar',
@@ -116,9 +97,94 @@
             }
         });
 
-        new Chart(line, {
+        new Chart(bar, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(data[0]).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                datasets: [
+                    {
+                        label: 'Emotions',
+                        data: Object.keys(data[0]).map(el => data[0][el] * 100),
+                        fill: false,
+                        barPercentage: 0.25,
+                        backgroundColor: 'rgba(255, 152, 0, 1)',
+                        hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.2)',
+                            zeroLineColor: 'rgba(255, 255, 255, 0.5)'
+                        },
+                        ticks: {
+                            fontColor: '#ccc'
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.2)',
+                            zeroLineColor: 'rgba(255, 255, 255, 0.5)'
+                        },
+                        ticks: {
+                            fontColor: '#ccc'
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#ccc'
+                    }
+                }
+            }
+        });
 
-
-        })
+        var chart = new Chart(line, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [1, 2, 3].map(function (i) {
+                    return {
+                        label: 'Dataset ' + i,
+                        data: [0, 0, 0, 0, 0, 0, 0].map(Math.random),
+                        fill: false
+                    };
+                })
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.2)',
+                            zeroLineColor: 'rgba(255, 255, 255, 0.5)'
+                        },
+                        ticks: {
+                            fontColor: '#ccc'
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.2)',
+                            zeroLineColor: 'rgba(255, 255, 255, 0.5)'
+                        },
+                        ticks: {
+                            fontColor: '#ccc'
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#ccc'
+                    }
+                },
+                plugins: {
+                    colorschemes: {
+                        scheme: 'brewer.SetOne3'
+                    }
+                }
+            }
+        });
     </script>
 @endsection
