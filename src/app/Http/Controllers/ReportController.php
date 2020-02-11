@@ -123,9 +123,9 @@ class ReportController extends Controller
             // So we need to check if the size of the report is greather than one (a report with only
             // one object is already an average report) and if all the keys are numeric (an average report
             // can only be a JSON Object with the above keys)
-            if (sizeof($json) > 1 && array_keys($json) !== range(0, sizeof($json) - 1)) {
-                $json = self::average(...$json);
-            }
+//            if (sizeof($json) > 1 && array_keys($json) !== range(0, sizeof($json) - 1)) {
+//                $json = self::average(...$json);
+//            }
             foreach ($json as $row) {
                 foreach ($averageReport as $key => &$item) {
                     $item += $row[$key];
