@@ -18569,6 +18569,7 @@ a[target=_blank]::after {
   color: #fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  overflow-y: auto;
 }
 
 .sidebar .scroll-element {
