@@ -25,14 +25,10 @@
 
 @section('inner-content')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-4">
+        <div class="row mb-5">
+            <div class="col-8">
                 <h3>Spider Chart</h3>
                 <canvas id="radar"></canvas>
-            </div>
-            <div class="col-4">
-                <h3>Line Chart</h3>
-                <canvas id="bar"></canvas>
             </div>
             <div class="col-4">
                 <h3>Most frequent emotion</h3>
@@ -59,15 +55,15 @@
                 @case('surprise')
                 {{ asset('images/emotions/surprise.png') }}
                 @break
-                    @default
+                @default
                 @endswitch">
                 <h5>{{ $project->getAverageEmotionAttribute() }}</h5> <!--TODO: Rimuovere linea di test-->
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <h3>Line Chart</h3>
-                <canvas id="line"></canvas>
+                <h3>Bar Chart</h3>
+                <canvas id="bar"></canvas>
             </div>
         </div>
     </div>
@@ -75,15 +71,58 @@
 
 @section('scripts')
     <script>
-        var canvas = document.getElementById("line").getContext("2d");
+        var radar = document.getElementById("radar").getContext("2d");
+        var bar = document.getElementById("bar").getContext("2d");
 
-        var chart = new Chart(canvas, {
-            type: 'line',
+        new Chart(radar, {
+            type: 'radar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [1, 2, 3].map(function (i) {
+                labels: ['Anger', 'Contempt', 'Disgust', 'Fear', 'Joy', 'Sadness', 'Surprise'],
+                datasets: [1].map(function (i) {
                     return {
-                        label: 'Dataset ' + i,
+                        label: 'Video test',
+                        data: [0, 0, 0, 0, 0, 0, 0].map(Math.random),
+                        fill: true
+                    };
+                })
+            },
+            options: {
+                scale: {
+                    angleLines: {
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    },
+                    gridLines: {
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    },
+                    pointLabels: {
+                        fontColor: 'rgba(255,255,255,0.7)',
+                        fontSize: 12
+                    },
+                    ticks: {
+                        showLabelBackdrop: false,
+                        fontColor: 'rgba(255, 255, 255, 0.7)'
+                    }
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#aaa'
+                    }
+                },
+                plugins: {
+                    colorschemes: {
+                        scheme: 'tableau.Classic10'
+                    }
+                }
+            }
+        });
+
+        new Chart(bar, {
+            type: 'bar',
+            data: {
+                labels: ['Anger', 'Contempt', 'Disgust', 'Fear', 'Joy', 'Sadness', 'Surprise'],
+                datasets: [1].map(function (i) {
+                    return {
+                        label: 'Emotions',
                         data: [0, 0, 0, 0, 0, 0, 0].map(Math.random),
                         fill: false
                     };
@@ -113,11 +152,6 @@
                 legend: {
                     labels: {
                         fontColor: '#ccc'
-                    }
-                },
-                plugins: {
-                    colorschemes: {
-                        scheme: 'brewer.SetOne3'
                     }
                 }
             }
