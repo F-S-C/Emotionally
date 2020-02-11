@@ -70,6 +70,7 @@ class VideoController extends Controller
         $current_video = Video::findOrFail($id);
         return view('report-video')
             ->with('video', $current_video)
-            ->with('path', ProjectController::getProjectChain($current_video->project));
+            ->with('path', ProjectController::getProjectChain($current_video->project))
+            ->with('project', $current_video->project);
     }
 }
