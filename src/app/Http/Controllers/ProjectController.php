@@ -61,6 +61,11 @@ class ProjectController extends Controller
         return $owned_projects->merge($shared_projects);
     }
 
+    /**
+     * Get a list of all the video reports of a project.
+     * @param int $id The id of the project to be analyzed.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getProjectReport(int $id)
     {
         $current_project = Project::findOrFail($id);
