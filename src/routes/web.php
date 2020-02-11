@@ -34,3 +34,5 @@ Route::get('/logout', function () {
 
     return redirect()->route('landing');
 })->name('logout');
+
+Route::redirect('/home', '/system');
