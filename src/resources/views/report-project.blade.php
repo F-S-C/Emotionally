@@ -85,11 +85,10 @@
                         label: 'Emotions',
                         data: Object.keys(data[0]).map(el => data[0][el] * 100),
                         fill: true,
-                        backgroundColor: 'rgba(255, 152, 0, 0.2)',
-                        borderColor: 'rgba(255, 152, 0, 0.2)',
-                        pointBackgroundColor: 'rgba(255, 152, 0, 0.2)',
-                        pointBorderColor: 'rgba(255, 255, 255, 0.9)',
-
+                        backgroundColor: 'rgba(255, 152, 0, 0.3)',
+                        borderColor: 'rgba(255, 152, 0, 0.7)',
+                        pointBackgroundColor: 'rgba(255, 152, 0, 1)',
+                        pointBorderColor: 'rgba(255, 255, 255, 0.9)'
                     }
                 ]
             },
@@ -126,7 +125,10 @@
                     {
                         label: 'Emotions',
                         data: Object.keys(data[0]).map(el => data[0][el] * 100),
-                        fill: false
+                        fill: false,
+                        barPercentage: 0.25,
+                        backgroundColor: 'rgba(255, 152, 0, 1)',
+                        hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
                     }
                 ]
             },
