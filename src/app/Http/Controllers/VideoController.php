@@ -14,7 +14,7 @@ class VideoController extends Controller
      * @param Video $video The video
      * @param string $name The new name
      */
-    public function renameVideo(Video $video, string $name):void
+    public function renameVideo(Video $video, string $name): void
     {
         $video->name = $name;
         $video->save();
@@ -26,7 +26,7 @@ class VideoController extends Controller
      * @param Video $video The video.
      * @throws \Exception
      */
-    public function deleteVideo(Video $video):void
+    public function deleteVideo(Video $video): void
     {
         $video->delete();
     }
@@ -65,6 +65,6 @@ class VideoController extends Controller
         $current_video = Video::findOrFail($id);
         return view('report-video')
             ->with('video', $current_video)
-            ->with('path', $this->getVideoReport($current_video));
+            ->with('path', ProjectController::getProjectChain($current_video->project));
     }
 }

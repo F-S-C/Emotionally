@@ -27,8 +27,8 @@ class ProjectController extends Controller
         $current_project = Project::findOrFail($id);
         return view('project')
             ->with('project', $current_project)
-            ->with('path', $this->getProjectChain($current_project))
-            ->with('subprojects',$current_project->sub_projects)
+            ->with('path', self::getProjectChain($current_project))
+            ->with('subprojects', $current_project->sub_projects)
             ->with('videos', $current_project->videos);
     }
 
@@ -37,7 +37,7 @@ class ProjectController extends Controller
      * @param Project $project The project.
      * @return array The chain of projects. The last element of this array is the project given as input
      */
-    private function getProjectChain(Project $project)
+    public static function getProjectChain(Project $project)
     {
         $chain = array();
         array_unshift($chain, $project);
@@ -63,10 +63,10 @@ class ProjectController extends Controller
 
     public function getProjectReport(int $id)
     {
-        $current_project=Project::findOrFail($id);
+        $current_project = Project::findOrFail($id);
         return view('report-project')
             ->with('project', $current_project)
-            ->with('path',$this->getProjectChain($current_project));
+            ->with('path', self::getProjectChain($current_project));
     }
 
 }

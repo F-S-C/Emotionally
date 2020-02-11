@@ -63,18 +63,20 @@ class ReportController extends Controller
         self::SURPRISE_KEY => '&#x1F62E;'
     ];
 
-    public static function get_emoji($emotion){
+    public static function get_emoji($emotion)
+    {
         return html_entity_decode(self::EMOJIS[$emotion]);
     }
 
     /**
-     * Get the average report from a list of reports.
+     * Get the average report from a list of reports. If there's multiple
+     * reports, the total average report must be generated using the
+     * single average reports.
      * @param string|array ...$reports The reports.
      * @return array The average report.
      */
     public static function average(...$reports)
     {
-        // TODO: Fix the average report generation: if there's multiple reports, the total average report must be generated using the single average reports.
         $averageReport = [
             self::JOY_KEY => 0,
             self::SADNESS_KEY => 0,
@@ -110,11 +112,19 @@ class ReportController extends Controller
         ];
 
         $iterated = 0;
-        foreach ($reports as $json) {
+        foreach ($reports as &$json) {
             if (is_string($json)) {
                 $json = json_decode($json, true);
             } elseif (!is_array($json)) {
                 throw new \InvalidArgumentException("The input isn't a JSON string or an array:" . json_encode($json));
+            }
+
+            // In case of multiple reports, the average report must me the average of the averages.
+            // So we need to check if the size of the report is greather than one (a report with only
+            // one object is already an average report) and if all the keys are numeric (an average report
+            // can only be a JSON Object with the above keys)
+            if (sizeof($json) > 1 && array_keys($json) !== range(0, sizeof($json) - 1)) {
+                $json = self::average(...$json);
             }
             foreach ($json as $row) {
                 foreach ($averageReport as $key => &$item) {
@@ -125,7 +135,7 @@ class ReportController extends Controller
         }
 
         foreach ($averageReport as &$value) {
-            if($iterated == 0) $value = 0;
+            if ($iterated == 0) $value = 0;
             else $value /= $iterated;
         }
 
