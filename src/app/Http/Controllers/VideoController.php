@@ -60,6 +60,11 @@ class VideoController extends Controller
         return view('#')->with('videos', $project_videos);
     }
 
+    /**
+     * Get report of a video to analyze.
+     * @param int $id The video to be analyzed.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getVideoReport(int $id)
     {
         $current_video = Video::findOrFail($id);
