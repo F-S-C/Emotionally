@@ -2,6 +2,27 @@
 
 @section('title', $project->name)
 
+@section('head')
+    @parent
+    <style>
+
+        .charts{
+            height:30vh;
+            width:30vw;
+        }
+
+        img {
+            width: 150px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            img {
+                width: 100px;
+            }
+        }
+    </style>
+    @endsection
+
 @section('breadcrumbs')
     <li class="breadcrumb-item">
         <a href="{{route('system.home')}}">
@@ -25,14 +46,16 @@
 
 @section('inner-content')
     <div class="container-fluid">
-        <div class="row mb-5">
-            <div class="col-8">
+        <div class="row">
+            <div class="col">
                 <h3>Spider Chart</h3>
-                <canvas id="radar"></canvas>
+                <div class="charts">
+                    <canvas id="radar"></canvas>
+                </div>
             </div>
-            <div class="col-4">
+            <div class="col">
                 <h3>Most frequent emotion</h3>
-                <img class="mx-auto d-block m-3" src="
+                <img class="mx-auto d-block my-5" src="
                 @switch($project->getAverageEmotionAttribute())
                 @case('joy')
                 {{ asset('images/emotions/joy.png') }}
@@ -58,9 +81,7 @@
                 @default
                 @endswitch">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
+            <div class="col-12 mt-5">
                 <h3>Bar Chart</h3>
                 <canvas id="bar"></canvas>
             </div>
@@ -112,7 +133,8 @@
                     labels: {
                         fontColor: '#aaa'
                     }
-                }
+                },
+                maintainAspectRatio: false
             }
         });
 
