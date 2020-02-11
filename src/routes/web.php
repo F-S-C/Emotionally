@@ -11,6 +11,9 @@
 |
 */
 
+// Route to test Affectiva
+//Route::view('/test-webcam', 'test-webcam')->name('webcam');
+
 Route::view('/', 'landing')->name('landing');
 
 Route::name('system.')->middleware('auth')->middleware('verified')->prefix('system')->group(function () {

@@ -54,35 +54,36 @@
 
 @section('scripts')
     @parent
-    <script>
-        $(document).ready(function () {
-            let table = $('#project-table').DataTable({
-                "order": [[0, "asc"]],
-                "paging": false,
-                "info": false,
-                "columnDefs": [
-                    {
-                        "targets": 7,
-                        "orderable": false
-                    },
-                    {
-                        "targets": 6,
-                        "orderable": false
-                    },
-                ],
-                "dom": '<"top"i>rt<"bottom"><"clear">',
-            });
+    <script>(function ($) {
+            $(document).ready(function () {
+                let table = $('#project-table').DataTable({
+                    "order": [[0, "asc"]],
+                    "paging": false,
+                    "info": false,
+                    "columnDefs": [
+                        {
+                            "targets": 7,
+                            "orderable": false
+                        },
+                        {
+                            "targets": 6,
+                            "orderable": false
+                        },
+                    ],
+                    "dom": '<"top"i>rt<"bottom"><"clear">',
+                });
 
-            $('#search-bar').on('keydown click', function () {
-                table.search($('#search-bar').val()).draw();
-            });
+                $('#search-bar').on('keydown click', function () {
+                    table.search($('#search-bar').val()).draw();
+                });
 
-            $('.clickable').click(function (event) {
-                // prevent execution from bubbling if a link or a button were clicked
-                if (event.target.tagName.toLowerCase() !== 'a' && event.target.tagName.toLowerCase() !== 'button') {
-                    window.location = $(this).data('href');
-                }
-            })
-        });
+                $('.clickable').click(function (event) {
+                    // prevent execution from bubbling if a link or a button were clicked
+                    if (event.target.tagName.toLowerCase() !== 'a' && event.target.tagName.toLowerCase() !== 'button') {
+                        window.location = $(this).data('href');
+                    }
+                })
+            });
+        })(jQuery);
     </script>
 @endsection
