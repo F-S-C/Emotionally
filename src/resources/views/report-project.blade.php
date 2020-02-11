@@ -6,9 +6,13 @@
     @parent
     <style>
 
-        .charts{
-            height:30vh;
-            width:30vw;
+        .smaller-charts{
+            height: 35vh;
+            width: 35vw;
+        }
+
+        .bigger-charts{
+            height: 30vh;
         }
 
         .emj {
@@ -18,6 +22,11 @@
         @media only screen and (max-width: 600px) {
             .emj {
                 width: 100px;
+            }
+
+            .smaller-charts{
+                height: 30vh;
+                width: 30vh;
             }
         }
     </style>
@@ -49,7 +58,7 @@
         <div class="row">
             <div class="col">
                 <h3>Spider Chart</h3>
-                <div class="charts">
+                <div class="smaller-charts my-5">
                     <canvas id="radar"></canvas>
                 </div>
             </div>
@@ -80,10 +89,14 @@
                 @break
                 @default
                 @endswitch">
+                <h2 class="text-center text-capitalize">{{ $project->getAverageEmotionAttribute() }}</h2>
             </div>
             <div class="col-12 mt-5">
                 <h3>Bar Chart</h3>
-                <canvas id="bar"></canvas>
+                <div class="bigger-charts">
+                    <canvas id="bar"></canvas>
+                    @json($report);
+                </div>
             </div>
         </div>
     </div>
@@ -178,7 +191,8 @@
                     labels: {
                         fontColor: '#ccc'
                     }
-                }
+                },
+                maintainAspectRatio: false
             }
         });
     </script>
