@@ -11,12 +11,12 @@
             width:30vw;
         }
 
-        img {
+        .emj {
             width: 150px;
         }
 
         @media only screen and (max-width: 600px) {
-            img {
+            .emj {
                 width: 100px;
             }
         }
@@ -55,7 +55,7 @@
             </div>
             <div class="col">
                 <h3>Most frequent emotion</h3>
-                <img class="mx-auto d-block my-5" src="
+                <img class="mx-auto d-block my-5 emj" src="
                 @switch($project->getAverageEmotionAttribute())
                 @case('joy')
                 {{ asset('images/emotions/joy.png') }}
