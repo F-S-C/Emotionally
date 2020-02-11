@@ -26,9 +26,9 @@ Route::name('system.')
 
     Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
 
-    Route::get('/report-project/{id}', 'ProjectController@getProjectReport')->name('report-project');
+    Route::get('/project/{id}/report', 'ProjectController@getProjectReport')->name('report-project');
 
-    Route::get('report-video/{id}', 'VideoController@getVideoReport')->name('report-video');
+    Route::get('/video/{id}', 'VideoController@getVideoReport')->name('report-video');
 });
 
 Auth::routes(/*['verify' => true]*/);
