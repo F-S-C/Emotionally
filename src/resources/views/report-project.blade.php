@@ -82,14 +82,14 @@
                 labels: Object.keys(data[0]).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
                 datasets: [
                     {
-                        label: 'Video test',
+                        label: 'Emotions',
                         data: Object.keys(data[0]).map(el => data[0][el] * 100),
                         fill: true,
                         backgroundColor: 'rgba(255, 152, 0, 0.2)',
                         borderColor: 'rgba(255, 152, 0, 0.2)',
                         pointBackgroundColor: 'rgba(255, 152, 0, 0.2)',
                         pointBorderColor: 'rgba(255, 255, 255, 0.9)',
-                        
+
                     }
                 ]
             },
