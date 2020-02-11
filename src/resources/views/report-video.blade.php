@@ -18,7 +18,7 @@
         </li>
     @endforeach
     <li class="breadcrumb-item active" aria-current="page">
-        <span class="fas fa-file" aria-hidden="true"></span>
+        <span class="fas fa-video" aria-hidden="true"></span>
         {{$video->name}}
     </li>
 @endsection

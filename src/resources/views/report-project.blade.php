@@ -24,7 +24,12 @@
 @endsection
 
 @section('inner-content')
-
-    <p>{!! json_encode($project->report) !!}</p>
-
+    <div class="row">
+        <div > Grafico 1 </div>
+        <div > Grafico 2 </div>
+        <div > Grafico 3 </div>
+    </div>
+    <div class="row">
+        <div > Ultimo Grafico </div >
+    </div>
 @endsection
