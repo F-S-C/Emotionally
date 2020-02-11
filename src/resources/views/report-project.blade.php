@@ -29,7 +29,6 @@
             <div class="col-4">
                 <h3>Spider Chart</h3>
                 <canvas id="radar"></canvas>
-                {{ higestEmotion($project->report) }}
             </div>
             <div class="col-4">
                 <h3>Line Chart</h3>
@@ -37,7 +36,32 @@
             </div>
             <div class="col-4">
                 <h3>Most frequent emotion</h3>
-                <img class="mx-auto d-block m-3" src="{{ asset('images/emotions/sadness.png') }}">
+                <img class="mx-auto d-block m-3" src="
+                @switch($project->getAverageEmotionAttribute())
+                @case('joy')
+                {{ asset('images/emotions/joy.png') }}
+                @break
+                @case('sadness')
+                {{ asset('images/emotions/sadness.png') }}
+                @break
+                @case('anger')
+                {{ asset('images/emotions/anger.png') }}
+                @break
+                @case('contempt')
+                {{ asset('images/emotions/contempt.png') }}
+                @break
+                @case('disgust')
+                {{ asset('images/emotions/disgust.png') }}
+                @break
+                @case('fear')
+                {{ asset('images/emotions/fear.png') }}
+                @break
+                @case('surprise')
+                {{ asset('images/emotions/surprise.png') }}
+                @break
+                    @default
+                @endswitch">
+                <h5>{{ $project->getAverageEmotionAttribute() }}</h5> <!--TODO: Rimuovere linea di test-->
             </div>
         </div>
         <div class="row">
