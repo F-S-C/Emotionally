@@ -57,7 +57,6 @@
                 @break
                 @default
                 @endswitch">
-                <h5>{{ $project->getAverageEmotionAttribute() }}</h5>
             </div>
         </div>
         <div class="row">
