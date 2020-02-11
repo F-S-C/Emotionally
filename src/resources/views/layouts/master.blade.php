@@ -26,7 +26,7 @@
                 <div class="container-fluid px-3">
                     <p class="d-inline-block mt-md-1">
                         Copyright &copy; 2019,
-                        <a href="https://F-S-C.github.io/" target="_blank">FSC</a>.
+                        <a href="https://F-S-C.github.io/" rel="noopener noreferrer" target="_blank">FSC</a>.
                         @lang('metadata.copyright')
                     </p>
                     <img src="{{asset('/fsc_logo_text.png')}}" width="140" alt="Five Students of Computer Science"

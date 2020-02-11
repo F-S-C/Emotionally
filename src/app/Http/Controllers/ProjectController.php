@@ -2,6 +2,7 @@
 
 namespace Emotionally\Http\Controllers;
 
+use Auth;
 use Emotionally\Project;
 use Emotionally\User;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class ProjectController extends Controller
      */
     public function getDashboard()
     {
-        return view('home')->with('projects', $this->getAllProjects(User::first())); //auth()->user()
+        return view('home')
+            ->with('projects', $this->getAllProjects(Auth::user()));
     }
 
     /**

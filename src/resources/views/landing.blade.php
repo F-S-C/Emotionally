@@ -45,7 +45,7 @@
             <a class="nav-link text-center" href="#">About</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-outline-primary nav-link" href="#">Log in</a>
+            <a class="btn btn-outline-primary nav-link" href="{{ route('login') }}">@if (Auth::check()) Home @else Log in @endif</a>
         </li>
     </ul>
 @endsection
@@ -72,22 +72,22 @@
         <h2>@lang('landing.features')</h2>
         <div class="row text-center mt-5">
             <div class="col-sm-3">
-                <i class="fas fa-file-video fa-4x"></i>
+                <span class="fas fa-file-video fa-4x"></span>
                 <p class="my-4 h5">Analisi</p>
                 <p>Lorem ipsum</p>
             </div>
             <div class="col-sm-3">
-                <i class="fas fa-file-video fa-4x"></i>
+                <span class="fas fa-file-video fa-4x"></span>
                 <p class="my-4 h5">Analisi</p>
                 <p>Lorem ipsum</p>
             </div>
             <div class="col-sm-3">
-                <i class="fas fa-folder-open fa-4x"></i>
+                <span class="fas fa-folder-open fa-4x"></span>
                 <p class="my-4 h5">Analisi</p>
                 <p>Lorem ipsum</p>
             </div>
             <div class="col-sm-3">
-                <i class="fas fa-folder-open fa-4x"></i>
+                <span class="fas fa-folder-open fa-4x"></span>
                 <p class="my-4 h5">Analisi</p>
                 <p>Lorem ipsum</p>
             </div>
