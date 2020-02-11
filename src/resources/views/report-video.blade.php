@@ -31,7 +31,7 @@
                 <canvas id="radar"></canvas>
             </div>
             <div class="col-4">
-                <h3>Line Chart</h3>
+                <h3>Bar Chart</h3>
                 <canvas id="bar"></canvas>
             </div>
             <div class="col-4">
