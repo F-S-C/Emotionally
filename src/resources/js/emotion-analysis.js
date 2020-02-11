@@ -129,8 +129,6 @@ class EmotionAnalysis {
             video.onseeked = function (e) {
                 let canvas = document.createElement('canvas');
                 canvas.crossOrigin = 'anonymous';
-                canvas.height = canvas.height;
-                canvas.width = canvas.width;
                 // canvas.width = 640;
                 // canvas.height = 480;
 
