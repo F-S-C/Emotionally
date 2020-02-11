@@ -33,7 +33,6 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item active">
-                    {{-- TODO: Use current logged user --}}
                     <div class="btn-group collapse-button-container">
                         <a type="button" class="nav-link collapse-button d-none d-md-block" data-toggle="collapse"
                            href="#projects-container"
@@ -44,8 +43,7 @@
                         </a>
                     </div>
                     <ul class="collapse el-3dp nav flex-column flex-nowrap" id="projects-container">
-                        {{-- TODO: Use current logged user --}}
-                        @each('partials.project-tree-view', \Emotionally\User::first()->projects->where('father_id', null), 'main_project')
+                        @each('partials.project-tree-view', Auth::user()->projects->where('father_id', null), 'main_project')
                     </ul>
                 </li>
                 <li class="nav-item text-center text-md-left">
