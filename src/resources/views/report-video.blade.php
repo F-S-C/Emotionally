@@ -2,35 +2,6 @@
 
 @section('title', $project->name)
 
-@section('head')
-    @parent
-    <style>
-
-        .smaller-charts {
-            height: 35vh;
-            position: relative;
-        }
-
-        .bigger-charts {
-            height: 30vh;
-        }
-
-        .emj {
-            width: 150px;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .emj {
-                width: 100px;
-            }
-
-            .smaller-charts {
-                height: 30vh;
-            }
-        }
-    </style>
-@endsection
-
 @section('breadcrumbs')
     <li class="breadcrumb-item">
         <a href="{{route('system.home')}}">
@@ -80,7 +51,9 @@
         <div class="row">
             <div class="col-12">
                 <h3>Line Chart</h3>
-                <canvas id="line"></canvas>
+                <div class="bigger-charts">
+                    <canvas id="line"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -182,26 +155,12 @@
             }
         });
 
-        function hexToRgb(hex) {
-            // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
-            var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-            hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-                return r + r + g + g + b + b;
-            });
-
-            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-            return result ? {
-                r: parseInt(result[1], 16),
-                g: parseInt(result[2], 16),
-                b: parseInt(result[3], 16)
-            } : null;
-        }
         let colors = ['#FF9800', '#5BC0EB', '#E55934', '#084887', '#9BC53D', '#F7F5FB', '#44AF69'];
         new Chart(line, {
             type: 'line',
             data: {
                 labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels?
-                datasets: Object.keys(fullReport[0]).map((key,i) => {
+                datasets: Object.keys(fullReport[0]).map((key, i) => {
                     return {
                         borderColor: colors[i],
                         pointBackgroundColor: colors[i],
@@ -238,6 +197,7 @@
                         fontColor: '#ccc'
                     }
                 },
+                maintainAspectRatio: false,
                 plugins: {
                     colorschemes: {
                         scheme: 'brewer.SetOne3'

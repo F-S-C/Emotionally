@@ -18850,3 +18850,13 @@ h6,
   font-size: 2em;
 }
 
+.smaller-charts {
+  height: 35vh;
+  position: relative;
+}
+
+.bigger-charts {
+  height: 50vh;
+  position: relative;
+}
+

@@ -5,15 +5,6 @@
 @section('head')
     @parent
     <style>
-
-        .smaller-charts {
-            height: 35vh;
-        }
-
-        .bigger-charts {
-            height: 30vh;
-        }
-
         .emj {
             width: 150px;
         }
@@ -21,10 +12,6 @@
         @media only screen and (max-width: 600px) {
             .emj {
                 width: 100px;
-            }
-
-            .smaller-charts {
-                height: 30vh;
             }
         }
     </style>
