@@ -116,7 +116,7 @@
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(data).map(el => data[el] * 100),
+                        data: Object.keys(data).map(el => data[el]),
                         fill: true,
                         backgroundColor: 'rgba(255, 152, 0, 0.3)',
                         borderColor: 'rgba(255, 152, 0, 0.7)',
@@ -158,7 +158,7 @@
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(data).map(el => data[el] * 100),
+                        data: Object.keys(data).map(el => data[el]),
                         fill: false,
                         barPercentage: 0.25,
                         backgroundColor: 'rgba(255, 152, 0, 1)',

@@ -105,7 +105,7 @@
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(averageReport).map(el => averageReport[el] * 100),
+                        data: Object.keys(averageReport).map(el => averageReport[el]),
                         fill: false,
                         barPercentage: 0.25,
                         backgroundColor: 'rgba(255, 152, 0, 1)',
@@ -145,13 +145,13 @@
         var chart = new Chart(line, {
             type: 'line',
             data: {
-                labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels
+                labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels?
                 datasets: Object.keys(fullReport[0]).map((key) => {
                     console.log(key);
                     console.log(fullReport.map(el => el[key]));
                     return {
                         label: key.charAt(0).toUpperCase() + key.slice(1),
-                        data: fullReport.map(el => el[key] * 100),
+                        data: fullReport.map(el => el[key]),
                         fill: false
                     };
                 })
