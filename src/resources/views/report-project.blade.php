@@ -56,15 +56,21 @@
 @section('inner-content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-md-4">
                 <h3>Spider Chart</h3>
                 <div class="smaller-charts my-5">
                     <canvas id="radar"></canvas>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-12 col-md-4 mt-5">
+                <h3>Bar Chart</h3>
+                <div class="bigger-charts">
+                    <canvas id="bar"></canvas>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
                 <h3>Most frequent emotion</h3>
-                <img class="mx-auto d-block my-5 emj" src="
+                <img alt="emoji: {{$project->getAverageEmotionAttribute()}}" class="mx-auto d-block my-5 emj" src="
                 @switch($project->getAverageEmotionAttribute())
                 @case('joy')
                 {{ asset('images/emotions/joy.png') }}
@@ -89,14 +95,7 @@
                 @break
                 @default
                 @endswitch">
-                <h2 class="text-center text-capitalize">{{ $project->getAverageEmotionAttribute() }}</h2>
-            </div>
-            <div class="col-12 mt-5">
-                <h3>Bar Chart</h3>
-                <div class="bigger-charts">
-                    <canvas id="bar"></canvas>
-                    @json($report);
-                </div>
+                <p class="h2 text-center text-capitalize">{{ $project->getAverageEmotionAttribute() }}</p>
             </div>
         </div>
     </div>
