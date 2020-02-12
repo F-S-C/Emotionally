@@ -69,6 +69,40 @@ class ReportController extends Controller
     }
 
     /**
+     * Get the type of report.
+     * @param array $report The report.
+     * @return int There are three scenarios (the number determine the output of this function):
+     * 1. $report is a single report object
+     * 2. $report is a array of single report object
+     * 3. $report is a array of arrays of single report object
+     */
+    private static function getReportType(array $report)
+    {
+        if (substr(json_encode($report), 0, 1) == "{") {
+            $type = 1;
+        } elseif (substr(json_encode($report), 0, 2) == "[[") {
+            $type = 3;
+        } else {
+            $type = 2;
+        }
+        return $type;
+    }
+
+    /**
+     * Check and fix the type of the report.
+     * @param mixed &$report The report to be fixed and checked. Will be converted to an array.
+     * @throws \InvalidArgumentException If the report is not a string or an array
+     */
+    private static function fixType(&$report)
+    {
+        if (is_string($report)) {
+            $report = json_decode($report, true);
+        } elseif (!is_array($report)) {
+            throw new \InvalidArgumentException("The input isn't a JSON string or an array");
+        }
+    }
+
+    /**
      * Get the average report from a list of reports. If there's multiple
      * reports, the total average report must be generated using the
      * single average reports.
@@ -111,24 +145,9 @@ class ReportController extends Controller
             self::LIP_STRETCH_KEY => 0
         ];
 
-        // Convert the reports to an array
-        if (is_string($reports)) {
-            $reports = json_decode($reports, true);
-        } elseif (!is_array($reports)) {
-            throw new \InvalidArgumentException("The input isn't a JSON string or an array");
-        }
+        self::fixType($reports);
 
-        // There are three scenarios:
-        // 1. $reports is a single report object
-        // 2. $reports is a array of single report object
-        // 3. $reports is a array of arrays of single report object
-        if (substr(json_encode($reports), 0, 1) == "{") {
-            $type = 1;
-        } elseif (substr(json_encode($reports), 0, 2) == "[[") {
-            $type = 3;
-        } else {
-            $type = 2;
-        }
+        $type = self::getReportType($reports);
 
         if ($type == 1) {
             $average_report = $reports;
@@ -149,8 +168,11 @@ class ReportController extends Controller
             }
 
             foreach ($average_report as &$value) {
-                if ($number_of_frames == 0) $value = 0;
-                else $value /= $number_of_frames;
+                if ($number_of_frames == 0) {
+                    $value = 0;
+                } else {
+                    $value /= $number_of_frames;
+                }
             }
         } else {
             foreach ($reports as &$array) {
@@ -169,11 +191,7 @@ class ReportController extends Controller
      */
     public static function highestEmotion(...$reports)
     {
-        if (is_string($reports)) {
-            $reports = json_decode($reports, true);
-        } elseif (!is_array($reports)) {
-            throw new \InvalidArgumentException("The input isn't a JSON string or an array");
-        }
+        self::fixType($reports);
 
         if (substr(json_encode($reports), 0, 1) == "{") {
             $reports = array($reports);
@@ -202,11 +220,7 @@ class ReportController extends Controller
      */
     public static function getEmotionValues($report)
     {
-        if (is_string($report)) {
-            $report = json_decode($report, true);
-        } elseif (!is_array($report)) {
-            throw new \InvalidArgumentException("The input isn't a JSON string or an array");
-        }
+        self::fixType($report);
 
         $useful_values = [
             self::JOY_KEY => 0,
@@ -218,17 +232,7 @@ class ReportController extends Controller
             self::SURPRISE_KEY => 0
         ];
 
-        // There are three scenarios:
-        // 1. $report is a single report object
-        // 2. $report is a array of single report object
-        // 3. $report is a array of arrays of single report object
-        if (substr(json_encode($report), 0, 1) == "{") {
-            $type = 1;
-        } elseif (substr(json_encode($report), 0, 2) == "[[") {
-            $type = 3;
-        } else {
-            $type = 2;
-        }
+        $type = self::getReportType($report);
 
         if ($type == 1) {
             return array_intersect_key($report, $useful_values);
