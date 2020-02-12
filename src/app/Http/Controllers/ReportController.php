@@ -130,8 +130,9 @@ class ReportController extends Controller
             $type = 2;
         }
 
-        if ($type = 1) $average_report = $reports;
-        elseif ($type = 2) {
+        if ($type = 1) {
+            $average_report = $reports;
+        } elseif ($type = 2) {
             $number_of_frames = 0;
             foreach ($reports as $frame) {
                 foreach ($average_report as $key => &$item) {
