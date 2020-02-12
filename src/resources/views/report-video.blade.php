@@ -88,7 +88,7 @@
 
 @section('scripts')
     <script>
-        let averageReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues(\Emotionally\Http\Controllers\ReportController::average($video->report)));
+        let averageReport = @json($video->average_report);
         let fullReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($video->report));
 
         let radar = document.getElementById("radar").getContext("2d");

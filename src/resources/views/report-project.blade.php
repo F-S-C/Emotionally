@@ -73,7 +73,7 @@
             <div class="card el-0dp">
                 <div class="card-body">
                     <h3 class="card-title">Most frequent emotion</h3>
-                    <img alt="emoji: {{$project->getAverageEmotionAttribute()}}" class="mx-auto d-block mt-5 mb-1 emj"
+                    <img alt="emoji: {{$project->average_emotion}}" class="mx-auto d-block mt-5 mb-1 emj"
                          src="
                 @switch($project->getAverageEmotionAttribute())
                          @case('joy')
@@ -99,7 +99,7 @@
                          @break
                          @default
                          @endswitch">
-                    <p class="h2 text-center text-capitalize">{{ $project->getAverageEmotionAttribute() }}</p>
+                    <p class="h2 text-center text-capitalize">{{ $project->average_emotion }}</p>
                 </div>
             </div>
         </div>
