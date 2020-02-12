@@ -50,7 +50,8 @@
 
 @section('scripts')
     <script>
-        let data = @json($video->report);
+        let averageReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues(\Emotionally\Http\Controllers\ReportController::average($video->report)));
+        let fullReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($video->report));
 
         let radar = document.getElementById("radar").getContext("2d");
         let line = document.getElementById("line").getContext("2d");
@@ -59,11 +60,11 @@
         new Chart(radar, {
             type: 'radar',
             data: {
-                labels: Object.keys(data[0]).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(data[0]).map(el => data[0][el] * 100),
+                        data: Object.keys(averageReport).map(el => averageReport[el] * 100),
                         fill: true,
                         backgroundColor: 'rgba(255, 152, 0, 0.3)',
                         borderColor: 'rgba(255, 152, 0, 0.7)',
@@ -100,11 +101,11 @@
         new Chart(bar, {
             type: 'bar',
             data: {
-                labels: Object.keys(data[0]).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(data[0]).map(el => data[0][el] * 100),
+                        data: Object.keys(averageReport).map(el => averageReport[el] * 100),
                         fill: false,
                         barPercentage: 0.25,
                         backgroundColor: 'rgba(255, 152, 0, 1)',
@@ -144,11 +145,13 @@
         var chart = new Chart(line, {
             type: 'line',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [1, 2, 3].map(function (i) {
+                labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels
+                datasets: Object.keys(fullReport[0]).map((key) => {
+                    console.log(key);
+                    console.log(fullReport.map(el => el[key]));
                     return {
-                        label: 'Dataset ' + i,
-                        data: [0, 0, 0, 0, 0, 0, 0].map(Math.random),
+                        label: key.charAt(0).toUpperCase() + key.slice(1),
+                        data: fullReport.map(el => el[key] * 100),
                         fill: false
                     };
                 })

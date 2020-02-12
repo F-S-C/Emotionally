@@ -72,10 +72,10 @@ class ReportController extends Controller
      * Get the average report from a list of reports. If there's multiple
      * reports, the total average report must be generated using the
      * single average reports.
-     * @param string|array ...$reports The reports.
+     * @param string|array $reports The reports.
      * @return array The average report.
      */
-    public static function average(...$reports)
+    public static function average($reports)
     {
         $average_report = [
             self::JOY_KEY => 0,
@@ -130,13 +130,20 @@ class ReportController extends Controller
             $type = 2;
         }
 
-        if ($type = 1) {
+        if ($type == 1) {
             $average_report = $reports;
-        } elseif ($type = 2) {
+        } elseif ($type == 2) {
             $number_of_frames = 0;
             foreach ($reports as $frame) {
+                if (is_string($frame)) {
+                    $frame = json_decode($frame, true);
+                } elseif (!is_array($frame)) {
+                    throw new \InvalidArgumentException("The input isn't a JSON string or an array");
+                }
                 foreach ($average_report as $key => &$item) {
-                    $item += $frame[$key];
+                    if (array_key_exists($key, $frame)) {
+                        $item += $frame[$key];
+                    }
                 }
                 $number_of_frames++;
             }
@@ -163,15 +170,15 @@ class ReportController extends Controller
     public static function highestEmotion(...$reports)
     {
         if (is_string($reports)) {
-            $report = json_decode($reports, true);
+            $reports = json_decode($reports, true);
         } elseif (!is_array($reports)) {
-            throw new \InvalidArgumentException("The input isn't a JSON string or an array:" . json_encode($reports));
+            throw new \InvalidArgumentException("The input isn't a JSON string or an array");
         }
 
         if (substr(json_encode($reports), 0, 1) == "{") {
             $reports = array($reports);
         }
-        $totalAverageReport = sizeof($reports) > 1 ? self::average(...$reports) : $reports[0];
+        $totalAverageReport = sizeof($reports) > 1 ? self::average($reports) : $reports[0];
 
         $useful_values = [
             self::JOY_KEY => 0,
@@ -198,29 +205,48 @@ class ReportController extends Controller
         if (is_string($report)) {
             $report = json_decode($report, true);
         } elseif (!is_array($report)) {
-            throw new \InvalidArgumentException("The input isn't a JSON string or an array:" . json_encode($report));
+            throw new \InvalidArgumentException("The input isn't a JSON string or an array");
         }
 
+        $useful_values = [
+            self::JOY_KEY => 0,
+            self::SADNESS_KEY => 0,
+            self::DISGUST_KEY => 0,
+            self::CONTEMPT_KEY => 0,
+            self::ANGER_KEY => 0,
+            self::FEAR_KEY => 0,
+            self::SURPRISE_KEY => 0
+        ];
+
+        // There are three scenarios:
+        // 1. $report is a single report object
+        // 2. $report is a array of single report object
+        // 3. $report is a array of arrays of single report object
         if (substr(json_encode($report), 0, 1) == "{") {
-            $report = array($report);
+            $type = 1;
+        } elseif (substr(json_encode($report), 0, 2) == "[[") {
+            $type = 3;
+        } else {
+            $type = 2;
         }
 
-        $final = array();
-        foreach ($report as $single_report) {
-            $useful_values = [
-                self::JOY_KEY => 0,
-                self::SADNESS_KEY => 0,
-                self::DISGUST_KEY => 0,
-                self::CONTEMPT_KEY => 0,
-                self::ANGER_KEY => 0,
-                self::FEAR_KEY => 0,
-                self::SURPRISE_KEY => 0
-            ];
-            foreach ($useful_values as $key => &$value) {
-                $value = $single_report[$key];
+        if ($type == 1) {
+            return array_intersect_key($report, $useful_values);
+        } elseif ($type == 2) {
+            foreach ($report as &$frame) {
+                if (is_string($frame)) {
+                    $frame = json_decode($frame, true);
+                } elseif (!is_array($frame)) {
+                    throw new \InvalidArgumentException("The input isn't a JSON string or an array:");
+                }
+                $frame = array_intersect_key($frame, $useful_values);
             }
-            array_push($final, $useful_values);
+            return $report;
+        } else {
+            foreach ($report as &$sub_report) {
+                $sub_report = self::getEmotionValues($sub_report);
+            }
+            return $report;
         }
-        return $final;
     }
 }

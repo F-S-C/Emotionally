@@ -6,12 +6,12 @@
     @parent
     <style>
 
-        .smaller-charts{
+        .smaller-charts {
             height: 35vh;
             width: 35vw;
         }
 
-        .bigger-charts{
+        .bigger-charts {
             height: 30vh;
         }
 
@@ -24,13 +24,13 @@
                 width: 100px;
             }
 
-            .smaller-charts{
+            .smaller-charts {
                 height: 30vh;
                 width: 30vh;
             }
         }
     </style>
-    @endsection
+@endsection
 
 @section('breadcrumbs')
     <li class="breadcrumb-item">
@@ -112,11 +112,11 @@
         new Chart(radar, {
             type: 'radar',
             data: {
-                labels: Object.keys(data[0]).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                labels: Object.keys(data).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(data[0]).map(el => data[0][el] * 100),
+                        data: Object.keys(data).map(el => data[el] * 100),
                         fill: true,
                         backgroundColor: 'rgba(255, 152, 0, 0.3)',
                         borderColor: 'rgba(255, 152, 0, 0.7)',
@@ -154,11 +154,11 @@
         new Chart(bar, {
             type: 'bar',
             data: {
-                labels: Object.keys(data[0]).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                labels: Object.keys(data).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(data[0]).map(el => data[0][el] * 100),
+                        data: Object.keys(data).map(el => data[el] * 100),
                         fill: false,
                         barPercentage: 0.25,
                         backgroundColor: 'rgba(255, 152, 0, 1)',

@@ -83,7 +83,7 @@ class Project extends Model
         $REPORTS = $this->videos()->get()->map(function ($element) {
             return json_decode($element['report'], true);
         })->toArray();
-        return ReportController::average(...$REPORTS);
+        return ReportController::average($REPORTS);
     }
 
     /**
