@@ -38,27 +38,8 @@ class Video extends Model
         return 'https://picsum.photos/848/480'; // TODO: Implement thumbnail
     }
 
-    public function getAverageEmotion(){
-        $report = json_decode($this->report, true);
-        $average = array('joy' => 0, 'sadness' => 0, 'anger' => 0, 'contempt' => 0, 'disgust' => 0, 'fear' => 0, 'surprise' => 0);
-        $i = 0;
-        foreach ($report as $frame) {
-            $average['sadness'] += $frame['sadness'];
-            $average['contempt'] += $frame['contempt'];
-            $average['disgust'] += $frame['disgust'];
-            $average['fear'] += $frame['fear'];
-            $average['surprise'] += $frame['surprise'];
-            $average['joy'] += $frame['joy'];
-            $average['anger'] += $frame['anger'];
-            $i++;
-        }
-        $average['sadness'] = $average['sadness']/$i;
-        $average['contempt'] = $average['contempt']/$i;
-        $average['disgust'] = $average['disgust']/$i;
-        $average['fear'] = $average['fear']/$i;
-        $average['surprise'] = $average['surprise']/$i;
-        $average['joy'] = $average['joy']/$i;
-        $average['anger'] = $average['anger']/$i;
-        return json_encode($average);
+    public function getAverageReportAttribute()
+    {
+        return ReportController::getEmotionValues(ReportController::average($this->report));
     }
 }
