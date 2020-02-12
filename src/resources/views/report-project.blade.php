@@ -8,7 +8,6 @@
 
         .smaller-charts {
             height: 35vh;
-            width: 35vw;
         }
 
         .bigger-charts {
@@ -26,7 +25,6 @@
 
             .smaller-charts {
                 height: 30vh;
-                width: 30vh;
             }
         }
     </style>
@@ -55,47 +53,54 @@
 
 @section('inner-content')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-md-4">
-                <h3>Spider Chart</h3>
-                <div class="smaller-charts my-5">
-                    <canvas id="radar"></canvas>
+        <div class="card-deck">
+            <div class="card el-0dp">
+                <div class="card-body">
+                    <h3 class="card-title">Spider Chart</h3>
+                    <div class="smaller-charts">
+                        <canvas id="radar"></canvas>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 mt-5">
-                <h3>Bar Chart</h3>
-                <div class="bigger-charts">
-                    <canvas id="bar"></canvas>
+            <div class="card el-0dp">
+                <div class="card-body">
+                    <h3 class="card-title">Bar Chart</h3>
+                    <div class="smaller-charts">
+                        <canvas id="bar"></canvas>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
-                <h3>Most frequent emotion</h3>
-                <img alt="emoji: {{$project->getAverageEmotionAttribute()}}" class="mx-auto d-block my-5 emj" src="
+            <div class="card el-0dp">
+                <div class="card-body">
+                    <h3 class="card-title">Most frequent emotion</h3>
+                    <img alt="emoji: {{$project->getAverageEmotionAttribute()}}" class="mx-auto d-block mt-5 mb-1 emj"
+                         src="
                 @switch($project->getAverageEmotionAttribute())
-                @case('joy')
-                {{ asset('images/emotions/joy.png') }}
-                @break
-                @case('sadness')
-                {{ asset('images/emotions/sadness.png') }}
-                @break
-                @case('anger')
-                {{ asset('images/emotions/anger.png') }}
-                @break
-                @case('contempt')
-                {{ asset('images/emotions/contempt.png') }}
-                @break
-                @case('disgust')
-                {{ asset('images/emotions/disgust.png') }}
-                @break
-                @case('fear')
-                {{ asset('images/emotions/fear.png') }}
-                @break
-                @case('surprise')
-                {{ asset('images/emotions/surprise.png') }}
-                @break
-                @default
-                @endswitch">
-                <p class="h2 text-center text-capitalize">{{ $project->getAverageEmotionAttribute() }}</p>
+                         @case('joy')
+                         {{ asset('images/emotions/joy.png') }}
+                         @break
+                         @case('sadness')
+                         {{ asset('images/emotions/sadness.png') }}
+                         @break
+                         @case('anger')
+                         {{ asset('images/emotions/anger.png') }}
+                         @break
+                         @case('contempt')
+                         {{ asset('images/emotions/contempt.png') }}
+                         @break
+                         @case('disgust')
+                         {{ asset('images/emotions/disgust.png') }}
+                         @break
+                         @case('fear')
+                         {{ asset('images/emotions/fear.png') }}
+                         @break
+                         @case('surprise')
+                         {{ asset('images/emotions/surprise.png') }}
+                         @break
+                         @default
+                         @endswitch">
+                    <p class="h2 text-center text-capitalize">{{ $project->getAverageEmotionAttribute() }}</p>
+                </div>
             </div>
         </div>
     </div>

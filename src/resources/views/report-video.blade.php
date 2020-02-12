@@ -2,6 +2,35 @@
 
 @section('title', $project->name)
 
+@section('head')
+    @parent
+    <style>
+
+        .smaller-charts {
+            height: 35vh;
+            position: relative;
+        }
+
+        .bigger-charts {
+            height: 30vh;
+        }
+
+        .emj {
+            width: 150px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .emj {
+                width: 100px;
+            }
+
+            .smaller-charts {
+                height: 30vh;
+            }
+        }
+    </style>
+@endsection
+
 @section('breadcrumbs')
     <li class="breadcrumb-item">
         <a href="{{route('system.home')}}">
@@ -25,18 +54,27 @@
 
 @section('inner-content')
     <div class="container-fluid">
-        <div class="row mb-5">
-            <div class="col-4">
-                <h3>Spider Chart</h3>
-                <canvas id="radar"></canvas>
+        <div class="card-deck">
+            <div class="card el-0dp">
+                <div class="card-body">
+                    <h3 class="card-title">Spider Chart</h3>
+                    <div class="smaller-charts">
+                        <canvas id="radar"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="col-4">
-                <h3>Bar Chart</h3>
-                <canvas id="bar"></canvas>
+            <div class="card el-0dp">
+                <div class="card-body">
+                    <h3 class="card-title">Bar Chart</h3>
+                    <div class="smaller-charts">
+                        <canvas id="bar"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="col-4">
-                <h3>Video</h3>
-
+            <div class="card el-0dp">
+                <div class="card-body">
+                    <h3 class="card-title">Video</h3>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -64,7 +102,7 @@
                 datasets: [
                     {
                         label: 'Emotions',
-                        data: Object.keys(averageReport).map(el => averageReport[el] * 100),
+                        data: Object.keys(averageReport).map(el => averageReport[el]),
                         fill: true,
                         backgroundColor: 'rgba(255, 152, 0, 0.3)',
                         borderColor: 'rgba(255, 152, 0, 0.7)',
@@ -94,7 +132,8 @@
                     labels: {
                         fontColor: '#aaa'
                     }
-                }
+                },
+                maintainAspectRatio: false
             }
         });
 
@@ -138,18 +177,35 @@
                     labels: {
                         fontColor: '#ccc'
                     }
-                }
+                },
+                maintainAspectRatio: false
             }
         });
 
-        var chart = new Chart(line, {
+        function hexToRgb(hex) {
+            // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+            var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+            hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+                return r + r + g + g + b + b;
+            });
+
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+        let colors = ['#FF9800', '#5BC0EB', '#E55934', '#084887', '#9BC53D', '#F7F5FB', '#44AF69'];
+        new Chart(line, {
             type: 'line',
             data: {
                 labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels?
-                datasets: Object.keys(fullReport[0]).map((key) => {
-                    console.log(key);
-                    console.log(fullReport.map(el => el[key]));
+                datasets: Object.keys(fullReport[0]).map((key,i) => {
                     return {
+                        borderColor: colors[i],
+                        pointBackgroundColor: colors[i],
+                        pointBorderColor: colors[i],
                         label: key.charAt(0).toUpperCase() + key.slice(1),
                         data: fullReport.map(el => el[key]),
                         fill: false
