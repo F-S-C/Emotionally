@@ -39,4 +39,7 @@ Route::get('/logout', function () {
     return redirect()->route('landing');
 })->name('logout');
 
+// TODO: Implement a 'not logged in' notice
+Route::name('verification.notice')->get('/not-logged', function(){return 'not logged';});
+
 Route::redirect('/home', '/system');

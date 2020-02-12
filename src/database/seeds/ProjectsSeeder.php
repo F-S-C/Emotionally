@@ -21,15 +21,15 @@ class ProjectsSeeder extends Seeder
                         'user_id' => $project['user_id']
                     ])
                     ->each(function ($sub_project) {
-                        // For each subprojects create 3 videos
+                        // For each subprojects create 5 videos
                         $sub_project->videos()->saveMany(factory(\Emotionally\Video::class, 5)->make([
                             'user_id' => $sub_project['user_id'],
                             'project_id' => $sub_project['id'],
                         ]));
                     }));
 
-                // For each project create 5 videos
-                $project->videos()->saveMany(factory(\Emotionally\Video::class, 5)->make([
+                // For each project create 3 videos
+                $project->videos()->saveMany(factory(\Emotionally\Video::class, 3)->make([
                     'user_id' => $project['user_id'],
                     'project_id' => $project['id'],
                 ]));
