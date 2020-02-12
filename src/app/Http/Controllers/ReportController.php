@@ -77,7 +77,7 @@ class ReportController extends Controller
      */
     public static function average(...$reports)
     {
-        $averageReport = [
+        $average_report = [
             self::JOY_KEY => 0,
             self::SADNESS_KEY => 0,
             self::DISGUST_KEY => 0,
@@ -111,35 +111,47 @@ class ReportController extends Controller
             self::LIP_STRETCH_KEY => 0
         ];
 
-        $iterated = 0;
-        foreach ($reports as &$json) {
-            if (is_string($json)) {
-                $json = json_decode($json, true);
-            } elseif (!is_array($json)) {
-                throw new \InvalidArgumentException("The input isn't a JSON string or an array:" . json_encode($json));
-            }
+        // Convert the reports to an array
+        if (is_string($reports)) {
+            $reports = json_decode($reports, true);
+        } elseif (!is_array($reports)) {
+            throw new \InvalidArgumentException("The input isn't a JSON string or an array");
+        }
 
-            // In case of multiple reports, the average report must me the average of the averages.
-            // So we need to check if the size of the report is greather than one (a report with only
-            // one object is already an average report) and if all the keys are numeric (an average report
-            // can only be a JSON Object with the above keys)
-//            if (sizeof($json) > 1 && array_keys($json) !== range(0, sizeof($json) - 1)) {
-//                $json = self::average(...$json);
-//            }
-            foreach ($json as $row) {
-                foreach ($averageReport as $key => &$item) {
-                    $item += $row[$key];
+        // There are three scenarios:
+        // 1. $reports is a single report object
+        // 2. $reports is a array of single report object
+        // 3. $reports is a array of arrays of single report object
+        if (substr(json_encode($reports), 0, 1) == "{") {
+            $type = 1;
+        } elseif (substr(json_encode($reports), 0, 2) == "[[") {
+            $type = 3;
+        } else {
+            $type = 2;
+        }
+
+        if ($type = 1) $average_report = $reports;
+        elseif ($type = 2) {
+            $number_of_frames = 0;
+            foreach ($reports as $frame) {
+                foreach ($average_report as $key => &$item) {
+                    $item += $frame[$key];
                 }
-                $iterated++;
+                $number_of_frames++;
             }
+
+            foreach ($average_report as &$value) {
+                if ($number_of_frames == 0) $value = 0;
+                else $value /= $number_of_frames;
+            }
+        } else {
+            foreach ($reports as &$array) {
+                $array = self::average($array);
+            }
+            $average_report = self::average($reports);
         }
 
-        foreach ($averageReport as &$value) {
-            if ($iterated == 0) $value = 0;
-            else $value /= $iterated;
-        }
-
-        return $averageReport;
+        return $average_report;
     }
 
     /**
