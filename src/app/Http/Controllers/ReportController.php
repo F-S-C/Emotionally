@@ -149,30 +149,21 @@ class ReportController extends Controller
 
         $type = self::getReportType($reports);
 
-        if ($type == 1) {
+        if ($type == 1 || empty($reports)) {
             $average_report = $reports;
         } elseif ($type == 2) {
-            $number_of_frames = 0;
             foreach ($reports as $frame) {
-                if (is_string($frame)) {
-                    $frame = json_decode($frame, true);
-                } elseif (!is_array($frame)) {
-                    throw new \InvalidArgumentException("The input isn't a JSON string or an array");
-                }
+                self::fixType($frame);
+
                 foreach ($average_report as $key => &$item) {
                     if (array_key_exists($key, $frame)) {
                         $item += $frame[$key];
                     }
                 }
-                $number_of_frames++;
             }
 
             foreach ($average_report as &$value) {
-                if ($number_of_frames == 0) {
-                    $value = 0;
-                } else {
-                    $value /= $number_of_frames;
-                }
+                $value /= sizeof($reports);
             }
         } else {
             foreach ($reports as &$array) {
