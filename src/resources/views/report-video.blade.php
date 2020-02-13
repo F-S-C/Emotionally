@@ -44,14 +44,14 @@
             </div>
             <div class="card el-0dp">
                 <div class="card-body">
+                    <h3 class="card-title">Video</h3>
                     @if(!empty($video->url))
                         <p>Il video è presente</p>
                     @else
                         <p>Il non è presente</p>
                     @endif
-                    <h3 class="card-title">Video</h3>
-                    <video>
-                        <source src="{{$video->url}}" type="{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
+                    <video controls preload="metadata" style="max-width: 110%;">
+                        <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
                     </video>
                 </div>
             </div>
