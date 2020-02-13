@@ -133,9 +133,8 @@
                             </button>
                         </td>
                         <td class="text-center align-middle">
-                            <form
-                                action="{{route('system.permissions.delete', ['project_id'=>$project->id, 'user_id'=>$user->id])}}"
-                                method="post">
+                            <form method="post"
+                                  action="{{route('system.permissions.delete', ['project_id'=>$project->id, 'user_id'=>$user->id])}}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-md-text-danger" type="submit"
