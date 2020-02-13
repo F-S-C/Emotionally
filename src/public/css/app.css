@@ -4370,39 +4370,65 @@ fieldset:disabled a.skip-navigation {
   box-shadow: 0 0 0 0.2rem rgba(255, 237, 74, 0.5);
 }
 
-.btn-outline-danger {
+.btn-outline-danger,
+.btn.btn-md-text-danger:focus,
+.btn-md-text-danger.skip-navigation:focus,
+.btn.btn-md-text-danger,
+.btn-md-text-danger.skip-navigation {
   color: #e3342f;
   border-color: #e3342f;
 }
 
-.btn-outline-danger:hover {
+.btn-outline-danger:hover,
+.btn.btn-md-text-danger:hover,
+.btn-md-text-danger.skip-navigation:hover {
   color: #fff;
   background-color: #e3342f;
   border-color: #e3342f;
 }
 
 .btn-outline-danger:focus,
-.btn-outline-danger.focus {
+.btn.btn-md-text-danger:focus,
+.btn-md-text-danger.skip-navigation:focus,
+.btn-outline-danger.focus,
+.focus.btn.btn-md-text-danger,
+.focus.btn-md-text-danger.skip-navigation {
   box-shadow: 0 0 0 0.2rem rgba(227, 52, 47, 0.5);
 }
 
 .btn-outline-danger.disabled,
-.btn-outline-danger:disabled {
+.disabled.btn.btn-md-text-danger,
+.disabled.btn-md-text-danger.skip-navigation,
+.btn-outline-danger:disabled,
+.btn.btn-md-text-danger:disabled,
+.btn-md-text-danger.skip-navigation:disabled {
   color: #e3342f;
   background-color: transparent;
 }
 
 .btn-outline-danger:not(:disabled):not(.disabled):active,
+.btn.btn-md-text-danger:not(:disabled):not(.disabled):active,
+.btn-md-text-danger.skip-navigation:not(:disabled):not(.disabled):active,
 .btn-outline-danger:not(:disabled):not(.disabled).active,
-.show > .btn-outline-danger.dropdown-toggle {
+.btn.btn-md-text-danger:not(:disabled):not(.disabled).active,
+.btn-md-text-danger.skip-navigation:not(:disabled):not(.disabled).active,
+.show > .btn-outline-danger.dropdown-toggle,
+.show > .dropdown-toggle.btn.btn-md-text-danger,
+.show > .dropdown-toggle.btn-md-text-danger.skip-navigation {
   color: #fff;
   background-color: #e3342f;
   border-color: #e3342f;
 }
 
 .btn-outline-danger:not(:disabled):not(.disabled):active:focus,
+.btn.btn-md-text-danger:not(:disabled):not(.disabled):active:focus,
+.btn-md-text-danger.skip-navigation:not(:disabled):not(.disabled):active:focus,
 .btn-outline-danger:not(:disabled):not(.disabled).active:focus,
-.show > .btn-outline-danger.dropdown-toggle:focus {
+.btn.btn-md-text-danger:not(:disabled):not(.disabled).active:focus,
+.btn-md-text-danger.skip-navigation:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-danger.dropdown-toggle:focus,
+.show > .dropdown-toggle.btn.btn-md-text-danger:focus,
+.show > .dropdown-toggle.btn-md-text-danger.skip-navigation:focus {
   box-shadow: 0 0 0 0.2rem rgba(227, 52, 47, 0.5);
 }
 
@@ -8455,6 +8481,8 @@ button.bg-dark:focus {
 }
 
 .border-0,
+.btn.btn-md-text-danger,
+.btn-md-text-danger.skip-navigation,
 .btn.btn-md-text,
 .btn-md-text.skip-navigation {
   border: 0 !important;
@@ -12140,6 +12168,8 @@ button.bg-dark:focus {
 }
 
 .text-uppercase,
+.btn.btn-md-text-danger,
+.btn-md-text-danger.skip-navigation,
 .btn.btn-md-text,
 .btn-md-text.skip-navigation {
   text-transform: uppercase !important;
@@ -12274,6 +12304,8 @@ a.text-dark:focus {
 }
 
 .text-decoration-none,
+.btn.btn-md-text-danger,
+.btn-md-text-danger.skip-navigation,
 .btn.btn-md-text,
 .btn-md-text.skip-navigation {
   text-decoration: none !important;
@@ -18832,6 +18864,12 @@ h6,
 
 .btn.btn-md-text,
 .btn-md-text.skip-navigation {
+  box-shadow: none;
+  font-weight: 500;
+}
+
+.btn.btn-md-text-danger,
+.btn-md-text-danger.skip-navigation {
   box-shadow: none;
   font-weight: 500;
 }

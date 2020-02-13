@@ -10814,8 +10814,7 @@ function () {
       } // Get video duration and set as global variable;
 
 
-      var me = this,
-          video = document.createElement('video');
+      var video = document.createElement('video');
       video.src = filename; // video.crossOrigin = 'anonymous';
 
       var duration; // print success message when duration of video is loaded.
@@ -10834,14 +10833,12 @@ function () {
         getVideoImage(secs);
       }); // This portion grabs image from the video
 
-      function getVideoImage(secs) {
-        video.currentTime = Math.min(Math.max(0, (secs < 0 ? video.duration : 0) + secs), video.duration);
+      function getVideoImage(seconds) {
+        video.currentTime = Math.min(Math.max(0, (seconds < 0 ? video.duration : 0) + seconds), video.duration);
 
         video.onseeked = function (e) {
           var canvas = document.createElement('canvas');
-          canvas.crossOrigin = 'anonymous';
-          canvas.height = canvas.height;
-          canvas.width = canvas.width; // canvas.width = 640;
+          canvas.crossOrigin = 'anonymous'; // canvas.width = 640;
           // canvas.height = 480;
 
           var ctx = canvas.getContext('2d');
@@ -10856,8 +10853,8 @@ function () {
 
 
           if (detector && detector.isRunning) {
-            log("#logs", "Processing second : ".concat(precisionRound(secs, 3).toString()));
-            detector.process(ctx.getImageData(0, 0, canvas.width, canvas.height), secs);
+            log("#logs", "Processing second : ".concat(precisionRound(seconds, 3).toString()));
+            detector.process(ctx.getImageData(0, 0, canvas.width, canvas.height), seconds);
           }
         };
 
@@ -10916,6 +10913,8 @@ function () {
      * Analyze a real-time recording using the webcam.
      * @param {AnalysisCompletedCallback} [callback] A callback.
      * @param {Configuration} [options] The configuration of the analysis
+     * @return {{start, end, reset}} A series of
+     * references to functions to start, stop and reset the analysis.
      */
 
   }, {
@@ -10973,9 +10972,8 @@ function () {
         }
 
         callback(detection_results);
-      }
+      } //function executes when the Reset button is pushed.
 
-      ; //function executes when the Reset button is pushed.
 
       function onReset() {
         log('#logs', "Clicked the reset button");
@@ -10985,9 +10983,8 @@ function () {
         }
 
         detection_results = [];
-      }
+      } //Add a callback to notify when camera access is allowed
 
-      ; //Add a callback to notify when camera access is allowed
 
       detector.addEventListener("onWebcamConnectSuccess", function () {
         log('#logs', "Webcam access allowed");
@@ -11025,20 +11022,22 @@ function () {
           detection_results.push(json);
         }
       }); //Draw the detected facial feature points on the image
-
-      function drawFeaturePoints(img, featurePoints) {
-        var contxt = $('#face_video_canvas')[0].getContext('2d');
-        var hRatio = contxt.canvas.width / img.width;
-        var vRatio = contxt.canvas.height / img.height;
-        var ratio = Math.min(hRatio, vRatio);
-        contxt.strokeStyle = "#FFFFFF";
-
-        for (var id in featurePoints) {
-          contxt.beginPath();
-          contxt.arc(featurePoints[id].x, featurePoints[id].y, 2, 0, 2 * Math.PI);
-          contxt.stroke();
-        }
-      }
+      // function drawFeaturePoints(img, featurePoints) {
+      //     let contxt = $('#face_video_canvas')[0].getContext('2d');
+      //
+      //     // let hRatio = contxt.canvas.width / img.width;
+      //     // let vRatio = contxt.canvas.height / img.height;
+      //     // let ratio = Math.min(hRatio, vRatio);
+      //
+      //     contxt.strokeStyle = "#FFFFFF";
+      //     for (let id in featurePoints) {
+      //         contxt.beginPath();
+      //         contxt.arc(featurePoints[id].x,
+      //             featurePoints[id].y, 2, 0, 2 * Math.PI);
+      //         contxt.stroke();
+      //
+      //     }
+      // }
 
       return {
         start: onStart,

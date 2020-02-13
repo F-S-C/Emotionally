@@ -41,17 +41,32 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 }
 
-.btn.btn-md-text {
-    @extend .btn-outline-primary;
-    @extend .text-uppercase;
-    @extend .text-decoration-none;
-    @extend .border-0;
-    box-shadow: none;
-
-    font-weight: 500;
-
-    &:focus{
+.btn {
+    &.btn-md-text {
         @extend .btn-outline-primary;
+        @extend .text-uppercase;
+        @extend .text-decoration-none;
+        @extend .border-0;
+        box-shadow: none;
+
+        font-weight: 500;
+
+        &:focus {
+            @extend .btn-outline-primary;
+        }
+    }
+    &.btn-md-text-danger {
+        @extend .btn-outline-danger;
+        @extend .text-uppercase;
+        @extend .text-decoration-none;
+        @extend .border-0;
+        box-shadow: none;
+
+        font-weight: 500;
+
+        &:focus {
+            @extend .btn-outline-danger;
+        }
     }
 }
 

@@ -25,6 +25,8 @@ Route::name('system.')
         Route::redirect('/home', '/system/');
 
         Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+        Route::get('/project/{id}/share', 'PermissionsController@getProjectPermissions')
+            ->name('project.permissions');
     });
 
 Auth::routes(/*['verify' => true]*/);
@@ -36,6 +38,8 @@ Route::get('/logout', function () {
 })->name('logout');
 
 // TODO: Implement a 'not logged in' notice
-Route::name('verification.notice')->get('/not-logged', function(){return 'not logged';});
+Route::name('verification.notice')->get('/not-logged', function () {
+    return 'not logged';
+});
 
 Route::redirect('/home', '/system');

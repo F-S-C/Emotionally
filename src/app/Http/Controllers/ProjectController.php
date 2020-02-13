@@ -39,7 +39,7 @@ class ProjectController extends Controller
      * @param Project $project The project.
      * @return array The chain of projects. The last element of this array is the project given as input
      */
-    private function getProjectChain(Project $project)
+    public static function getProjectChain(Project $project)
     {
         $chain = array();
         array_unshift($chain, $project);
