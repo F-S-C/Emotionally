@@ -365,11 +365,14 @@
                 }
 
                 let duration = "{{$video->duration}}";
+                let end = "{{$video->end}}";
+                let start = "{{$video->start}}";
+
                 $("#slider-range").slider({
                     range: true,
                     min: 0,
                     max: timeStringToSeconds(duration),
-                    values: [0, timeStringToSeconds(duration)],
+                    values: [timeStringToSeconds(start), timeStringToSeconds(end)],
                     slide: function (event, ui) {
                         $("#amount").val(secondsToTimeString(ui.values[0]) + " - " + secondsToTimeString(ui.values[1]));
                     }
