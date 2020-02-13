@@ -35,6 +35,9 @@ Route::name('system.')
 
                 Route::put('/add', 'PermissionsController@addPermission')
                     ->name('add');
+
+                Route::any('/edit', 'PermissionsController@editPermission')
+                    ->name('edit');
             });
     });
 

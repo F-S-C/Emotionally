@@ -18,22 +18,40 @@ class PermissionsController extends Controller
 
     function addPermission($project_id, Request $request)
     {
-        \Validator::make($request->all(),[
-            'email'=>'bail|required|email|exists:users,email',
-            'modify'=>'in:true,false',
-            'add'=>'in:true,false',
-            'remove'=>'in:true,false',
+        \Validator::make($request->all(), [
+            'email' => 'bail|required|email|exists:users,email',
+            'modify' => 'in:true,false',
+            'add' => 'in:true,false',
+            'remove' => 'in:true,false',
         ])->validate();
         $current_project = Project::findOrFail($project_id);
         $user = User::whereEmail($request->email)->get()->first();
 
         $current_project->users()->attach($user['id'], [
             'read' => true,
-            'modify' => (bool)$request->modify ?? false,
-            'add' => (bool)$request->add ?? false,
-            'remove' => (bool)$request->remove ?? false
+            'modify' => $request->modify == 'true' ?? false,
+            'add' => $request->add == 'true' ?? false,
+            'remove' => $request->remove == 'true' ?? false
         ]);
         return redirect(route('system.permissions.index', ['project_id' => $project_id]));
+    }
+
+    function editPermission($project_id, Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'user_id' => 'bail|required|exists:users,id|exists:project_user,user_id',
+            'permission' => 'required|in:modify,add,remove',
+            'value' => 'in:true,false',
+        ]);
+        if ($validator->fails()) {
+            return json_encode(array('done' => false, 'errors' => $validator->errors()->toArray()));
+        }
+
+        Project::findOrFail($project_id)
+            ->users()
+            ->updateExistingPivot($request->user_id, [$request->permission => $request->value == 'true']);
+
+        return json_encode(array('done' => true));
     }
 
     function deletePermission($project_id, $user_id)

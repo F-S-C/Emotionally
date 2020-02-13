@@ -92,7 +92,7 @@
     </details>
     <div class="table-responsive mt-3">
         <table id="permissions-table" class="display w-100 table table-striped table-borderless">
-            <caption class="sr-only">@lang('dashboard.your_projects')</caption>
+            <caption class="sr-only">Users with permissions on this project.</caption>
             <thead class="text-uppercase">
             <tr>
                 <th scope="col">Name</th>
@@ -108,13 +108,31 @@
             @if(isset($project->users))
                 @foreach($project->users as $user)
                     <tr data-href="{{route('system.project-details', $user->id)}}">
-                        <td>{{$user->name}} {{$user->surname}}</td>
-                        <td>{{$user->email}}</td>
-                        <td class="text-center">@include('partials.yes-no', ['ans'=> $user->pivot->read])</td>
-                        <td class="text-center">@include('partials.yes-no', ['ans'=> $user->pivot->modify])</td>
-                        <td class="text-center">@include('partials.yes-no', ['ans'=> $user->pivot->add])</td>
-                        <td class="text-center">@include('partials.yes-no', ['ans'=> $user->pivot->remove])</td>
-                        <td class="text-center">
+                        <td class="align-middle">{{$user->name}} {{$user->surname}}</td>
+                        <td class="align-middle">{{$user->email}}</td>
+                        <td class="text-center align-middle">@include('partials.yes-no', ['ans'=> $user->pivot->read])</td>
+                        <td class="text-center align-middle">
+                            <button class="edit-permissions-button btn btn-md-text-white" data-permission="modify"
+                                    data-user="{{$user->id}}"
+                                    data-value="{{$user->pivot->modify}}">
+                                @include('partials.yes-no', ['ans'=> $user->pivot->modify])
+                            </button>
+                        </td>
+                        <td class="text-center align-middle">
+                            <button class="edit-permissions-button btn btn-md-text-white" data-permission="add"
+                                    data-user="{{$user->id}}"
+                                    data-value="{{$user->pivot->add}}">
+                                @include('partials.yes-no', ['ans'=> $user->pivot->add])
+                            </button>
+                        </td>
+                        <td class="text-center align-middle">
+                            <button class="edit-permissions-button btn btn-md-text-white" data-permission="remove"
+                                    data-user="{{$user->id}}"
+                                    data-value="{{$user->pivot->remove}}">
+                                @include('partials.yes-no', ['ans'=> $user->pivot->remove])
+                            </button>
+                        </td>
+                        <td class="text-center align-middle">
                             <form
                                 action="{{route('system.permissions.delete', ['project_id'=>$project->id, 'user_id'=>$user->id])}}"
                                 method="post">
@@ -161,6 +179,31 @@
                     let canReadInput = $('#read-input');
                 });
 
+                $('button.edit-permissions-button').click(function () {
+                    const yesIcon = `@include('partials.yes-no', ['ans'=>true])`;
+                    const noIcon = `@include('partials.yes-no', ['ans'=>false])`;
+
+                    console.log($(this).data('value'));
+
+                    let newPermission = $(this).data('value') === 0;
+                    $(this).html(newPermission ? yesIcon : noIcon);
+                    $(this).data('value', newPermission ? 1 : 0);
+
+                    $.post('{{route('system.permissions.edit', ['project_id'=>$project->id])}}',
+                        {
+                            '_token': '{{csrf_token()}}',
+                            'user_id': $(this).data('user'),
+                            'permission': $(this).data('permission'),
+                            'value': newPermission
+                        })
+                        .done(function (data) {
+                            console.log(data);
+
+                        })
+                        .fail(function (data) {
+                            console.log(data);
+                        });
+                });
             });
         })(jQuery);
     </script>

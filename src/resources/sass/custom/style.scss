@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
             @extend .btn-outline-primary;
         }
     }
+
     &.btn-md-text-danger {
         @extend .btn-outline-danger;
         @extend .text-uppercase;
@@ -66,6 +67,21 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
         &:focus {
             @extend .btn-outline-danger;
+        }
+    }
+
+    &.btn-md-text-white {
+        @extend .btn-outline-light;
+        @extend .text-uppercase;
+        @extend .text-decoration-none;
+        @extend .border-0;
+        box-shadow: none;
+
+        font-weight: 500;
+        color: unset;
+
+        &:focus {
+            @extend .btn-outline-light;
         }
     }
 }
