@@ -19,7 +19,7 @@
 return [
     'error' => 'Error',
     'forbidden_access' => 'Forbidden access',
-    'forbidden_access_message' => 'Sorry, but your are not authorized to do this action.',
+    'forbidden_access_message' => 'Sorry, but you are not authorized to do this action.',
     'suggestion' => 'Would you like to :first_option or :second_option?',
     'go_back' => 'go back',
     'return_home' => 'return to home'
