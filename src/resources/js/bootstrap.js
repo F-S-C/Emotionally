@@ -20,6 +20,7 @@ try {
     require('chartjs-plugin-colorschemes');
     require('hammerjs');
     require('chartjs-plugin-zoom');
+    require('chartjs-lines-plugin');
 
     // Import datatables
     require('datatables.net-bs4')();

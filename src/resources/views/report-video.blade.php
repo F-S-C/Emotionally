@@ -46,11 +46,11 @@
                 <div class="card-body">
                     <h3 class="card-title">Video</h3>
                     <div class="smaller-charts">
-                    @if(!empty($video->url))
-                        <video controls preload="metadata" style="max-width: 110%;">
-                            <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
-                        </video>
-                    @endif
+                        @if(!empty($video->url))
+                            <video id="video" controls preload="auto" style="max-width: 110%;">
+                                <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
+                            </video>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -163,7 +163,7 @@
         });
 
         let colors = ['#FF9800', '#5BC0EB', '#E55934', '#084887', '#9BC53D', '#F7F5FB', '#44AF69'];
-        new Chart(line, {
+        let lineChart = new Chart(line, {
             type: 'line',
             data: {
                 labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels?
@@ -248,5 +248,86 @@
                 }
             }
         });
+
+        /**
+         * Update the timeline on the graph by synchronizing it with the video.
+         */
+        let video = document.getElementById("video");
+        video.ontimeupdate = function () {
+            lineChart.options = {
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.2)',
+                            zeroLineColor: 'rgba(255, 255, 255, 0.5)'
+                        },
+                        ticks: {
+                            fontColor: '#ccc'
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 255, 255, 0.2)',
+                            zeroLineColor: 'rgba(255, 255, 255, 0.5)'
+                        },
+                        ticks: {
+                            fontColor: '#ccc'
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#ccc'
+                    }
+                },
+                maintainAspectRatio: false,
+                plugins: {
+                    colorschemes: {
+                        scheme: 'brewer.SetOne3'
+                    },
+                    zoom: {
+                        pan: {
+                            enabled: true,
+                            mode: 'x',
+                            rangeMin: {
+                                // Format of min pan range depends on scale type
+                                x: 0,
+                                y: 0
+                            },
+                            rangeMax: {
+                                // Format of max pan range depends on scale type
+                                x: null,
+                                y: null
+                            }
+                        },
+                        zoom: {
+                            enabled: true,
+                            drag: true,
+                            mode: 'xy',
+
+                            rangeMin: {
+                                // Format of min zoom range depends on scale type
+                                x: null,
+                                y: 0
+                            },
+                            rangeMax: {
+                                // Format of max zoom range depends on scale type
+                                x: null,
+                                y: 1
+                            },
+
+                            // Speed of zoom via mouse wheel
+                            // (percentage of zoom on a wheel event)
+                            speed: 0.1
+                        }
+                    }
+                },
+                "verticalLine": [{
+                    "x": video.currentTime,
+                    "style": "rgba(255, 255, 0, 1)",
+                }]
+            };
+            lineChart.update();
+        }
     </script>
 @endsection
