@@ -20,10 +20,10 @@ class PermissionsSeeder extends Seeder
             $permissions = array();
             foreach ($users as $id) {
                 array_push($permissions, [
-                    'read' => rand(0, 1) == 1,
-                    'modify' => rand(0, 1) == 1,
-                    'add' => rand(0, 1) == 1,
-                    'remove' => rand(0, 1) == 1,
+                    'read' => 1,
+                    'modify' => (bool)rand(0, 1),
+                    'add' => (bool)rand(0, 1),
+                    'remove' => (bool)rand(0, 1),
                 ]);
             }
 

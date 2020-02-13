@@ -27,15 +27,33 @@ Route::name('system.')
         Route::middleware('permissions:read')
             ->group(function () {
                 Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+                Route::prefix('/project/{project_id}/share')
+                    ->name('permissions.')
+                    ->group(function () {
+                        Route::get('/', 'PermissionsController@getProjectPermissions')
+                            ->name('index');
+                        Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
+                            ->name('delete');
+
+                        Route::put('/add', 'PermissionsController@addPermission')
+                            ->name('add');
+
+                        Route::any('/edit', 'PermissionsController@editPermission')
+                            ->name('edit');
+                    });
             });
-    });
 
-Auth::routes(/*['verify' => true]*/);
+        Auth::routes(/*['verify' => true]*/);
 
-Route::get('/logout', function () {
-    Auth::logout();
+        Route::get('/logout', function () {
+            Auth::logout();
 
-    return redirect()->route('landing');
-})->name('logout');
+            return redirect()->route('landing');
+        })->name('logout');
 
-Route::redirect('/home', '/system');
+// TODO: Implement a 'not logged in' notice
+        Route::name('verification.notice')->get('/not-logged', function () {
+            return 'not logged';
+        });
+
+        Route::redirect('/home', '/system');
