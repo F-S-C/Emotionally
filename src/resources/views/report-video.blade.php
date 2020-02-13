@@ -50,6 +50,13 @@
                             <video id="video" controls preload="auto" style="max-width: 110%;">
                                 <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
                             </video>
+                            <p>
+                                <label for="amount" style="color: #FF9800;">Time range:</label>
+                                <input type="text" id="amount" readonly style="border:none; background-color: transparent; color: #FF9800; font-weight:bold;">
+                            </p>
+
+                            <div id="slider-range"></div>
+
                         @endif
                     </div>
                 </div>
@@ -75,6 +82,9 @@
         let line = document.getElementById("line").getContext("2d");
         let bar = document.getElementById("bar").getContext("2d");
 
+        /**
+         * Create a new radar chart.
+         */
         new Chart(radar, {
             type: 'radar',
             data: {
@@ -117,6 +127,9 @@
             }
         });
 
+        /**
+         * Create a new bar chart.
+         */
         new Chart(bar, {
             type: 'bar',
             data: {
@@ -163,6 +176,10 @@
         });
 
         let colors = ['#FF9800', '#5BC0EB', '#E55934', '#084887', '#9BC53D', '#F7F5FB', '#44AF69'];
+
+        /**
+         * Create a new line chart.
+         */
         let lineChart = new Chart(line, {
             type: 'line',
             data: {
@@ -329,5 +346,23 @@
             };
             lineChart.update();
         }
+
+        /**
+         * Function of the slider.
+         */
+        $( function() {
+            $( "#slider-range" ).slider({
+                range: true,
+                min: 0,
+                max: {{\Carbon\Carbon::createFromTimeString($video->duration)->diffInSeconds()}},
+                values: [ {{\Carbon\Carbon::createFromTimeString($video->start)->diffInSeconds()}}, {{\Carbon\Carbon::createFromTimeString($video->end)->diffInSeconds()}}],
+                slide: function( event, ui ) {
+                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                    
+                }
+            });
+            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+        });
     </script>
 @endsection

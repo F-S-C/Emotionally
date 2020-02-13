@@ -11073,7 +11073,7 @@ window.EmotionAnalysis = EmotionAnalysis; // exports.default = EmotionAnalysis;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\aanne\Documents\Emotionally\src\resources\js\emotion-analysis.js */"./resources/js/emotion-analysis.js");
+module.exports = __webpack_require__(/*! C:\Users\zacca\Documents\GitHub\Emotionally\src\resources\js\emotion-analysis.js */"./resources/js/emotion-analysis.js");
 
 
 /***/ })
