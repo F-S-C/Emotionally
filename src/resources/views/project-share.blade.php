@@ -54,7 +54,10 @@
                                 method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-md-text-danger" type="submit">Delete</button>
+                                <button class="btn btn-md-text-danger" type="submit"
+                                        onclick="return confirm('Do you really want to revoke all permissions for {{ $user->email  }}?');">
+                                    Delete
+                                </button>
                             </form>
                         </td>
                     </tr>
