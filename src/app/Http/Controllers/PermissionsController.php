@@ -18,7 +18,7 @@ class PermissionsController extends Controller
 
     function addPermission($project_id, Request $request)
     {
-        $validator = \Validator::make($request->all(),[
+        \Validator::make($request->all(),[
             'email'=>'bail|required|email|exists:users,email',
             'modify'=>'in:true,false',
             'add'=>'in:true,false',
