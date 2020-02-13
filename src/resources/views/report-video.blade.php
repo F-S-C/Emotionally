@@ -345,7 +345,7 @@
                 }]
             };
             lineChart.update();
-        }
+        };
 
         /**
          * Function of the slider.
@@ -358,7 +358,6 @@
                 values: [ {{\Carbon\Carbon::createFromTimeString($video->start)->diffInSeconds()}}, {{\Carbon\Carbon::createFromTimeString($video->end)->diffInSeconds()}}],
                 slide: function( event, ui ) {
                     $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-                    
                 }
             });
             $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +

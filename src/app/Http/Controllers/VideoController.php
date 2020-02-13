@@ -2,6 +2,7 @@
 
 namespace Emotionally\Http\Controllers;
 
+use Cassandra\Time;
 use Emotionally\Project;
 use Emotionally\User;
 use Emotionally\Video;
@@ -20,6 +21,17 @@ class VideoController extends Controller
         $video->save();
     }
 
+    /**
+     * This function get and reset a interval of the video
+     * @param Video $video The video
+     * @param $start_interval The new start interval
+     * @param $end_interval The new end interval
+     */
+    public function resetInterval(Video $video, $start_interval,  $end_interval ){
+        $video->start=$start_interval;
+        $video->end=$end_interval;
+        $video->save();
+    }
 
     /**
      * This function get and delete a video
