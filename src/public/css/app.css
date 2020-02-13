@@ -18571,27 +18571,46 @@ table.table thead tr {
   background-color: black;
 }
 
-a {
+a,
+.btn-link {
   text-decoration: underline;
 }
 
-a:hover {
+a:hover,
+a:focus,
+.btn-link:hover,
+.btn-link:focus {
   text-decoration: none;
+  border: 1px solid rgba(255, 152, 0, 0.75);
 }
 
 #main-navigation a,
 .breadcrumb a,
-.dropdown-menu a {
+.dropdown-menu a,
+#main-navigation .btn-link,
+.breadcrumb .btn-link,
+.dropdown-menu .btn-link {
   text-decoration: none;
 }
 
 #main-navigation a:hover,
+#main-navigation a:focus,
 .breadcrumb a:hover,
-.dropdown-menu a:hover {
+.breadcrumb a:focus,
+.dropdown-menu a:hover,
+.dropdown-menu a:focus,
+#main-navigation .btn-link:hover,
+#main-navigation .btn-link:focus,
+.breadcrumb .btn-link:hover,
+.breadcrumb .btn-link:focus,
+.dropdown-menu .btn-link:hover,
+.dropdown-menu .btn-link:focus {
+  border: none;
   text-decoration: underline;
 }
 
-a[target=_blank]::after {
+a[target=_blank]::after,
+.btn-link[target=_blank]::after {
   font-weight: 900;
   font-family: "Font Awesome 5 Free", fantasy;
   font-size: xx-small;

@@ -16,33 +16,35 @@
  */
 
 .skip-navigation {
-  @include sr-only;
-  @include sr-only-focusable;
-  @extend .btn;
-  @extend .btn-primary;
-  @extend .p-3;
-  position: absolute !important;
-  z-index: $zindex-fixed + 1;
-  color: white;
-  background-color: black;
-
-  &:active, &:focus {
+    @include sr-only;
+    @include sr-only-focusable;
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .p-3;
+    position: absolute !important;
+    z-index: $zindex-fixed + 1;
     color: white;
     background-color: black;
-  }
+
+    &:active, &:focus {
+        color: white;
+        background-color: black;
+    }
 }
 
-a {
+a, .btn-link {
     text-decoration: underline;
 
-    &:hover {
+    &:hover, &:focus {
         text-decoration: none;
+        border: 1px solid rgba($primary, 0.75);
     }
 
     #main-navigation &, .breadcrumb &, .dropdown-menu & {
         text-decoration: none;
 
-        &:hover {
+        &:hover, &:focus {
+            border: none;
             text-decoration: underline;
         }
     }
