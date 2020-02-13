@@ -47,7 +47,7 @@
                     <h3 class="card-title">Video</h3>
                     <div class="smaller-charts">
                         @if(!empty($video->url))
-                            <video id="video" controls preload="auto" style="max-width: 110%;">
+                            <video id="video" controls preload="auto" style="max-width: 100%;">
                                 <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
                             </video>
                             <p>
@@ -341,7 +341,7 @@
                 },
                 "verticalLine": [{
                     "x": video.currentTime,
-                    "style": "rgba(255, 255, 0, 1)",
+                    "style": "rgba(255, 255, 0, 1)"
                 }]
             };
             lineChart.update();
