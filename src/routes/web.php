@@ -27,6 +27,8 @@ Route::name('system.')
         Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
         Route::get('/project/{id}/share', 'PermissionsController@getProjectPermissions')
             ->name('project.permissions');
+        Route::delete('/project/{project_id}/share/delete/{user_id}', 'PermissionsController@deletePermission')
+            ->name('permissions.delete');
     });
 
 Auth::routes(/*['verify' => true]*/);

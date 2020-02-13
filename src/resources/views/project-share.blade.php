@@ -49,7 +49,13 @@
                         <td class="text-center align-middle">@include('partials.yes-no', ['ans'=> $user->pivot->add])</td>
                         <td class="text-center align-middle">@include('partials.yes-no', ['ans'=> $user->pivot->remove])</td>
                         <td class="text-center align-middle">
-                            <button class="btn btn-md-text-danger">Delete</button>
+                            <form
+                                action="{{route('system.permissions.delete', ['project_id'=>$project->id, 'user_id'=>$user->id])}}"
+                                method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-md-text-danger" type="submit">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
