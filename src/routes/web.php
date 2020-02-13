@@ -24,7 +24,7 @@ Route::name('system.')
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
 
-        Route::middleware('permissions')
+        Route::middleware('permissions:read')
             ->group(function () {
                 Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
             });

@@ -11,14 +11,16 @@ class PermissionsMiddleware
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure $next
+     * @param string $permission_required The required permission. Must be one
+     * of: 'read', 'modify', 'add', 'remove' (case unsensitive).
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $permission_required)
     {
         $can_read_project = $request->user()
             ->permissions
             ->where('id', $request->route()->parameters()['id'])
-            ->where('read', true)
+            ->where($permission_required, true)
             ->isEmpty();
 
         if ($can_read_project) {
