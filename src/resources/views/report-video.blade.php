@@ -45,14 +45,13 @@
             <div class="card el-0dp">
                 <div class="card-body">
                     <h3 class="card-title">Video</h3>
+                    <div class="smaller-charts">
                     @if(!empty($video->url))
-                        <p>Il video è presente</p>
-                    @else
-                        <p>Il non è presente</p>
+                        <video controls preload="metadata" style="max-width: 110%;">
+                            <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
+                        </video>
                     @endif
-                    <video controls preload="metadata" style="max-width: 110%;">
-                        <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
-                    </video>
+                    </div>
                 </div>
             </div>
         </div>
