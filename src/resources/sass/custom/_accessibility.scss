@@ -44,6 +44,7 @@ a, .btn-link {
         text-decoration: none;
 
         &:hover, &:focus {
+            border: none;
             text-decoration: underline;
         }
     }

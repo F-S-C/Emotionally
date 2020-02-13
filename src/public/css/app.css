@@ -18541,6 +18541,7 @@ a:focus,
 .breadcrumb .btn-link:focus,
 .dropdown-menu .btn-link:hover,
 .dropdown-menu .btn-link:focus {
+  border: none;
   text-decoration: underline;
 }
 
