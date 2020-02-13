@@ -42,18 +42,19 @@ Route::name('system.')
                             ->name('edit');
                     });
             });
+    });
 
-        Auth::routes(/*['verify' => true]*/);
+Auth::routes(/*['verify' => true]*/);
 
-        Route::get('/logout', function () {
-            Auth::logout();
+Route::get('/logout', function () {
+    Auth::logout();
 
-            return redirect()->route('landing');
-        })->name('logout');
+    return redirect()->route('landing');
+})->name('logout');
 
 // TODO: Implement a 'not logged in' notice
-        Route::name('verification.notice')->get('/not-logged', function () {
-            return 'not logged';
-        });
+Route::name('verification.notice')->get('/not-logged', function () {
+    return 'not logged';
+});
 
-        Route::redirect('/home', '/system');
+Route::redirect('/home', '/system');
