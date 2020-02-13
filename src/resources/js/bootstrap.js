@@ -18,6 +18,8 @@ try {
     // Import Chart.js
     window.Chart = require('chart.js');
     require('chartjs-plugin-colorschemes');
+    require('hammerjs');
+    require('chartjs-plugin-zoom');
 
     // Import datatables
     require('datatables.net-bs4')();

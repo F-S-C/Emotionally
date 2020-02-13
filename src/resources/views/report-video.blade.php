@@ -209,6 +209,42 @@
                 plugins: {
                     colorschemes: {
                         scheme: 'brewer.SetOne3'
+                    },
+                    zoom: {
+                        pan: {
+                            enabled: true,
+                            mode: 'x',
+                            rangeMin: {
+                                // Format of min pan range depends on scale type
+                                x: 0,
+                                y: 0
+                            },
+                            rangeMax: {
+                                // Format of max pan range depends on scale type
+                                x: null,
+                                y: null
+                            }
+                        },
+                        zoom: {
+                            enabled: true,
+                            drag: true,
+                            mode: 'xy',
+
+                            rangeMin: {
+                                // Format of min zoom range depends on scale type
+                                x: null,
+                                y: 0
+                            },
+                            rangeMax: {
+                                // Format of max zoom range depends on scale type
+                                x: null,
+                                y: 1
+                            },
+
+                            // Speed of zoom via mouse wheel
+                            // (percentage of zoom on a wheel event)
+                            speed: 0.1
+                        }
                     }
                 }
             }
