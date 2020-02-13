@@ -32,6 +32,9 @@ Route::name('system.')
                     ->name('index');
                 Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
                     ->name('delete');
+
+                Route::put('/add', 'PermissionsController@addPermission')
+                    ->name('add');
             });
     });
 
