@@ -575,7 +575,7 @@ affdex.PhotoDetector = function (faceMode) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\zacca\Documents\GitHub\Emotionally\src\resources\js\vendor\affdex.js */"./resources/js/vendor/affdex.js");
+module.exports = __webpack_require__(/*! D:\GitProjects\Emotionally\src\resources\js\vendor\affdex.js */"./resources/js/vendor/affdex.js");
 
 
 /***/ })

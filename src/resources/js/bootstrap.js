@@ -14,7 +14,7 @@ try {
 
     // Import jQuery.Scrollbar (https://www.npmjs.com/package/jquery.scrollbar)
     require('jquery.scrollbar');
-    require('jquery-ui');
+    require('jquery-ui-dist/jquery-ui');
 
     // Import Chart.js
     window.Chart = require('chart.js');
