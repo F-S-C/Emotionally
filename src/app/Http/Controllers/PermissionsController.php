@@ -19,6 +19,6 @@ class PermissionsController extends Controller
     function deletePermission($project_id, $user_id)
     {
         Project::findOrFail($project_id)->users()->detach($user_id);
-        return redirect(route('system.project.permissions', ['id' => $project_id])) ;
+        return redirect(route('system.permissions.index', ['project_id' => $project_id])) ;
     }
 }

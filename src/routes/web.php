@@ -25,10 +25,14 @@ Route::name('system.')
         Route::redirect('/home', '/system/');
 
         Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
-        Route::get('/project/{id}/share', 'PermissionsController@getProjectPermissions')
-            ->name('project.permissions');
-        Route::delete('/project/{project_id}/share/delete/{user_id}', 'PermissionsController@deletePermission')
-            ->name('permissions.delete');
+        Route::prefix('/project/{project_id}/share')
+            ->name('permissions.')
+            ->group(function () {
+                Route::get('/', 'PermissionsController@getProjectPermissions')
+                    ->name('index');
+                Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
+                    ->name('delete');
+            });
     });
 
 Auth::routes(/*['verify' => true]*/);
