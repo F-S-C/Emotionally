@@ -3,6 +3,7 @@
 namespace Emotionally\Http\Middleware;
 
 use Closure;
+use Emotionally\User;
 
 class PermissionsMiddleware
 {
@@ -17,15 +18,15 @@ class PermissionsMiddleware
      */
     public function handle($request, Closure $next, $permission_required)
     {
-        $can_read_project = $request->user()
-            ->permissions
+        $has_permission = $request->user()
+            ->permissions()
             ->where('id', $request->route()->parameters()['id'])
-            ->where($permission_required, true)
-            ->isEmpty();
+            ->wherePivot($permission_required, true)
+            ->get()
+            ->isNotEmpty();
 
-        if ($can_read_project) {
-            // TODO: Create error page?
-            return redirect(route('system.home'));
+        if (!$has_permission) {
+            return abort(403);
         }
 
         return $next($request);
