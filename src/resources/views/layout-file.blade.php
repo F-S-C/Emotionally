@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@extends('layouts.blank')
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,201 +39,168 @@
             </div>
         </div>
     </div>
-    <script>
-        (function () {
-            $(document).ready(function () {
-                let averageReport = @json($video->average_report);
-                let fullReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($video->report));
 
-                let radar = document.getElementById("radar").getContext("2d");
-                let line = document.getElementById("line").getContext("2d");
-                let bar = document.getElementById("bar").getContext("2d");
+    @section('scripts')
+        <script>
+            (function () {
+                $(document).ready(function () {
+                    let averageReport = @json($video->average_report);
+                    let fullReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($video->report));
 
-                /**
-                 * Create a new radar chart.
-                 */
-                new Chart(radar, {
-                    type: 'radar',
-                    data: {
-                        labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
-                        datasets: [
-                            {
-                                label: 'Emotions',
-                                data: Object.keys(averageReport).map(el => averageReport[el]),
-                                fill: true,
-                                backgroundColor: 'rgba(255, 152, 0, 0.3)',
-                                borderColor: 'rgba(255, 152, 0, 0.7)',
-                                pointBackgroundColor: 'rgba(255, 152, 0, 1)',
-                                pointBorderColor: 'rgba(255, 255, 255, 0.9)'
-                            }
-                        ]
-                    },
-                    options: {
-                        scale: {
-                            angleLines: {
-                                color: 'rgba(255, 255, 255, 0.5)'
-                            },
-                            gridLines: {
-                                color: 'rgba(255, 255, 255, 0.5)'
-                            },
-                            pointLabels: {
-                                fontColor: 'rgba(255,255,255,0.7)',
-                                fontSize: 12
-                            },
-                            ticks: {
-                                showLabelBackdrop: false,
-                                fontColor: 'rgba(255, 255, 255, 0.7)'
-                            }
+                    let radar = document.getElementById("radar").getContext("2d");
+                    let line = document.getElementById("line").getContext("2d");
+                    let bar = document.getElementById("bar").getContext("2d");
+
+                    /**
+                     * Create a new radar chart.
+                     */
+                    new Chart(radar, {
+                        type: 'radar',
+                        data: {
+                            labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                            datasets: [
+                                {
+                                    label: 'Emotions',
+                                    data: Object.keys(averageReport).map(el => averageReport[el]),
+                                    fill: true,
+                                    backgroundColor: 'rgba(255, 152, 0, 0.3)',
+                                    borderColor: 'rgba(255, 152, 0, 0.7)',
+                                    pointBackgroundColor: 'rgba(255, 152, 0, 1)',
+                                    pointBorderColor: 'rgba(255, 255, 255, 0.9)'
+                                }
+                            ]
                         },
-                        legend: {
-                            labels: {
-                                fontColor: '#aaa'
-                            }
-                        },
-                        maintainAspectRatio: false
-                    }
-                });
-
-                /**
-                 * Create a new bar chart.
-                 */
-                new Chart(bar, {
-                    type: 'bar',
-                    data: {
-                        labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
-                        datasets: [
-                            {
-                                label: 'Emotions',
-                                data: Object.keys(averageReport).map(el => averageReport[el]),
-                                fill: false,
-                                barPercentage: 0.25,
-                                backgroundColor: 'rgba(255, 152, 0, 1)',
-                                hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
-                            }
-                        ]
-                    },
-                    options: {
-                        scales: {
-                            xAxes: [{
+                        options: {
+                            scale: {
+                                angleLines: {
+                                    color: 'rgba(0, 0, 0, 0.5)'
+                                },
                                 gridLines: {
-                                    color: 'rgba(255, 255, 255, 0.2)',
-                                    zeroLineColor: 'rgba(255, 255, 255, 0.5)'
+                                    color: 'rgba(0, 0, 0, 0.5)'
+                                },
+                                pointLabels: {
+                                    fontColor: 'rgba(0, 0, 0, 0.7)',
+                                    fontSize: 12
                                 },
                                 ticks: {
-                                    fontColor: '#ccc'
+                                    showLabelBackdrop: false,
+                                    fontColor: 'rgba(0, 0, 0, 0.7)'
                                 }
-                            }],
-                            yAxes: [{
-                                gridLines: {
-                                    color: 'rgba(255, 255, 255, 0.2)',
-                                    zeroLineColor: 'rgba(255, 255, 255, 0.5)'
-                                },
-                                ticks: {
-                                    fontColor: '#ccc'
-                                }
-                            }]
-                        },
-                        legend: {
-                            labels: {
-                                fontColor: '#ccc'
-                            }
-                        },
-                        maintainAspectRatio: false
-                    }
-                });
-
-                let colors = ['#FF9800', '#5BC0EB', '#E55934', '#084887', '#9BC53D', '#F7F5FB', '#44AF69'];
-
-                /**
-                 * Create a new line chart.
-                 */
-                let lineChart = new Chart(line, {
-                    type: 'line',
-                    data: {
-                        labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels?
-                        datasets: Object.keys(fullReport[0]).map((key, i) => {
-                            return {
-                                borderColor: colors[i],
-                                pointBackgroundColor: colors[i],
-                                pointBorderColor: colors[i],
-                                label: key.charAt(0).toUpperCase() + key.slice(1),
-                                data: fullReport.map(el => el[key]),
-                                fill: false
-                            };
-                        })
-                    },
-                    options: {
-                        scales: {
-                            xAxes: [{
-                                gridLines: {
-                                    color: 'rgba(255, 255, 255, 0.2)',
-                                    zeroLineColor: 'rgba(255, 255, 255, 0.5)'
-                                },
-                                ticks: {
-                                    fontColor: '#ccc'
-                                }
-                            }],
-                            yAxes: [{
-                                gridLines: {
-                                    color: 'rgba(255, 255, 255, 0.2)',
-                                    zeroLineColor: 'rgba(255, 255, 255, 0.5)'
-                                },
-                                ticks: {
-                                    fontColor: '#ccc'
-                                }
-                            }]
-                        },
-                        legend: {
-                            labels: {
-                                fontColor: '#ccc'
-                            }
-                        },
-                        maintainAspectRatio: false,
-                        plugins: {
-                            colorschemes: {
-                                scheme: 'brewer.SetOne3'
                             },
-                            zoom: {
-                                pan: {
-                                    enabled: true,
-                                    mode: 'x',
-                                    rangeMin: {
-                                        // Format of min pan range depends on scale type
-                                        x: 0,
-                                        y: 0
+                            legend: {
+                                labels: {
+                                    fontColor: '#000'
+                                }
+                            },
+                            maintainAspectRatio: false
+                        }
+                    });
+
+                    /**
+                     * Create a new bar chart.
+                     */
+                    new Chart(bar, {
+                        type: 'bar',
+                        data: {
+                            labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                            datasets: [
+                                {
+                                    label: 'Emotions',
+                                    data: Object.keys(averageReport).map(el => averageReport[el]),
+                                    fill: false,
+                                    barPercentage: 0.25,
+                                    backgroundColor: 'rgba(255, 152, 0, 1)',
+                                    hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                    gridLines: {
+                                        color: 'rgba(0, 0, 0, 0.2)',
+                                        zeroLineColor: 'rgba(0, 0, 0, 0.5)'
                                     },
-                                    rangeMax: {
-                                        // Format of max pan range depends on scale type
-                                        x: null,
-                                        y: null
+                                    ticks: {
+                                        fontColor: '#000'
                                     }
-                                },
-                                zoom: {
-                                    enabled: true,
-                                    drag: true,
-                                    mode: 'xy',
-
-                                    rangeMin: {
-                                        // Format of min zoom range depends on scale type
-                                        x: null,
-                                        y: 0
+                                }],
+                                yAxes: [{
+                                    gridLines: {
+                                        color: 'rgba(0, 0, 0, 0.2)',
+                                        zeroLineColor: 'rgba(0, 0, 0, 0.5)'
                                     },
-                                    rangeMax: {
-                                        // Format of max zoom range depends on scale type
-                                        x: null,
-                                        y: 1
-                                    },
+                                    ticks: {
+                                        fontColor: '#000'
+                                    }
+                                }]
+                            },
+                            legend: {
+                                labels: {
+                                    fontColor: '#000'
+                                }
+                            },
+                            maintainAspectRatio: false
+                        }
+                    });
 
-                                    // Speed of zoom via mouse wheel
-                                    // (percentage of zoom on a wheel event)
-                                    speed: 0.1
+                    let colors = ['#FF9800', '#5BC0EB', '#E55934', '#084887', '#9BC53D', '#97959b', '#44AF69'];
+
+                    /**
+                     * Create a new line chart.
+                     */
+                    let lineChart = new Chart(line, {
+                        type: 'line',
+                        data: {
+                            labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels?
+                            datasets: Object.keys(fullReport[0]).map((key, i) => {
+                                return {
+                                    borderColor: colors[i],
+                                    pointBackgroundColor: colors[i],
+                                    pointBorderColor: colors[i],
+                                    label: key.charAt(0).toUpperCase() + key.slice(1),
+                                    data: fullReport.map(el => el[key]),
+                                    fill: false
+                                };
+                            })
+                        },
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                    gridLines: {
+                                        color: 'rgba(0, 0, 0, 0.2)',
+                                        zeroLineColor: 'rgba(0, 0, 0, 0.5)'
+                                    },
+                                    ticks: {
+                                        fontColor: '#000'
+                                    }
+                                }],
+                                yAxes: [{
+                                    gridLines: {
+                                        color: 'rgba(0, 0, 0, 0.2)',
+                                        zeroLineColor: 'rgba(0, 0, 0, 0.5)'
+                                    },
+                                    ticks: {
+                                        fontColor: '#000'
+                                    }
+                                }]
+                            },
+                            legend: {
+                                labels: {
+                                    fontColor: '#000'
+                                }
+                            },
+                            maintainAspectRatio: false,
+                            plugins: {
+                                colorschemes: {
+                                    scheme: 'brewer.SetOne3'
                                 }
                             }
                         }
-                    }
+                    });
                 });
-            });
-        })($);
-    </script>
+            })($);
+        </script>
+    @endsection
 </body>
 </html>

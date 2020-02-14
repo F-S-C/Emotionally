@@ -45,38 +45,32 @@
             <div class="card el-0dp">
                 <div class="card-body">
                     <h3 class="card-title">Bar Chart</h3>
-                    <div class="smaller-charts">
-                        <canvas id="bar"></canvas>
-                    </div>
+                    <canvas id="bar"></canvas>
                 </div>
             </div>
             <div class="card el-0dp">
                 <div class="card-body">
                     <h3 class="card-title">Video</h3>
-                    <div class="smaller-charts">
-                        @if(!empty($video->url))
-                            <video id="video" controls preload="auto" style="max-width: 100%;">
-                                <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
-                            </video>
-                            <p>
-                                <label for="amount" style="color: #FF9800;">Time range:</label>
-                                <input type="text" id="amount" readonly
-                                       style="border:none; background-color: transparent; color: #FF9800; font-weight:bold;">
-                            </p>
+                    @if(!empty($video->url))
+                        <video id="video" controls preload="auto" style="max-width: 100%;">
+                            <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
+                        </video>
+                        <p>
+                            <label for="amount" style="color: #FF9800;">Time range:</label>
+                            <input type="text" id="amount" readonly
+                                   style="border:none; background-color: transparent; color: #FF9800; font-weight:bold;">
+                        </p>
 
-                            <div id="slider-range"></div>
+                        <div id="slider-range"></div>
 
-                        @endif
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <h3>Line Chart</h3>
-                <div class="bigger-charts">
-                    <canvas id="line"></canvas>
-                </div>
+                <canvas id="line"></canvas>
             </div>
         </div>
     </div>
