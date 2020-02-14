@@ -229,7 +229,7 @@
                 </div>
             </div>
 
-            <!---Modal 2--->
+            <!---Modal 2 Realtime--->
             <div class="modal fade" id="realtime-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content el-16dp">
@@ -240,14 +240,19 @@
                                 <span class="fas fa-times"></span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            Realtime video <!--TODO: TITOLO E CORPO--->
+                        <div class="modal-body el-16dp">
+                            <button id="btnStart">START RECORDING</button><br/>
+                                <button id="btnStop">STOP RECORDING</button>
+
+                            <video controls></video>
+
+                            <video id="vid2" controls></video>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!---Modal 3--->
+            <!---Modal 3 create project--->
             <div class="modal fade" id="create-project-modal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content el-16dp">
@@ -396,6 +401,89 @@
                             form.show();
                         }
                     });
+                });
+                let constraintObj = {
+                    audio: false,
+                    video: {
+                        facingMode: "user",
+                        width: { min: 200, ideal: 400, max: 500 },
+                        height: { min: 100, ideal: 250, max: 300 }
+                    }
+                };
+                // width: 1280, height: 720  -- preference only
+                // facingMode: {exact: "user"}
+                // facingMode: "environment"
+
+                //handle older browsers that might implement getUserMedia in some way
+                $('#realtime-video').on('click', function () {
+                    if (navigator.mediaDevices === undefined) {
+                        navigator.mediaDevices = {};
+                        navigator.mediaDevices.getUserMedia = function(constraintObj) {
+                            let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                            if (!getUserMedia) {
+                                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                            }
+                            return new Promise(function(resolve, reject) {
+                                getUserMedia.call(navigator, constraintObj, resolve, reject);
+                            });
+                        }
+                    }else{
+                        navigator.mediaDevices.enumerateDevices()
+                            .then(devices => {
+                                devices.forEach(device=>{
+                                    console.log(device.kind.toUpperCase(), device.label);
+                                    //, device.deviceId
+                                })
+                            })
+                            .catch(err=>{
+                                console.log(err.name, err.message);
+                            })
+                    }
+
+                    navigator.mediaDevices.getUserMedia(constraintObj)
+                        .then(function(mediaStreamObj) {
+                            //connect the media stream to the first video element
+                            let video = document.querySelector('video');
+                            if ("srcObject" in video) {
+                                video.srcObject = mediaStreamObj;
+                            } else {
+                                //old version
+                                video.src = window.URL.createObjectURL(mediaStreamObj);
+                            }
+
+                            video.onloadedmetadata = function(ev) {
+                                //show in the video element what is being captured by the webcam
+                                video.play();
+                            };
+
+                            //add listeners for saving video/audio
+                            let start = document.getElementById('btnStart');
+                            let stop = document.getElementById('btnStop');
+                            let vidSave = document.getElementById('vid2');
+                            let mediaRecorder = new MediaRecorder(mediaStreamObj);
+                            let chunks = [];
+
+                            start.addEventListener('click', (ev)=>{
+                                mediaRecorder.start();
+                                console.log(mediaRecorder.state);
+                            })
+                            stop.addEventListener('click', (ev)=>{
+                                mediaRecorder.stop();
+                                console.log(mediaRecorder.state);
+                            });
+                            mediaRecorder.ondataavailable = function(ev) {
+                                chunks.push(ev.data);
+                            }
+                            mediaRecorder.onstop = (ev)=>{
+                                let blob = new Blob(chunks, { 'type' : 'video/mp4;' });
+                                chunks = [];
+                                let videoURL = window.URL.createObjectURL(blob);
+                                vidSave.src = videoURL;
+                            }
+                        })
+                        .catch(function(err) {
+                            console.log(err.name, err.message);
+                        });
                 });
 
                 $('#project-form').on('submit', function (event) {
