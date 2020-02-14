@@ -21,9 +21,13 @@
         <span class="fas fa-video" aria-hidden="true"></span>
         {{$video->name}}
     </li>
+
 @endsection
 
 @section('inner-content')
+    <div class="text-right mb-2 mx-3">
+        <button class="btn btn-md-text">Download </button>
+    </div>
     <div class="container-fluid">
         <div class="card-deck">
             <div class="card el-0dp">
