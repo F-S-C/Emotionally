@@ -17,7 +17,10 @@
  */
 
 namespace Emotionally\Http\Controllers;
-
+use Barryvdh\DomPDF\PDF;
+use Emotionally\Project;
+use Emotionally\User;
+use Emotionally\Video;
 
 class ReportController extends Controller
 {
@@ -243,5 +246,13 @@ class ReportController extends Controller
             }
             return $report;
         }
+    }
+
+    public function getReportFile(int $id){
+        $current_video = Video::findOrFail($id);
+        return view('layout-file')
+            ->with('video', $current_video)
+            ->with('path', ProjectController::getProjectChain($current_video->project))
+            ->with('project', $current_video->project);
     }
 }

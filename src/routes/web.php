@@ -29,7 +29,10 @@ Route::name('system.')
     Route::get('/project/{id}/report', 'ProjectController@getProjectReport')->name('report-project');
 
     Route::get('/video/{id}', 'VideoController@getVideoReport')->name('report-video');
-});
+
+    Route::get('/video/{id}/file', 'ReportController@getReportFile')->name('layout-video');
+
+    });
 
 Auth::routes(/*['verify' => true]*/);
 
