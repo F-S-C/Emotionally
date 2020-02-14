@@ -241,12 +241,12 @@
                             </button>
                         </div>
                         <div class="modal-body el-16dp">
-                            <button id="btnStart">START RECORDING</button><br/>
-                                <button id="btnStop">STOP RECORDING</button>
+                            <button id="btnStart">Start Recording</button>
+                            <button id="btnStop">Stop Recording</button>
 
-                            <video controls></video>
+                            <video id="vid1" width="400" height="250"></video>
 
-                            <video id="vid2" controls></video>
+                            <video id="vid2" width="400" height="250" controls></video>
                         </div>
                     </div>
                 </div>
@@ -453,6 +453,8 @@
 
                 //handle older browsers that might implement getUserMedia in some way
                 $('#realtime-video').on('click', function () {
+                    $('#vid2').hide();
+                    $('#btnStop').hide();
                     if (navigator.mediaDevices === undefined) {
                         navigator.mediaDevices = {};
                         navigator.mediaDevices.getUserMedia = function(constraintObj) {
@@ -491,6 +493,7 @@
                             video.onloadedmetadata = function(ev) {
                                 //show in the video element what is being captured by the webcam
                                 video.play();
+
                             };
 
                             //add listeners for saving video/audio
@@ -501,10 +504,16 @@
                             let chunks = [];
 
                             start.addEventListener('click', (ev)=>{
+                                $('#btnStart').hide();
+                                $('#btnStop').show();
                                 mediaRecorder.start();
                                 console.log(mediaRecorder.state);
                             })
                             stop.addEventListener('click', (ev)=>{
+                                $('#btnStart').show();
+                                $('#btnStop').hide();
+                                $('#vid1').hide();
+                                $('#vid2').show();
                                 mediaRecorder.stop();
                                 console.log(mediaRecorder.state);
                             });
@@ -516,6 +525,7 @@
                                 chunks = [];
                                 let videoURL = window.URL.createObjectURL(blob);
                                 vidSave.src = videoURL;
+                                vidSave.play();
                             }
                         })
                         .catch(function(err) {
