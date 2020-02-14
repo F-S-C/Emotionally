@@ -28,6 +28,15 @@
         .modal-close:hover {
             color: rgba(255, 255, 255, 0.5) !important;
         }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0px 1000px #232323 inset;
+            -webkit-text-fill-color: white;
+            caret-color: white;
+        }
     </style>
 @endsection
 
@@ -188,6 +197,7 @@
                                     <div class="card card-body el-16dp">
                                         <div class="form-inline">
                                             <label for="framerate">Framerate:</label>
+                                            <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
                                             <input type="number" id="framerate" name="framerate"
                                                    class="form-control mx-sm-3" min="1" max="60" value="30">
                                         </div>
@@ -198,7 +208,8 @@
                                     <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">
                                         {{trans('dashboard.close')}}
                                     </button>
-                                    <input type="submit" class="btn btn-primary" style="color: white;">
+                                    <input type="submit" value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
+                                           style="color: white;">
                                 </div>
                             </form>
                             <div id="progress-container" style="display: none;">
@@ -253,14 +264,35 @@
                             </button>
                         </div>
                         <div class="modal-body">
+                            <div id="newproject-complete" class="alert alert-success" role="alert"
+                                 style="display:none;">
+                                {{trans('dashboard.project_created')}}
+                            </div>
+                            <div id="newproject-notcomplete" class="alert alert-danger" role="alert"
+                                 style="display:none;">
+                                {{trans('dashboard.err_creating_project')}}
+                            </div>
+                            <div id="newproject-creating" class="alert alert-warning" role="alert"
+                                 style="display:none;">
+                                {{trans('dashboard.creating_project')}}
+                            </div>
                             <form method="POST" action="{{ route('system.newProject') }}" enctype="multipart/form-data"
                                   id="project-form">
                                 @csrf
                                 @if(Request::segment(2) == "project")
                                     <input type="hidden" name="father_id" value="{{ $project->id }}">
                                 @endif
-                                <input type="text" name="project_name">
-                                <input type="submit" value="Vai">
+                                <label for="project_name">{{trans('dashboard.project_name')}}</label>
+                                <input type="text" class="form-control input-color" id="project_name"
+                                       name="project_name" placeholder="{{trans('dashboard.name')}}">
+
+                                <div class="modal-footer mt-3">
+                                    <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">
+                                        {{trans('dashboard.close')}}
+                                    </button>
+                                    <input type="submit" value="{{ trans('dashboard.submit') }}" class="btn btn-primary"
+                                           style="color: white;">
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -285,6 +317,7 @@
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
                 $('.sidebar').scrollbar();
+
                 $('#create-project').on('click', function () {
                     $('#create-project-modal').modal('show');
                 });
@@ -296,8 +329,6 @@
                 $('#upload-video').on('click', function () {
                     $('#upload-video-modal').modal('show');
                 });
-
-                $('.sidebar').scrollbar();
 
                 $('#customVideo').on('change', function () {
                     $('#customVideoLabel').text($('#customVideo').val().replace(/C:\\fakepath\\/i, ''));
@@ -454,6 +485,41 @@
                             console.log(err.name, err.message);
                         });
                 })
+
+                $('#project-form').on('submit', function (event) {
+                    event.preventDefault();
+                    let alertComplete = $('#newproject-complete');
+                    let alertNotComplete = $('#newproject-notcomplete');
+                    let creating = $('#newproject-creating');
+                    let form = $('#project-form');
+                    form.hide();
+                    alertComplete.hide();
+                    alertNotComplete.hide();
+                    creating.show();
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: function (data) {
+                            creating.hide();
+                            alertComplete.show();
+                            $('#project_name').val('');
+                            $('#create-project-modal').on('hidden.bs.modal', function () {
+                                location.reload();
+                            });
+                            form.show();
+                        },
+                        error: function (data) {
+                            creating.hide();
+                            alertNotComplete.show();
+                            console.log(data);
+                            form.show();
+                        }
+                    });
+                });
             });
         })(jQuery);
     </script>
