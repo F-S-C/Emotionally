@@ -30,5 +30,17 @@ return [
     "more" => "Altro",
     "go_to_project_report" => "Vai alla pagina del report del progetto ':name'",
     "report" => "Report",
-    "more_options" => "Altre opzioni"
+    "more_options" => "Altre opzioni",
+    "upload_video"=> "Carica video",
+    "realtime-video"=> "Video in diretta",
+    "close"=> "Chiudi",
+    "choose_file"=> "Scegli file",
+    "duration"=> "Durata",
+    "start"=> "Inizio",
+    "end" => "Fine",
+    "project" => "Progetto",
+    "upload_succesful"=> "Caricamento effettuato con successo!",
+    "upload_failed" => "Si è verificato un'errore durante il caricamento dei file.",
+    "uploading" => "Caricamento in corso...",
+    "add_project" => "Add project",
 ];
