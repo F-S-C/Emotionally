@@ -328,6 +328,10 @@
 
                 $('#realtime-video-modal').on('hidden.bs.modal', function () {
                     stopStreamedVideo(document.querySelector('video'));
+                    $('#btnStart').show();
+                    $('#btnStop').hide();
+                    $('#vid1').show();
+                    $('#vid2').hide();
                 })
 
                 $('#upload-video').on('click', function () {
