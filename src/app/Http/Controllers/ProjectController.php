@@ -63,16 +63,28 @@ class ProjectController extends Controller
         return $owned_projects->merge($shared_projects);
     }
 
+    /**
+     * This public function allow to rename the project.
+     * @param Project $project The project
+     * @param string $name The new name of the project.
+     */
     public function renameProject(Project $project,string $name):void
     {
         $project->name=$name;
         $project->save();
     }
-    public function deleteProject(Project $project,string $name):void
+
+    /**
+     * This public function allow to delete the project.
+     * @param Project $project The project
+     */
+    public function deleteProject(Project $project):void
     {
-
+        try {
+            $project->delete();
+        } catch (\Exception $e) {
+        }
     }
-
-
+    
 
 }
