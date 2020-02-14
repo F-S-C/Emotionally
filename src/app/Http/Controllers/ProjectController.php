@@ -85,6 +85,17 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
         }
     }
+
+    /**
+     *
+     * @param Project $project
+     */
+    public function moveProject(Project $project):void
+    {
+        $project->father_id=null;
+        $project->save();
+    }
+
     
 
 }
