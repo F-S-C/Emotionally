@@ -52,6 +52,8 @@ Route::get('/logout', function () {
     return redirect()->route('landing');
 })->name('logout');
 
+Route::post('/fileupload', 'VideoController@uploadVideo');
+
 // TODO: Implement a 'not logged in' notice
 Route::name('verification.notice')->get('/not-logged', function () {
     return 'not logged';

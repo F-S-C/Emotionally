@@ -22,5 +22,8 @@ return [
     "more_options_project" => "Altre opzioni (progetto: ':name')",
     "more_options_video" => "Altre opzioni (video: ':name')",
     "short-empty-project" => "Progetto vuoto",
-    "empty-project" => "Questo progetto è vuoto. Perché non <a href='#'>aggiungi un sotto-progetto</a> o <a href='#'>carichi qualcosa</a>?"
+    "empty-project" => "Questo progetto è vuoto. Perché non ",
+    "add-project" => "<button class='btn btn-link'>aggiungi un sotto-progetto</button>",
+    "upload-video" => "<button class='btn btn-link'>carichi qualcosa</button>",
+    "or" => "o",
 ];
