@@ -26,10 +26,21 @@
 
 @section('inner-content')
 
-    <div class="text-right mb-2 mx-3">
-        <a href="{{action('ReportController@downloadPDF', $video->id)}}">
-            <button class="btn btn-md-text">Download</button>
-        </a>
+    <div class="dropleft text-right mb-2 mx-3">
+        <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Download
+        </button>
+        <div class="dropdown-menu">
+            <a href="{{action('ReportController@downloadPDF', $video->id)}}">
+                <button class="dropdown-item" type="button">Report in PDF</button>
+            </a>
+            <a href="#">
+                <button class="dropdown-item" type="button">Report in HTML</button>
+            </a>
+            <a href="#">
+                <button class="dropdown-item" type="button">Report in JSON</button>
+            </a>
+        </div>
     </div>
 
     <div class="container-fluid">

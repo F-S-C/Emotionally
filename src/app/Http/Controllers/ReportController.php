@@ -17,8 +17,6 @@
  */
 
 namespace Emotionally\Http\Controllers;
-use Emotionally\Project;
-use Emotionally\User;
 use Emotionally\Video;
 use PDF;
 
