@@ -72,6 +72,7 @@ class ProjectController extends Controller
     {
         $project->name=$name;
         $project->save();
+
     }
 
     /**
@@ -81,6 +82,10 @@ class ProjectController extends Controller
     public function deleteProject(Project $project):void
     {
         try {
+            $videosProject=$project->videos();
+            foreach ($videosProject as $video) {
+                unlink(storage_path('storage/app/public/userContent/' . basename($video->url)));
+            }
             $project->forceDelete();
         } catch (\Exception $e) {
         }
@@ -96,6 +101,6 @@ class ProjectController extends Controller
         $project->save();
     }
 
-    
+
 
 }
