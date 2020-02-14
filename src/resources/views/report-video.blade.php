@@ -45,7 +45,9 @@
             <div class="card el-0dp">
                 <div class="card-body">
                     <h3 class="card-title">Bar Chart</h3>
-                    <canvas id="bar"></canvas>
+                    <div class="smaller-charts">
+                         <canvas id="bar"></canvas>
+                    </div>
                 </div>
             </div>
             <div class="card el-0dp">
@@ -70,7 +72,9 @@
         <div class="row">
             <div class="col-12">
                 <h3>Line Chart</h3>
-                <canvas id="line"></canvas>
+                <div class="bigger-charts">
+                    <canvas id="line"></canvas>
+                </div>
             </div>
         </div>
     </div>
