@@ -484,7 +484,7 @@
                         .catch(function(err) {
                             console.log(err.name, err.message);
                         });
-                })
+                });
 
                 $('#project-form').on('submit', function (event) {
                     event.preventDefault();
