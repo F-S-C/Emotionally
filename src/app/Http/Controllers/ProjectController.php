@@ -63,4 +63,16 @@ class ProjectController extends Controller
         return $owned_projects->merge($shared_projects);
     }
 
+    public function renameProject(Project $project,string $name):void
+    {
+        $project->name=$name;
+        $project->save();
+    }
+    public function deleteProject(Project $project,string $name):void
+    {
+
+    }
+
+
+
 }
