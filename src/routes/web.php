@@ -24,8 +24,8 @@ Route::name('system.')
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
 
-        Route::middleware('permissions:read')
-            ->group(function () {
+        /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
+            ->group(function () {*/
                 Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
                 Route::prefix('/project/{project_id}/share')
                     ->name('permissions.')
@@ -41,7 +41,7 @@ Route::name('system.')
                         Route::any('/edit', 'PermissionsController@editPermission')
                             ->name('edit');
                     });
-            });
+            //});
     });
 
 Auth::routes(/*['verify' => true]*/);
