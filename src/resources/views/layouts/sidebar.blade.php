@@ -243,10 +243,45 @@
                         <div class="modal-body el-16dp">
                             <button id="btnStart">Start Recording</button>
                             <button id="btnStop">Stop Recording</button>
+                            <div class="card-body">
+                                <video id="vid1" width="400" height="250"></video>
+                                <video id="vid2" width="400" height="250" controls></video>
+                            </div>
 
-                            <video id="vid1" width="400" height="250"></video>
+                            <form method="POST" action="{{ route('system.videoUpload') }}" enctype="multipart/form-data"
+                                  id="realtimevideo-form">
+                                @csrf
+                                <div class="input-group mb-3">
+                                    <input  type="file" value="" id="realtimeVideo" name="videos[]" hidden>
+                                </div>
 
-                            <video id="vid2" width="400" height="250" controls></video>
+                                <input type="text" name="project_id" value="{{$project->id}}" hidden>
+
+                                <div class="collapse multi-collapse" id="title-fps-menu">
+
+                                    <div class="card card-body el-16dp">
+                                        <div class="form-group">
+                                            <label for="title">Title:</label>
+                                            <input type="text" id="title" class="form-control">
+                                        </div>
+                                        <div class="form-inline">
+                                            <label for="framerate">Framerate:</label>
+                                            <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
+                                            <input type="number" id="framerate" name="framerate"
+                                                   class="form-control mx-sm-3" min="1" max="60" value="30">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">
+                                        {{trans('dashboard.close')}}
+                                    </button>
+                                    <input type="submit" id="submit-realtime-video" value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
+                                           style="color: white;" disabled>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -332,6 +367,7 @@
                     $('#btnStop').hide();
                     $('#vid1').show();
                     $('#vid2').hide();
+                    $('#title-fps-menu').hide();
                 })
 
                 $('#upload-video').on('click', function () {
@@ -502,6 +538,8 @@
                                 $('#btnStop').hide();
                                 $('#vid1').hide();
                                 $('#vid2').show();
+                                $('#submit-realtime-video').prop('disabled',false);
+                                $('#title-fps-menu').show();
                                 mediaRecorder.stop();
 
                                 console.log(mediaRecorder.state);
@@ -515,6 +553,8 @@
                                 let videoURL = window.URL.createObjectURL(blob);
                                 vidSave.src = videoURL;
                                 vidSave.play();
+
+                                $('#realtimevideo-form').attr('video', blob);
                             }
                         })
                         .catch(function(err) {
