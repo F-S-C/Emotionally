@@ -326,6 +326,10 @@
                     $('#realtime-video-modal').modal('show');
                 });
 
+                $('#realtime-video-modal').on('hidden.bs.modal', function () {
+                    stopStreamedVideo(document.querySelector('video'));
+                })
+
                 $('#upload-video').on('click', function () {
                     $('#upload-video-modal').modal('show');
                 });
@@ -451,33 +455,13 @@
                 // facingMode: {exact: "user"}
                 // facingMode: "environment"
 
-                //handle older browsers that might implement getUserMedia in some way
+
                 $('#realtime-video').on('click', function () {
                     $('#vid2').hide();
                     $('#btnStop').hide();
-                    if (navigator.mediaDevices === undefined) {
-                        navigator.mediaDevices = {};
-                        navigator.mediaDevices.getUserMedia = function(constraintObj) {
-                            let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-                            if (!getUserMedia) {
-                                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-                            }
-                            return new Promise(function(resolve, reject) {
-                                getUserMedia.call(navigator, constraintObj, resolve, reject);
-                            });
-                        }
-                    }else{
-                        navigator.mediaDevices.enumerateDevices()
-                            .then(devices => {
-                                devices.forEach(device=>{
-                                    console.log(device.kind.toUpperCase(), device.label);
-                                    //, device.deviceId
-                                })
-                            })
-                            .catch(err=>{
-                                console.log(err.name, err.message);
-                            })
-                    }
+
+                    //handle older browsers that might implement getUserMedia in some way
+                    checkOlderBrowsers();
 
                     navigator.mediaDevices.getUserMedia(constraintObj)
                         .then(function(mediaStreamObj) {
@@ -515,6 +499,7 @@
                                 $('#vid1').hide();
                                 $('#vid2').show();
                                 mediaRecorder.stop();
+
                                 console.log(mediaRecorder.state);
                             });
                             mediaRecorder.ondataavailable = function(ev) {
@@ -532,6 +517,43 @@
                             console.log(err.name, err.message);
                         });
                 });
+
+                function stopStreamedVideo(videoElem) {
+                    const stream = videoElem.srcObject;
+                    const tracks = stream.getTracks();
+
+                    tracks.forEach(function(track) {
+                        track.stop();
+                    });
+
+                    videoElem.srcObject = null;
+                };
+
+                function checkOlderBrowsers() {
+                    if (navigator.mediaDevices === undefined) {
+                        navigator.mediaDevices = {};
+                        navigator.mediaDevices.getUserMedia = function(constraintObj) {
+                            let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                            if (!getUserMedia) {
+                                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                            }
+                            return new Promise(function(resolve, reject) {
+                                getUserMedia.call(navigator, constraintObj, resolve, reject);
+                            });
+                        }
+                    }else{
+                        navigator.mediaDevices.enumerateDevices()
+                            .then(devices => {
+                                devices.forEach(device=>{
+                                    console.log(device.kind.toUpperCase(), device.label);
+                                    //, device.deviceId
+                                })
+                            })
+                            .catch(err=>{
+                                console.log(err.name, err.message);
+                            })
+                    }
+                };
             });
         })(jQuery);
     </script>
