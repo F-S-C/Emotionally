@@ -32,6 +32,8 @@ Route::name('system.')
 
     Route::get('/video/{id}/file', 'ReportController@getReportFile')->name('layout-video');
 
+    Route::get('/video/{id}/downloadPDF', 'ReportController@downloadPDF')->name('download-pdf');
+
     });
 
 Auth::routes(/*['verify' => true]*/);

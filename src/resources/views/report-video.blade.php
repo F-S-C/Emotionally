@@ -27,7 +27,7 @@
 @section('inner-content')
 
     <div class="text-right mb-2 mx-3">
-        <a href="#">
+        <a href="{{action('ReportController@downloadPDF', $video->id)}}">
             <button class="btn btn-md-text">Download</button>
         </a>
     </div>

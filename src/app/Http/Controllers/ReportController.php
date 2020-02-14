@@ -17,10 +17,10 @@
  */
 
 namespace Emotionally\Http\Controllers;
-use Barryvdh\DomPDF\PDF;
 use Emotionally\Project;
 use Emotionally\User;
 use Emotionally\Video;
+use PDF;
 
 class ReportController extends Controller
 {
@@ -254,5 +254,11 @@ class ReportController extends Controller
             ->with('video', $current_video)
             ->with('path', ProjectController::getProjectChain($current_video->project))
             ->with('project', $current_video->project);
+    }
+
+    public function downloadPDF($id){
+        $video = Video::findOrFail($id);
+        $pdf = PDF::loadView('layout-file', compact('video'));
+        return $pdf->download('test.pdf');
     }
 }
