@@ -123,6 +123,92 @@
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
                 $('.sidebar').scrollbar();
+                $('#create-project').on('click', function () {
+                    $('#create-project-modal').modal('show');
+                });
+
+                $('#realtime-video').on('click', function () {
+                    $('#realtime-video-modal').modal('show');
+                });
+
+                $('#upload-video').on('click', function () {
+                    $('#upload-video-modal').modal('show');
+                });
+
+                $('.sidebar').scrollbar();
+
+                $('#customVideo').on('change', function () {
+                    $('#customVideoLabel').text($('#customVideo').val().replace(/C:\\fakepath\\/i, ''));
+                    $('#duration-fps-collapse-menu').collapse('show');
+                });
+
+                $('#video-form').on('submit', function (event) {
+                    event.preventDefault();
+                    let bar = $("#progress");
+                    let container = $("#progress-container");
+                    let text = $("#upload-text");
+                    let form = $('#video-form');
+                    let video = $('#customVideo');
+                    let alertComplete = $('#video-upload-complete');
+                    let alertNotComplete = $('#video-upload-notcomplete');
+                    let formDrop = $('#duration-fps-collapse-menu');
+                    let videoLabel = $('#customVideoLabel');
+                    container.show();
+                    form.hide();
+                    alertComplete.hide();
+                    alertNotComplete.hide();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        xhr: function () {
+                            let xhr = new window.XMLHttpRequest();
+                            xhr.upload.addEventListener("progress", function (evt) {
+                                if (evt.lengthComputable) {
+                                    let percentComplete = parseInt((evt.loaded / evt.total) * 100);
+                                    bar.attr('aria-valuenow', percentComplete);
+                                    bar.width(percentComplete + '%');
+                                    text.text(percentComplete + "%");
+                                }
+                            }, false);
+                            return xhr;
+                        },
+                        success: function (data) {
+                            container.hide();
+                            if (JSON.parse(data)['result']) {
+                                alertComplete.show();
+                                $('#upload-video-modal').on('hidden.bs.modal', function () {
+                                    location.reload(false);
+                                });
+                            } else {
+                                alertNotComplete.show();
+                            }
+
+                            video.val('');
+                            videoLabel.text('{{trans('dashboard.choose_file')}}');
+                            formDrop.collapse('hide');
+                            form.show();
+                        },
+                        error: function (data) {
+                            container.hide();
+                            alertNotComplete.show();
+                            console.log(data);
+
+                            video.val('');
+                            videoLabel.text('{{trans('dashboard.choose_file')}}');
+                            formDrop.collapse('hide');
+                            form.show();
+                        }
+                    });
+                });
             });
         })(jQuery);
     </script>
