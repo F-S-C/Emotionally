@@ -81,7 +81,7 @@ class ProjectController extends Controller
     public function deleteProject(Project $project):void
     {
         try {
-            $project->delete();
+            $project->forceDelete();
         } catch (\Exception $e) {
         }
     }
