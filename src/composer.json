@@ -19,9 +19,11 @@
         "php": "^7.3",
         "ext-json": "*",
         "barryvdh/laravel-dompdf": "^0.8.5",
+        "barryvdh/laravel-snappy": "^0.4.6",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "wemersonjanuario/wkhtmltopdf-windows": "0.12.2.3"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",
