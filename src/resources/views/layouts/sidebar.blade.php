@@ -402,6 +402,43 @@
                         }
                     });
                 });
+
+                $('#project-form').on('submit', function (event) {
+                    event.preventDefault();
+                    let alertComplete = $('#newproject-complete');
+                    let alertNotComplete = $('#newproject-notcomplete');
+                    let creating = $('#newproject-creating');
+                    let form = $('#project-form');
+                    form.hide();
+                    alertComplete.hide();
+                    alertNotComplete.hide();
+                    creating.show();
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: function (data) {
+                            creating.hide();
+                            alertComplete.show();
+                            $('#project_name').val('');
+                            $('#create-project-modal').on('hidden.bs.modal', function () {
+                                location.reload();
+                            });
+                            form.show();
+                        },
+                        error: function (data) {
+                            creating.hide();
+                            alertNotComplete.show();
+                            console.log(data);
+                            form.show();
+                        }
+                    });
+                });
+
+                //REALTIME VIDEO
                 let constraintObj = {
                     audio: false,
                     video: {
@@ -484,41 +521,6 @@
                         .catch(function(err) {
                             console.log(err.name, err.message);
                         });
-                });
-
-                $('#project-form').on('submit', function (event) {
-                    event.preventDefault();
-                    let alertComplete = $('#newproject-complete');
-                    let alertNotComplete = $('#newproject-notcomplete');
-                    let creating = $('#newproject-creating');
-                    let form = $('#project-form');
-                    form.hide();
-                    alertComplete.hide();
-                    alertNotComplete.hide();
-                    creating.show();
-                    $.ajax({
-                        url: this.action,
-                        type: this.method,
-                        data: new FormData(this),
-                        processData: false,
-                        contentType: false,
-                        cache: false,
-                        success: function (data) {
-                            creating.hide();
-                            alertComplete.show();
-                            $('#project_name').val('');
-                            $('#create-project-modal').on('hidden.bs.modal', function () {
-                                location.reload();
-                            });
-                            form.show();
-                        },
-                        error: function (data) {
-                            creating.hide();
-                            alertNotComplete.show();
-                            console.log(data);
-                            form.show();
-                        }
-                    });
                 });
             });
         })(jQuery);
