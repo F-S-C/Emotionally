@@ -166,7 +166,7 @@
                                  style="display:none;">
                                 {{trans('dashboard.upload_failed')}}
                             </div>
-                            <form method="POST" action="{{ url('fileupload') }}" enctype="multipart/form-data"
+                            <form method="POST" action="{{ route('system.videoUpload') }}" enctype="multipart/form-data"
                                   id="video-form">
                                 @csrf
                                 <div class="input-group mb-3">
@@ -223,7 +223,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content el-16dp">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.upload_video')}}</h5>
+                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.realtime_video')}}</h5>
                             <button type="button" class="modal-close" data-dismiss="modal"
                                     aria-label="{{trans('dashboard.close')}}">
                                 <span class="fas fa-times"></span>
@@ -241,14 +241,22 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content el-16dp">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.upload_video')}}</h5>
+                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.add_project')}}</h5>
                             <button type="button" class="modal-close" data-dismiss="modal"
                                     aria-label="{{trans('dashboard.close')}}">
                                 <span class="fas fa-times"></span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            Aggiungi progetto <!--TODO: TITOLO E CORPO--->
+                            <form method="POST" action="{{ route('system.newProject') }}" enctype="multipart/form-data"
+                                  id="project-form">
+                                @csrf
+                                @if(Request::segment(2) == "project")
+                                    <input type="hidden" name="father_id" value="{{ $project->id }}">
+                                @endif
+                                <input type="text" name="project_name">
+                                <input type="submit" value="Vai">
+                            </form>
                         </div>
                     </div>
                 </div>

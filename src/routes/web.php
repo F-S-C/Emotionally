@@ -24,6 +24,9 @@ Route::name('system.')
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
 
+        Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
+        Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
+
         /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
             ->group(function () {*/
                 Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
@@ -51,8 +54,6 @@ Route::get('/logout', function () {
 
     return redirect()->route('landing');
 })->name('logout');
-
-Route::post('/fileupload', 'VideoController@uploadVideo');
 
 // TODO: Implement a 'not logged in' notice
 Route::name('verification.notice')->get('/not-logged', function () {

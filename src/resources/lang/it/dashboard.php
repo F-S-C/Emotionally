@@ -32,7 +32,7 @@ return [
     "report" => "Report",
     "more_options" => "Altre opzioni",
     "upload_video"=> "Carica video",
-    "realtime-video"=> "Video in diretta",
+    "realtime_video"=> "Video in diretta",
     "close"=> "Chiudi",
     "choose_file"=> "Scegli file",
     "duration"=> "Durata",
@@ -42,5 +42,5 @@ return [
     "upload_succesful"=> "Caricamento effettuato con successo!",
     "upload_failed" => "Si è verificato un'errore durante il caricamento dei file.",
     "uploading" => "Caricamento in corso...",
-    "add_project" => "Add project",
+    "add_project" => "Aggiungi un progetto",
 ];
