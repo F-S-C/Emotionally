@@ -270,7 +270,7 @@ class ReportController extends Controller
         fclose($handle);
         $headers = array ('Content-type'=> 'Analysis to json', 'Video analyzed' => $video->name);
 
-        return response()->download($fileName, $fileName, $headers);
+        return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
     }
 
 
