@@ -112,7 +112,7 @@
                            aria-label="Search" id="search-bar">
                 </div>
                 <div class="ml-auto btn-group dropleft">
-                    <button class="btn btn-outline-primary rounded-pill mr-2" type="button" id="add-video"
+                    <button class="btn btn-outline-primary rounded-pill mr-0 mr-md-4" type="button" id="add-video"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="{{trans('dashboard.upload_video')}}">
                         <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
