@@ -118,14 +118,21 @@
                         Add
                     </button>
                     <div class="dropdown-menu" aria-labelledby="add-video">
-                        @if( $project->father_id == "")
+                        @if(isset($project))
+                            @if( $project->father_id == "")
+                                <button class="dropdown-item" id="create-project" data-toggle="modal"
+                                        data-target="create-project-modal"
+                                        data-modal="create-project-modal">{{trans('dashboard.add_project')}}
+                                </button>
+                                @if(Request::segment(2) == "project")
+                                    <div class="dropdown-divider"></div>
+                                @endif
+                            @endif
+                        @else
                             <button class="dropdown-item" id="create-project" data-toggle="modal"
                                     data-target="create-project-modal"
                                     data-modal="create-project-modal">{{trans('dashboard.add_project')}}
                             </button>
-                            @if(Request::segment(2) == "project")
-                                <div class="dropdown-divider"></div>
-                            @endif
                         @endif
                         @if( Request::segment(2) == "project")
                             <button class="dropdown-item" id="upload-video" data-toggle="modal"
@@ -166,164 +173,168 @@
                 {{--                </div>--}}
             </nav>
             <!-- Modal 1  video-->
-            <div class="modal fade" id="upload-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content el-16dp">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.upload_video')}}</h5>
-                            <button type="button" class="modal-close" data-dismiss="modal"
-                                    aria-label="{{trans('dashboard.close')}}">
-                                <span class="fas fa-times"></span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="video-upload-complete" class="alert alert-success" role="alert"
-                                 style="display:none;">
-                                {{trans('dashboard.upload_successful')}}
+            @if(isset($project))
+                <div class="modal fade" id="upload-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content el-16dp">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.upload_video')}}</h5>
+                                <button type="button" class="modal-close" data-dismiss="modal"
+                                        aria-label="{{trans('dashboard.close')}}">
+                                    <span class="fas fa-times"></span>
+                                </button>
                             </div>
-                            <div id="video-upload-notcomplete" class="alert alert-danger" role="alert"
-                                 style="display:none;">
-                                {{trans('dashboard.upload_failed')}}
-                            </div>
-                            <form method="POST" action="{{ route('system.videoUpload') }}" enctype="multipart/form-data"
-                                  id="video-form">
-                                @csrf
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
+                            <div class="modal-body">
+                                <div id="video-upload-complete" class="alert alert-success" role="alert"
+                                     style="display:none;">
+                                    {{trans('dashboard.upload_successful')}}
+                                </div>
+                                <div id="video-upload-notcomplete" class="alert alert-danger" role="alert"
+                                     style="display:none;">
+                                    {{trans('dashboard.upload_failed')}}
+                                </div>
+                                <form method="POST" action="{{ route('system.videoUpload') }}"
+                                      enctype="multipart/form-data"
+                                      id="video-form">
+                                    @csrf
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
                                         <span class="input-group-text input-color"
                                               for="customVideo">{{trans('dashboard.upload_video')}}</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input multiple="multiple" type="file" class="custom-file-input input-color"
-                                               id="customVideo" name="videos[]"
-                                               accept="video/*">
-                                        <label id="customVideoLabel" class="custom-file-label input-color "
-                                               for="customVideo">{{trans('dashboard.choose_file')}}</label>
-                                    </div>
-                                </div>
-                                <input type="text" name="project_id" value="{{$project->id}}" hidden>
-                                <div class="collapse multi-collapse" id="duration-fps-collapse-menu">
-
-                                    <div class="card card-body el-16dp">
-                                        <div class="form-inline">
-                                            <label for="framerate">Framerate:</label>
-                                            <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
-                                            <input type="number" id="framerate-video" name="framerate"
-                                                   class="form-control mx-sm-3" min="1" max="60" value="30">
+                                        </div>
+                                        <div class="custom-file">
+                                            <input multiple="multiple" type="file" class="custom-file-input input-color"
+                                                   id="customVideo" name="videos[]"
+                                                   accept="video/*">
+                                            <label id="customVideoLabel" class="custom-file-label input-color "
+                                                   for="customVideo">{{trans('dashboard.choose_file')}}</label>
                                         </div>
                                     </div>
-                                </div>
+                                    <input type="text" name="project_id" value="{{$project->id}}" hidden>
+                                    <div class="collapse multi-collapse" id="duration-fps-collapse-menu">
 
-                                <div class="modal-footer">
-                                    <button type="button" id="close-video" class="btn btn-secondary"
-                                            data-dismiss="modal">
-                                        {{trans('dashboard.close')}}
-                                    </button>
-                                    <input type="submit" value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
-                                           style="color: white;">
-                                </div>
-                            </form>
-                            <div id="progress-container" style="display: none;">
-                                <div class="progress">
-                                    <div id="progress"
-                                         class="progress-bar progress-bar-striped progress-bar-animated"
-                                         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                                         style="width: 0%"></div>
-                                </div>
-                                <p class="text-center"> {{trans('dashboard.uploading')}}
-                                    <span id="upload-text"></span>
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!---Modal 2 Realtime--->
-            <div class="modal fade" id="realtime-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content el-16dp">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.realtime_video')}}</h5>
-                            <button type="button" class="modal-close" data-dismiss="modal"
-                                    aria-label="{{trans('dashboard.close')}}">
-                                <span class="fas fa-times"></span>
-                            </button>
-                        </div>
-                        <div class="modal-body el-16dp">
-
-                            <div id="realtimevideo-upload-complete" class="alert alert-success" role="alert"
-                                 style="display:none;">
-                                {{trans('dashboard.upload_successful')}}
-                            </div>
-                            <div id="realtimevideo-upload-notcomplete" class="alert alert-danger" role="alert"
-                                 style="display:none;">
-                                {{trans('dashboard.upload_failed')}}
-                            </div>
-
-                            <button id="btnStart">Start Recording</button>
-                            <button id="btnStop">Stop Recording</button>
-                            <div class="card-body">
-                                <video id="vid1" width="400" height="250"></video>
-                                <video id="vid2" width="400" height="250" controls></video>
-                            </div>
-
-                            <form method="POST" action="{{ route('system.videoUpload') }}" enctype="multipart/form-data"
-                                  id="realtimevideo-form">
-                                @csrf
-                                <div class="input-group mb-3">
-                                    <input type="file" id="realtimevideo-file" name="videos[]" hidden>
-                                </div>
-
-                                <input type="text" name="project_id" value="{{$project->id}}" hidden>
-
-                                <div class="collapse multi-collapse" id="title-fps-menu">
-
-                                    <div class="card card-body el-16dp">
-                                        <div class="form-group">
-                                            <label for="title">Title:</label>
-                                            <input type="text" id="title" class="form-control">
-                                        </div>
-                                        <div class="form-inline">
-                                            <label for="framerate">Framerate:</label>
-                                            <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
-                                            <input type="number" id="framerate-realtime" name="framerate"
-                                                   class="form-control mx-sm-3" min="1" max="60" value="30">
+                                        <div class="card card-body el-16dp">
+                                            <div class="form-inline">
+                                                <label for="framerate">Framerate:</label>
+                                                <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
+                                                <input type="number" id="framerate-video" name="framerate"
+                                                       class="form-control mx-sm-3" min="1" max="60" value="30">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="modal-footer">
-                                    <button type="button" id="close-realtime" class="btn btn-secondary"
-                                            data-dismiss="modal">
-                                        {{trans('dashboard.close')}}
-                                    </button>
-                                    <input type="submit" id="submit-realtime-video"
-                                           value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
-                                           style="color: white;" disabled>
+                                    <div class="modal-footer">
+                                        <button type="button" id="close-video" class="btn btn-secondary"
+                                                data-dismiss="modal">
+                                            {{trans('dashboard.close')}}
+                                        </button>
+                                        <input type="submit" value="{{ trans('dashboard.upload') }}"
+                                               class="btn btn-primary"
+                                               style="color: white;">
+                                    </div>
+                                </form>
+                                <div id="progress-container" style="display: none;">
+                                    <div class="progress">
+                                        <div id="progress"
+                                             class="progress-bar progress-bar-striped progress-bar-animated"
+                                             role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
+                                    <p class="text-center"> {{trans('dashboard.uploading')}}
+                                        <span id="upload-text"></span>
+                                    </p>
                                 </div>
-                            </form>
-
-                            <div id="realtime-progress-container" style="display: none;">
-                                <div class="progress">
-                                    <div id="realtime-progress"
-                                         class="progress-bar progress-bar-striped progress-bar-animated"
-                                         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                                         style="width: 0%"></div>
-                                </div>
-                                <p class="text-center"> {{trans('dashboard.uploading')}}
-                                    <span id="realtime-upload-text"></span>
-                                </p>
-
                             </div>
 
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!---Modal 3 create project--->
+                <!---Modal 2 Realtime--->
+                <div class="modal fade" id="realtime-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content el-16dp">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.realtime_video')}}</h5>
+                                <button type="button" class="modal-close" data-dismiss="modal"
+                                        aria-label="{{trans('dashboard.close')}}">
+                                    <span class="fas fa-times"></span>
+                                </button>
+                            </div>
+                            <div class="modal-body el-16dp">
+
+                                <div id="realtimevideo-upload-complete" class="alert alert-success" role="alert"
+                                     style="display:none;">
+                                    {{trans('dashboard.upload_successful')}}
+                                </div>
+                                <div id="realtimevideo-upload-notcomplete" class="alert alert-danger" role="alert"
+                                     style="display:none;">
+                                    {{trans('dashboard.upload_failed')}}
+                                </div>
+
+                                <button id="btnStart">Start Recording</button>
+                                <button id="btnStop">Stop Recording</button>
+                                <div class="card-body">
+                                    <video id="vid1" width="400" height="250"></video>
+                                    <video id="vid2" width="400" height="250" controls></video>
+                                </div>
+
+                                <form method="POST" action="{{ route('system.videoUpload') }}"
+                                      enctype="multipart/form-data"
+                                      id="realtimevideo-form">
+                                    @csrf
+                                    <div class="input-group mb-3">
+                                        <input type="file" id="realtimevideo-file" name="videos[]" hidden>
+                                    </div>
+
+                                    <input type="text" name="project_id" value="{{$project->id}}" hidden>
+
+                                    <div class="collapse multi-collapse" id="title-fps-menu">
+
+                                        <div class="card card-body el-16dp">
+                                            <div class="form-group">
+                                                <label for="title">Title:</label>
+                                                <input type="text" id="title" class="form-control">
+                                            </div>
+                                            <div class="form-inline">
+                                                <label for="framerate">Framerate:</label>
+                                                <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
+                                                <input type="number" id="framerate-realtime" name="framerate"
+                                                       class="form-control mx-sm-3" min="1" max="60" value="30">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" id="close-realtime" class="btn btn-secondary"
+                                                data-dismiss="modal">
+                                            {{trans('dashboard.close')}}
+                                        </button>
+                                        <input type="submit" id="submit-realtime-video"
+                                               value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
+                                               style="color: white;" disabled>
+                                    </div>
+                                </form>
+
+                                <div id="realtime-progress-container" style="display: none;">
+                                    <div class="progress">
+                                        <div id="realtime-progress"
+                                             class="progress-bar progress-bar-striped progress-bar-animated"
+                                             role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
+                                    <p class="text-center"> {{trans('dashboard.uploading')}}
+                                        <span id="realtime-upload-text"></span>
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        @endif
+        <!---Modal 3 create project--->
             <div class="modal fade" id="create-project-modal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content el-16dp">
@@ -350,8 +361,10 @@
                             <form method="POST" action="{{ route('system.newProject') }}" enctype="multipart/form-data"
                                   id="project-form">
                                 @csrf
-                                @if(Request::segment(2) == "project")
-                                    <input type="hidden" name="father_id" value="{{ $project->id }}">
+                                @if(isset($project))
+                                    @if(Request::segment(2) == "project")
+                                        <input type="hidden" name="father_id" value="{{ $project->id }}">
+                                    @endif
                                 @endif
                                 <label for="project_name">{{trans('dashboard.project_name')}}</label>
                                 <input type="text" class="form-control input-color" id="project_name"
