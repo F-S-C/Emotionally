@@ -20,7 +20,7 @@
                     <img src="{{asset('/app_name.svg')}}" width="150"
                          height="30"
                          class="d-inline-block align-tp" alt="Emotionally">
-                </a>o
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#main-navigation-content"
                         aria-controls="main-navigation-content" aria-expanded="false" aria-label="Toggle navigation">
