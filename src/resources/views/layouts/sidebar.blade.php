@@ -111,7 +111,7 @@
                            aria-label="Search" id="search-bar">
                 </div>
                 <div class="ml-auto btn-group dropleft">
-                    <button class="btn btn-outline-primary rounded-pill" type="button" id="add-video"
+                    <button class="btn btn-outline-primary rounded-pill mr-2" type="button" id="add-video"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="{{trans('dashboard.upload_video')}}">
                         <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
@@ -137,14 +137,15 @@
                                     data-modal="realtime-video-modal">{{trans('dashboard.realtime_video')}}</button>
                         @endif
                     </div>
-                </div>
-                <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex">
-                    <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="40" height="40"
-                         src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>
-                    <div class="ml-2">
+                    <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex">
+                        <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="40"
+                             height="40"
+                             src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>
+                        <div class="ml-2">
                         <span aria-label="Your name"
                               class="font-weight-bold text-white d-block">{{Auth::user()->name}} {{Auth::user()->surname}}</span>
-                        <small aria-label="Your email" class="d-block">{{Auth::user()->email}}</small>
+                            <small aria-label="Your email" class="d-block">{{Auth::user()->email}}</small>
+                        </div>
                     </div>
                 </div>
                 {{--                <button class="navbar-toggler" type="button" data-toggle="collapse"--}}
@@ -214,7 +215,8 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" id="close-video" class="btn btn-secondary" data-dismiss="modal">
+                                    <button type="button" id="close-video" class="btn btn-secondary"
+                                            data-dismiss="modal">
                                         {{trans('dashboard.close')}}
                                     </button>
                                     <input type="submit" value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
@@ -271,7 +273,7 @@
                                   id="realtimevideo-form">
                                 @csrf
                                 <div class="input-group mb-3">
-                                    <input  type="file" id="realtimevideo-file" name="videos[]" hidden>
+                                    <input type="file" id="realtimevideo-file" name="videos[]" hidden>
                                 </div>
 
                                 <input type="text" name="project_id" value="{{$project->id}}" hidden>
@@ -293,10 +295,12 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" id="close-realtime" class="btn btn-secondary" data-dismiss="modal">
+                                    <button type="button" id="close-realtime" class="btn btn-secondary"
+                                            data-dismiss="modal">
                                         {{trans('dashboard.close')}}
                                     </button>
-                                    <input type="submit" id="submit-realtime-video" value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
+                                    <input type="submit" id="submit-realtime-video"
+                                           value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
                                            style="color: white;" disabled>
                                 </div>
                             </form>
@@ -354,7 +358,8 @@
                                        name="project_name" placeholder="{{trans('dashboard.name')}}">
 
                                 <div class="modal-footer mt-3">
-                                    <button type="button" id="close-project" class="btn btn-secondary" data-dismiss="modal">
+                                    <button type="button" id="close-project" class="btn btn-secondary"
+                                            data-dismiss="modal">
                                         {{trans('dashboard.close')}}
                                     </button>
                                     <input type="submit" value="{{ trans('dashboard.submit') }}" class="btn btn-primary"
@@ -585,8 +590,8 @@
                     audio: false,
                     video: {
                         facingMode: "user",
-                        width: { min: 200, ideal: 400, max: 500 },
-                        height: { min: 100, ideal: 250, max: 300 }
+                        width: {min: 200, ideal: 400, max: 500},
+                        height: {min: 100, ideal: 250, max: 300}
                     }
                 };
                 // width: 1280, height: 720  -- preference only
@@ -602,7 +607,7 @@
                     checkOlderBrowsers();
 
                     navigator.mediaDevices.getUserMedia(constraintObj)
-                        .then(function(mediaStreamObj) {
+                        .then(function (mediaStreamObj) {
                             //connect the media stream to the first video element
                             let video = document.querySelector('video');
                             if ("srcObject" in video) {
@@ -612,7 +617,7 @@
                                 video.src = window.URL.createObjectURL(mediaStreamObj);
                             }
 
-                            video.onloadedmetadata = function(ev) {
+                            video.onloadedmetadata = function (ev) {
                                 //show in the video element what is being captured by the webcam
                                 video.play();
 
@@ -625,14 +630,14 @@
                             let mediaRecorder = new MediaRecorder(mediaStreamObj);
                             let chunks = [];
 
-                            start.addEventListener('click', (ev)=>{
+                            start.addEventListener('click', (ev) => {
                                 $('#btnStart').hide();
                                 $('#btnStop').show();
-                                $('#submit-realtime-video').prop('disabled',true);
+                                $('#submit-realtime-video').prop('disabled', true);
                                 mediaRecorder.start();
                                 console.log(mediaRecorder.state);
                             })
-                            stop.addEventListener('click', (ev)=>{
+                            stop.addEventListener('click', (ev) => {
                                 $('#btnStart').show();
                                 $('#btnStop').hide();
                                 $('#vid1').hide();
@@ -642,21 +647,21 @@
 
                                 console.log(mediaRecorder.state);
                             });
-                            mediaRecorder.ondataavailable = function(ev) {
+                            mediaRecorder.ondataavailable = function (ev) {
                                 chunks.push(ev.data);
                             }
-                            mediaRecorder.onstop = (ev)=>{
-                                let blob = new Blob(chunks, { 'type' : 'video/mp4;' });
+                            mediaRecorder.onstop = (ev) => {
+                                let blob = new Blob(chunks, {'type': 'video/mp4;'});
                                 chunks = [];
                                 let videoURL = window.URL.createObjectURL(blob);
                                 vidSave.src = videoURL;
                                 vidSave.play();
                                 $('#realtimevideo-file').attr('value', blob);
-                                $('#submit-realtime-video').prop('disabled',false);
+                                $('#submit-realtime-video').prop('disabled', false);
 
                             }
                         })
-                        .catch(function(err) {
+                        .catch(function (err) {
                             console.log(err.name, err.message);
                         });
                 });
@@ -665,7 +670,7 @@
                     const stream = videoElem.srcObject;
                     const tracks = stream.getTracks();
 
-                    tracks.forEach(function(track) {
+                    tracks.forEach(function (track) {
                         track.stop();
                     });
 
@@ -675,24 +680,24 @@
                 function checkOlderBrowsers() {
                     if (navigator.mediaDevices === undefined) {
                         navigator.mediaDevices = {};
-                        navigator.mediaDevices.getUserMedia = function(constraintObj) {
+                        navigator.mediaDevices.getUserMedia = function (constraintObj) {
                             let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
                             if (!getUserMedia) {
                                 return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
                             }
-                            return new Promise(function(resolve, reject) {
+                            return new Promise(function (resolve, reject) {
                                 getUserMedia.call(navigator, constraintObj, resolve, reject);
                             });
                         }
-                    }else{
+                    } else {
                         navigator.mediaDevices.enumerateDevices()
                             .then(devices => {
-                                devices.forEach(device=>{
+                                devices.forEach(device => {
                                     console.log(device.kind.toUpperCase(), device.label);
                                     //, device.deviceId
                                 })
                             })
-                            .catch(err=>{
+                            .catch(err => {
                                 console.log(err.name, err.message);
                             })
                     }
