@@ -241,6 +241,16 @@
                             </button>
                         </div>
                         <div class="modal-body el-16dp">
+
+                            <div id="realtimevideo-upload-complete" class="alert alert-success" role="alert"
+                                 style="display:none;">
+                                {{trans('dashboard.upload_successful')}}
+                            </div>
+                            <div id="realtimevideo-upload-notcomplete" class="alert alert-danger" role="alert"
+                                 style="display:none;">
+                                {{trans('dashboard.upload_failed')}}
+                            </div>
+
                             <button id="btnStart">Start Recording</button>
                             <button id="btnStop">Stop Recording</button>
                             <div class="card-body">
@@ -281,6 +291,19 @@
                                            style="color: white;" disabled>
                                 </div>
                             </form>
+
+                            <div id="realtime-progress-container" style="display: none;">
+                                <div class="progress">
+                                    <div id="realtime-progress"
+                                         class="progress-bar progress-bar-striped progress-bar-animated"
+                                         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 0%"></div>
+                                </div>
+                                <p class="text-center"> {{trans('dashboard.uploading')}}
+                                    <span id="realtime-upload-text"></span>
+                                </p>
+
+                            </div>
 
                         </div>
                     </div>
@@ -368,6 +391,7 @@
                     $('#vid1').show();
                     $('#vid2').hide();
                     $('#title-fps-menu').hide();
+                    $('#realtimevideo-upload-notcomplete').hide();
                 })
 
                 $('#upload-video').on('click', function () {
@@ -477,6 +501,71 @@
                             creating.hide();
                             alertNotComplete.show();
                             console.log(data);
+                            form.show();
+                        }
+                    });
+                });
+
+                $('#realtimevideo-form').on('submit', function (event) {
+                    event.preventDefault();
+                    let bar = $("#realtime-progress");
+                    let container = $("#realtime-progress-container");
+                    let text = $("#realtime-upload-text");
+                    let form = $('#realtimevideo-form');
+                    let video = $('#realtimevideo-file');
+                    let alertComplete = $('#realtimevideo-upload-complete');
+                    let alertNotComplete = $('#realtimevideo-upload-notcomplete');
+                    let formDrop = $('#title-fps-menu');
+                    container.show();
+                    form.hide();
+                    alertComplete.hide();
+                    alertNotComplete.hide();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        xhr: function () {
+                            let xhr = new window.XMLHttpRequest();
+                            xhr.upload.addEventListener("progress", function (evt) {
+                                if (evt.lengthComputable) {
+                                    let percentComplete = parseInt((evt.loaded / evt.total) * 100);
+                                    bar.attr('aria-valuenow', percentComplete);
+                                    bar.width(percentComplete + '%');
+                                    text.text(percentComplete + "%");
+                                }
+                            }, false);
+                            return xhr;
+                        },
+                        success: function (data) {
+                            container.hide();
+                            if (JSON.parse(data)['result']) {
+                                alertComplete.show();
+                                $('#realtime-video-modal').on('hidden.bs.modal', function () {
+                                    location.reload(false);
+                                });
+                            } else {
+                                alertNotComplete.show();
+                            }
+
+                            video.val('');
+                            formDrop.collapse('hide');
+                            form.show();
+                        },
+                        error: function (data) {
+                            container.hide();
+                            alertNotComplete.show();
+                            console.log(data);
+
+                            video.val('');
+                            formDrop.collapse('hide');
                             form.show();
                         }
                     });
