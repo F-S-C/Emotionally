@@ -4,18 +4,38 @@
 
 
 @section('body')
+
     <div class="container w-75">
-        <h1>File video report: {{$video->name}}</h1>
+        <div class="container">
+            <div class="row">
+                <div class="text-left">
+                    <img src="{{asset('/logo.png')}}" width="150"
+                         height="150"
+                          alt="Emotionally's logo">
+                    <img src="{{asset('/app_name.svg')}}" width="150"
+                         height="150" style="background-color: black"
+                          alt="Emotionally">
+                </div>
+               <div class="col text-right">
+                    <img src="{{asset('/fsc_logo_nero.svg')}}" width="150"
+                         height="150"
+                         alt="FSC's logo">
+                </div>
+            </div>
+        </div>
+        <div class="text-center my-4">
+            <h1>File video report: {{$video->name}}</h1>
+        </div>
         <div class="row my-4">
-            <div class="col-6">
+            <div class="col-12">
                 <table class="table" style="color:black">
             <thead class="thead-light">
             <tr>
                 <th scope="col">Creator</th>
                 <th scope="col">Project </th>
-                <th scope="col">Video's duration</th>
+                <th scope="col">Video's Duration</th>
                 <th scope="col">Range analyzed</th>
-
+                <th scope="col"> Frequent emoji</th>
             </tr>
             </thead>
             <tbody>
@@ -28,6 +48,7 @@
                 <td>{{$video->duration}}</td>
 
                 <td>[ {{$video->start}} , {{$video->end}} ]</td>
+                <td> {{\Emotionally\Http\Controllers\ReportController::get_emoji(\Emotionally\Http\Controllers\ReportController::highestEmotion($video->average_report))}}</td>
             </tr>
 
             </tbody>
@@ -56,6 +77,17 @@
                 </div>
             </div>
         </div>
+        <footer>
+            <div class="copyright text-white-50 my-5">
+                <div class="container-fluid px-3">
+                    <p class="d-inline-block mt-md-1" style="color: black;">
+                        Copyright &copy; 2019,
+                        <a href="https://F-S-C.github.io/" rel="noopener noreferrer" target="_blank">FSC</a>.
+                        @lang('metadata.copyright')
+                    </p>
+                </div>
+            </div>
+        </footer>
     </div>
 @endsection
 
