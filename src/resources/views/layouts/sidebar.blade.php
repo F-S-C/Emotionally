@@ -240,7 +240,8 @@
                                              role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
                                              style="width: 0%"></div>
                                     </div>
-                                    <p id="uploading-text-container" class="text-center"> {{trans('dashboard.uploading')}}
+                                    <p id="uploading-text-container"
+                                       class="text-center"> {{trans('dashboard.uploading')}}
                                         <span id="upload-text"></span>
                                     </p>
                                 </div>
@@ -361,11 +362,11 @@
                             <form method="POST" action="{{ route('system.newProject') }}" enctype="multipart/form-data"
                                   id="project-form">
                                 @csrf
-                                @if(isset($project))
+                                @isset($project)
                                     @if(Request::segment(2) == "project")
                                         <input type="hidden" name="father_id" value="{{ $project->id }}">
                                     @endif
-                                @endif
+                                @endisset
                                 <label for="project_name">{{trans('dashboard.project_name')}}</label>
                                 <input type="text" class="form-control input-color" id="project_name"
                                        name="project_name" placeholder="{{trans('dashboard.name')}}">
@@ -419,7 +420,7 @@
                     $('#vid2').hide();
                     $('#title-fps-menu').hide();
                     $('#realtimevideo-upload-notcomplete').hide();
-                })
+                });
 
                 $('#upload-video').on('click', function () {
                     $('#upload-video-modal').modal('show');
