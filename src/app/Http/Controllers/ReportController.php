@@ -266,7 +266,7 @@ class ReportController extends Controller
         $video = Video::findOrFail($id);
         $fileName = "Video-report-" . time() . ".json";
         $handle = fopen($fileName, 'w+');
-        fputs($handle, response()->json($video->report));
+        fputs($handle, $video->report);
         fclose($handle);
         $headers = array('Content-type' => 'Analysis to json', 'Video analyzed' => $video->name);
 
