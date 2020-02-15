@@ -88,8 +88,8 @@
                            aria-label="Search" id="search-bar">
                 </div>
 
-                <div aria-label="Your profile" class="ml-auto form-inline my-2 my-lg-0">
-                    <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="48" height="48"
+                <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex">
+                    <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="40" height="40"
                          src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>
                     <div class="ml-2">
                         <span aria-label="Your name"
