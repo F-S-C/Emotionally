@@ -33,7 +33,7 @@
         <div class="dropdown-menu">
                 <button class="dropdown-item" id="report-pdf">Report in PDF</button>
                 <a class="dropdown-item" href="{{route('system.layout-file', $video->id)}}" rel="noopener noreferrer" target="_blank">Report in HTML</a>
-                <button class="dropdown-item" id="report-json">Report in JSON</button>
+                <a class="dropdown-item" href="{{route('system.download-json', $video->id)}}"  rel="noopener noreferrer">Report in JSON</a>
                 <button class="dropdown-item" id="report-exel">Report in EXEL</button>
         </div>
     </div>

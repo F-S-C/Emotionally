@@ -35,7 +35,7 @@
                 <th scope="col">Project </th>
                 <th scope="col">Video's Duration</th>
                 <th scope="col">Range analyzed</th>
-                <th scope="col"> Frequent emoji</th>
+                <th scope="col">Frequent emoji</th>
             </tr>
             </thead>
             <tbody>

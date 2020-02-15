@@ -261,5 +261,17 @@ class ReportController extends Controller
         return $pdf->download('chart.pdf');*/
     }
 
+    public function downloadJSON($id){
+
+        $video= Video::findOrFail($id);
+        $fileName= "Video-report-". time() . ".json";
+        $handle = fopen($fileName, 'w+');
+        fputs($handle, response()->json($video->report));
+        fclose($handle);
+        $headers = array ('Content-type'=> 'Analysis to json', 'Video analyzed' => $video->name);
+
+        return response()->download($fileName, $fileName, $headers);
+    }
+
 
 }
