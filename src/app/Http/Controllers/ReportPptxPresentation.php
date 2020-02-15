@@ -2,8 +2,6 @@
 
 namespace Emotionally\Http\Controllers;
 
-use http\Exception\InvalidArgumentException;
-use Illuminate\Http\Request;
 use PhpOffice\PhpPresentation\DocumentLayout;
 use PhpOffice\PhpPresentation\IOFactory;
 use PhpOffice\PhpPresentation\PhpPresentation;
@@ -11,17 +9,25 @@ use PhpOffice\PhpPresentation\Slide\Background\Color as BackgroundColor;
 use PhpOffice\PhpPresentation\Style\Alignment;
 use PhpOffice\PhpPresentation\Style\Color;
 
-class ReportPptxPresentation
+abstract class ReportPptxPresentation
 {
-    private $presentation;
-    private $title;
+    /**
+     * The type of report
+     */
+    protected const TYPE = 'NO TYPE';
+
+    /**
+     * @var PhpPresentation The presentation
+     */
+    protected $presentation;
+    protected $title;
 
     /**
      * @var array The report of the presentation
      */
-    private $report;
+    protected $report;
 
-    private $title_slide;
+    protected $title_slide;
 
     /**
      * ReportPptxPresentation constructor.
@@ -43,9 +49,8 @@ class ReportPptxPresentation
 
         $this->presentation->getDocumentProperties()
             ->setCreator(\Auth::user()->name . ' ' . \Auth::user()->surname)
-            ->setTitle('Video report - ' . $title)
-            ->setLastModifiedBy('Emotionally - FSC')
-            ->setSubject('Video report');
+            ->setLastModifiedBy('Emotionally - FSC');
+
         $this->presentation->getLayout()
             ->setDocumentLayout(DocumentLayout::LAYOUT_SCREEN_16X9);
 
@@ -66,7 +71,7 @@ class ReportPptxPresentation
         $shape->getActiveParagraph()->getAlignment()
             ->setHorizontal(Alignment::HORIZONTAL_CENTER)
             ->setVertical(Alignment::VERTICAL_CENTER);
-        $textRun = $shape->createTextRun('VIDEO');
+        $textRun = $shape->createTextRun($this::TYPE);
         $textRun->getFont()->setBold(true)
             ->setSize(32)
             ->setCharacterSpacing(10)

@@ -314,7 +314,7 @@ class ReportController extends Controller
     public function downloadPPTX($id)
     {
         $video = Video::findOrFail($id);
-        $presentation = new ReportPptxPresentation($video->name, $video->report);
+        $presentation = new VideoPptxPresentation($video->name, $video->report);
 
         return response()->streamDownload(function () use ($presentation) {
             $presentation->downloadPresentation();
