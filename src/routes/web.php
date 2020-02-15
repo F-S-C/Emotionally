@@ -28,7 +28,7 @@ Route::name('system.')
         Route::get('/video/{id}/file', 'ReportController@getReportFile')->name('layout-file');
         Route::get('/video/{id}/downloadPDF', 'ReportController@downloadPDF')->name('download-pdf');
         Route::get('/video/{id}/downloadJSON', 'ReportController@downloadJSON')->name('download-json');
-
+        Route::get('/video/{id}/downloadExcel', 'ReportController@downloadExcel')->name('download-excel');
         Route::middleware('permissions:read')
             ->group(function () {
                 Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
