@@ -48,6 +48,28 @@ class VideoController extends Controller
     }
 
     /**
+     * Set the report field for a video.
+     * @param Request $request The request. It must contain the report and the id of the video.
+     * @return false|string A json response.
+     */
+    public function setReport(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'video_id' => 'bail|required|integer|exists:videos,id',
+            'report' => 'required|json',
+        ]);
+        if ($validator->fails()) {
+            return json_encode(array('done' => false, 'errors' => $validator->errors()->toArray()));
+        }
+
+        $video = Video::findOrFail($request->video_id);
+        $video->report = trim($request->report);
+        $video->save();
+
+        return json_encode(array('done' => true));
+    }
+
+    /**
      * Upload and manages the video passed through HTTP request.
      * @param Request $request The HTTP request.
      * @throws \getid3_exception \\getid3_exception
@@ -57,6 +79,7 @@ class VideoController extends Controller
         $getID3 = new \getID3;
         $files = $request->file('videos');
         if ($request->hasFile('videos')) {
+            $urls = array();
             foreach ($files as $to_upload) {
                 $filename = $to_upload->hashName();
                 $file = $getID3->analyze($to_upload->getRealPath());
@@ -67,7 +90,7 @@ class VideoController extends Controller
                 $video = new Video();
                 $video->name = pathinfo($to_upload->getClientOriginalName(), PATHINFO_FILENAME);
 //                $video->report = ""; //TODO: Integrare con affdex.js
-                $video->url = 'user-content';
+                $video->url = asset('user-content/' . $filename);
                 $video->project_id = $request->input('project_id');
                 $video->user_id = auth()->user()->id;
                 $video->start = '00:00:00';
@@ -75,10 +98,11 @@ class VideoController extends Controller
                 $video->duration = $duration;
                 $video->end = $duration;
                 $video->save();
+                array_push($urls, array('url' => $video->url, 'id' => $video->id));
             }
-            echo '{"result":true}';
-        }else{
-            echo '{"result":false}';
+            echo json_encode(array('result' => true, 'files' => $urls));
+        } else {
+            echo json_encode(array('result' => false));
         }
     }
 

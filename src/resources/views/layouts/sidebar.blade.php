@@ -1,3 +1,4 @@
+{{-- TODO: URGENT - Fix the dropdown in the sidebar to work in the dashboard, where $project is not (and shouldn't be) defined. --}}
 @extends('layouts.master')
 
 @section('head')
@@ -57,7 +58,7 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item active">
-                    @if(!Auth::user()->projects->isEmpty())
+                    @if(Auth::user()->projects->isNotEmpty())
                         <div class="btn-group collapse-button-container">
                             <a type="button" class="nav-link collapse-button d-none d-md-block" data-toggle="collapse"
                                href="#projects-container"
@@ -222,7 +223,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="modal-footer">
                                         <button type="button" id="close-video" class="btn btn-secondary"
                                                 data-dismiss="modal">
@@ -240,7 +240,7 @@
                                              role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
                                              style="width: 0%"></div>
                                     </div>
-                                    <p class="text-center"> {{trans('dashboard.uploading')}}
+                                    <p id="uploading-text-container" class="text-center"> {{trans('dashboard.uploading')}}
                                         <span id="upload-text"></span>
                                     </p>
                                 </div>
@@ -461,7 +461,7 @@
                             let xhr = new window.XMLHttpRequest();
                             xhr.upload.addEventListener("progress", function (evt) {
                                 if (evt.lengthComputable) {
-                                    let percentComplete = parseInt((evt.loaded / evt.total) * 100);
+                                    let percentComplete = Math.floor((evt.loaded / evt.total) * 100);
                                     bar.attr('aria-valuenow', percentComplete);
                                     bar.width(percentComplete + '%');
                                     text.text(percentComplete + "%");
@@ -470,9 +470,36 @@
                             return xhr;
                         },
                         success: function (data) {
-                            container.hide();
-                            if (JSON.parse(data)['result']) {
-                                alertComplete.show();
+                            let ans = JSON.parse(data);
+                            if (ans['result']) {
+                                bar.width('100%');
+                                $('#uploading-text-container').text('@lang('dashboard.analyzing')');
+                                ans['files'].forEach(file => {
+                                    EmotionAnalysis.analyzeVideo(file['url'], function (report) {
+                                        $.post("{{route('system.video.report.set')}}", {
+                                            '_method': 'PUT',
+                                            '_token': '{{csrf_token()}}',
+                                            'report': report,
+                                            "video_id": file['id'],
+                                        })
+                                            .done(function (data) {
+                                                if (JSON.parse(data)['done']) {
+                                                    alertComplete.show();
+                                                } else {
+                                                    alertNotComplete.show();
+                                                }
+                                            })
+                                            .fail(function () {
+                                                alertNotComplete.show();
+                                            })
+                                            .always(function () {
+                                                container.hide();
+                                                form.show();
+                                            });
+                                    });
+                                });
+
+
                                 $('#upload-video-modal').on('hidden.bs.modal', function () {
                                     location.reload(false);
                                 });
@@ -483,7 +510,6 @@
                             video.val('');
                             videoLabel.text('{{trans('dashboard.choose_file')}}');
                             formDrop.collapse('hide');
-                            form.show();
                         },
                         error: function (data) {
                             container.hide();
