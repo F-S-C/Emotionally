@@ -138,6 +138,15 @@
                         @endif
                     </div>
                 </div>
+                <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex">
+                    <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="40" height="40"
+                         src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>
+                    <div class="ml-2">
+                        <span aria-label="Your name"
+                              class="font-weight-bold text-white d-block">{{Auth::user()->name}} {{Auth::user()->surname}}</span>
+                        <small aria-label="Your email" class="d-block">{{Auth::user()->email}}</small>
+                    </div>
+                </div>
                 {{--                <button class="navbar-toggler" type="button" data-toggle="collapse"--}}
                 {{--                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"--}}
                 {{--                        aria-expanded="false" aria-label="Toggle navigation">--}}

@@ -40,3 +40,8 @@ $elevations: (
     background-color: mix(white, $body-bg, $opacity) !important;
   }
 }
+
+
+.border.border-text{
+    border-color: $body-color !important;
+}
