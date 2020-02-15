@@ -35,6 +35,7 @@
                 <a class="dropdown-item" href="{{route('system.layout-file', $video->id)}}" rel="noopener noreferrer" target="_blank">Report in HTML</a>
                 <a class="dropdown-item" href="{{route('system.download-json', $video->id)}}"  rel="noopener noreferrer">Report in JSON</a>
                 <button class="dropdown-item" id="report-exel">Report in EXEL</button>
+                <a class="dropdown-item" href="{{route('system.download-pptx', $video->id)}}"  rel="noopener noreferrer">Report in PPTX</a>
         </div>
     </div>
 
