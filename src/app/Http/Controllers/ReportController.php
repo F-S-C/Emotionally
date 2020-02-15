@@ -254,10 +254,10 @@ class ReportController extends Controller
     }
 
     public function downloadPDF($id){
-        $video = Video::findOrFail($id);
+        /*$video = Video::findOrFail($id);
         $pdf = \Pdf::loadView('layout-file', compact('video'));
         $pdf->setOptions(['enable-javascript'=> true, 'javascript-delay'=>5000, 'enable-smart-shrinking'=> true, 'no-stop-slow-scripts'=>true]);
 
-        return $pdf->download('chart.pdf');
+        return $pdf->download('chart.pdf');*/
     }
 }
