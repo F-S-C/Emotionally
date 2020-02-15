@@ -44,5 +44,11 @@ return [
     "uploading" => "Uploading...",
     "analyzing" => "Analyzing...",
     "add_project" => "Add project",
+    "project_name" => "Project name",
+    "submit" => "Submit",
+    "upload" => "Upload",
+    "creating_project" => "Creating project...",
+    "err_creating_project" => "An error occurred while creating the project.",
+    "project_created" => "Project successfully created.",
 ];
 

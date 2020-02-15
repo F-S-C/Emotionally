@@ -48,7 +48,6 @@ Route::name('system.')
             //});
     });
 
-Auth::routes(/*['verify' => true]*/);
 
 Route::get('/logout', function () {
     Auth::logout();
@@ -56,7 +55,8 @@ Route::get('/logout', function () {
     return redirect()->route('landing');
 })->name('logout');
 
-// TODO: Implement a 'not logged in' notice
+// TODO: Reactivate 'verify' and remove the route verification.notice
+Auth::routes(/*['verify' => true]*/);
 Route::name('verification.notice')->get('/not-logged', function () {
     return 'not logged';
 });

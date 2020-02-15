@@ -29,6 +29,15 @@
         .modal-close:hover {
             color: rgba(255, 255, 255, 0.5) !important;
         }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0px 1000px #232323 inset;
+            -webkit-text-fill-color: white;
+            caret-color: white;
+        }
     </style>
 @endsection
 
@@ -103,21 +112,28 @@
                            aria-label="Search" id="search-bar">
                 </div>
                 <div class="ml-auto btn-group dropleft">
-                    <button class="btn btn-outline-primary rounded-pill" type="button" id="add-video"
+                    <button class="btn btn-outline-primary rounded-pill mr-2" type="button" id="add-video"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="{{trans('dashboard.upload_video')}}">
                         <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
                         Add
                     </button>
                     <div class="dropdown-menu" aria-labelledby="add-video">
-                        @if($project->father_id == "")
+                        @if(isset($project))
+                            @if( $project->father_id == "")
+                                <button class="dropdown-item" id="create-project" data-toggle="modal"
+                                        data-target="create-project-modal"
+                                        data-modal="create-project-modal">{{trans('dashboard.add_project')}}
+                                </button>
+                                @if(Request::segment(2) == "project")
+                                    <div class="dropdown-divider"></div>
+                                @endif
+                            @endif
+                        @else
                             <button class="dropdown-item" id="create-project" data-toggle="modal"
                                     data-target="create-project-modal"
                                     data-modal="create-project-modal">{{trans('dashboard.add_project')}}
                             </button>
-                            @if(Request::segment(2) == "project")
-                                <div class="dropdown-divider"></div>
-                            @endif
                         @endif
                         @if( Request::segment(2) == "project")
                             <button class="dropdown-item" id="upload-video" data-toggle="modal"
@@ -128,6 +144,16 @@
                                     data-target="realtime-video-modal"
                                     data-modal="realtime-video-modal">{{trans('dashboard.realtime_video')}}</button>
                         @endif
+                    </div>
+                    <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex">
+                        <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="40"
+                             height="40"
+                             src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>
+                        <div class="ml-2">
+                        <span aria-label="Your name"
+                              class="font-weight-bold text-white d-block">{{Auth::user()->name}} {{Auth::user()->surname}}</span>
+                            <small aria-label="Your email" class="d-block">{{Auth::user()->email}}</small>
+                        </div>
                     </div>
                 </div>
                 {{--                <button class="navbar-toggler" type="button" data-toggle="collapse"--}}
@@ -147,97 +173,168 @@
                 {{--                    </ul>--}}
                 {{--                </div>--}}
             </nav>
-            <!-- Modal 1 -->
-            <div class="modal fade" id="upload-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content el-16dp">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.upload_video')}}</h5>
-                            <button type="button" class="modal-close" data-dismiss="modal"
-                                    aria-label="{{trans('dashboard.close')}}">
-                                <span class="fas fa-times"></span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="video-upload-complete" class="alert alert-success" role="alert"
-                                 style="display:none;">
-                                {{trans('dashboard.upload_successful')}}
+            <!-- Modal 1  video-->
+            @if(isset($project))
+                <div class="modal fade" id="upload-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content el-16dp">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.upload_video')}}</h5>
+                                <button type="button" class="modal-close" data-dismiss="modal"
+                                        aria-label="{{trans('dashboard.close')}}">
+                                    <span class="fas fa-times"></span>
+                                </button>
                             </div>
-                            <div id="video-upload-notcomplete" class="alert alert-danger" role="alert"
-                                 style="display:none;">
-                                {{trans('dashboard.upload_failed')}}
-                            </div>
-                            <form method="POST" action="{{ route('system.videoUpload') }}" enctype="multipart/form-data"
-                                  id="video-form">
-                                @csrf
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
+                            <div class="modal-body">
+                                <div id="video-upload-complete" class="alert alert-success" role="alert"
+                                     style="display:none;">
+                                    {{trans('dashboard.upload_successful')}}
+                                </div>
+                                <div id="video-upload-notcomplete" class="alert alert-danger" role="alert"
+                                     style="display:none;">
+                                    {{trans('dashboard.upload_failed')}}
+                                </div>
+                                <form method="POST" action="{{ route('system.videoUpload') }}"
+                                      enctype="multipart/form-data"
+                                      id="video-form">
+                                    @csrf
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
                                         <span class="input-group-text input-color"
                                               for="customVideo">{{trans('dashboard.upload_video')}}</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input multiple="multiple" type="file" class="custom-file-input input-color"
-                                               id="customVideo" name="videos[]"
-                                               accept="video/*">
-                                        <label id="customVideoLabel" class="custom-file-label input-color "
-                                               for="customVideo">{{trans('dashboard.choose_file')}}</label>
-                                    </div>
-                                </div>
-                                <input type="text" name="project_id" value="{{$project->id}}" hidden>
-                                <div class="collapse multi-collapse" id="duration-fps-collapse-menu">
-
-                                    <div class="card card-body el-16dp">
-                                        <div class="form-inline">
-                                            <label for="framerate">Framerate:</label>
-                                            <input type="number" id="framerate" name="framerate"
-                                                   class="form-control mx-sm-3" min="1" max="60" value="30">
+                                        </div>
+                                        <div class="custom-file">
+                                            <input multiple="multiple" type="file" class="custom-file-input input-color"
+                                                   id="customVideo" name="videos[]"
+                                                   accept="video/*">
+                                            <label id="customVideoLabel" class="custom-file-label input-color "
+                                                   for="customVideo">{{trans('dashboard.choose_file')}}</label>
                                         </div>
                                     </div>
+                                    <input type="text" name="project_id" value="{{$project->id}}" hidden>
+                                    <div class="collapse multi-collapse" id="duration-fps-collapse-menu">
+
+                                        <div class="card card-body el-16dp">
+                                            <div class="form-inline">
+                                                <label for="framerate">Framerate:</label>
+                                                <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
+                                                <input type="number" id="framerate-video" name="framerate"
+                                                       class="form-control mx-sm-3" min="1" max="60" value="30">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="close-video" class="btn btn-secondary"
+                                                data-dismiss="modal">
+                                            {{trans('dashboard.close')}}
+                                        </button>
+                                        <input type="submit" value="{{ trans('dashboard.upload') }}"
+                                               class="btn btn-primary"
+                                               style="color: white;">
+                                    </div>
+                                </form>
+                                <div id="progress-container" style="display: none;">
+                                    <div class="progress">
+                                        <div id="progress"
+                                             class="progress-bar progress-bar-striped progress-bar-animated"
+                                             role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
+                                    <p id="uploading-text-container" class="text-center"> {{trans('dashboard.uploading')}}
+                                        <span id="upload-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!---Modal 2 Realtime--->
+                <div class="modal fade" id="realtime-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content el-16dp">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.realtime_video')}}</h5>
+                                <button type="button" class="modal-close" data-dismiss="modal"
+                                        aria-label="{{trans('dashboard.close')}}">
+                                    <span class="fas fa-times"></span>
+                                </button>
+                            </div>
+                            <div class="modal-body el-16dp">
+
+                                <div id="realtimevideo-upload-complete" class="alert alert-success" role="alert"
+                                     style="display:none;">
+                                    {{trans('dashboard.upload_successful')}}
+                                </div>
+                                <div id="realtimevideo-upload-notcomplete" class="alert alert-danger" role="alert"
+                                     style="display:none;">
+                                    {{trans('dashboard.upload_failed')}}
                                 </div>
 
-                                <div class="modal-footer">
-                                    <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">
-                                        {{trans('dashboard.close')}}
-                                    </button>
-                                    <input type="submit" class="btn btn-primary" style="color: white;">
+                                <button id="btnStart">Start Recording</button>
+                                <button id="btnStop">Stop Recording</button>
+                                <div class="card-body">
+                                    <video id="vid1" width="400" height="250"></video>
+                                    <video id="vid2" width="400" height="250" controls></video>
                                 </div>
-                            </form>
-                            <div id="progress-container" style="display: none;">
-                                <div class="progress">
-                                    <div id="progress"
-                                         class="progress-bar progress-bar-striped progress-bar-animated"
-                                         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                                         style="width: 0"></div>
+
+                                <form method="POST" action="{{ route('system.videoUpload') }}"
+                                      enctype="multipart/form-data"
+                                      id="realtimevideo-form">
+                                    @csrf
+                                    <div class="input-group mb-3">
+                                        <input type="file" id="realtimevideo-file" name="videos[]" hidden>
+                                    </div>
+
+                                    <input type="text" name="project_id" value="{{$project->id}}" hidden>
+
+                                    <div class="collapse multi-collapse" id="title-fps-menu">
+
+                                        <div class="card card-body el-16dp">
+                                            <div class="form-group">
+                                                <label for="title">Title:</label>
+                                                <input type="text" id="title" class="form-control">
+                                            </div>
+                                            <div class="form-inline">
+                                                <label for="framerate">Framerate:</label>
+                                                <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
+                                                <input type="number" id="framerate-realtime" name="framerate"
+                                                       class="form-control mx-sm-3" min="1" max="60" value="30">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" id="close-realtime" class="btn btn-secondary"
+                                                data-dismiss="modal">
+                                            {{trans('dashboard.close')}}
+                                        </button>
+                                        <input type="submit" id="submit-realtime-video"
+                                               value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
+                                               style="color: white;" disabled>
+                                    </div>
+                                </form>
+
+                                <div id="realtime-progress-container" style="display: none;">
+                                    <div class="progress">
+                                        <div id="realtime-progress"
+                                             class="progress-bar progress-bar-striped progress-bar-animated"
+                                             role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
+                                    <p class="text-center"> {{trans('dashboard.uploading')}}
+                                        <span id="realtime-upload-text"></span>
+                                    </p>
+
                                 </div>
-                                <p id="uploading-text-container" class="text-center"> {{trans('dashboard.uploading')}}
-                                    <span id="upload-text"></span>
-                                </p>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-
-            <!---Modal 2--->
-            <div class="modal fade" id="realtime-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content el-16dp">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.realtime_video')}}</h5>
-                            <button type="button" class="modal-close" data-dismiss="modal"
-                                    aria-label="{{trans('dashboard.close')}}">
-                                <span class="fas fa-times"></span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Realtime video <!--TODO: TITOLO E CORPO--->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!---Modal 3--->
+        @endif
+        <!---Modal 3 create project--->
             <div class="modal fade" id="create-project-modal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content el-16dp">
@@ -249,14 +346,38 @@
                             </button>
                         </div>
                         <div class="modal-body">
+                            <div id="newproject-complete" class="alert alert-success" role="alert"
+                                 style="display:none;">
+                                {{trans('dashboard.project_created')}}
+                            </div>
+                            <div id="newproject-notcomplete" class="alert alert-danger" role="alert"
+                                 style="display:none;">
+                                {{trans('dashboard.err_creating_project')}}
+                            </div>
+                            <div id="newproject-creating" class="alert alert-warning" role="alert"
+                                 style="display:none;">
+                                {{trans('dashboard.creating_project')}}
+                            </div>
                             <form method="POST" action="{{ route('system.newProject') }}" enctype="multipart/form-data"
                                   id="project-form">
                                 @csrf
-                                @if(Request::segment(2) == "project")
-                                    <input type="hidden" name="father_id" value="{{ $project->id }}">
+                                @if(isset($project))
+                                    @if(Request::segment(2) == "project")
+                                        <input type="hidden" name="father_id" value="{{ $project->id }}">
+                                    @endif
                                 @endif
-                                <input type="text" name="project_name">
-                                <input type="submit" value="Vai">
+                                <label for="project_name">{{trans('dashboard.project_name')}}</label>
+                                <input type="text" class="form-control input-color" id="project_name"
+                                       name="project_name" placeholder="{{trans('dashboard.name')}}">
+
+                                <div class="modal-footer mt-3">
+                                    <button type="button" id="close-project" class="btn btn-secondary"
+                                            data-dismiss="modal">
+                                        {{trans('dashboard.close')}}
+                                    </button>
+                                    <input type="submit" value="{{ trans('dashboard.submit') }}" class="btn btn-primary"
+                                           style="color: white;">
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -281,6 +402,7 @@
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
                 $('.sidebar').scrollbar();
+
                 $('#create-project').on('click', function () {
                     $('#create-project-modal').modal('show');
                 });
@@ -289,11 +411,19 @@
                     $('#realtime-video-modal').modal('show');
                 });
 
+                $('#realtime-video-modal').on('hidden.bs.modal', function () {
+                    stopStreamedVideo(document.querySelector('video'));
+                    $('#btnStart').show();
+                    $('#btnStop').hide();
+                    $('#vid1').show();
+                    $('#vid2').hide();
+                    $('#title-fps-menu').hide();
+                    $('#realtimevideo-upload-notcomplete').hide();
+                })
+
                 $('#upload-video').on('click', function () {
                     $('#upload-video-modal').modal('show');
                 });
-
-                $('.sidebar').scrollbar();
 
                 $('#customVideo').on('change', function () {
                     $('#customVideoLabel').text($('#customVideo').val().replace(/C:\\fakepath\\/i, ''));
@@ -393,6 +523,224 @@
                         }
                     });
                 });
+
+                $('#project-form').on('submit', function (event) {
+                    event.preventDefault();
+                    let alertComplete = $('#newproject-complete');
+                    let alertNotComplete = $('#newproject-notcomplete');
+                    let creating = $('#newproject-creating');
+                    let form = $('#project-form');
+                    form.hide();
+                    alertComplete.hide();
+                    alertNotComplete.hide();
+                    creating.show();
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: function (data) {
+                            creating.hide();
+                            alertComplete.show();
+                            $('#project_name').val('');
+                            $('#create-project-modal').on('hidden.bs.modal', function () {
+                                location.reload();
+                            });
+                            form.show();
+                        },
+                        error: function (data) {
+                            creating.hide();
+                            alertNotComplete.show();
+                            console.log(data);
+                            form.show();
+                        }
+                    });
+                });
+
+                $('#realtimevideo-form').on('submit', function (event) {
+                    event.preventDefault();
+                    let bar = $("#realtime-progress");
+                    let container = $("#realtime-progress-container");
+                    let text = $("#realtime-upload-text");
+                    let form = $('#realtimevideo-form');
+                    let video = $('#realtimevideo-file');
+                    let alertComplete = $('#realtimevideo-upload-complete');
+                    let alertNotComplete = $('#realtimevideo-upload-notcomplete');
+                    let formDrop = $('#title-fps-menu');
+                    container.show();
+                    form.hide();
+                    alertComplete.hide();
+                    alertNotComplete.hide();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        xhr: function () {
+                            let xhr = new window.XMLHttpRequest();
+                            xhr.upload.addEventListener("progress", function (evt) {
+                                if (evt.lengthComputable) {
+                                    let percentComplete = parseInt((evt.loaded / evt.total) * 100);
+                                    bar.attr('aria-valuenow', percentComplete);
+                                    bar.width(percentComplete + '%');
+                                    text.text(percentComplete + "%");
+                                }
+                            }, false);
+                            return xhr;
+                        },
+                        success: function (data) {
+                            container.hide();
+                            if (JSON.parse(data)['result']) {
+                                alertComplete.show();
+                                $('#realtime-video-modal').on('hidden.bs.modal', function () {
+                                    location.reload(false);
+                                });
+                            } else {
+                                alertNotComplete.show();
+                            }
+
+                            video.val('');
+                            formDrop.collapse('hide');
+                            form.show();
+                        },
+                        error: function (data) {
+                            container.hide();
+                            alertNotComplete.show();
+                            console.log(data);
+
+                            video.val('');
+                            formDrop.collapse('hide');
+                            form.show();
+                        }
+                    });
+                });
+
+                //REALTIME VIDEO
+                let constraintObj = {
+                    audio: false,
+                    video: {
+                        facingMode: "user",
+                        width: {min: 200, ideal: 400, max: 500},
+                        height: {min: 100, ideal: 250, max: 300}
+                    }
+                };
+                // width: 1280, height: 720  -- preference only
+                // facingMode: {exact: "user"}
+                // facingMode: "environment"
+
+
+                $('#realtime-video').on('click', function () {
+                    $('#vid2').hide();
+                    $('#btnStop').hide();
+
+                    //handle older browsers that might implement getUserMedia in some way
+                    checkOlderBrowsers();
+
+                    navigator.mediaDevices.getUserMedia(constraintObj)
+                        .then(function (mediaStreamObj) {
+                            //connect the media stream to the first video element
+                            let video = document.querySelector('video');
+                            if ("srcObject" in video) {
+                                video.srcObject = mediaStreamObj;
+                            } else {
+                                //old version
+                                video.src = window.URL.createObjectURL(mediaStreamObj);
+                            }
+
+                            video.onloadedmetadata = function (ev) {
+                                //show in the video element what is being captured by the webcam
+                                video.play();
+
+                            };
+
+                            //add listeners for saving video/audio
+                            let start = document.getElementById('btnStart');
+                            let stop = document.getElementById('btnStop');
+                            let vidSave = document.getElementById('vid2');
+                            let mediaRecorder = new MediaRecorder(mediaStreamObj);
+                            let chunks = [];
+
+                            start.addEventListener('click', (ev) => {
+                                $('#btnStart').hide();
+                                $('#btnStop').show();
+                                $('#submit-realtime-video').prop('disabled', true);
+                                mediaRecorder.start();
+                                console.log(mediaRecorder.state);
+                            })
+                            stop.addEventListener('click', (ev) => {
+                                $('#btnStart').show();
+                                $('#btnStop').hide();
+                                $('#vid1').hide();
+                                $('#vid2').show();
+                                $('#title-fps-menu').show();
+                                mediaRecorder.stop();
+
+                                console.log(mediaRecorder.state);
+                            });
+                            mediaRecorder.ondataavailable = function (ev) {
+                                chunks.push(ev.data);
+                            }
+                            mediaRecorder.onstop = (ev) => {
+                                let blob = new Blob(chunks, {'type': 'video/mp4;'});
+                                chunks = [];
+                                let videoURL = window.URL.createObjectURL(blob);
+                                vidSave.src = videoURL;
+                                vidSave.play();
+                                $('#realtimevideo-file').attr('value', blob);
+                                $('#submit-realtime-video').prop('disabled', false);
+
+                            }
+                        })
+                        .catch(function (err) {
+                            console.log(err.name, err.message);
+                        });
+                });
+
+                function stopStreamedVideo(videoElem) {
+                    const stream = videoElem.srcObject;
+                    const tracks = stream.getTracks();
+
+                    tracks.forEach(function (track) {
+                        track.stop();
+                    });
+
+                    videoElem.srcObject = null;
+                };
+
+                function checkOlderBrowsers() {
+                    if (navigator.mediaDevices === undefined) {
+                        navigator.mediaDevices = {};
+                        navigator.mediaDevices.getUserMedia = function (constraintObj) {
+                            let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                            if (!getUserMedia) {
+                                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                            }
+                            return new Promise(function (resolve, reject) {
+                                getUserMedia.call(navigator, constraintObj, resolve, reject);
+                            });
+                        }
+                    } else {
+                        navigator.mediaDevices.enumerateDevices()
+                            .then(devices => {
+                                devices.forEach(device => {
+                                    console.log(device.kind.toUpperCase(), device.label);
+                                    //, device.deviceId
+                                })
+                            })
+                            .catch(err => {
+                                console.log(err.name, err.message);
+                            })
+                    }
+                };
             });
         })(jQuery);
     </script>

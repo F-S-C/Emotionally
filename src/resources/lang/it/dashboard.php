@@ -44,4 +44,10 @@ return [
     "uploading" => "Caricamento in corso...",
     "analyzing" => "Analisi in corso...",
     "add_project" => "Aggiungi un progetto",
+    "project_name" => "Nome del progetto",
+    "submit" => "Invia",
+    "upload" => "Carica",
+    "creating_project" => "Creazione del progetto...",
+    "err_creating_project" => "Si &egrave; verificato un errore durante la creazione del progetto.",
+    "project_created" => "Progetto creato con successo.",
 ];

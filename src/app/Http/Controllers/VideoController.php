@@ -32,6 +32,11 @@ class VideoController extends Controller
         $video->delete();
     }
 
+    /**
+     * Returns the path of the video.
+     * @param $project_id The id of the video.
+     * @return string The path.
+     */
     private function getVideoPath($project_id)
     {
         $current_project = Project::findOrFail($project_id);
@@ -64,7 +69,11 @@ class VideoController extends Controller
         return json_encode(array('done' => true));
     }
 
-
+    /**
+     * Upload and manages the video passed through HTTP request.
+     * @param Request $request The HTTP request.
+     * @throws \getid3_exception \\getid3_exception
+     */
     public function uploadVideo(Request $request)
     {
         $getID3 = new \getID3;
@@ -97,18 +106,33 @@ class VideoController extends Controller
         }
     }
 
+    /**
+     * Returns a user's videos.
+     * @param User $user The user.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View The view with videos
+     */
     public function getAllVideosUser(User $user)
     {
         $owned_videos = $user->videos;
         return view('#')->with('videos', $owned_videos);
     }
 
+    /**
+     * Returns the videos of a project.
+     * @param Project $project The project.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View The view with videos.
+     */
     public function getAllVideosProject(Project $project)
     {
         $project_videos = $project->videos;
         return view('#')->with('videos', $project_videos);
     }
 
+    /**
+     * Returns the report of a video.
+     * @param int $id The video id.
+     * @return mixed The report.
+     */
     public function getReportVideo(int $id)
     {
         $video = Video::find($id);
