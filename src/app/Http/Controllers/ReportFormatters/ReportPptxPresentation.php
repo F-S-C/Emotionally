@@ -189,20 +189,39 @@ abstract class ReportPptxPresentation
             ->setSize(32)
             ->setColor(new Color(self::COLOR_PRIMARY));
 
-//        $shape = new Base64();
-//        $imageData = "data:image/png;base64," . base64_encode(file_get_contents('images/emotions/anger.png'));
-//        $shape->setName('PHPPresentation logo')
-//            ->setDescription('PHPPresentation logo')
-//            ->setData($imageData)
-//            ->setResizeProportional(false)
-//            ->setHeight(36)
-//            ->setWidth(36)
-//            ->setOffsetX(10)
-//            ->setOffsetY(200);
-//        $shape->getShadow()->setVisible(true)
-//            ->setDirection(45)
-//            ->setDistance(10);
-//        $new_slide->addShape($shape);
+        // Image (emoji)
+        $image_offset_x = 355;
+        $image_width = 248;
+        $shape = $new_slide->createDrawingShape();
+        $shape->setName('Modal emotion')
+            ->setDescription('Modal emotion: ' . $averageEmotion)
+            ->setPath('images/emotions/' . $averageEmotion . '.png')
+            ->setResizeProportional(false)
+            ->setHeight($image_width)
+            ->setWidth($image_width)
+            ->setOffsetX($image_offset_x)
+            ->setOffsetY(150);
+        $shape->getShadow()->setVisible(true)
+            ->setDirection(45)
+            ->setDistance(10);
+
+        // Image caption
+        $desc_shape = $new_slide->createRichTextShape()
+            ->setWidth($image_width)
+            ->setHeight(30)
+            ->setOffsetX($image_offset_x)
+            ->setOffsetY(420)
+            ->setAutofit(RichText::AUTOFIT_SHAPE);
+
+        $desc_shape->getActiveParagraph()->getAlignment()
+            ->setHorizontal(Alignment::HORIZONTAL_CENTER)
+            ->setVertical(Alignment::VERTICAL_CENTER);
+
+        $desc = $desc_shape->createTextRun(strtoupper($averageEmotion));
+        $desc->getFont()
+            ->setSize(16)
+            ->setCharacterSpacing(6)
+            ->setColor(new Color('FF777777'));
 
         return $this;
     }
