@@ -1,0 +1,8 @@
+{
+    "private": true,
+    "scripts": {},
+    "devDependencies": {},
+    "dependencies": {
+        "@nesk/puphpeteer": "^1.6.0"
+    }
+}

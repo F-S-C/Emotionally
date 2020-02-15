@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "php": "^7.3",
-        "ext-json": "^1.7"
+        "ext-json": "^1.7",
+        "nesk/puphpeteer": "dev-master"
     },
     "license": "GPL-3.0-only",
     "minimum-stability": "dev"
