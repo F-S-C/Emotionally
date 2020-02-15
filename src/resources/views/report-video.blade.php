@@ -1,6 +1,6 @@
 @extends('layouts.system')
 
-@section('title', $project->name)
+@section('title', $video->name)
 
 @section('breadcrumbs')
     <li class="breadcrumb-item">
