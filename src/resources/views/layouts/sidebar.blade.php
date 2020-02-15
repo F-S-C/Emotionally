@@ -87,6 +87,16 @@
                     <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search"
                            aria-label="Search" id="search-bar">
                 </div>
+
+                <div aria-label="Your profile" class="ml-auto form-inline my-2 my-lg-0">
+                    <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="48" height="48"
+                         src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>
+                    <div class="ml-2">
+                        <span aria-label="Your name"
+                              class="font-weight-bold text-white d-block">{{Auth::user()->name}} {{Auth::user()->surname}}</span>
+                        <small aria-label="Your email" class="d-block">{{Auth::user()->email}}</small>
+                    </div>
+                </div>
                 {{--                <button class="navbar-toggler" type="button" data-toggle="collapse"--}}
                 {{--                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"--}}
                 {{--                        aria-expanded="false" aria-label="Toggle navigation">--}}
