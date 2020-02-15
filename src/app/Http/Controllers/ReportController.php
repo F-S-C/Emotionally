@@ -26,6 +26,8 @@ use PhpOffice\PhpPresentation\Shape\RichText\Paragraph;
 use PhpOffice\PhpPresentation\Style\Alignment;
 use PhpOffice\PhpPresentation\Style\Color;
 use \PhpOffice\PhpPresentation\Slide\Background\Color as BackgroundColor;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ReportController extends Controller
 {
@@ -281,7 +283,30 @@ class ReportController extends Controller
         fclose($handle);
         $headers = array('Content-type' => 'Analysis to json', 'Video analyzed' => $video->name);
 
-        return response()->download($fileName, $fileName, $headers);
+        return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
+    }
+    public function downloadExcel($id){
+        $fileName= "Video-report-". time() . ".xlsx";
+        $video= Video::findOrFail($id);
+        $report=$video->report;
+        $report = (string)$report;
+        $json = json_decode($report,true);
+
+        $spreadsheet = new Spreadsheet();
+        foreach ($json as $key=>$value) {
+            $sheet = $spreadsheet->getActiveSheet();
+            $sheet->setCellValue('A1', $key);
+        }
+        $writer = new Xlsx($spreadsheet);
+        $writer->save($fileName);
+        return response()->download($fileName)->deleteFileAfterSend();
+//        $fileName= "Video-report-". time() . ".csv";
+//        $handle = fopen($fileName, 'w+');
+//        fputs($handle, response()->json($video->report));
+//        fclose($handle);
+//        $headers = array ('Content-type'=> 'Analysis to json', 'Video analyzed' => $video->name);
+//
+//        return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
     }
 
     public function downloadPPTX($id)

@@ -24,11 +24,14 @@ Route::name('system.')
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
         Route::get('/project/{id}/report', 'ProjectController@getProjectReport')->name('report-project');
+        
         Route::get('/video/{id}', 'VideoController@getVideoReport')->name('report-video');
         Route::get('/video/{id}/file', 'ReportController@getReportFile')->name('layout-file');
+        
         Route::get('/video/{id}/downloadPDF', 'ReportController@downloadPDF')->name('download-pdf');
         Route::get('/video/{id}/downloadJSON', 'ReportController@downloadJSON')->name('download-json');
         Route::get('/video/{id}/downloadPPTX', 'ReportController@downloadPPTX')->name('download-pptx');
+        Route::get('/video/{id}/downloadExcel', 'ReportController@downloadExcel')->name('download-excel');
 
         Route::middleware('permissions:read')
             ->group(function () {
