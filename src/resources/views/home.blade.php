@@ -57,27 +57,29 @@
 @endsection
 
 @section('scripts')
-@parent
-<script>
-    (function($) {
-        $(document).ready(function() {
-            let table = $('#project-table').DataTable({
-                "order": [
-                    [0, "asc"]
-                ],
-                "paging": false,
-                "info": false,
-                "columnDefs": [{
-                        "targets": 7,
-                        "orderable": false
-                    },
-                    {
-                        "targets": 6,
-                        "orderable": false
-                    },
-                ],
-                "dom": '<"top"i>rt<"bottom"><"clear">',
-            });
+    @parent
+    <script>(function ($) {
+            $(document).ready(function () {
+                let table = $('#project-table').DataTable({
+                    "order": [[0, "asc"]],
+                    "paging": false,
+                    "info": false,
+                    "columnDefs": [
+                        {
+                            "targets": 7,
+                            "orderable": false
+                        },
+                        {
+                            "targets": 6,
+                            "orderable": false
+                        },
+                    ],
+                    "dom": '<"top"i>rt<"bottom"><"clear">',
+                });
+
+                $('#search-bar').on('keydown click change paste mouseup', function () {
+                    table.search($('#search-bar').val()).draw();
+                });
 
             $('#search-bar').on('keydown click', function() {
                 table.search($('#search-bar').val()).draw();

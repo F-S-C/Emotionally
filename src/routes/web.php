@@ -23,17 +23,29 @@ Route::name('system.')
     ->group(function () {
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
+        Route::get('/project/{id}/report', 'ProjectController@getProjectReport')->name('report-project');
+        Route::get('/video/{id}', 'VideoController@getVideoReport')->name('report-video');
+        Route::get('/video/{id}/file', 'ReportController@getReportFile')->name('layout-file');
+        Route::get('/video/{id}/downloadPDF', 'ReportController@downloadPDF')->name('download-pdf');
 
-    Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+        Route::middleware('permissions:read')
+            ->group(function () {
+                Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+                Route::prefix('/project/{project_id}/share')
+                    ->name('permissions.')
+                    ->group(function () {
+                        Route::get('/', 'PermissionsController@getProjectPermissions')
+                            ->name('index');
+                        Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
+                            ->name('delete');
 
-    Route::get('/project/{id}/report', 'ProjectController@getProjectReport')->name('report-project');
+                        Route::put('/add', 'PermissionsController@addPermission')
+                            ->name('add');
 
-    Route::get('/video/{id}', 'VideoController@getVideoReport')->name('report-video');
-
-    Route::get('/video/{id}/file', 'ReportController@getReportFile')->name('layout-file');
-
-    Route::get('/video/{id}/downloadPDF', 'ReportController@downloadPDF')->name('download-pdf');
-
+                        Route::any('/edit', 'PermissionsController@editPermission')
+                            ->name('edit');
+                    });
+            });
     });
 
 Auth::routes(/*['verify' => true]*/);
@@ -45,6 +57,8 @@ Route::get('/logout', function () {
 })->name('logout');
 
 // TODO: Implement a 'not logged in' notice
-Route::name('verification.notice')->get('/not-logged', function(){return 'not logged';});
+Route::name('verification.notice')->get('/not-logged', function () {
+    return 'not logged';
+});
 
 Route::redirect('/home', '/system');
