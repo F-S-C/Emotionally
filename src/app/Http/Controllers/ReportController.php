@@ -18,6 +18,7 @@
 
 namespace Emotionally\Http\Controllers;
 
+use Emotionally\Http\Controllers\ReportFormatters\VideoPptxPresentation;
 use Emotionally\Video;
 use PhpOffice\PhpPresentation\DocumentLayout;
 use PhpOffice\PhpPresentation\IOFactory;
