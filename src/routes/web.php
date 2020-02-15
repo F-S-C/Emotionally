@@ -26,6 +26,7 @@ Route::name('system.')
 
         Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
         Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
+        Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
 
         /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
             ->group(function () {*/
