@@ -32,7 +32,7 @@
         </button>
         <div class="dropdown-menu">
                 <button class="dropdown-item" id="report-pdf">Report in PDF</button>
-                <button class="dropdown-item" id="report-html">Report in HTML</button>
+                <button class="dropdown-item" id="report-html" target="_blank">Report in HTML</button>
                 <button class="dropdown-item" id="report-json">Report in JSON</button>
                 <button class="dropdown-item" id="report-exel">Report in EXEL</button>
         </div>
@@ -98,9 +98,8 @@
                 let bar = document.getElementById("bar").getContext("2d");
 
                 $('#report-html').on('click', function () {
-                    Location.reload();
-                });
-
+                    Location.href = '{{route('system.layout-file', $video->id)}}';
+                })
                 /**
                  * Create a new radar chart.
                  */
