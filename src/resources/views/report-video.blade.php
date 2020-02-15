@@ -31,15 +31,10 @@
            Download
         </button>
         <div class="dropdown-menu">
-            <a href="{{action('ReportController@downloadPDF', $video->id)}}">
-                <button class="dropdown-item" type="button">Report in PDF</button>
-            </a>
-            <a href="#">
-                <button class="dropdown-item" type="button">Report in HTML</button>
-            </a>
-            <a href="#">
-                <button class="dropdown-item" type="button">Report in JSON</button>
-            </a>
+                <button class="dropdown-item" id="report-pdf">Report in PDF</button>
+                <button class="dropdown-item" id="report-html">Report in HTML</button>
+                <button class="dropdown-item" id="report-json">Report in JSON</button>
+                <button class="dropdown-item" id="report-exel">Report in EXEL</button>
         </div>
     </div>
 
@@ -92,8 +87,8 @@
 @endsection
 
 @section('scripts')
-    <script>
-        (function () {
+    <script type="text/javascript">
+        (function ($) {
             $(document).ready(function () {
                 let averageReport = @json($video->average_report);
                 let fullReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($video->report));
@@ -101,6 +96,10 @@
                 let radar = document.getElementById("radar").getContext("2d");
                 let line = document.getElementById("line").getContext("2d");
                 let bar = document.getElementById("bar").getContext("2d");
+
+                $('#report-html').on('click', function () {
+                    Location.reload();
+                });
 
                 /**
                  * Create a new radar chart.

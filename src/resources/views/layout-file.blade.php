@@ -1,7 +1,39 @@
 @extends('layouts.blank')
 
+@section('title',"File report: " .$video->name)
+
+
 @section('body')
     <div class="container w-75">
+        <h1>File video report: {{$video->name}}</h1>
+        <div class="row my-4">
+            <div class="col-6">
+                <table class="table" style="color:black">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Creator</th>
+                <th scope="col">Project </th>
+                <th scope="col">Video's duration</th>
+                <th scope="col">Range analyzed</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{(new Emotionally\Http\Controllers\VideoController)->getCreator($video)->name }}
+                    {{(new Emotionally\Http\Controllers\VideoController)->getCreator($video)->surname}}</td>
+
+                <td>{{(new Emotionally\Http\Controllers\VideoController)->getProject($video)->name}}</td>
+
+                <td>{{$video->duration}}</td>
+
+                <td>[ {{$video->start}} , {{$video->end}} ]</td>
+            </tr>
+
+            </tbody>
+        </table>
+            </div>
+        </div>
         <div class="row">
             <div class="col-6">
                 <h3>Spider Chart</h3>
@@ -28,9 +60,10 @@
 @endsection
 
 @section('scripts')
-    <script>
+    <script type="text/javascript">
         (function () {
             $(document).ready(function () {
+
                 let averageReport = @json($video->average_report);
                 let fullReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($video->report));
 

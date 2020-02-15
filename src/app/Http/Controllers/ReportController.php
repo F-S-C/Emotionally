@@ -260,4 +260,6 @@ class ReportController extends Controller
 
         return $pdf->download('chart.pdf');*/
     }
+
+
 }
