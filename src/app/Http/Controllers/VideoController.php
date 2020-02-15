@@ -42,6 +42,11 @@ class VideoController extends Controller
         return 'user-content/' . \Auth::user()->id . '/' . $path;
     }
 
+    /**
+     * Set the report field for a video.
+     * @param Request $request The request. It must contain the report and the id of the video.
+     * @return false|string A json response.
+     */
     public function setReport(Request $request)
     {
         $validator = \Validator::make($request->all(), [
