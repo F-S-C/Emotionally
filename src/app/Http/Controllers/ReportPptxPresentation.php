@@ -5,6 +5,7 @@ namespace Emotionally\Http\Controllers;
 use PhpOffice\PhpPresentation\DocumentLayout;
 use PhpOffice\PhpPresentation\IOFactory;
 use PhpOffice\PhpPresentation\PhpPresentation;
+use PhpOffice\PhpPresentation\Slide;
 use PhpOffice\PhpPresentation\Slide\Background\Color as BackgroundColor;
 use PhpOffice\PhpPresentation\Style\Alignment;
 use PhpOffice\PhpPresentation\Style\Color;
@@ -27,6 +28,9 @@ abstract class ReportPptxPresentation
      */
     protected $report;
 
+    /**
+     * @var Slide The title slide.
+     */
     protected $title_slide;
 
     /**
@@ -36,11 +40,11 @@ abstract class ReportPptxPresentation
      */
     public function __construct(string $title, $report)
     {
-        $this->title = $title;
+        $this->title = trim($title);
 
-        if(is_string($report)){
+        if (is_string($report)) {
             $report = json_decode($report, true);
-        }elseif (!is_array($report)){
+        } elseif (!is_array($report)) {
             throw new \InvalidArgumentException('$report must be a string or an array');
         }
         $this->report = $report;
@@ -57,6 +61,9 @@ abstract class ReportPptxPresentation
         $this->createTitleSlide();
     }
 
+    /**
+     * Create the title slide.
+     */
     private function createTitleSlide()
     {
         $this->title_slide = $this->presentation->getActiveSlide();
@@ -88,12 +95,32 @@ abstract class ReportPptxPresentation
             ->setColor(new Color('DDFFFFFF'));
     }
 
+    /**
+     * @return Slide Get a reference to the title slide.
+     */
     public function getTitleSlide()
     {
         return $this->title_slide;
     }
 
-    public function downloadPresentation(){
+    /**
+     * Get the output file name.
+     * @return string The file name. It consist of an ISO timestamp, the presentation title and an extension.
+     * @throws \Exception Emits Exception in case of an error.
+     */
+    public function getFileName()
+    {
+        $date = new \DateTime();
+        $base_iso_date_format = 'Ymd\THis';
+        return $date->format($base_iso_date_format) . ' - ' . $this->title . '.pptx';
+    }
+
+    /**
+     * Download the presentation as a Power Point 2007 file (.pptx).
+     * @throws \Exception
+     */
+    public function downloadPresentation()
+    {
         $writer = IOFactory::createWriter($this->presentation, 'PowerPoint2007');
         $writer->save('php://output');
     }
