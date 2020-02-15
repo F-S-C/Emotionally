@@ -43,8 +43,18 @@ class VideoPptxPresentation extends ReportPptxPresentation
     public function __construct(string $title, $report)
     {
         parent::__construct($title, $report);
-        $this->presentation->setTitle('Video report - ' . $title)
+        $this->presentation->getDocumentProperties()
+            ->setTitle('Video report - ' . $title)
             ->setSubject('Video report');
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function generateDefaultPresentation()
+    {
+        $this->createTitleSlide()
+            ->addHighestEmotionSlide();
+        return $this;
+    }
 }

@@ -195,23 +195,9 @@ class ReportController extends Controller
     {
         self::fixType($reports);
 
-        if (substr(json_encode($reports), 0, 1) == "{") {
-            $reports = array($reports);
-        }
-        $totalAverageReport = sizeof($reports) > 1 ? self::average($reports) : $reports[0];
+        $totalAverageReport = self::average($reports);
 
-        $useful_values = [
-            self::JOY_KEY => 0,
-            self::SADNESS_KEY => 0,
-            self::DISGUST_KEY => 0,
-            self::CONTEMPT_KEY => 0,
-            self::ANGER_KEY => 0,
-            self::FEAR_KEY => 0,
-            self::SURPRISE_KEY => 0
-        ];
-        foreach ($useful_values as $key => &$value) {
-            $value = $totalAverageReport[$key] * 100;
-        }
+        $useful_values = self::getEmotionValues($totalAverageReport);
         return array_keys($useful_values, max($useful_values))[0];
     }
 
@@ -317,8 +303,10 @@ class ReportController extends Controller
         $video = Video::findOrFail($id);
         $presentation = new VideoPptxPresentation($video->name, $video->report);
 
+        $presentation->generateDefaultPresentation();
+
         return response()->streamDownload(function () use ($presentation) {
             $presentation->downloadPresentation();
-        }, 'file.pptx');
+        }, $presentation->getFileName());
     }
 }
