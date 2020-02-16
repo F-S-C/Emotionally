@@ -107,13 +107,28 @@ class VideoController extends Controller
     }
 
     public function realtimeUpload(Request $request){
-        $data = $request->input('video');
-        $project_id = $request->input('project_id');
-        $framerate = $request->input('framerate');
-        $video_title = $request->input('title');
+        $video = new Video();
+        $urls = array();
+        $encoded_string = $request->input('video');
+        $target_dir = 'user-content/';
+        $decoded_file = base64_decode($encoded_string);
+        $filename = uniqid() . '.webm';
+        $file_dir = $target_dir . $filename;
+        file_put_contents($file_dir, $decoded_file);
 
-        $file = base64_decode($data);
-        file_put_contents('user-content/test.avi',$data); //Wrong ext
+        //TODO Effettuare i controlli e commentare il codice
+
+        $video->project_id = $request->input('project_id');
+        $video->framerate = $request->input('framerate');
+        $video->name = $request->input('title');
+        $video->user_id = auth()->user()->id;
+        $video->start = '00:00:00';
+        $video->url = asset($file_dir);
+        $video->duration = $request->input('duration');
+        $video->end = $video->duration;
+        $video->save();
+        array_push($urls, array('url' => $video->url, 'id' => $video->id));
+        return json_encode(array('result' => true, 'files' => $urls));
     }
 
     /**

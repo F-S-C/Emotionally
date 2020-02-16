@@ -273,46 +273,47 @@
                                     {{trans('dashboard.upload_failed')}}
                                 </div>
 
-                                <button id="btnStart">Start Recording</button>
-                                <button id="btnStop">Stop Recording</button>
-                                <div class="card-body">
+                                <div id="realtime-body" class="card-body">
+                                    <p id="recording-text" class="text text-center text-danger" style="display:none">
+                                        Recording... <span class="fas fa-video"></span></p>
                                     <video id="vid1" width="400" height="250"></video>
                                     <video id="vid2" width="400" height="250" controls></video>
+                                    <button id="btnStart" class="btn btn-outline-success">Start</button>
+                                    <button id="btnStop" class="btn btn-outline-danger">Stop</button>
+                                    <button id="next-realtime" class="btn btn-primary float-right"
+                                            disabled>{{ trans('dashboard.next') }}</button>
                                 </div>
 
                                 <form method="POST" action="{{ route('system.realtimeUpload') }}"
                                       enctype="multipart/form-data"
                                       id="realtimevideo-form">
                                     @csrf
-                                    <div class="input-group mb-3">
-                                        <input type="hidden" id="realtimevideo-file" name="video">
-                                    </div>
+                                    <input type="hidden" id="realtimevideo-file" name="video">
+                                    <input type="hidden" name="project_id" value="{{$project->id}}">
+                                    <input type="hidden" id="duration" name="duration">
 
-                                    <input type="text" name="project_id" value="{{$project->id}}" hidden>
-
-                                    <div class="collapse multi-collapse" id="title-fps-menu">
-
-                                        <div class="card card-body el-16dp">
-                                            <div class="form-group">
-                                                <label for="title">Title:</label><!---TODO Translate--->
-                                                <input type="text" id="title" name="title" class="form-control">
-                                            </div>
-                                            <div class="form-inline">
-                                                <label for="framerate">Framerate:</label>
-                                                <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
-                                                <input type="number" id="framerate-realtime" name="framerate"
-                                                       class="form-control mx-sm-3" min="1" max="60" value="30">
-                                            </div>
+                                    <div id="title-fps-menu" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="title">Title:</label><!---TODO Translate--->
+                                            <input type="text" id="title" name="title"
+                                                   class="form-control input-color">
+                                        </div>
+                                        <div class="form-inline">
+                                            <label for="framerate">Framerate:</label>
+                                            <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
+                                            <input type="number" id="framerate-realtime" name="framerate"
+                                                   class="form-control mx-sm-3 input-color" min="1" max="60"
+                                                   value="30">
                                         </div>
                                     </div>
 
-                                    <div class="modal-footer">
-                                        <button type="button" id="close-realtime" class="btn btn-secondary"
+                                    <div id="realtime-submit-close" style="display: none;" class="mt-3 modal-footer">
+                                        <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">
                                             {{trans('dashboard.close')}}
                                         </button>
                                         <input type="submit" id="submit-realtime-video"
-                                               value="{{ trans('dashboard.upload') }}" class="btn btn-primary"
+                                               value="{{ trans('dashboard.upload') }}" class="btn btn-primary disabled"
                                                style="color: white;" disabled>
                                     </div>
                                 </form>
@@ -327,9 +328,7 @@
                                     <p class="text-center"> {{trans('dashboard.uploading')}}
                                         <span id="realtime-upload-text"></span>
                                     </p>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -560,6 +559,7 @@
                     });
                 });
 
+                //TODO Ripristina caricamento con AJAX
                 /*$('#realtimevideo-form').on('submit', function (event) {
                     event.preventDefault();
                     let bar = $("#realtime-progress");
@@ -625,7 +625,7 @@
                     });
                 });*/
 
-                //REALTIME VIDEO
+                //REALTIME VIDEO FUNCTIONS
                 let constraintObj = {
                     audio: false,
                     video: {
@@ -634,10 +634,10 @@
                         height: {min: 100, ideal: 250, max: 300}
                     }
                 };
-                // width: 1280, height: 720  -- preference only
-                // facingMode: {exact: "user"}
-                // facingMode: "environment"
-
+                let start = document.getElementById('btnStart');
+                let stop = document.getElementById('btnStop');
+                let vidSave = document.getElementById('vid2');
+                let recordingText = $('#recording-text');
 
                 $('#realtime-video').on('click', function () {
                     $('#vid2').hide();
@@ -657,49 +657,49 @@
                                 video.src = window.URL.createObjectURL(mediaStreamObj);
                             }
 
+                            //When the video metadata loads, play the realtime webcam in 'video'
                             video.onloadedmetadata = function (ev) {
                                 //show in the video element what is being captured by the webcam
                                 video.play();
-
                             };
 
-                            //add listeners for saving video/audio
-                            let start = document.getElementById('btnStart');
-                            let stop = document.getElementById('btnStop');
-                            let vidSave = document.getElementById('vid2');
-                            let mediaRecorder = new MediaRecorder(mediaStreamObj);
+                            let mediaRecorder = new MediaRecorder(mediaStreamObj, {mimeType: 'video/webm; codecs=vp9'});
                             let chunks = [];
 
+                            //Start registration
                             start.addEventListener('click', (ev) => {
                                 $('#btnStart').hide();
                                 $('#btnStop').show();
-                                $('#submit-realtime-video').prop('disabled', true);
+                                $('#vid1').show();
+                                $('#vid2').hide();
+                                $('#next-realtime').prop('disabled', true);
+                                recordingText.fadeIn();
                                 mediaRecorder.start();
-                                console.log(mediaRecorder.state);
                             });
+
+                            //Stop registration
                             stop.addEventListener('click', (ev) => {
                                 $('#btnStart').show();
                                 $('#btnStop').hide();
                                 $('#vid1').hide();
                                 $('#vid2').show();
-                                $('#title-fps-menu').show();
+                                recordingText.fadeOut();
+                                $('#next-realtime').text('{{ trans('dashboard.loading') }}');
                                 mediaRecorder.stop();
-
-                                console.log(mediaRecorder.state);
                             });
                             mediaRecorder.ondataavailable = function (ev) {
                                 chunks.push(ev.data);
                             };
+                            //Registration stopped
                             mediaRecorder.onstop = (ev) => {
-                                let blob = new Blob(chunks, {'type': 'video/msvideo;'});
+                                let blob = new Blob(chunks, {'type': 'video/webm;'});
                                 chunks = [];
-                                let videoURL = window.URL.createObjectURL(blob);
-                                vidSave.src = videoURL;
-                                vidSave.play();
-                                //$('#realtimevideo-file').attr('value', blob);
+                                vidSave.src = window.URL.createObjectURL(blob);
+                                videoDuration();
+                                //Conversion to base64 and set the hidden input
                                 let b64reader = new FileReader();
                                 b64reader.readAsDataURL(blob);
-                                b64reader.onloadend = function() {
+                                b64reader.onloadend = function () {
                                     $('#realtimevideo-file').val(b64reader.result);
                                 };
                                 $('#submit-realtime-video').prop('disabled', false);
@@ -710,6 +710,35 @@
                         });
                 });
 
+                function toTime(duration) {
+                    var sec_num = parseInt(duration, 10);
+                    var hours = Math.floor(sec_num / 3600);
+                    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+                    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+                    if (hours < 10) {
+                        hours = "0" + hours;
+                    }
+                    if (minutes < 10) {
+                        minutes = "0" + minutes;
+                    }
+                    if (seconds < 10) {
+                        seconds = "0" + seconds;
+                    }
+                    return hours + ':' + minutes + ':' + seconds;
+                }
+
+                async function videoDuration() {
+                    while (vidSave.duration === Infinity || isNaN(vidSave.duration)) {
+                        await new Promise(r => setTimeout(r, 1000));
+                        vidSave.currentTime = 10000000 * Math.random();
+                    }
+                    document.getElementById('duration').setAttribute('value', toTime(vidSave.duration));
+                    $('#next-realtime').prop('disabled', false);
+                    $('#next-realtime').text('{{ trans('dashboard.next') }}');
+                    vidSave.play();
+                }
+
                 function stopStreamedVideo(videoElem) {
                     const stream = videoElem.srcObject;
                     const tracks = stream.getTracks();
@@ -719,7 +748,7 @@
                     });
 
                     videoElem.srcObject = null;
-                };
+                }
 
                 function checkOlderBrowsers() {
                     if (navigator.mediaDevices === undefined) {
@@ -745,7 +774,18 @@
                                 console.log(err.name, err.message);
                             })
                     }
-                };
+                }
+
+                $('#next-realtime').on('click', function () {
+                    $('#realtime-body').hide();
+                    $('#submit-realtime-video').show();
+                    $('#realtime-submit-close').show();
+                    $('#title-fps-menu').show();
+                });
+
+                $('#title').change(function () {
+                    $('#submit-realtime-video').prop('disabled', false); //TODO DEBUG. SE CHIUDO IL MODAL RESETTO!
+                });
             });
         })(jQuery);
     </script>

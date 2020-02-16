@@ -50,5 +50,7 @@ return [
     "creating_project" => "Creating project...",
     "err_creating_project" => "An error occurred while creating the project.",
     "project_created" => "Project successfully created.",
+    "next" => "Next",
+    "loading" => "Loading...",
 ];
 
