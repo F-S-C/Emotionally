@@ -34,7 +34,7 @@ class ProjectPresentation extends ReportPresentation
     /**
      * @inheritDoc
      */
-    public function generateDefaultPresentation()
+    public function generateDefault()
     {
         $this->createTitleSlide()
             ->addHighestEmotionSlide();

@@ -303,7 +303,7 @@ class ReportController extends Controller
         $video = Video::findOrFail($id);
         $presentation = new VideoPresentation($video->name, $video->report);
 
-        $presentation->generateDefaultPresentation();
+        $presentation->generateDefault();
 
         return response()->streamDownload(function () use ($presentation) {
             $presentation->getPresentationAsBinaryOutput();

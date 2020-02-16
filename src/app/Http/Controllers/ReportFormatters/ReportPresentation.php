@@ -29,7 +29,7 @@ use PhpOffice\PhpPresentation\Slide\Background\Color as BackgroundColor;
 use PhpOffice\PhpPresentation\Style\Alignment;
 use PhpOffice\PhpPresentation\Style\Color;
 
-abstract class ReportPresentation
+abstract class ReportPresentation extends ReportFormatter
 {
 
     protected const COLOR_PRIMARY = 'FFFF9800';
@@ -44,12 +44,6 @@ abstract class ReportPresentation
      * @var PhpPresentation The presentation
      */
     protected $presentation;
-    protected $title;
-
-    /**
-     * @var array The report of the presentation
-     */
-    protected $report;
 
     /**
      * @var Slide The title slide.
@@ -62,21 +56,15 @@ abstract class ReportPresentation
     protected $slides;
 
     /**
-     * ReportPptxPresentation constructor.
+     * ReportPresentation constructor.
      * @param string $title The title of the presentation.
      * @param array|string $report The report to be presented.
      */
     public function __construct(string $title, $report)
     {
-        $this->slides = array();
-        $this->title = trim($title);
+        parent::__construct($title, $report);
 
-        if (is_string($report)) {
-            $report = json_decode($report, true);
-        } elseif (!is_array($report)) {
-            throw new \InvalidArgumentException('$report must be a string or an array');
-        }
-        $this->report = $report;
+        $this->slides = array();
 
         $this->presentation = new PhpPresentation();
 
@@ -158,8 +146,7 @@ abstract class ReportPresentation
     }
 
     /**
-     * Download the presentation as a Power Point 2007 file (.pptx).
-     * @throws \Exception
+     * @inheritDoc
      */
     public function getPresentationAsBinaryOutput()
     {
@@ -226,10 +213,4 @@ abstract class ReportPresentation
 
         return $this;
     }
-
-    /**
-     * Generate the default presentation.
-     * @return $this
-     */
-    public abstract function generateDefaultPresentation();
 }
