@@ -12,8 +12,8 @@
                     <img src="{{asset('/logo.png')}}" width="150"
                          height="150"
                           alt="Emotionally's logo">
-                    <img src="{{asset('/app_name.svg')}}" width="150"
-                         height="150" style="background-color: black"
+                    <img src="{{asset('/app_name_black.svg')}}" width="150"
+                         height="150"
                           alt="Emotionally">
                 </div>
                <div class="col text-right">
