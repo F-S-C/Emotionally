@@ -306,7 +306,7 @@ class ReportController extends Controller
         $presentation->generateDefaultPresentation();
 
         return response()->streamDownload(function () use ($presentation) {
-            $presentation->downloadPresentation();
+            $presentation->getPresentationAsBinaryOutput();
         }, $presentation->getFileName());
     }
 }

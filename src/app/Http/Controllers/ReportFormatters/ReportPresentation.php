@@ -161,7 +161,7 @@ abstract class ReportPresentation
      * Download the presentation as a Power Point 2007 file (.pptx).
      * @throws \Exception
      */
-    public function downloadPresentation()
+    public function getPresentationAsBinaryOutput()
     {
         $writer = IOFactory::createWriter($this->presentation, 'PowerPoint2007');
         $writer->save('php://output');
