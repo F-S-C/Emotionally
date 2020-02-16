@@ -18,18 +18,9 @@
 
 namespace Emotionally\Http\Controllers;
 
-use Emotionally\Http\Controllers\ReportFormatters\ReportSpreadsheet;
 use Emotionally\Http\Controllers\ReportFormatters\VideoPresentation;
+use Emotionally\Http\Controllers\ReportFormatters\VideoSpreadsheet;
 use Emotionally\Video;
-use PhpOffice\PhpPresentation\DocumentLayout;
-use PhpOffice\PhpPresentation\IOFactory;
-use PhpOffice\PhpPresentation\PhpPresentation;
-use PhpOffice\PhpPresentation\Shape\RichText\Paragraph;
-use PhpOffice\PhpPresentation\Style\Alignment;
-use PhpOffice\PhpPresentation\Style\Color;
-use \PhpOffice\PhpPresentation\Slide\Background\Color as BackgroundColor;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ReportController extends Controller
 {
@@ -277,7 +268,7 @@ class ReportController extends Controller
     public function downloadExcel($id)
     {
         $video = Video::findOrFail($id);
-        $spreadsheet = new ReportSpreadsheet($video->name, $video->report);
+        $spreadsheet = new VideoSpreadsheet($video->name, $video->report);
 
         $spreadsheet->generateDefault();
 

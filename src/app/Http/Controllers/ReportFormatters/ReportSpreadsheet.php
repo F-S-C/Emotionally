@@ -22,7 +22,7 @@ namespace Emotionally\Http\Controllers\ReportFormatters;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-class ReportSpreadsheet extends ReportFormatter
+abstract class ReportSpreadsheet extends ReportFormatter
 {
     /**
      * @var Spreadsheet The spreadsheet.
@@ -44,23 +44,25 @@ class ReportSpreadsheet extends ReportFormatter
         $writer->save('php://output');
     }
 
+    protected function getColumnFromNumber(int $col)
+    {
+        $dividend = $col;
+        $columnName = '';
+
+        while ($dividend > 0) {
+            $modulo = ($dividend - 1) % 26;
+            $columnName = chr(65 + $modulo) . $columnName;
+            $dividend = (int)(($dividend - $modulo) / 26);
+        }
+
+        return $columnName;
+    }
+
     /**
      * @inheritDoc
      */
     public function getFileName()
     {
         return $this->getFileBaseName() . '.xlsx';
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function generateDefault()
-    {
-        // TODO: Implement generateDefault() method.
-        foreach ($this->report as $key => $value) {
-            $sheet = $this->spreadsheet->getActiveSheet();
-            $sheet->setCellValue('A1', $key);
-        }
     }
 }
