@@ -20,11 +20,11 @@
     <div class="wrapper">
         <nav class="sidebar el-8dp scrollbar-inner" id="main-navigation" aria-label="Sidebar">
             <div class="sidebar-header">
-                <a class="sidebar-brand text-center w-100  d-flex" style="text-decoration: none;"
+                <a class="sidebar-brand text-center w-100 mx-auto d-flex" style="text-decoration: none;"
                    href="{{route('system.home')}}">
                     <img src="{{asset('/logo.png')}}" width="64"
                          height="64"
-                         class="d-inline-block d-md-inline-block align-center mx-auto" alt="Emotionally's logo">
+                         class="d-inline-block d-md-inline-block align-center mr-2" alt="Emotionally's logo">
                     <img src="{{asset('/app_name.svg')}}" width="16"
                          height="64"
                          class="d-none d-md-inline-block flex-fill" alt="Emotionally">
