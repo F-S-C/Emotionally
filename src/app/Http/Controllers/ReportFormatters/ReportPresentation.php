@@ -29,7 +29,7 @@ use PhpOffice\PhpPresentation\Slide\Background\Color as BackgroundColor;
 use PhpOffice\PhpPresentation\Style\Alignment;
 use PhpOffice\PhpPresentation\Style\Color;
 
-abstract class ReportPptxPresentation
+abstract class ReportPresentation
 {
 
     protected const COLOR_PRIMARY = 'FFFF9800';
@@ -175,6 +175,7 @@ abstract class ReportPptxPresentation
     {
         $averageEmotion = ReportController::highestEmotion($this->report);
         $new_slide = $this->presentation->createSlide();
+        $new_slide->setName('yello');
         array_push($this->slides, $new_slide);
 
         $title_shape = $new_slide->createRichTextShape()

@@ -18,7 +18,7 @@
 
 namespace Emotionally\Http\Controllers;
 
-use Emotionally\Http\Controllers\ReportFormatters\VideoPptxPresentation;
+use Emotionally\Http\Controllers\ReportFormatters\VideoPresentation;
 use Emotionally\Video;
 use PhpOffice\PhpPresentation\DocumentLayout;
 use PhpOffice\PhpPresentation\IOFactory;
@@ -301,7 +301,7 @@ class ReportController extends Controller
     public function downloadPPTX($id)
     {
         $video = Video::findOrFail($id);
-        $presentation = new VideoPptxPresentation($video->name, $video->report);
+        $presentation = new VideoPresentation($video->name, $video->report);
 
         $presentation->generateDefaultPresentation();
 
