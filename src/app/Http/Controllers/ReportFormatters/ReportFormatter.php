@@ -52,7 +52,7 @@ abstract class ReportFormatter
      * Output the file as a binary string.
      * @throws \Exception
      */
-    public abstract function getPresentationAsBinaryOutput();
+    public abstract function getFileAsBinaryOutput();
 
     /**
      * Generate the default file.

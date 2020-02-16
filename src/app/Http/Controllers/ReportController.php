@@ -18,6 +18,7 @@
 
 namespace Emotionally\Http\Controllers;
 
+use Emotionally\Http\Controllers\ReportFormatters\ReportSpreadsheet;
 use Emotionally\Http\Controllers\ReportFormatters\VideoPresentation;
 use Emotionally\Video;
 use PhpOffice\PhpPresentation\DocumentLayout;
@@ -275,20 +276,14 @@ class ReportController extends Controller
 
     public function downloadExcel($id)
     {
-        $fileName = "Video-report-" . time() . ".xlsx";
         $video = Video::findOrFail($id);
-        $report = $video->report;
-        $report = (string)$report;
-        $json = json_decode($report, true);
+        $spreadsheet = new ReportSpreadsheet($video->name, $video->report);
 
-        $spreadsheet = new Spreadsheet();
-        foreach ($json as $key => $value) {
-            $sheet = $spreadsheet->getActiveSheet();
-            $sheet->setCellValue('A1', $key);
-        }
-        $writer = new Xlsx($spreadsheet);
-        $writer->save($fileName);
-        return response()->download($fileName)->deleteFileAfterSend();
+        $spreadsheet->generateDefault();
+
+        return response()->streamDownload(function () use ($spreadsheet) {
+            $spreadsheet->getFileAsBinaryOutput();
+        }, $spreadsheet->getFileName());
 //        $fileName= "Video-report-". time() . ".csv";
 //        $handle = fopen($fileName, 'w+');
 //        fputs($handle, response()->json($video->report));
@@ -306,7 +301,7 @@ class ReportController extends Controller
         $presentation->generateDefault();
 
         return response()->streamDownload(function () use ($presentation) {
-            $presentation->getPresentationAsBinaryOutput();
+            $presentation->getFileAsBinaryOutput();
         }, $presentation->getFileName());
     }
 }

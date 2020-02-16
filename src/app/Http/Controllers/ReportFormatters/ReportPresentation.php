@@ -140,7 +140,7 @@ abstract class ReportPresentation extends ReportFormatter
     /**
      * @inheritDoc
      */
-    public function getPresentationAsBinaryOutput()
+    public function getFileAsBinaryOutput()
     {
         $writer = IOFactory::createWriter($this->presentation, 'PowerPoint2007');
         $writer->save('php://output');
