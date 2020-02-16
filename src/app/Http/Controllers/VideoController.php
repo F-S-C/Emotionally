@@ -106,6 +106,16 @@ class VideoController extends Controller
         }
     }
 
+    public function realtimeUpload(Request $request){
+        $data = $request->input('video');
+        $project_id = $request->input('project_id');
+        $framerate = $request->input('framerate');
+        $video_title = $request->input('title');
+
+        $file = base64_decode($data);
+        file_put_contents('user-content/test.avi',$data); //Wrong ext
+    }
+
     /**
      * Returns a user's videos.
      * @param User $user The user.

@@ -280,12 +280,12 @@
                                     <video id="vid2" width="400" height="250" controls></video>
                                 </div>
 
-                                <form method="POST" action="{{ route('system.videoUpload') }}"
+                                <form method="POST" action="{{ route('system.realtimeUpload') }}"
                                       enctype="multipart/form-data"
                                       id="realtimevideo-form">
                                     @csrf
                                     <div class="input-group mb-3">
-                                        <input type="file" id="realtimevideo-file" name="videos[]" hidden>
+                                        <input type="hidden" id="realtimevideo-file" name="video">
                                     </div>
 
                                     <input type="text" name="project_id" value="{{$project->id}}" hidden>
@@ -294,8 +294,8 @@
 
                                         <div class="card card-body el-16dp">
                                             <div class="form-group">
-                                                <label for="title">Title:</label>
-                                                <input type="text" id="title" class="form-control">
+                                                <label for="title">Title:</label><!---TODO Translate--->
+                                                <input type="text" id="title" name="title" class="form-control">
                                             </div>
                                             <div class="form-inline">
                                                 <label for="framerate">Framerate:</label>
@@ -560,7 +560,7 @@
                     });
                 });
 
-                $('#realtimevideo-form').on('submit', function (event) {
+                /*$('#realtimevideo-form').on('submit', function (event) {
                     event.preventDefault();
                     let bar = $("#realtime-progress");
                     let container = $("#realtime-progress-container");
@@ -623,7 +623,7 @@
                             form.show();
                         }
                     });
-                });
+                });*/
 
                 //REALTIME VIDEO
                 let constraintObj = {
@@ -676,7 +676,7 @@
                                 $('#submit-realtime-video').prop('disabled', true);
                                 mediaRecorder.start();
                                 console.log(mediaRecorder.state);
-                            })
+                            });
                             stop.addEventListener('click', (ev) => {
                                 $('#btnStart').show();
                                 $('#btnStop').hide();
@@ -689,16 +689,20 @@
                             });
                             mediaRecorder.ondataavailable = function (ev) {
                                 chunks.push(ev.data);
-                            }
+                            };
                             mediaRecorder.onstop = (ev) => {
-                                let blob = new Blob(chunks, {'type': 'video/mp4;'});
+                                let blob = new Blob(chunks, {'type': 'video/msvideo;'});
                                 chunks = [];
                                 let videoURL = window.URL.createObjectURL(blob);
                                 vidSave.src = videoURL;
                                 vidSave.play();
-                                $('#realtimevideo-file').attr('value', blob);
+                                //$('#realtimevideo-file').attr('value', blob);
+                                let b64reader = new FileReader();
+                                b64reader.readAsDataURL(blob);
+                                b64reader.onloadend = function() {
+                                    $('#realtimevideo-file').val(b64reader.result);
+                                };
                                 $('#submit-realtime-video').prop('disabled', false);
-
                             }
                         })
                         .catch(function (err) {
