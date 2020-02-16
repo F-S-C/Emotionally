@@ -59,4 +59,28 @@ abstract class ReportFormatter
      * @return $this
      */
     public abstract function generateDefault();
+
+    /**
+     * Get the base name (the name without extension) of the output file.
+     * It consist of an ISO timestamp and the document title.
+     * @return string The base name of the output file.
+     */
+    protected function getFileBaseName()
+    {
+        try {
+            $date = new \DateTime();
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return '00000000T000000 - ' . $this->title;
+        }
+        $base_iso_date_format = 'Ymd\THis';
+        return $date->format($base_iso_date_format) . ' - ' . $this->title;
+    }
+
+    /**
+     * Get the name (with the extension) of the output file.
+     * It consist of an ISO timestamp, the document title and the extension.
+     * @return string The file name.
+     */
+    public abstract function getFileName();
 }

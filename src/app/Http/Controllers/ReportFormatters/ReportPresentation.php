@@ -130,19 +130,11 @@ abstract class ReportPresentation extends ReportFormatter
     }
 
     /**
-     * Get the output file name.
-     * @return string The file name. It consist of an ISO timestamp, the presentation title and an extension.
+     * @inheritDoc
      */
     public function getFileName()
     {
-        try {
-            $date = new \DateTime();
-        } catch (\Exception $e) {
-            error_log($e->getMessage());
-            return '00000000T000000 - ' . $this->title . '.pptx';
-        }
-        $base_iso_date_format = 'Ymd\THis';
-        return $date->format($base_iso_date_format) . ' - ' . $this->title . '.pptx';
+        return $this->getFileBaseName() . '.pptx';
     }
 
     /**
