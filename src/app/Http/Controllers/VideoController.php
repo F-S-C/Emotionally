@@ -7,6 +7,8 @@ use Emotionally\User;
 use Emotionally\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use FFMpeg;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class VideoController extends Controller
 {
@@ -119,16 +121,23 @@ class VideoController extends Controller
             try {
                 $target_dir = 'user-content/';
                 $decoded_file = base64_decode($encoded_string);
-                $filename = uniqid() . '.webm';
+                $filename = uniqid();
                 $file_dir = $target_dir . $filename;
-                file_put_contents($file_dir, $decoded_file);
+                file_put_contents($file_dir . '.webm', $decoded_file);
 
+                //$ffmpeg = FFMpeg\FFMpeg::create();
+                //$to_convert = $ffmpeg->open($file_dir . '.webm');
+                //(new ConsoleOutput)->writeln('Aperto');
+                //$to_convert->save(new FFMpeg\Format\Video\X264(), $file_dir . '.mp4');
+                //(new ConsoleOutput)->writeln('Convertito');
+
+                //Remove webm file if work
                 $video->project_id = $request->input('project_id');
                 $video->framerate = $request->input('framerate');
                 $video->name = $request->input('title');
                 $video->user_id = auth()->user()->id;
                 $video->start = '00:00:00';
-                $video->url = asset($file_dir);
+                $video->url = asset($file_dir . '.webm');
                 $video->duration = $request->input('duration');
                 $video->end = $video->duration;
                 $video->save();
