@@ -65,13 +65,13 @@
                                role="button" aria-expanded="false" aria-controls="projects-container"></a>
                             <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                                 <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                                <span class="d-none d-md-inline">Projects</span>
+                                <span class="d-none d-md-inline">{{trans('sidebar.project')}}</span>
                             </a>
                         </div>
                     @else
                         <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                             <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                            <span class="d-none d-md-inline">Projects</span>
+                            <span class="d-none d-md-inline">{{trans('sidebar.project')}}</span>
                         </a>
                     @endif
                     <ul class="collapse el-3dp nav flex-column flex-nowrap" id="projects-container">
@@ -81,25 +81,25 @@
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link text-center text-md-left" href="#">
                         <span aria-hidden="true" class="fas fa-info-circle mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">About</span>
+                        <span class="d-none d-md-inline">{{trans('sidebar.about')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="#">
                         <span aria-hidden="true" class="fas fa-file-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Portfolio</span>
+                        <span class="d-none d-md-inline">{{trans('sidebar.portfolio')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="#">
                         <span aria-hidden="true" class="fas fa-phone-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Contact</span>
+                        <span class="d-none d-md-inline">{{trans('sidebar.contact')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="{{ route('logout') }}">
                         <span aria-hidden="true" class="fas fa-sign-out-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Logout</span>
+                        <span class="d-none d-md-inline">{{trans('sidebar.logout')}}</span>
                     </a>
                 </li>
             </ul>
@@ -795,7 +795,7 @@
                 });
 
                 $('#framerate-realtime').change(function () {
-                    
+
                 });
             });
         })(jQuery);
