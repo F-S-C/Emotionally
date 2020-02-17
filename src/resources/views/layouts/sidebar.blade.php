@@ -490,7 +490,8 @@
                             let ans = JSON.parse(data);
                             if (ans['result']) {
                                 bar.width('100%');
-                                $('#uploading-realtime-text-container').text('@lang('dashboard.analyzing')');
+                                $('#uploading-text-container').text('{{trans('dashboard.analyzing')}}');
+                                $('#upload-text').text('');
                                 ans['files'].forEach(file => {
                                     EmotionAnalysis.analyzeVideo(file['url'], function (report) {
                                         $.post("{{route('system.video.report.set')}}", {
