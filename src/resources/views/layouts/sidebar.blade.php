@@ -695,6 +695,7 @@
                                 debug: true,
                                 audio: false,
                                 video: true,
+                                maxLength: Infinity,
                                 convertEngine: 'ts-ebml'
                             }
                         }
