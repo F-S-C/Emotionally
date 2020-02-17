@@ -359,7 +359,7 @@
                                 @csrf
                                 @isset($project)
                                     @if(Request::segment(2) == "project")
-                                        <input type="hidden" name="father_id" value="{{ $project->id }}">
+                                        <input type="hidden" name="father_id" value="{{ $project->id }}" required>
                                     @endif
                                 @endisset
                                 <label for="project_name">{{trans('dashboard.project_name')}}</label>
