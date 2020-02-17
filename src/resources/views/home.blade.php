@@ -55,7 +55,8 @@
 
 @section('scripts')
     @parent
-    <script>(function ($) {
+    <script>
+        (function ($) {
             $(document).ready(function () {
                 let table = $('#project-table').DataTable({
                     "order": [[0, "asc"]],
@@ -78,14 +79,14 @@
                     table.search($('#search-bar').val()).draw();
                 });
 
-                $('.clickable').on('click',function (event) {
+                $('.clickable').on('click', function (event) {
                     // prevent execution from bubbling if a link or a button were clicked
                     if (event.target.tagName.toLowerCase() !== 'a' && event.target.tagName.toLowerCase() !== 'button') {
                         window.location = $(this).data('href');
                     }
                 });
 
-                $('.dropdown-toggle').click(function(e) {
+                $('.dropdown-toggle').click(function (e) {
                     e.stopPropagation();
                     $(this).parent().children('.dropdown-menu').toggle();
                 });
@@ -100,7 +101,7 @@
 
                 $('.rename-project-btn').on('click', function () {
                     $('#rename-project-modal').modal('show');
-                    $('#project_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-project-',''));
+                    $('#project_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-rename-form').show();
                     renameError.hide();
                     renameChanging.hide();
@@ -109,7 +110,7 @@
 
                 $('.delete-project-btn').on('click', function () {
                     $('#delete-project-modal').modal('show');
-                    $('#project_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-project-',''));
+                    $('#project_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-delete-form').show();
                     renameError.hide();
                     renameChanging.hide();
