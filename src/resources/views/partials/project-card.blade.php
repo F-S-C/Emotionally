@@ -9,7 +9,7 @@
         <a class="project-card-link" href="{{route('system.project-details', $project->id)}}"
            aria-labelledby="card-title-project-{{$project->id}}"></a>
         <div class="card-img-overlay project-detail-card-options">
-            @include('shared.dropdown-options-project', ['id'=>'more-project-'.$project->id,'title'=>trans('project-details.more_options_project', ['name'=>$project->name]), 'item_id'=>$project->id,'named'=>'cacca'])
+            @include('shared.dropdown-options-project', ['project'=>$project])
         </div>
     </div>
 </div>
