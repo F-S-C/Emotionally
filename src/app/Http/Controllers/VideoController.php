@@ -106,29 +106,40 @@ class VideoController extends Controller
         }
     }
 
+    /**
+     * Inserts a realtime video sent via a base64 form.
+     * @param Request $request The HTTP request.
+     * @return false|string The result of the operation.
+     */
     public function realtimeUpload(Request $request){
         $video = new Video();
         $urls = array();
         $encoded_string = $request->input('video');
-        $target_dir = 'user-content/';
-        $decoded_file = base64_decode($encoded_string);
-        $filename = uniqid() . '.webm';
-        $file_dir = $target_dir . $filename;
-        file_put_contents($file_dir, $decoded_file);
+        if($request->has('video')) {
+            try {
+                $target_dir = 'user-content/';
+                $decoded_file = base64_decode($encoded_string);
+                $filename = uniqid() . '.webm';
+                $file_dir = $target_dir . $filename;
+                file_put_contents($file_dir, $decoded_file);
 
-        //TODO Effettuare i controlli e commentare il codice
-
-        $video->project_id = $request->input('project_id');
-        $video->framerate = $request->input('framerate');
-        $video->name = $request->input('title');
-        $video->user_id = auth()->user()->id;
-        $video->start = '00:00:00';
-        $video->url = asset($file_dir);
-        $video->duration = $request->input('duration');
-        $video->end = $video->duration;
-        $video->save();
-        array_push($urls, array('url' => $video->url, 'id' => $video->id));
-        return json_encode(array('result' => true, 'files' => $urls));
+                $video->project_id = $request->input('project_id');
+                $video->framerate = $request->input('framerate');
+                $video->name = $request->input('title');
+                $video->user_id = auth()->user()->id;
+                $video->start = '00:00:00';
+                $video->url = asset($file_dir);
+                $video->duration = $request->input('duration');
+                $video->end = $video->duration;
+                $video->save();
+                array_push($urls, array('url' => $video->url, 'id' => $video->id));
+                return json_encode(array('result' => true, 'files' => $urls));
+            }catch (\Exception $e){
+                echo json_encode(array('result' => false, 'error' => $e));
+            }
+        }else{
+            echo json_encode(array('result' => false));
+        }
     }
 
     /**
