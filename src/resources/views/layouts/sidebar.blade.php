@@ -278,8 +278,8 @@
                                         Recording... <span class="fas fa-video"></span></p>
                                     <video id="vid1" width="400" height="250"></video>
                                     <video id="vid2" width="400" height="250" controls></video>
-                                    <button id="btnStart" class="btn btn-outline-success">Start</button>
-                                    <button id="btnStop" class="btn btn-outline-danger">Stop</button>
+                                    <button id="btnStart" class="btn btn-outline-success">{{trans('dashboard.start'}}</button>
+                                    <button id="btnStop" class="btn btn-outline-danger">{{trans('dashboard.stop'}}</button>
                                     <button id="next-realtime" class="btn btn-primary float-right"
                                             disabled>{{ trans('dashboard.next') }}</button>
                                 </div>
