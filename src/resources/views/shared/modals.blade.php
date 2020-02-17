@@ -182,3 +182,36 @@
         </div>
     </div>
 </div>
+
+<!-- Modal sposta progetto -->
+<div class="modal fade" id="move-project-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content el-16dp">
+            <div class="modal-header">
+                <h5 class="modal-title">Move project</h5> <!-- TODO: Translate -->
+                <button type="button" class="modal-close" data-dismiss="modal"
+                        aria-label="{{trans('dashboard.close')}}">
+                    <span class="fas fa-times"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="collapse show el-3dp nav flex-column flex-nowrap" id="pr_list">
+                    @each('partials.project-tree', Auth::user()->projects, 'main_project')
+                </ul>
+                <form method="POST" action="{{ route('system.delete-video') }}"
+                      id="project-move-form">
+                    @csrf
+                    <input type="hidden" id="project_selected_id" name="project_selected_id">
+                    <div class="modal-footer mt-3">
+                        <button id="close-move-project" class="btn btn-secondary"
+                                data-dismiss="modal">
+                            No
+                        </button>
+                        <input type="submit" id="submit-move-project" class="btn btn-primary"
+                               data-dismiss="modal" value="Si">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

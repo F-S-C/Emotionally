@@ -104,15 +104,20 @@
                     $('#rename-project-modal').modal('show');
                     $('#project_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-rename-form').show();
-                    videoRenameError.hide();
-                    videoRenameChanging.hide();
-                    videoRenameComplete.hide();
+                    projectRenameError.hide();
+                    projectRenameChanging.hide();
+                    projectRenameComplete.hide();
                 });
 
                 $('.delete-project-btn').on('click', function () {
                     $('#delete-project-modal').modal('show');
                     $('#project_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-delete-form').show();
+                });
+
+                $('.move-project-btn').on('click', function () {
+                    $('#move-project-modal').modal('show');
+                    $('#project_selected_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                 });
 
                 $('#project-rename-form').on('submit', function (event) {

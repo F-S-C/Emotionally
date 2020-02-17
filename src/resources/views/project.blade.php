@@ -90,18 +90,18 @@
                     $('#rename-project-modal').modal('show');
                     $('#project_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-rename-form').show();
-                    videoRenameError.hide();
-                    videoRenameChanging.hide();
-                    videoRenameComplete.hide();
+                    projectRenameError.hide();
+                    projectRenameChanging.hide();
+                    projectRenameComplete.hide();
                 });
 
                 $('.rename-video-btn').on('click', function () {
                     $('#rename-video-modal').modal('show');
                     $('#video_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-video-', ''));
                     $('#video-rename-form').show();
-                    projectRenameError.hide();
-                    projectRenameChanging.hide();
-                    projectRenameComplete.hide();
+                    videoRenameError.hide();
+                    videoRenameChanging.hide();
+                    videoRenameComplete.hide();
                 });
 
                 $('.delete-project-btn').on('click', function () {
