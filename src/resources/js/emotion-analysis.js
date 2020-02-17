@@ -332,6 +332,80 @@ class EmotionAnalysis {
             stop: onStop
         };
     }
+
+    /**
+     * Get the average report from a report
+     * @param {Object} reports The report
+     * @returns {{engagement: number, chinRaise: number, sadness: number, anger: number, Timestamp: number, eyeClosure: number, smile: number, smirk: number, joy: number, lipCornerDepressor: number, innerBrowRaise: number, browFurrow: number, lidTighten: number, lipPress: number, browRaise: number, lipPucker: number, fear: number, surprise: number, mouthOpen: number, dimpler: number, cheekRaise: number, noseWrinkle: number, lipSuck: number, jawDrop: number, upperLipRaise: number, valence: number, lipStretch: number, contempt: number, eyeWiden: number, attention: number, disgust: number}}
+     */
+    static average(reports) {
+        let average_report = {
+            'joy': 0,
+            'sadness': 0,
+            'disgust': 0,
+            'contempt': 0,
+            'anger': 0,
+            'fear': 0,
+            'surprise': 0,
+            'valence': 0,
+            'engagement': 0,
+            'Timestamp': 0,
+            'smile': 0,
+            'innerBrowRaise': 0,
+            'browRaise': 0,
+            'browFurrow': 0,
+            'noseWrinkle': 0,
+            'upperLipRaise': 0,
+            'lipCornerDepressor': 0,
+            'chinRaise': 0,
+            'lipPucker': 0,
+            'lipPress': 0,
+            'lipSuck': 0,
+            'mouthOpen': 0,
+            'smirk': 0,
+            'eyeClosure': 0,
+            'attention': 0,
+            'lidTighten': 0,
+            'jawDrop': 0,
+            'dimpler': 0,
+            'eyeWiden': 0,
+            'cheekRaise': 0,
+            'lipStretch': 0
+        };
+
+        if (!Array.isArray(reports)) {
+            average_report = reports;
+        } else {
+            reports.forEach(report => {
+                average_report.forEach(key => average_report[key] + report[key]);
+            });
+        }
+
+        return average_report;
+    }
+
+    /**
+     * Get the emotion values from a report
+     * @param {Object|[Object]} report The report
+     * @returns {*[]|*} The emotion values
+     */
+    static getEmotionValues(report) {
+        const useful_values = {
+            "joy": 0,
+            "sadness": 0,
+            "disgust": 0,
+            "contempt": 0,
+            "anger": 0,
+            "fear": 0,
+            "surprise": 0
+        };
+
+        if (!Array.isArray(useful_values)) {
+            return Object.keys(useful_values).map(key => report[key]);
+        } else {
+            return report.map(frame => EmotionAnalysis.getEmotionValues(frame));
+        }
+    }
 }
 
 window.EmotionAnalysis = EmotionAnalysis;
