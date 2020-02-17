@@ -408,6 +408,7 @@
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="https://vjs.zencdn.net/7.6.6/video.js"></script>
     <script src="{{asset('js/vendor/videojs.record.min.js')}}"></script>
+    <script src="{{asset('js/vendor/videojs.record.ts-ebml.min.js')}}"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
@@ -577,7 +578,7 @@
                     });
                 });
 
-                let VIDEO_DATA;
+                let VIDEO_DATA, DURATION;
                 $('#realtimevideo-form').on('submit', function (event) {
                     event.preventDefault();
                     btnUpload.prop('disabled', true);
@@ -603,6 +604,10 @@
                     let formData = new FormData(this);
                     formData.set('video', VIDEO_DATA);
                     formData.set('_token', '{{csrf_token()}}');
+                    console.log('FORM DATA');
+                    for (var pair of formData.entries()) {
+                        console.log(pair[0] + ', ' + pair[1]);
+                    }
                     $.ajax({
                         url: this.action,
                         type: this.method,
@@ -623,6 +628,7 @@
                             return xhr;
                         },
                         success: function (data) {
+                            console.log(data);
                             let ans = JSON.parse(data);
                             if (ans['result']) {
                                 bar.width('100%');
@@ -696,12 +702,13 @@
                         controls: true,
                         width: 400,
                         height: 250,
-                        fluid: false,
+                        fluid: true,
                         plugins: {
                             record: {
                                 debug: true,
                                 audio: false,
                                 video: true,
+                                convertEngine: 'ts-ebml'
                             }
                         }
                     }, function () {
@@ -729,17 +736,16 @@
 
                     // user completed recording and stream is available
                     // Upload the Blob to your server or download it locally !
-                    player.on('finishRecord', function () {
+                    player.on('finishConvert', function () {
 
                         // the blob object contains the recorded data that
                         // can be downloaded by the user, stored on server etc.
-                        var videoBlob = player.recordedData;
-
-                        console.log('finished recording: ', player.recordedData);
+                        console.log('finished recording: ', player.convertedData);
                         btnNext.prop('disabled', false);
                         btnNext.text('{{ trans('dashboard.next') }}');
 
-                        VIDEO_DATA = player.recordedData;
+                        VIDEO_DATA = player.convertedData;
+                        DURATION = player.duration;
                     });
 
                     {{--navigator.mediaDevices.getUserMedia(constraintObj)--}}

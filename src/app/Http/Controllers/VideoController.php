@@ -113,44 +113,40 @@ class VideoController extends Controller
      * @param Request $request The HTTP request.
      * @return false|string The result of the operation.
      */
-    public function realtimeUpload(Request $request){
+    public function realtimeUpload(Request $request)
+    {
+        $out = new ConsoleOutput();
         $video = new Video();
         $urls = array();
-        $encoded_string = $request->input('video');
-        if($request->has('video')) {
+        if ($request->has('video')) {
+            $to_upload = $request->file('video');
             try {
-                $target_dir = 'user-content/';
-                $decoded_file = base64_decode($encoded_string);
-                $filename = uniqid();
-                $file_dir = $target_dir . $filename;
-                file_put_contents($file_dir . '.webm', $decoded_file);
+                $out->writeln($to_upload->getRealPath());
+                $getID3 = new \getID3;
 
-                $out = new ConsoleOutput();
+                $filename = $to_upload->hashName();
+                $file = $getID3->analyze($to_upload->getRealPath());
 
+                $to_upload->move('user-content', $filename);
+                $out->writeln(json_encode($file));
+                $duration = date('H:i:s', $file['playtime_seconds']);
 
-                //$ffmpeg = FFMpeg\FFMpeg::create();
-                //$to_convert = $ffmpeg->open($file_dir . '.webm');
-                //(new ConsoleOutput)->writeln('Aperto');
-                //$to_convert->save(new FFMpeg\Format\Video\X264(), $file_dir . '.mp4');
-                //(new ConsoleOutput)->writeln('Convertito');
-
-                //Remove webm file if work
                 $video->project_id = $request->input('project_id');
                 $video->framerate = $request->input('framerate');
                 $video->name = $request->input('title');
                 $video->user_id = auth()->user()->id;
                 $video->start = '00:00:00';
-                $out->writeln($file_dir);
-                $video->url = asset($file_dir . '.webm');
-                $video->duration = $request->input('duration');
-                $video->end = $video->duration;
+                $out->writeln($filename);
+                $video->url = asset('user-content/' . $filename);
+                $video->duration = $duration;
+                $video->end = $duration;
                 $video->save();
                 array_push($urls, array('url' => $video->url, 'id' => $video->id));
                 return json_encode(array('result' => true, 'files' => $urls));
-            }catch (\Exception $e){
-                echo json_encode(array('result' => false, 'error' => $e));
+            } catch (\Exception $e) {
+                echo json_encode(array('result' => false, 'error' => $e->getMessage()));
             }
-        }else{
+        } else {
             echo json_encode(array('result' => false));
         }
     }
