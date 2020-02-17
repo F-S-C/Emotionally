@@ -391,10 +391,11 @@ class EmotionAnalysis {
             average_report = reports;
         } else {
             reports.forEach(report => {
-                if(report){
-                Object.keys(average_report).forEach(key => {
-                    average_report[key] += report[key];
-                });}
+                if (report) {
+                    Object.keys(average_report).forEach(key => {
+                        average_report[key] += report[key];
+                    });
+                }
             });
             Object.keys(average_report).forEach(key => {
                 average_report[key] /= reports.length;
@@ -410,7 +411,7 @@ class EmotionAnalysis {
      * @returns {*[]|*} The emotion values
      */
     static getEmotionValues(report) {
-        const useful_values = {
+        let useful_values = {
             "joy": 0,
             "sadness": 0,
             "disgust": 0,
@@ -421,7 +422,10 @@ class EmotionAnalysis {
         };
 
         if (!Array.isArray(report)) {
-            return Object.keys(useful_values).map(key => report[key]);
+            Object.keys(useful_values).map(key => {
+                useful_values[key] = report[key];
+            });
+            return useful_values;
         } else {
             return report.map(frame => EmotionAnalysis.getEmotionValues(frame));
         }

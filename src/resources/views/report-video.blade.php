@@ -94,7 +94,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="loading-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <div class="modal fade" id="loading-modal" data-backdrop="static" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content el-16dp">
@@ -408,8 +409,11 @@
                         $("#loading-modal").modal('show');
                         EmotionAnalysis.analyzeVideo("{{$video->url}}", function (report) {
                             databaseReport = JSON.parse(report);
+                            console.log(databaseReport);
                             fullReport = EmotionAnalysis.getEmotionValues(databaseReport);
-                            averageReport =EmotionAnalysis.getEmotionValues(EmotionAnalysis.average(fullReport));
+                            console.log(fullReport);
+                            averageReport = EmotionAnalysis.getEmotionValues(EmotionAnalysis.average(fullReport));
+                            console.log(averageReport);
 
                             lineChart.data = {
                                 labels: fullReport.map((_, i) => i),
