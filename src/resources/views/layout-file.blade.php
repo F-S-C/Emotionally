@@ -15,9 +15,8 @@
                          height="90px"
                          alt="Emotionally">
                 </div>
-                <div class="col text-right">
-                    <img src="{{asset('/fsc_logo_text_dark.png')}}" width="64px"
-                         height="64px"
+                <div class="col text-right mt-3 mr-2">
+                    <img src="{{asset('/fsc_logo_text_dark.png')}}" width="180px"
                          alt="FSC - Five students of computer science">
                 </div>
             </div>
