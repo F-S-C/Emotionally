@@ -27,9 +27,9 @@
     </button>
     {{-- TODO: Edit options --}}
     <div class="dropdown-menu" aria-labelledby="{{$id}}">
-        <button class="dropdown-item btn btn-link delete-project-btn">Delete</button>
-        <button class="dropdown-item btn btn-link rename-project-btn">Rename</button>
-        <button class="dropdown-item btn btn-link move-project-btn">Move</button>
+        <button class="dropdown-item btn btn-link delete-project-btn" value="{{$item_id}}">Delete</button>
+        <button class="dropdown-item btn btn-link rename-project-btn" value="{{$item_id}}">Rename</button>
+        <button class="dropdown-item btn btn-link move-project-btn" value="{{$item_id}}">Move</button>
 
     </div>
 </div>
