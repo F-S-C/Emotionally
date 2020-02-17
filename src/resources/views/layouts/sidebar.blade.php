@@ -758,7 +758,7 @@
                         navigator.mediaDevices.getUserMedia = function (constraintObj) {
                             let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
                             if (!getUserMedia) {
-                                return Promise.reject(new Error({{trans('dashboard.media-error'}}));
+                                return Promise.reject(new Error({{trans('dashboard.media-error')}}));
                             }
                             return new Promise(function (resolve, reject) {
                                 getUserMedia.call(navigator, constraintObj, resolve, reject);
