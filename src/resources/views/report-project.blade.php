@@ -39,6 +39,23 @@
 @endsection
 
 @section('inner-content')
+    <div class="dropleft text-right mb-2 mx-3">
+        <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Download
+        </button>
+        <div class="dropdown-menu">
+            <button class="dropdown-item" id="report-pdf">Report in PDF</button>
+            <a class="dropdown-item" href="{{route('system.layout-file-project', $project->id)}}" rel="noopener noreferrer"
+               target="_blank">Report in HTML</a>
+            <a class="dropdown-item" href="#" rel="noopener noreferrer">Report
+                in JSON</a>
+            <a class="dropdown-item" href="#" rel="noopener noreferrer">Report
+                in EXCEL</a>
+            <a class="dropdown-item" href="#" rel="noopener noreferrer">Report
+                in PPTX</a>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="card-deck">
             <div class="card el-0dp">

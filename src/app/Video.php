@@ -17,7 +17,7 @@ class Video extends Model
      */
     public function author()
     {
-        return $this->belongsTo('Emotionally\User');
+        return $this->belongsTo('Emotionally\User', 'user_id');
     }
 
     /**

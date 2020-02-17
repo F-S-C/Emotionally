@@ -29,7 +29,7 @@ class Project extends Model
      */
     public function creator()
     {
-        return $this->belongsTo('Emotionally\User');
+        return $this->belongsTo('Emotionally\User', 'user_id');
     }
 
     /**

@@ -20,7 +20,9 @@ namespace Emotionally\Http\Controllers;
 
 use Emotionally\Http\Controllers\ReportFormatters\VideoPresentation;
 use Emotionally\Http\Controllers\ReportFormatters\VideoSpreadsheet;
+use Emotionally\Project;
 use Emotionally\Video;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ReportController extends Controller
 {
@@ -201,7 +203,6 @@ class ReportController extends Controller
     public static function getEmotionValues($report)
     {
         self::fixType($report);
-
         $useful_values = [
             self::JOY_KEY => 0,
             self::SADNESS_KEY => 0,
@@ -211,18 +212,13 @@ class ReportController extends Controller
             self::FEAR_KEY => 0,
             self::SURPRISE_KEY => 0
         ];
-
         $type = self::getReportType($report);
 
         if ($type == 1) {
             return array_intersect_key($report, $useful_values);
         } elseif ($type == 2) {
             foreach ($report as &$frame) {
-                if (is_string($frame)) {
-                    $frame = json_decode($frame, true);
-                } elseif (!is_array($frame)) {
-                    throw new \InvalidArgumentException("The input isn't a JSON string or an array:");
-                }
+                self::fixType($frame);
                 $frame = array_intersect_key($frame, $useful_values);
             }
             return $report;
@@ -241,6 +237,14 @@ class ReportController extends Controller
             ->with('video', $current_video)
             ->with('path', ProjectController::getProjectChain($current_video->project))
             ->with('project', $current_video->project);
+    }
+
+    public function getProjectReportFile(int $id)
+    {
+        $current_project = Project::findOrFail($id);
+        (new ConsoleOutput())->writeln($current_project->creator === null);
+        return view('layout-file-project')
+            ->with('project', $current_project);
     }
 
     public function downloadPDF($id)

@@ -23,13 +23,26 @@ Route::name('system.')
     ->group(function () {
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
-        Route::get('/project/{id}/report', 'ProjectController@getProjectReport')->name('report-project');
+
+        Route::prefix('/project/{id}/report')
+            ->group(function () {
+                Route::get('/', 'ProjectController@getProjectReport')->name('report-project');
+                Route::get('/HTML', 'ReportController@getProjectReportFile')->name('layout-file-project');
+
+//                Route::name('project.download-')
+//                    ->group(function () {
+//                        Route::get('/downloadPDF', '#')->name('pdf');
+//                        Route::get('/downloadJSON', '#')->name('json');
+//                        Route::get('/downloadPPTX', '#')->name('pptx');
+//                        Route::get('/downloadExcel', '#')->name('excel');
+//                    });
+            });
 
         Route::prefix('/video/{id}')
             ->group(function () {
                 Route::get('/', 'VideoController@getVideoReport')->name('report-video');
                 Route::put('/edit/duration', 'VideoController@resetInterval')->name('edit-video-duration');
-                    Route::get('/file', 'ReportController@getReportFile')->name('layout-file');
+                Route::get('/file', 'ReportController@getReportFile')->name('layout-file');
                 Route::name('download-')
                     ->group(function () {
                     Route::get('/downloadPDF', 'ReportController@downloadPDF')->name('pdf');

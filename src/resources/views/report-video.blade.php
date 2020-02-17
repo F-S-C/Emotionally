@@ -5,7 +5,7 @@
 @section('head')
     @parent
     <style>
-        .ui-widget.ui-widget-content{
+        .ui-widget.ui-widget-content {
             background-color: #121212;
         }
 
@@ -23,11 +23,11 @@
             cursor: default;
             touch-action: none;
             border-radius: 50%;
-            background-color: #FF9800!important;
-            border-color: #FF9800!important;
+            background-color: #FF9800 !important;
+            border-color: #FF9800 !important;
         }
     </style>
-    @endsection
+@endsection
 
 @section('breadcrumbs')
     <li class="breadcrumb-item">
@@ -74,7 +74,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content el-16dp">
                 <div class="modal-header">
@@ -161,7 +162,7 @@
                 /**
                  * Create a new radar chart.
                  */
-                new Chart(radar, {
+                let radarChart = new Chart(radar, {
                     type: 'radar',
                     data: {
                         labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
@@ -206,7 +207,7 @@
                 /**
                  * Create a new bar chart.
                  */
-                new Chart(bar, {
+                let barChart = new Chart(bar, {
                     type: 'bar',
                     data: {
                         labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
@@ -371,8 +372,10 @@
                 let duration = "{{$video->duration}}";
                 let end = "{{$video->end}}";
                 let start = "{{$video->start}}";
-                video.currentTime = timeStringToSeconds(start);
-                $( "#slider-range .ui-slider-range" ).css('background-color', '#121212');
+                video.addEventListener('loadedmetadata', () => {
+                    video.currentTime = timeStringToSeconds(start);
+                });
+                $("#slider-range .ui-slider-range").css('background-color', '#121212');
                 $("#slider-range").slider({
                     range: true,
                     min: 0,
@@ -390,23 +393,28 @@
                         EmotionAnalysis.analyzeVideo("{{$video->url}}", function (report) {
                             databaseReport = JSON.parse(report);
                             fullReport = EmotionAnalysis.getEmotionValues(databaseReport);
-                            averageReport = EmotionAnalysis.average(fullReport);
-                                lineChart.data = {
-                                    labels: fullReport.map((_, i) => i),
-                                    datasets: Object.keys(fullReport[0]).map((key, i) => {
-                                        return {
-                                            borderColor: colors[i],
-                                            pointBackgroundColor: colors[i],
-                                            pointBorderColor: colors[i],
-                                            label: key.charAt(0).toUpperCase() + key.slice(1),
-                                            data: fullReport.map(el => el[key]),
-                                            fill: false
-                                        };
-                                    })
-                                };
+                            averageReport =EmotionAnalysis.getEmotionValues(EmotionAnalysis.average(fullReport));
+                            console.log(databaseReport);
+                            console.log('Full report');
+                            console.log(fullReport);
+                            console.log('Average report');
+                            console.log(averageReport);
+                            lineChart.data = {
+                                labels: fullReport.map((_, i) => i),
+                                datasets: Object.keys(fullReport[0]).map((key, i) => {
+                                    return {
+                                        borderColor: colors[i],
+                                        pointBackgroundColor: colors[i],
+                                        pointBorderColor: colors[i],
+                                        label: key.charAt(0).toUpperCase() + key.slice(1),
+                                        data: fullReport.map(el => el[key]),
+                                        fill: false
+                                    };
+                                })
+                            };
                             lineChart.update();
 
-                            radar.data = {
+                            radarChart.data = {
                                 labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
                                 datasets: [
                                     {
@@ -420,11 +428,11 @@
                                     }
                                 ]
                             };
-                            radar.update();
+                            radarChart.update();
 
-                            bar.data={
+                            barChart.data = {
                                 labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
-                                    datasets: [
+                                datasets: [
                                     {
                                         label: 'Emotions',
                                         data: Object.keys(averageReport).map(el => averageReport[el]),
@@ -435,7 +443,7 @@
                                     }
                                 ]
                             };
-                            bar.update();
+                            barChart.update();
                         });
                     }
                 });

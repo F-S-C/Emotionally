@@ -17,7 +17,7 @@
 
 "use strict";
 
-$ = require('jquery');
+// $ = require('jquery');
 
 /**
  * The interface to the emotion analysis's engine.
@@ -377,7 +377,13 @@ class EmotionAnalysis {
             average_report = reports;
         } else {
             reports.forEach(report => {
-                average_report.forEach(key => average_report[key] + report[key]);
+                if(report){
+                Object.keys(average_report).forEach(key => {
+                    average_report[key] += report[key];
+                });}
+            });
+            Object.keys(average_report).forEach(key => {
+                average_report[key] /= reports.length;
             });
         }
 
@@ -400,7 +406,7 @@ class EmotionAnalysis {
             "surprise": 0
         };
 
-        if (!Array.isArray(useful_values)) {
+        if (!Array.isArray(report)) {
             return Object.keys(useful_values).map(key => report[key]);
         } else {
             return report.map(frame => EmotionAnalysis.getEmotionValues(frame));
