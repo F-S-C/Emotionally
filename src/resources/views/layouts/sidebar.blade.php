@@ -327,7 +327,6 @@
                                                style="color: white;" disabled>
                                     </div>
                                 </form>
-                                append
 
                                 <div id="realtime-progress-container" style="display: none;">
                                     <div class="progress">
@@ -632,7 +631,7 @@
                             let ans = JSON.parse(data);
                             if (ans['result']) {
                                 bar.width('100%');
-                                $('#uploading-text-container').text('@lang('dashboard.analyzing')');
+                                $('#uploading-realtime-text-container').text('{{trans('dashboard.analyzing')}}');
                                 ans['files'].forEach(file => {
                                     EmotionAnalysis.analyzeVideo(file['url'], function (report) {
                                         $.post("{{route('system.video.report.set')}}", {
@@ -736,6 +735,7 @@
                         DURATION = player.duration;
                     });
                 });
+
                 function stopStreamedVideo(videoElem) {
                     const stream = videoElem.srcObject;
                     const tracks = stream.getTracks();
@@ -746,6 +746,7 @@
 
                     videoElem.srcObject = null;
                 }
+
                 $('#next-realtime').on('click', function () {
                     $('#realtime-body').hide();
                     btnUpload.show();
