@@ -2,6 +2,33 @@
 
 @section('title', $video->name)
 
+@section('head')
+    @parent
+    <style>
+        .ui-widget.ui-widget-content{
+            background-color: #121212;
+        }
+
+        .ui-slider-horizontal .ui-slider-range {
+            background-color: #CC7A00;
+            top: 0;
+            height: 100%;
+        }
+
+        .ui-slider .ui-slider-handle {
+            position: absolute;
+            z-index: 2;
+            width: 1.2em;
+            height: 1.2em;
+            cursor: default;
+            touch-action: none;
+            border-radius: 50%;
+            background-color: #FF9800!important;
+            border-color: #FF9800!important;
+        }
+    </style>
+    @endsection
+
 @section('breadcrumbs')
     <li class="breadcrumb-item">
         <a href="{{route('system.home')}}">
@@ -47,6 +74,25 @@
         </div>
     </div>
 
+    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content el-16dp">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="error-text"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="card-deck">
             <div class="card el-0dp">
@@ -78,7 +124,7 @@
                                    style="border:none; background-color: transparent; color: #FF9800; font-weight:bold;">
                         </p>
 
-                        <div id="slider-range"></div>
+                        <div id="slider-range" class="ui-slider-range"></div>
 
                     @endif
                 </div>
@@ -109,8 +155,8 @@
                 let radar = document.getElementById("radar").getContext("2d");
                 let line = document.getElementById("line").getContext("2d");
                 let bar = document.getElementById("bar").getContext("2d");
-                let saveButton = $("#save-button");
 
+                let saveButton = $("#save-button");
 
                 /**
                  * Create a new radar chart.
@@ -326,12 +372,13 @@
                 let end = "{{$video->end}}";
                 let start = "{{$video->start}}";
                 video.currentTime = timeStringToSeconds(start);
-
+                $( "#slider-range .ui-slider-range" ).css('background-color', '#121212');
                 $("#slider-range").slider({
                     range: true,
                     min: 0,
                     max: timeStringToSeconds(duration),
                     values: [timeStringToSeconds(start), timeStringToSeconds(end)],
+                    highlight: true,
                     slide: function (event, ui) {
                         start = secondsToTimeString(ui.values[0]);
                         end = secondsToTimeString(ui.values[1]);
@@ -404,11 +451,13 @@
                             if (out['done']) {
                                 saveButton.addClass('d-none');
                             } else {
-
+                                $('#error-modal').modal('show');
+                                $('#error-text').set(out.errors[0]);
                             }
                         })
                         .fail(() => {
-                            //ERRORE
+                            $('#error-modal').modal('show');
+                            $('#error-text').set("Fold communication!!");
                         });
                 });
                 video.addEventListener('timeupdate', () => {
@@ -419,6 +468,6 @@
                 });
                 $("#amount").val(secondsToTimeString($("#slider-range").slider("values", 0)) + " - " + secondsToTimeString($("#slider-range").slider("values", 1)));
             });
-        })($);
+        })(jQuery);
     </script>
 @endsection

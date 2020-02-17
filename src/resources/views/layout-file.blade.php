@@ -2,24 +2,23 @@
 
 @section('title',"File report: " .$video->name)
 
-
 @section('body')
 
     <div class="container w-75">
         <div class="container">
             <div class="row">
-                <div class="text-left">
-                    <img src="{{asset('/logo.png')}}" width="150"
-                         height="150"
+                <div class="col text-left">
+                    <img src="{{asset('/logo.png')}}" width="64px"
+                         height="64px"
                          alt="Emotionally's logo">
-                    <img src="{{asset('/app_name_black.svg')}}" width="150"
-                         height="150"
+                    <img src="{{asset('/app_name_black.svg')}}" width="90px"
+                         height="90px"
                          alt="Emotionally">
                 </div>
                 <div class="col text-right">
-                    <img src="{{asset('/fsc_logo_nero.svg')}}" width="150"
-                         height="150"
-                         alt="FSC's logo">
+                    <img src="{{asset('/fsc_logo_text_dark.png')}}" width="64px"
+                         height="64px"
+                         alt="FSC - Five students of computer science">
                 </div>
             </div>
         </div>
@@ -41,11 +40,11 @@
                     <tbody>
                     <tr>
                         <td>
-                            {{ $video->author->name }}
-                            {{ $video->author->surname }}
+                            {{ $video->author['name'] }}
+                            {{ $video->author['surname'] }}
                         </td>
 
-                        <td>{{ $video->project->name }}</td>
+                        <td>{{ $video->project['name'] }}</td>
 
                         <td>{{$video->duration}}</td>
 
