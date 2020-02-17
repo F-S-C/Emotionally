@@ -299,7 +299,7 @@
                                                    class="form-control input-color" required>
                                         </div>
                                         <div class="form-inline">
-                                            <label for="framerate">{{trans('dashboard.framerate')}}:</label>
+                                            <label for="framerate" id="realtime-framerate-text">{{trans('dashboard.framerate')}}: 30</label>
                                             <input type="range" class="custom-range" id="framerate-realtime" name="framerate"
                                                    min="1" max="60" value="30" step="1">
                                         </div>
@@ -559,9 +559,11 @@
                     });
                 });
 
-                //TODO Ripristina caricamento con AJAX
-                /*$('#realtimevideo-form').on('submit', function (event) {
+                $('#realtimevideo-form').on('submit', function (event) {
                     event.preventDefault();
+                    btnUpload.prop('disabled',true);
+                    btnUpload.attr('disabled');
+                    btnUpload.hide();
                     let bar = $("#realtime-progress");
                     let container = $("#realtime-progress-container");
                     let text = $("#realtime-upload-text");
@@ -602,9 +604,7 @@
                             container.hide();
                             if (JSON.parse(data)['result']) {
                                 alertComplete.show();
-                                $('#realtime-video-modal').on('hidden.bs.modal', function () {
-                                    location.reload(false);
-                                });
+                                location.reload();
                             } else {
                                 alertNotComplete.show();
                             }
@@ -623,7 +623,7 @@
                             form.show();
                         }
                     });
-                });*/
+                });
 
                 //REALTIME VIDEO FUNCTIONS
                 let constraintObj = {
@@ -708,7 +708,6 @@
                                 b64reader.onloadend = function () {
                                     $('#realtimevideo-file').val(b64reader.result);
                                 };
-                                btnUpload.prop('disabled', false);
                             }
                         })
                         .catch(function (err) {
@@ -762,7 +761,7 @@
                         navigator.mediaDevices.getUserMedia = function (constraintObj) {
                             let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
                             if (!getUserMedia) {
-                                return Promise.reject(new Error({{trans('dashboard.media-error')}}));
+                                return Promise.reject(new Error("{{trans('dashboard.media-error')}}"));
                             }
                             return new Promise(function (resolve, reject) {
                                 getUserMedia.call(navigator, constraintObj, resolve, reject);
@@ -790,12 +789,13 @@
                     stopStreamedVideo(document.querySelector('video'));
                 });
 
-                $('#title').change(function () {
-                    btnUpload.prop('disabled', false);
+                $('#framerate-realtime').on('input', function () {
+                    $('#realtime-framerate-text').text("{{trans('dashboard.framerate')}}: " + $('#framerate-realtime').val());
                 });
 
-                $('#framerate-realtime').change(function () {
-                    
+                $('#title').change(function () {
+                    btnUpload.prop('disabled', false);
+                    btnUpload.removeClass('disabled');
                 });
             });
         })(jQuery);
