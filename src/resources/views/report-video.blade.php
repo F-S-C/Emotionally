@@ -94,6 +94,21 @@
         </div>
     </div>
 
+    <div class="modal fade" id="loading-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content el-16dp">
+                <div class="modal-body">
+                    <div class="d-flex align-items-center">
+                        <strong>Loading...</strong>
+                        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container-fluid">
         <div class="card-deck">
             <div class="card el-0dp">
@@ -390,15 +405,12 @@
                         saveButton.removeClass('d-none');
                     },
                     stop: function () {
+                        $("#loading-modal").modal('show');
                         EmotionAnalysis.analyzeVideo("{{$video->url}}", function (report) {
                             databaseReport = JSON.parse(report);
                             fullReport = EmotionAnalysis.getEmotionValues(databaseReport);
                             averageReport =EmotionAnalysis.getEmotionValues(EmotionAnalysis.average(fullReport));
-                            console.log(databaseReport);
-                            console.log('Full report');
-                            console.log(fullReport);
-                            console.log('Average report');
-                            console.log(averageReport);
+
                             lineChart.data = {
                                 labels: fullReport.map((_, i) => i),
                                 datasets: Object.keys(fullReport[0]).map((key, i) => {
@@ -444,6 +456,8 @@
                                 ]
                             };
                             barChart.update();
+
+                            $("#loading-modal").modal('hide');
                         });
                     }
                 });
