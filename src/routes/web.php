@@ -23,7 +23,7 @@ Route::name('system.')
     ->group(function () {
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
-        Route::get('/project/delete', 'ProjectController@deleteProject')->name('delete-project');
+        Route::post('/project/delete', 'ProjectController@deleteProject')->name('delete-project');
         Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project');
         Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video');
 

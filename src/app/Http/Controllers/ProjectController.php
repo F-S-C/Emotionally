@@ -77,14 +77,13 @@ class ProjectController extends Controller
 
     /**
      * This public function allow to delete the project.
-     * @param Project $project The project
+     * @param Request $request The HTTP request
      */
-    public function deleteProject(Request $request)
+    public function deleteProject(Request $request): void
     {
         $id = $request->input('project_delete_id');
         $project = Project::findOrFail($id);
         $project->delete();
-        return redirect(route('system.home'));
     }
 
     /**

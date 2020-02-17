@@ -30,7 +30,7 @@
                 <form method="POST" action="{{ route('system.rename-project') }}"
                       id="project-rename-form">
                     @csrf
-                    <input type="hidden" id="project_rename_id" name="project_rename_id" >
+                    <input type="hidden" id="project_rename_id" name="project_rename_id">
                     <label for="project_new_name">{{trans('dashboard.project_name')}}</label>
                     <input type="text" class="form-control input-color" id="project_new_name"
                            name="project_name" placeholder="{{trans('dashboard.name')}}" required>
@@ -81,10 +81,8 @@
                                 data-dismiss="modal">
                             No
                         </button>
-                        <button type="submit" id="accept-delete-project" class="btn btn-primary"
-                                data-dismiss="modal">
-                            Si
-                        </button>
+                        <input type="submit" id="submit-delete-project" class="btn btn-primary"
+                               data-dismiss="modal" value="Si">
                     </div>
                 </form>
                 <div id="project-delete-complete" class="alert alert-success" role="alert" style="display:none;">
@@ -116,13 +114,13 @@
                 <form method="POST" action="{{ route('system.rename-video') }}"
                       id="video-rename-form">
                     @csrf
-                    <input type="hidden" id="video_rename_id" name="video_rename_id" >
+                    <input type="hidden" id="video_rename_id" name="video_rename_id">
                     <label for="video_new_name">{{trans('dashboard.video_rename')}}</label>
                     <input type="text" class="form-control input-color" id="video_new_name"
                            name="video_name" placeholder="{{trans('dashboard.name')}}" required>
 
                     <div class="modal-footer mt-3">
-                        <button type="button" id="close-rename-project" class="btn btn-secondary"
+                        <button type="button" id="close-rename-video" class="btn btn-secondary"
                                 data-dismiss="modal">
                             {{trans('dashboard.close')}}
                         </button>

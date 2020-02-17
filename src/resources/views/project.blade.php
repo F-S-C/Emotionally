@@ -105,9 +105,6 @@
                     $('#delete-project-modal').modal('show');
                     $('#project_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-delete-form').show();
-                    projectRenameError.hide();
-                    projectRenameChanging.hide();
-                    projectRenameComplete.hide();
                 });
 
                 $('#project-rename-form').on('submit', function (event) {
@@ -137,18 +134,19 @@
                     });
                 });
 
-                $('#project-delete-form').on('submit', function (event) {
+                $('#submit-delete-project').on('click', function (event) {
+                    event.stopPropagation();
                     event.preventDefault();
-                    $('#project-delete-form').hide();
                     deleteChanging.show();
+                    $('#project-delete-form').hide();
                     $.ajax({
-                        url: this.action,
-                        type: this.method,
-                        data: new FormData(this),
+                        url: '{{route('system.delete-project')}}',
+                        type: 'POST',
+                        data: new FormData(document.getElementById('project-delete-form')),
                         processData: false,
                         contentType: false,
                         cache: false,
-                        success: function (data) {
+                        success: function () {
                             $('#project_delete').val('');
                             deleteChanging.hide();
                             deleteComplete.show();
