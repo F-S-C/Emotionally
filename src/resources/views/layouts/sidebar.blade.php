@@ -45,11 +45,11 @@
     <div class="wrapper">
         <nav class="sidebar el-8dp scrollbar-inner" id="main-navigation" aria-label="Sidebar">
             <div class="sidebar-header">
-                <a class="sidebar-brand text-center w-100 mx-auto d-flex" style="text-decoration: none;"
+                <a class="sidebar-brand text-center w-100  d-flex" style="text-decoration: none;"
                    href="{{route('system.home')}}">
                     <img src="{{asset('/logo.png')}}" width="64"
                          height="64"
-                         class="d-inline-block d-md-inline-block align-center mr-2" alt="Emotionally's logo">
+                         class="d-inline-block d-md-inline-block align-center mx-auto" alt="Emotionally's logo">
                     <img src="{{asset('/app_name.svg')}}" width="16"
                          height="64"
                          class="d-none d-md-inline-block flex-fill" alt="Emotionally">
@@ -65,13 +65,13 @@
                                role="button" aria-expanded="false" aria-controls="projects-container"></a>
                             <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                                 <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                                <span class="d-none d-md-inline">{{trans('sidebar.projects')}}</span>
+                                <span class="d-none d-md-inline">Projects</span>
                             </a>
                         </div>
                     @else
                         <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                             <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                            <span class="d-none d-md-inline">{{trans('sidebar.projects')}}</span>
+                            <span class="d-none d-md-inline">Projects</span>
                         </a>
                     @endif
                     <ul class="collapse el-3dp nav flex-column flex-nowrap" id="projects-container">
@@ -81,25 +81,25 @@
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link text-center text-md-left" href="#">
                         <span aria-hidden="true" class="fas fa-info-circle mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">{{trans('sidebar.about')}}</span>
+                        <span class="d-none d-md-inline">About</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="#">
                         <span aria-hidden="true" class="fas fa-file-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">{{trans('sidebar.portfolio')}}</span>
+                        <span class="d-none d-md-inline">Portfolio</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="#">
                         <span aria-hidden="true" class="fas fa-phone-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">{{trans('sidebar.contact')}}</span>
+                        <span class="d-none d-md-inline">Contact</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="{{ route('logout') }}">
                         <span aria-hidden="true" class="fas fa-sign-out-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">{{trans('sidebar.logout')}}</span>
+                        <span class="d-none d-md-inline">Logout</span>
                     </a>
                 </li>
             </ul>
@@ -278,8 +278,8 @@
                                         Recording... <span class="fas fa-video"></span></p>
                                     <video id="vid1" width="400" height="250"></video>
                                     <video id="vid2" width="400" height="250" controls></video>
-                                    <button id="btnStart" class="btn btn-outline-success">{{trans('dashboard.start')}}</button>
-                                    <button id="btnStop" class="btn btn-outline-danger">{{trans('dashboard.stop')}}</button>
+                                    <button id="btnStart" class="btn btn-outline-success">Start</button>
+                                    <button id="btnStop" class="btn btn-outline-danger">Stop</button>
                                     <button id="next-realtime" class="btn btn-primary float-right"
                                             disabled>{{ trans('dashboard.next') }}</button>
                                 </div>
@@ -299,8 +299,11 @@
                                                    class="form-control input-color" required>
                                         </div>
                                         <div class="form-inline">
-                                            <label for="framerate" id="realtime-framerate-text">{{trans('dashboard.framerate')}}: 30</label>
-                                            <input type="range" class="custom-range" id="framerate-realtime" name="framerate"
+                                            <label for="framerate"
+                                                   id="realtime-framerate-text">{{trans('dashboard.framerate')}}:
+                                                30</label>
+                                            <input type="range" class="custom-range" id="framerate-realtime"
+                                                   name="framerate"
                                                    min="1" max="60" value="30" step="1">
                                         </div>
                                     </div>
@@ -561,7 +564,7 @@
 
                 $('#realtimevideo-form').on('submit', function (event) {
                     event.preventDefault();
-                    btnUpload.prop('disabled',true);
+                    btnUpload.prop('disabled', true);
                     btnUpload.attr('disabled');
                     btnUpload.hide();
                     let bar = $("#realtime-progress");
@@ -601,17 +604,35 @@
                             return xhr;
                         },
                         success: function (data) {
-                            container.hide();
-                            if (JSON.parse(data)['result']) {
-                                alertComplete.show();
-                                location.reload();
-                            } else {
-                                alertNotComplete.show();
+                            let ans = JSON.parse(data);
+                            if (ans['result']) {
+                                bar.width('100%');
+                                $('#uploading-text-container').text('@lang('dashboard.analyzing')');
+                                ans['files'].forEach(file => {
+                                    EmotionAnalysis.analyzeVideo(file['url'], function (report) {
+                                        $.post("{{route('system.video.report.set')}}", {
+                                            '_method': 'PUT',
+                                            '_token': '{{csrf_token()}}',
+                                            'report': report,
+                                            "video_id": file['id'],
+                                        })
+                                            .done(function (data) {
+                                                if (JSON.parse(data)['done']) {
+                                                    alertComplete.show();
+                                                } else {
+                                                    alertNotComplete.show();
+                                                }
+                                            })
+                                            .fail(function () {
+                                                alertNotComplete.show();
+                                            })
+                                            .always(function () {
+                                                container.hide();
+                                                form.show();
+                                            });
+                                    });
+                                });
                             }
-
-                            video.val('');
-                            formDrop.collapse('hide');
-                            form.show();
                         },
                         error: function (data) {
                             container.hide();
@@ -704,10 +725,10 @@
                                 videoDuration();
                                 //Conversion to base64 and set the hidden input
                                 let b64reader = new FileReader();
-                                b64reader.readAsDataURL(blob);
-                                b64reader.onloadend = function () {
+                                b64reader.addEventListener('load', function () {
                                     $('#realtimevideo-file').val(b64reader.result);
-                                };
+                                });
+                                b64reader.readAsDataURL(blob);
                             }
                         })
                         .catch(function (err) {

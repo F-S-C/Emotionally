@@ -105,6 +105,7 @@ class EmotionAnalysis {
         // Get video duration and set as global variable;
         let video = document.createElement('video');
         video.src = filename;
+        console.log(filename);
         // video.crossOrigin = 'anonymous';
         let duration;
         // print success message when duration of video is loaded.
