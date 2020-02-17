@@ -296,14 +296,13 @@
                                         <div class="form-group">
                                             <label for="title">Title:</label><!---TODO Translate--->
                                             <input type="text" id="title" name="title"
-                                                   class="form-control input-color">
+                                                   class="form-control input-color" required>
                                         </div>
                                         <div class="form-inline">
                                             <label for="framerate">Framerate:</label>
                                             <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
-                                            <input type="number" id="framerate-realtime" name="framerate"
-                                                   class="form-control mx-sm-3 input-color" min="1" max="60"
-                                                   value="30">
+                                            <input type="range" class="custom-range" id="framerate-realtime" name="framerate"
+                                                   min="1" max="60" value="30" step="1">
                                         </div>
                                     </div>
 
@@ -638,12 +637,18 @@
                 };
                 let start = document.getElementById('btnStart');
                 let stop = document.getElementById('btnStop');
+                let video1 = $('#vid1');
+                let video2 = $('#vid2');
+                let btnStop = $('#btnStop');
+                let btnStart = $('#btnStart');
+                let btnNext = $('#next-realtime');
                 let vidSave = document.getElementById('vid2');
                 let recordingText = $('#recording-text');
+                let btnUpload = $('#submit-realtime-video');
 
                 $('#realtime-video').on('click', function () {
-                    $('#vid2').hide();
-                    $('#btnStop').hide();
+                    video2.hide();
+                    btnStop.hide();
 
                     //handle older browsers that might implement getUserMedia in some way
                     checkOlderBrowsers();
@@ -670,23 +675,23 @@
 
                             //Start registration
                             start.addEventListener('click', (ev) => {
-                                $('#btnStart').hide();
-                                $('#btnStop').show();
-                                $('#vid1').show();
-                                $('#vid2').hide();
-                                $('#next-realtime').prop('disabled', true);
+                                btnStart.hide();
+                                btnStop.show();
+                                video1.show();
+                                video2.hide();
+                                btnNext.prop('disabled', true);
                                 recordingText.fadeIn();
                                 mediaRecorder.start();
                             });
 
                             //Stop registration
                             stop.addEventListener('click', (ev) => {
-                                $('#btnStart').show();
-                                $('#btnStop').hide();
-                                $('#vid1').hide();
-                                $('#vid2').show();
+                                btnStart.show();
+                                btnStop.hide();
+                                video1.hide();
+                                video2.show();
                                 recordingText.fadeOut();
-                                $('#next-realtime').text('{{ trans('dashboard.loading') }}');
+                                btnNext.text('{{ trans('dashboard.loading') }}');
                                 mediaRecorder.stop();
                             });
                             mediaRecorder.ondataavailable = function (ev) {
@@ -704,7 +709,7 @@
                                 b64reader.onloadend = function () {
                                     $('#realtimevideo-file').val(b64reader.result);
                                 };
-                                $('#submit-realtime-video').prop('disabled', false);
+                                btnUpload.prop('disabled', false);
                             }
                         })
                         .catch(function (err) {
@@ -736,8 +741,8 @@
                         vidSave.currentTime = 10000000 * Math.random();
                     }
                     document.getElementById('duration').setAttribute('value', toTime(vidSave.duration));
-                    $('#next-realtime').prop('disabled', false);
-                    $('#next-realtime').text('{{ trans('dashboard.next') }}');
+                    btnNext.prop('disabled', false);
+                    btnNext.text('{{ trans('dashboard.next') }}');
                     vidSave.play();
                 }
 
@@ -780,13 +785,18 @@
 
                 $('#next-realtime').on('click', function () {
                     $('#realtime-body').hide();
-                    $('#submit-realtime-video').show();
+                    btnUpload.show();
                     $('#realtime-submit-close').show();
                     $('#title-fps-menu').show();
+                    stopStreamedVideo(document.querySelector('video'));
                 });
 
                 $('#title').change(function () {
-                    $('#submit-realtime-video').prop('disabled', false); //TODO DEBUG. SE CHIUDO IL MODAL RESETTO!
+                    btnUpload.prop('disabled', false);
+                });
+
+                $('#framerate-realtime').change(function () {
+                    
                 });
             });
         })(jQuery);
