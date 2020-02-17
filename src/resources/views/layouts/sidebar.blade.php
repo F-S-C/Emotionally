@@ -692,7 +692,7 @@
                         fluid: true,
                         plugins: {
                             record: {
-                                debug: true,
+                                debug: false,
                                 audio: false,
                                 video: true,
                                 maxLength: Infinity,
