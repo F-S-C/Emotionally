@@ -92,35 +92,33 @@
                 });
 
                 //SCRIPT DROPDOWN
-                let renameComplete = $('#project-rename-complete');
-                let renameChanging = $('#project-rename-updating');
-                let renameError = $('#project-rename-error');
-                let deleteComplete = $('#project-delete-complete');
-                let deleteChanging = $('#project-delete-updating');
-                let deleteError = $('#project-delete-error');
+                let projectRenameComplete = $('#project-rename-complete');
+                let projectRenameChanging = $('#project-rename-updating');
+                let projectRenameError = $('#project-rename-error');
+                let projectDeleteComplete = $('#project-delete-complete');
+                let projectDeleteChanging = $('#project-delete-updating');
+                let projectDeleteError = $('#project-delete-error');
+
 
                 $('.rename-project-btn').on('click', function () {
                     $('#rename-project-modal').modal('show');
                     $('#project_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-rename-form').show();
-                    renameError.hide();
-                    renameChanging.hide();
-                    renameComplete.hide();
+                    videoRenameError.hide();
+                    videoRenameChanging.hide();
+                    videoRenameComplete.hide();
                 });
 
                 $('.delete-project-btn').on('click', function () {
                     $('#delete-project-modal').modal('show');
                     $('#project_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-delete-form').show();
-                    renameError.hide();
-                    renameChanging.hide();
-                    renameComplete.hide();
                 });
 
                 $('#project-rename-form').on('submit', function (event) {
                     event.preventDefault();
                     $('#project-rename-form').hide();
-                    renameChanging.show();
+                    projectRenameChanging.show();
                     $.ajax({
                         url: this.action,
                         type: this.method,
@@ -130,41 +128,42 @@
                         cache: false,
                         success: function (data) {
                             $('#project_new_name').val('');
-                            renameChanging.hide();
-                            renameComplete.show();
+                            projectRenameChanging.hide();
+                            projectRenameComplete.show();
                             $('#rename-project-modal').on('hidden.bs.modal', function () {
                                 location.reload();
                             });
                         },
                         error: function (data) {
-                            renameChanging.hide();
-                            renameError.show();
+                            projectRenameChanging.hide();
+                            projectRenameError.show();
                             console.log(data);
                         }
                     });
                 });
-                $('#project-delete-form').on('submit', function (event) {
+
+                $('#submit-delete-project').on('click', function (event) {
+                    event.stopPropagation();
                     event.preventDefault();
+                    projectDeleteChanging.show();
                     $('#project-delete-form').hide();
-                    deleteChanging.show();
                     $.ajax({
-                        url: this.action,
-                        type: this.method,
-                        data: new FormData(this),
+                        url: '{{route('system.delete-project')}}',
+                        type: 'POST',
+                        data: new FormData(document.getElementById('project-delete-form')),
                         processData: false,
                         contentType: false,
                         cache: false,
-                        success: function (data) {
-                            $('#project_delete').val('');
-                            deleteChanging.hide();
-                            deleteComplete.show();
+                        success: function () {
+                            projectDeleteChanging.hide();
+                            projectDeleteComplete.show();
                             $('#delete-project-modal').on('hidden.bs.modal', function () {
                                 location.reload();
                             });
                         },
                         error: function (data) {
-                            deleteChanging.hide();
-                            deleteError.show();
+                            projectDeleteChanging.hide();
+                            projectDeleteError.show();
                             console.log(data);
                         }
                     });

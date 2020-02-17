@@ -13,11 +13,12 @@ class VideoController extends Controller
 {
     /**
      * This function get and delete a video
-     * @param Video $video The video.
-     * @throws \Exception
+     * @param Request $request The HTTP request
      */
-    public function deleteVideo(Video $video): void
+    public function deleteVideo(Request $request): void
     {
+        $id = $request->input('video_delete_id');
+        $video = Video::findOrFail($id);
         $video->delete();
     }
 

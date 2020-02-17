@@ -78,9 +78,12 @@
                 let videoRenameComplete = $('#video-rename-complete');
                 let videoRenameChanging = $('#video-rename-updating');
                 let videoRenameError = $('#video-rename-error');
-                let deleteComplete = $('#project-delete-complete');
-                let deleteChanging = $('#project-delete-updating');
-                let deleteError = $('#project-delete-error');
+                let projectDeleteComplete = $('#project-delete-complete');
+                let projectDeleteChanging = $('#project-delete-updating');
+                let projectDeleteError = $('#project-delete-error');
+                let videoDeleteComplete = $('#video-delete-complete');
+                let videoDeleteChanging = $('#video-delete-updating');
+                let videoDeleteError = $('#video-delete-error');
 
 
                 $('.rename-project-btn').on('click', function () {
@@ -105,6 +108,12 @@
                     $('#delete-project-modal').modal('show');
                     $('#project_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-delete-form').show();
+                });
+
+                $('.delete-video-btn').on('click', function () {
+                    $('#delete-video-modal').modal('show');
+                    $('#video_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-video-', ''));
+                    $('#video-delete-form').show();
                 });
 
                 $('#project-rename-form').on('submit', function (event) {
@@ -137,7 +146,7 @@
                 $('#submit-delete-project').on('click', function (event) {
                     event.stopPropagation();
                     event.preventDefault();
-                    deleteChanging.show();
+                    projectDeleteChanging.show();
                     $('#project-delete-form').hide();
                     $.ajax({
                         url: '{{route('system.delete-project')}}',
@@ -147,16 +156,15 @@
                         contentType: false,
                         cache: false,
                         success: function () {
-                            $('#project_delete').val('');
-                            deleteChanging.hide();
-                            deleteComplete.show();
+                            projectDeleteChanging.hide();
+                            projectDeleteComplete.show();
                             $('#delete-project-modal').on('hidden.bs.modal', function () {
                                 location.reload();
                             });
                         },
                         error: function (data) {
-                            deleteChanging.hide();
-                            deleteError.show();
+                            projectDeleteChanging.hide();
+                            projectDeleteError.show();
                             console.log(data);
                         }
                     });
@@ -184,6 +192,33 @@
                         error: function (data) {
                             videoRenameChanging.hide();
                             videoRenameError.show();
+                            console.log(data);
+                        }
+                    });
+                });
+
+                $('#submit-delete-video').on('click', function (event) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    videoDeleteChanging.show();
+                    $('#video-delete-form').hide();
+                    $.ajax({
+                        url: '{{route('system.delete-video')}}',
+                        type: 'POST',
+                        data: new FormData(document.getElementById('video-delete-form')),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: function () {
+                            videoDeleteChanging.hide();
+                            videoDeleteComplete.show();
+                            $('#delete-video-modal').on('hidden.bs.modal', function () {
+                                location.reload();
+                            });
+                        },
+                        error: function (data) {
+                            videoDeleteChanging.hide();
+                            videoDeleteError.show();
                             console.log(data);
                         }
                     });

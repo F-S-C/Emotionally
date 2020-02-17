@@ -141,3 +141,44 @@
         </div>
     </div>
 </div>
+
+<!-- Modal elimina video -->
+<div class="modal fade" id="delete-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content el-16dp">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete video</h5> <!-- TODO: Translate -->
+                <button type="button" class="modal-close" data-dismiss="modal"
+                        aria-label="{{trans('dashboard.close')}}">
+                    <span class="fas fa-times"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form method="POST" action="{{ route('system.delete-video') }}"
+                      id="video-delete-form">
+                    @csrf
+                    <input type="hidden" id="video_delete_id" name="video_delete_id">
+                    <p>Sei sicuro di voler eliminare il video?</p><!-- TODO: Translate -->
+                    <div class="modal-footer mt-3">
+                        <button id="close-delete-video" class="btn btn-secondary"
+                                data-dismiss="modal">
+                            No
+                        </button>
+                        <input type="submit" id="submit-delete-video" class="btn btn-primary"
+                               data-dismiss="modal" value="Si">
+                    </div>
+                </form>
+                <div id="video-delete-complete" class="alert alert-success" role="alert" style="display:none;">
+                    {{ trans('dashboard.success') }}
+                </div>
+                <div id="video-delete-updating" class="alert alert-warning" role="alert" style="display:none;">
+                    {{ trans('dashboard.changing') }}
+                </div>
+                <div id="video-delete-error" class="alert alert-danger" role="alert" style="display:none;">
+                    {{ trans('dashboard.error') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
