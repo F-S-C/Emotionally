@@ -418,6 +418,8 @@
                     $('#vid1').show();
                     $('#vid2').hide();
                     $('#title-fps-menu').hide();
+                    $('#realtime-body').show();
+                    $('#realtime-submit-close').hide();
                     $('#realtimevideo-upload-notcomplete').hide();
                 });
 
@@ -501,7 +503,7 @@
 
 
                                 $('#upload-video-modal').on('hidden.bs.modal', function () {
-                                    location.reload(false);
+                                    location.reload();
                                 });
                             } else {
                                 alertNotComplete.show();
