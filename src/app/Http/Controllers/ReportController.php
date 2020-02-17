@@ -269,6 +269,17 @@ class ReportController extends Controller
         return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
     }
 
+    public function projectDownloadJSON ($id){
+        $project = Project::findOrFail($id);
+        $fileName = "Project-report-". time().".json";
+        $handle = fopen($fileName, 'w+');
+        fputs($handle, json_encode($project->report));
+        fclose($handle);
+        $headers = array('Content-type' => 'Analysis to json', 'Project analyzed' => $project->name);;
+        return response()->download($fileName,$fileName,$headers)->deleteFileAfterSend();
+
+    }
+
     public function downloadExcel($id)
     {
         $video = Video::findOrFail($id);

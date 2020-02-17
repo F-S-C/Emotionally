@@ -29,13 +29,13 @@ Route::name('system.')
                 Route::get('/', 'ProjectController@getProjectReport')->name('report-project');
                 Route::get('/HTML', 'ReportController@getProjectReportFile')->name('layout-file-project');
 
-//                Route::name('project.download-')
-//                    ->group(function () {
+               Route::name('project.download-')
+                   ->group(function () {
 //                        Route::get('/downloadPDF', '#')->name('pdf');
-//                        Route::get('/downloadJSON', '#')->name('json');
+                        Route::get('/downloadJSON', 'ReportController@projectDownloadJSON')->name('json');
 //                        Route::get('/downloadPPTX', '#')->name('pptx');
 //                        Route::get('/downloadExcel', '#')->name('excel');
-//                    });
+                   });
             });
 
         Route::prefix('/video/{id}')

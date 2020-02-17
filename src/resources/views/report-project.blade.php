@@ -48,7 +48,7 @@
             <button class="dropdown-item" id="report-pdf">Report in PDF</button>
             <a class="dropdown-item" href="{{route('system.layout-file-project', $project->id)}}" rel="noopener noreferrer"
                target="_blank">Report in HTML</a>
-            <a class="dropdown-item" href="#" rel="noopener noreferrer">Report
+            <a class="dropdown-item" href="{{route('system.project.download-json', $project->id)}}" rel="noopener noreferrer">Report
                 in JSON</a>
             <a class="dropdown-item" href="#" rel="noopener noreferrer">Report
                 in EXCEL</a>
