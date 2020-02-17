@@ -28,6 +28,7 @@ Route::name('system.')
         Route::prefix('/video/{id}')
             ->group(function () {
                 Route::get('/', 'VideoController@getVideoReport')->name('report-video');
+                Route::put('/edit/duration', 'VideoController@resetInterval')->name('edit-video-duration');
                     Route::get('/file', 'ReportController@getReportFile')->name('layout-file');
                 Route::name('download-')
                     ->group(function () {

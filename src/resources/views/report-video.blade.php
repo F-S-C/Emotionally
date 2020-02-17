@@ -27,15 +27,23 @@
 @section('inner-content')
 
     <div class="dropleft text-right mb-2 mx-3">
-        <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           Download
+        <button type="button" id="save-button" class="btn btn-md-text d-none">
+            Save
+        </button>
+        <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Download
         </button>
         <div class="dropdown-menu">
-                <button class="dropdown-item" id="report-pdf">Report in PDF</button>
-                <a class="dropdown-item" href="{{route('system.layout-file', $video->id)}}" rel="noopener noreferrer" target="_blank">Report in HTML</a>
-                <a class="dropdown-item" href="{{route('system.download-json', $video->id)}}"  rel="noopener noreferrer">Report in JSON</a>
-                <a class="dropdown-item" href="{{route('system.download-excel', $video->id)}}"  rel="noopener noreferrer">Report in EXCEL</a>
-                <a class="dropdown-item" href="{{route('system.download-pptx', $video->id)}}"  rel="noopener noreferrer">Report in PPTX</a>
+            <button class="dropdown-item" id="report-pdf">Report in PDF</button>
+            <a class="dropdown-item" href="{{route('system.layout-file', $video->id)}}" rel="noopener noreferrer"
+               target="_blank">Report in HTML</a>
+            <a class="dropdown-item" href="{{route('system.download-json', $video->id)}}" rel="noopener noreferrer">Report
+                in JSON</a>
+            <a class="dropdown-item" href="{{route('system.download-excel', $video->id)}}" rel="noopener noreferrer">Report
+                in EXCEL</a>
+            <a class="dropdown-item" href="{{route('system.download-pptx', $video->id)}}" rel="noopener noreferrer">Report
+                in PPTX</a>
         </div>
     </div>
 
@@ -53,7 +61,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Bar Chart</h3>
                     <div class="smaller-charts">
-                         <canvas id="bar"></canvas>
+                        <canvas id="bar"></canvas>
                     </div>
                 </div>
             </div>
@@ -88,15 +96,21 @@
 @endsection
 
 @section('scripts')
+
+    <script type="text/javascript" src="{{mix('/js/vendor/affdex.js')}}"></script>
+    <script type="text/javascript" src="{{mix('/js/emotion-analysis.js')}}"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
                 let averageReport = @json($video->average_report);
                 let fullReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($video->report));
+                let databaseReport = @json($video->report);
 
                 let radar = document.getElementById("radar").getContext("2d");
                 let line = document.getElementById("line").getContext("2d");
                 let bar = document.getElementById("bar").getContext("2d");
+                let saveButton = $("#save-button");
+
 
                 /**
                  * Create a new radar chart.
@@ -286,82 +300,13 @@
                  * Update the timeline on the graph by synchronizing it with the video.
                  */
                 let video = document.getElementById("video");
-                video.ontimeupdate = function () {
-                    lineChart.options = {
-                        scales: {
-                            xAxes: [{
-                                gridLines: {
-                                    color: 'rgba(255, 255, 255, 0.2)',
-                                    zeroLineColor: 'rgba(255, 255, 255, 0.5)'
-                                },
-                                ticks: {
-                                    fontColor: '#ccc'
-                                }
-                            }],
-                            yAxes: [{
-                                gridLines: {
-                                    color: 'rgba(255, 255, 255, 0.2)',
-                                    zeroLineColor: 'rgba(255, 255, 255, 0.5)'
-                                },
-                                ticks: {
-                                    fontColor: '#ccc'
-                                }
-                            }]
-                        },
-                        legend: {
-                            labels: {
-                                fontColor: '#ccc'
-                            }
-                        },
-                        maintainAspectRatio: false,
-                        plugins: {
-                            colorschemes: {
-                                scheme: 'brewer.SetOne3'
-                            },
-                            zoom: {
-                                pan: {
-                                    enabled: true,
-                                    mode: 'x',
-                                    rangeMin: {
-                                        // Format of min pan range depends on scale type
-                                        x: 0,
-                                        y: 0
-                                    },
-                                    rangeMax: {
-                                        // Format of max pan range depends on scale type
-                                        x: null,
-                                        y: null
-                                    }
-                                },
-                                zoom: {
-                                    enabled: true,
-                                    drag: true,
-                                    mode: 'xy',
-
-                                    rangeMin: {
-                                        // Format of min zoom range depends on scale type
-                                        x: null,
-                                        y: 0
-                                    },
-                                    rangeMax: {
-                                        // Format of max zoom range depends on scale type
-                                        x: null,
-                                        y: 1
-                                    },
-
-                                    // Speed of zoom via mouse wheel
-                                    // (percentage of zoom on a wheel event)
-                                    speed: 0.1
-                                }
-                            }
-                        },
-                        "verticalLine": [{
-                            "x": video.currentTime,
-                            "style": "rgba(255, 255, 0, 1)"
-                        }]
-                    };
+                video.addEventListener('timeupdate', () => {
+                    lineChart.options["verticalLine"] = [{
+                        "x": video.currentTime,
+                        "style": "rgba(255, 255, 0, 1)"
+                    }];
                     lineChart.update();
-                };
+                });
 
 
                 function timeStringToSeconds(hms) {
@@ -380,6 +325,7 @@
                 let duration = "{{$video->duration}}";
                 let end = "{{$video->end}}";
                 let start = "{{$video->start}}";
+                video.currentTime = timeStringToSeconds(start);
 
                 $("#slider-range").slider({
                     range: true,
@@ -387,7 +333,88 @@
                     max: timeStringToSeconds(duration),
                     values: [timeStringToSeconds(start), timeStringToSeconds(end)],
                     slide: function (event, ui) {
-                        $("#amount").val(secondsToTimeString(ui.values[0]) + " - " + secondsToTimeString(ui.values[1]));
+                        start = secondsToTimeString(ui.values[0]);
+                        end = secondsToTimeString(ui.values[1]);
+                        $("#amount").val(start + " - " + end);
+                        video.currentTime = ui.values[0];
+                        saveButton.removeClass('d-none');
+                    },
+                    stop: function () {
+                        EmotionAnalysis.analyzeVideo("{{$video->url}}", function (report) {
+                            databaseReport = JSON.parse(report);
+                            fullReport = EmotionAnalysis.getEmotionValues(databaseReport);
+                            averageReport = EmotionAnalysis.average(fullReport);
+                                lineChart.data = {
+                                    labels: fullReport.map((_, i) => i),
+                                    datasets: Object.keys(fullReport[0]).map((key, i) => {
+                                        return {
+                                            borderColor: colors[i],
+                                            pointBackgroundColor: colors[i],
+                                            pointBorderColor: colors[i],
+                                            label: key.charAt(0).toUpperCase() + key.slice(1),
+                                            data: fullReport.map(el => el[key]),
+                                            fill: false
+                                        };
+                                    })
+                                };
+                            lineChart.update();
+
+                            radar.data = {
+                                labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                                datasets: [
+                                    {
+                                        label: 'Emotions',
+                                        data: Object.keys(averageReport).map(el => averageReport[el]),
+                                        fill: true,
+                                        backgroundColor: 'rgba(255, 152, 0, 0.3)',
+                                        borderColor: 'rgba(255, 152, 0, 0.7)',
+                                        pointBackgroundColor: 'rgba(255, 152, 0, 1)',
+                                        pointBorderColor: 'rgba(255, 255, 255, 0.9)'
+                                    }
+                                ]
+                            };
+                            radar.update();
+
+                            bar.data={
+                                labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                                    datasets: [
+                                    {
+                                        label: 'Emotions',
+                                        data: Object.keys(averageReport).map(el => averageReport[el]),
+                                        fill: false,
+                                        barPercentage: 0.25,
+                                        backgroundColor: 'rgba(255, 152, 0, 1)',
+                                        hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
+                                    }
+                                ]
+                            };
+                            bar.update();
+                        });
+                    }
+                });
+                saveButton.click(function () {
+                    $.post({
+                        '_method': 'PUT',
+                        '_token': '{{csrf_token()}}',
+                        'start': start,
+                        'end': end,
+                        'report': databaseReport
+                    })
+                        .done(out => {
+                            if (out['done']) {
+                                saveButton.addClass('d-none');
+                            } else {
+
+                            }
+                        })
+                        .fail(() => {
+                            //ERRORE
+                        });
+                });
+                video.addEventListener('timeupdate', () => {
+                    if (video.currentTime >= timeStringToSeconds(end)) {
+                        video.pause();
+                        video.currentTime = timeStringToSeconds(start);
                     }
                 });
                 $("#amount").val(secondsToTimeString($("#slider-range").slider("values", 0)) + " - " + secondsToTimeString($("#slider-range").slider("values", 1)));

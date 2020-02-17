@@ -30,18 +30,18 @@ class VideoController extends Controller
     {
         $validator = \Validator::make($request->all(), [
             // TODO: Edit
-            'start_interval' => 'bail|required',
-            'end_interval' => 'required',
+            'start' => 'bail|required',
+            'end' => 'required',
+            'report' => 'required|json'
         ]);
         if ($validator->fails()) {
             return json_encode(array('done' => false, 'errors' => $validator->errors()->toArray()));
         }
 
         $video = Video::findOrFail($video_id);
-        $start_interval = $request->start_interval;
-        $end_interval = $request->end_interval;
-        $video->start = $start_interval;
-        $video->end = $end_interval;
+        $video->start = $request->start;
+        $video->end = $request->end;
+        $video->report = $request->report;
         $video->save();
         return json_encode(array('done' => true));
     }
