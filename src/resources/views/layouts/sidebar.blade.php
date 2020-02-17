@@ -65,13 +65,13 @@
                                role="button" aria-expanded="false" aria-controls="projects-container"></a>
                             <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                                 <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                                <span class="d-none d-md-inline">{{trans('sidebar.project')}}</span>
+                                <span class="d-none d-md-inline">{{trans('sidebar.projects')}}</span>
                             </a>
                         </div>
                     @else
                         <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                             <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                            <span class="d-none d-md-inline">{{trans('sidebar.project')}}</span>
+                            <span class="d-none d-md-inline">{{trans('sidebar.projects')}}</span>
                         </a>
                     @endif
                     <ul class="collapse el-3dp nav flex-column flex-nowrap" id="projects-container">
