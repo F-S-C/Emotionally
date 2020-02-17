@@ -283,12 +283,7 @@
                                 </div>
 
                                 <div id="realtime-body" class="card-body">
-                                    <p id="recording-text" class="text text-center text-danger" style="display:none">
-                                        Recording... <span class="fas fa-video"></span></p>
                                     <video id="vid1" class="video-js vjs-default-skin" width="400" height="250"></video>
-                                    <video id="vid2" width="400" height="250" controls></video>
-                                    <button id="btnStart" class="btn btn-outline-success">Start</button>
-                                    <button id="btnStop" class="btn btn-outline-danger">Stop</button>
                                     <button id="next-realtime" class="btn btn-primary float-right"
                                             disabled>{{ trans('dashboard.next') }}</button>
                                 </div>
@@ -428,10 +423,7 @@
 
                 $('#realtime-video-modal').on('hidden.bs.modal', function () {
                     stopStreamedVideo(document.querySelector('video'));
-                    $('#btnStart').show();
-                    $('#btnStop').hide();
                     $('#vid1').show();
-                    $('#vid2').hide();
                     $('#title-fps-menu').hide();
                     $('#realtime-body').show();
                     $('#realtime-submit-close').hide();
@@ -643,6 +635,7 @@
                                             .done(function (data) {
                                                 if (JSON.parse(data)['done']) {
                                                     alertComplete.show();
+                                                    location.reload();
                                                 } else {
                                                     alertNotComplete.show();
                                                 }
@@ -652,7 +645,7 @@
                                             })
                                             .always(function () {
                                                 container.hide();
-                                                form.show();
+                                                form.hide();
                                             });
                                     });
                                 });
@@ -671,19 +664,10 @@
                 });
 
                 //REALTIME VIDEO FUNCTIONS
-                let video1 = $('#vid1');
-                let video2 = $('#vid2');
-                let btnStop = $('#btnStop');
-                let btnStart = $('#btnStart');
                 let btnNext = $('#next-realtime');
-                let vidSave = document.getElementById('vid2');
-                let recordingText = $('#recording-text');
                 let btnUpload = $('#submit-realtime-video');
 
                 $('#realtime-video').on('click', function () {
-                    video2.hide();
-                    btnStop.hide();
-
                     let player = videojs('vid1', {
                         controls: true,
                         width: 400,

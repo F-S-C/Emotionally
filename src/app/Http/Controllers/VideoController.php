@@ -7,7 +7,6 @@ use Emotionally\User;
 use Emotionally\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use FFMpeg;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class VideoController extends Controller
@@ -91,7 +90,7 @@ class VideoController extends Controller
 
                 $video = new Video();
                 $video->name = pathinfo($to_upload->getClientOriginalName(), PATHINFO_FILENAME);
-//                $video->report = ""; //TODO: Integrare con affdex.js
+                $video->report = "";
                 $video->url = asset('user-content/' . $filename);
                 $video->project_id = $request->input('project_id');
                 $video->user_id = auth()->user()->id;
