@@ -38,6 +38,13 @@
             caret-color: white;
         }
     </style>
+    <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet"/>
+    <link href="{{asset('css/vendor/videojs.record.min.css')}}" rel="stylesheet"/>
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 @endsection
 
 @section('body')
@@ -274,7 +281,7 @@
                                 <div id="realtime-body" class="card-body">
                                     <p id="recording-text" class="text text-center text-danger" style="display:none">
                                         Recording... <span class="fas fa-video"></span></p>
-                                    <video id="vid1" width="400" height="250"></video>
+                                    <video id="vid1" class="video-js vjs-default-skin" width="400" height="250"></video>
                                     <video id="vid2" width="400" height="250" controls></video>
                                     <button id="btnStart" class="btn btn-outline-success">Start</button>
                                     <button id="btnStop" class="btn btn-outline-danger">Stop</button>
@@ -316,6 +323,7 @@
                                                style="color: white;" disabled>
                                     </div>
                                 </form>
+                                append
 
                                 <div id="realtime-progress-container" style="display: none;">
                                     <div class="progress">
@@ -324,7 +332,8 @@
                                              role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
                                              style="width: 0%"></div>
                                     </div>
-                                    <p class="text-center"> {{trans('dashboard.uploading')}}
+                                    <p id="uploading-realtime-text-container"
+                                       class="text-center"> {{trans('dashboard.uploading')}}
                                         <span id="realtime-upload-text"></span>
                                     </p>
                                 </div>
@@ -392,6 +401,9 @@
 @section('footer-class', 'fixed-bottom')
 
 @section('scripts')
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="https://vjs.zencdn.net/7.6.6/video.js"></script>
+    <script src="{{asset('js/vendor/videojs.record.min.js')}}"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
@@ -474,7 +486,7 @@
                             let ans = JSON.parse(data);
                             if (ans['result']) {
                                 bar.width('100%');
-                                $('#uploading-text-container').text('@lang('dashboard.analyzing')');
+                                $('#uploading-realtime-text-container').text('@lang('dashboard.analyzing')');
                                 ans['files'].forEach(file => {
                                     EmotionAnalysis.analyzeVideo(file['url'], function (report) {
                                         $.post("{{route('system.video.report.set')}}", {
@@ -560,6 +572,7 @@
                     });
                 });
 
+                let VIDEO_DATA;
                 $('#realtimevideo-form').on('submit', function (event) {
                     event.preventDefault();
                     btnUpload.prop('disabled', true);
@@ -582,10 +595,13 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
+                    let formData = new FormData(this);
+                    formData.set('video', VIDEO_DATA);
+                    formData.set('_token', '{{csrf_token()}}');
                     $.ajax({
                         url: this.action,
                         type: this.method,
-                        data: new FormData(this),
+                        data: formData,
                         processData: false,
                         contentType: false,
                         cache: false,
@@ -593,7 +609,7 @@
                             let xhr = new window.XMLHttpRequest();
                             xhr.upload.addEventListener("progress", function (evt) {
                                 if (evt.lengthComputable) {
-                                    let percentComplete = parseInt((evt.loaded / evt.total) * 100);
+                                    let percentComplete = Math.floor((evt.loaded / evt.total) * 100);
                                     bar.attr('aria-valuenow', percentComplete);
                                     bar.width(percentComplete + '%');
                                     text.text(percentComplete + "%");
@@ -645,8 +661,8 @@
                 });
 
                 //REALTIME VIDEO FUNCTIONS
-                let constraintObj = {
-                    audio: false,
+                const constraintObj = {
+                    audio: true,
                     video: {
                         facingMode: "user",
                         width: {min: 200, ideal: 400, max: 500},
@@ -671,67 +687,117 @@
                     //handle older browsers that might implement getUserMedia in some way
                     checkOlderBrowsers();
 
-                    navigator.mediaDevices.getUserMedia(constraintObj)
-                        .then(function (mediaStreamObj) {
-                            //connect the media stream to the first video element
-                            let video = document.querySelector('video');
-                            if ("srcObject" in video) {
-                                video.srcObject = mediaStreamObj;
-                            } else {
-                                //old version
-                                video.src = window.URL.createObjectURL(mediaStreamObj);
+                    let player = videojs('vid1', {
+                        controls: true,
+                        width: 400,
+                        height: 250,
+                        fluid: false,
+                        plugins: {
+                            record: {
+                                debug: true,
+                                audio: false,
+                                video: true,
                             }
+                        }
+                    }, function () {
+                        videojs.log(
+                            'Using video.js', videojs.VERSION,
+                            'with videojs-record', videojs.getPluginVersion('record'),
+                            'and recordrtc', RecordRTC.version
+                        );
+                    });
 
-                            //When the video metadata loads, play the realtime webcam in 'video'
-                            video.onloadedmetadata = function (ev) {
-                                //show in the video element what is being captured by the webcam
-                                video.play();
-                            };
+                    // error handling for getUserMedia
+                    player.on('deviceError', function () {
+                        console.log('device error:', player.deviceErrorCode);
+                    });
 
-                            let mediaRecorder = new MediaRecorder(mediaStreamObj, {mimeType: 'video/webm; codecs=vp9'});
-                            let chunks = [];
+                    // Handle error events of the video player
+                    player.on('error', function (error) {
+                        console.log('error:', error);
+                    });
 
-                            //Start registration
-                            start.addEventListener('click', (ev) => {
-                                btnStart.hide();
-                                btnStop.show();
-                                video1.show();
-                                video2.hide();
-                                btnNext.prop('disabled', true);
-                                recordingText.fadeIn();
-                                mediaRecorder.start();
-                            });
+                    // user clicked the record button and started recording !
+                    player.on('startRecord', function () {
+                        console.log('started recording! Do whatever you need to');
+                    });
 
-                            //Stop registration
-                            stop.addEventListener('click', (ev) => {
-                                btnStart.show();
-                                btnStop.hide();
-                                video1.hide();
-                                video2.show();
-                                recordingText.fadeOut();
-                                btnNext.text('{{ trans('dashboard.loading') }}');
-                                mediaRecorder.stop();
-                            });
-                            mediaRecorder.ondataavailable = function (ev) {
-                                chunks.push(ev.data);
-                            };
-                            //Registration stopped
-                            mediaRecorder.onstop = (ev) => {
-                                let blob = new Blob(chunks, {'type': 'video/webm;'});
-                                chunks = [];
-                                vidSave.src = window.URL.createObjectURL(blob);
-                                videoDuration();
-                                //Conversion to base64 and set the hidden input
-                                let b64reader = new FileReader();
-                                b64reader.addEventListener('load', function () {
-                                    $('#realtimevideo-file').val(b64reader.result);
-                                });
-                                b64reader.readAsDataURL(blob);
-                            }
-                        })
-                        .catch(function (err) {
-                            console.log(err.name, err.message);
-                        });
+                    // user completed recording and stream is available
+                    // Upload the Blob to your server or download it locally !
+                    player.on('finishRecord', function () {
+
+                        // the blob object contains the recorded data that
+                        // can be downloaded by the user, stored on server etc.
+                        var videoBlob = player.recordedData;
+
+                        console.log('finished recording: ', player.recordedData);
+                        btnNext.prop('disabled', false);
+                        btnNext.text('{{ trans('dashboard.next') }}');
+
+                        VIDEO_DATA = player.recordedData;
+                    });
+
+                    {{--navigator.mediaDevices.getUserMedia(constraintObj)--}}
+                    {{--    .then(function (mediaStreamObj) {--}}
+                    {{--        //connect the media stream to the first video element--}}
+                    {{--        let video = document.querySelector('video');--}}
+                    {{--        if ("srcObject" in video) {--}}
+                    {{--            video.srcObject = mediaStreamObj;--}}
+                    {{--        } else {--}}
+                    {{--            //old version--}}
+                    {{--            video.src = window.URL.createObjectURL(mediaStreamObj);--}}
+                    {{--        }--}}
+
+                    {{--        //When the video metadata loads, play the realtime webcam in 'video'--}}
+                    {{--        video.onloadedmetadata = function (ev) {--}}
+                    {{--            //show in the video element what is being captured by the webcam--}}
+                    {{--            video.play();--}}
+                    {{--        };--}}
+
+                    {{--        let mediaRecorder = new MediaRecorder(mediaStreamObj, {mimeType: 'video/webm\;codecs=vp8'});--}}
+                    {{--        let chunks = [];--}}
+
+                    {{--        //Start registration--}}
+                    {{--        start.addEventListener('click', (ev) => {--}}
+                    {{--            btnStart.hide();--}}
+                    {{--            btnStop.show();--}}
+                    {{--            video1.show();--}}
+                    {{--            video2.hide();--}}
+                    {{--            btnNext.prop('disabled', true);--}}
+                    {{--            recordingText.fadeIn();--}}
+                    {{--            mediaRecorder.start();--}}
+                    {{--        });--}}
+
+                    {{--        //Stop registration--}}
+                    {{--        stop.addEventListener('click', (ev) => {--}}
+                    {{--            btnStart.show();--}}
+                    {{--            btnStop.hide();--}}
+                    {{--            video1.hide();--}}
+                    {{--            video2.show();--}}
+                    {{--            recordingText.fadeOut();--}}
+                    {{--            btnNext.text('{{ trans('dashboard.loading') }}');--}}
+                    {{--            mediaRecorder.stop();--}}
+                    {{--        });--}}
+                    {{--        mediaRecorder.ondataavailable = function (ev) {--}}
+                    {{--            chunks.push(ev.data);--}}
+                    {{--        };--}}
+                    {{--        //Registration stopped--}}
+                    {{--        mediaRecorder.onstop = (ev) => {--}}
+                    {{--            let blob = new Blob(chunks, {'type': 'video/webm\;codecs=vp8'});--}}
+                    {{--            chunks = [];--}}
+                    {{--            vidSave.src = window.URL.createObjectURL(blob);--}}
+                    {{--            videoDuration();--}}
+                    {{--            //Conversion to base64 and set the hidden input--}}
+                    {{--            let b64reader = new FileReader();--}}
+                    {{--            b64reader.addEventListener('load', function () {--}}
+                    {{--                $('#realtimevideo-file').val(b64reader.result);--}}
+                    {{--            });--}}
+                    {{--            b64reader.readAsDataURL(blob);--}}
+                    {{--        }--}}
+                    {{--    })--}}
+                    {{--    .catch(function (err) {--}}
+                    {{--        console.log(err.name, err.message);--}}
+                    {{--    });--}}
                 });
 
                 function toTime(duration) {
@@ -805,7 +871,7 @@
                     btnUpload.show();
                     $('#realtime-submit-close').show();
                     $('#title-fps-menu').show();
-                    stopStreamedVideo(document.querySelector('video'));
+                    // stopStreamedVideo(document.querySelector('video'));
                 });
 
                 $('#framerate-realtime').on('input', function () {

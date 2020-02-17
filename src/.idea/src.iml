@@ -108,5 +108,10 @@
     <orderEntry type="library" name="jquery.dataTables" level="application" />
     <orderEntry type="library" name="datatables" level="application" />
     <orderEntry type="library" name="affdex" level="application" />
+    <orderEntry type="library" name="video-js" level="application" />
+    <orderEntry type="library" name="videojs-ie8" level="application" />
+    <orderEntry type="library" name="RecordRTC" level="application" />
+    <orderEntry type="library" name="adapter-latest" level="application" />
+    <orderEntry type="library" name="video" level="application" />
   </component>
 </module>

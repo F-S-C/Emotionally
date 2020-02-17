@@ -125,6 +125,9 @@ class VideoController extends Controller
                 $file_dir = $target_dir . $filename;
                 file_put_contents($file_dir . '.webm', $decoded_file);
 
+                $out = new ConsoleOutput();
+
+
                 //$ffmpeg = FFMpeg\FFMpeg::create();
                 //$to_convert = $ffmpeg->open($file_dir . '.webm');
                 //(new ConsoleOutput)->writeln('Aperto');
@@ -137,6 +140,7 @@ class VideoController extends Controller
                 $video->name = $request->input('title');
                 $video->user_id = auth()->user()->id;
                 $video->start = '00:00:00';
+                $out->writeln($file_dir);
                 $video->url = asset($file_dir . '.webm');
                 $video->duration = $request->input('duration');
                 $video->end = $video->duration;
