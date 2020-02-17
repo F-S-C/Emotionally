@@ -100,7 +100,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content el-16dp">
                 <div class="modal-body">
-                    <div class="d-flex align-items-center">
+                    <div class="container d-flex align-items-center">
                         <strong>Loading...</strong>
                         <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
                     </div>
@@ -111,39 +111,45 @@
 
 
     <div class="container-fluid">
-        <div class="card-deck">
-            <div class="card el-0dp">
-                <div class="card-body">
-                    <h3 class="card-title">Spider Chart</h3>
-                    <div class="smaller-charts">
-                        <canvas id="radar"></canvas>
+        <div class="row row-cols-1 row-cols-lg-3">
+            <div class="col mb-4">
+                <div class="card el-0dp">
+                    <div class="card-body">
+                        <h3 class="card-title">Spider Chart</h3>
+                        <div class="smaller-charts">
+                            <canvas id="radar"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card el-0dp">
-                <div class="card-body">
-                    <h3 class="card-title">Bar Chart</h3>
-                    <div class="smaller-charts">
-                        <canvas id="bar"></canvas>
+            <div class="col mb-4">
+                <div class="card el-0dp">
+                    <div class="card-body">
+                        <h3 class="card-title">Bar Chart</h3>
+                        <div class="smaller-charts">
+                            <canvas id="bar"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card el-0dp">
-                <div class="card-body">
-                    <h3 class="card-title">Video</h3>
-                    @if(!empty($video->url))
-                        <video id="video" controls preload="auto" style="max-width: 100%;">
-                            <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
-                        </video>
-                        <p>
-                            <label for="amount" style="color: #FF9800;">Time range:</label>
-                            <input type="text" id="amount" readonly
-                                   style="border:none; background-color: transparent; color: #FF9800; font-weight:bold;">
-                        </p>
+            <div class="col mb-4">
+                <div class="card el-0dp">
+                    <div class="card-body">
+                        <h3 class="card-title">Video</h3>
+                        @if(!empty($video->url))
+                            <video id="video" controls preload="auto" style="max-width: 100%;">
+                                <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
+                            </video>
+                            <p>
+                                <label for="amount" style="color: #FF9800;">Time range:</label>
+                                <input type="text" id="amount" readonly
+                                       style="border:none; background-color: transparent; color: #FF9800; font-weight:bold;">
+                            </p>
 
-                        <div id="slider-range" class="ui-slider-range"></div>
+                            <div id="slider-range" class="ui-slider-range"></div>
 
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

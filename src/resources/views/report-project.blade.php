@@ -46,9 +46,11 @@
         </button>
         <div class="dropdown-menu">
             <button class="dropdown-item" id="report-pdf">Report in PDF</button>
-            <a class="dropdown-item" href="{{route('system.layout-file-project', $project->id)}}" rel="noopener noreferrer"
+            <a class="dropdown-item" href="{{route('system.layout-file-project', $project->id)}}"
+               rel="noopener noreferrer"
                target="_blank">Report in HTML</a>
-            <a class="dropdown-item" href="{{route('system.project.download-json', $project->id)}}" rel="noopener noreferrer">Report
+            <a class="dropdown-item" href="{{route('system.project.download-json', $project->id)}}"
+               rel="noopener noreferrer">Report
                 in JSON</a>
             <a class="dropdown-item" href="#" rel="noopener noreferrer">Report
                 in EXCEL</a>
@@ -57,53 +59,59 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="card-deck">
-            <div class="card el-0dp">
-                <div class="card-body">
-                    <h3 class="card-title">Spider Chart</h3>
-                    <div class="smaller-charts">
-                        <canvas id="radar"></canvas>
+        <div class="row row-cols-1 row-cols-lg-3">
+            <div class="col mb-4">
+                <div class="card el-0dp">
+                    <div class="card-body">
+                        <h3 class="card-title">Spider Chart</h3>
+                        <div class="smaller-charts">
+                            <canvas id="radar"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card el-0dp">
-                <div class="card-body">
-                    <h3 class="card-title">Bar Chart</h3>
-                    <div class="smaller-charts">
-                        <canvas id="bar"></canvas>
+            <div class="col mb-4">
+                <div class="card el-0dp">
+                    <div class="card-body">
+                        <h3 class="card-title">Bar Chart</h3>
+                        <div class="smaller-charts">
+                            <canvas id="bar"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card el-0dp">
-                <div class="card-body">
-                    <h3 class="card-title">Most frequent emotion</h3>
-                    <img alt="emoji: {{$project->average_emotion}}" class="mx-auto d-block mt-5 mb-1 emj"
-                         src="
+            <div class="col mb-4">
+                <div class="card el-0dp">
+                    <div class="card-body">
+                        <h3 class="card-title">Most frequent emotion</h3>
+                        <img alt="emoji: {{$project->average_emotion}}" class="mx-auto d-block mt-5 mb-1 emj"
+                             src="
                 @switch($project->getAverageEmotionAttribute())
-                         @case('joy')
-                         {{ asset('images/emotions/joy.png') }}
-                         @break
-                         @case('sadness')
-                         {{ asset('images/emotions/sadness.png') }}
-                         @break
-                         @case('anger')
-                         {{ asset('images/emotions/anger.png') }}
-                         @break
-                         @case('contempt')
-                         {{ asset('images/emotions/contempt.png') }}
-                         @break
-                         @case('disgust')
-                         {{ asset('images/emotions/disgust.png') }}
-                         @break
-                         @case('fear')
-                         {{ asset('images/emotions/fear.png') }}
-                         @break
-                         @case('surprise')
-                         {{ asset('images/emotions/surprise.png') }}
-                         @break
-                         @default
-                         @endswitch">
-                    <p class="h2 text-center text-capitalize">{{ $project->average_emotion }}</p>
+                             @case('joy')
+                             {{ asset('images/emotions/joy.png') }}
+                             @break
+                             @case('sadness')
+                             {{ asset('images/emotions/sadness.png') }}
+                             @break
+                             @case('anger')
+                             {{ asset('images/emotions/anger.png') }}
+                             @break
+                             @case('contempt')
+                             {{ asset('images/emotions/contempt.png') }}
+                             @break
+                             @case('disgust')
+                             {{ asset('images/emotions/disgust.png') }}
+                             @break
+                             @case('fear')
+                             {{ asset('images/emotions/fear.png') }}
+                             @break
+                             @case('surprise')
+                             {{ asset('images/emotions/surprise.png') }}
+                             @break
+                             @default
+                             @endswitch">
+                        <p class="h2 text-center text-capitalize">{{ $project->average_emotion }}</p>
+                    </div>
                 </div>
             </div>
         </div>
