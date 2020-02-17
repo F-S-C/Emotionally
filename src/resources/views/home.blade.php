@@ -42,7 +42,7 @@
                                aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
                         </td>
                         <td>
-                            @include('shared.dropdown-options-menu', ['id'=>'more-project-'.$project->id,'title'=>trans('dashboard.more_options')])
+                            @include('shared.dropdown-options-menu', ['id'=>'more-project-'.$project->id,'title'=>trans('dashboard.more_options'), 'item_id'=>$project->id, 'named' => 'cacca'])
                         </td>
                     </tr>
                 @endforeach

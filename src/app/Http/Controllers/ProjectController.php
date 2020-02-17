@@ -68,39 +68,34 @@ class ProjectController extends Controller
      * @param Project $project The project
      * @param string $name The new name of the project.
      */
-    public function renameProject(Project $project,string $name):void
+    public function renameProject(Request $request): void
     {
-        $project->name=$name;
+        $name = $request->input('project_name','cacca');
+        $project=Project::findOrFail($request->input('project_rename_id'));
+        $project->name = $name;
         $project->save();
-
     }
 
     /**
      * This public function allow to delete the project.
      * @param Project $project The project
      */
-    public function deleteProject(Project $project):void
+    public function deleteProject(int $id)
     {
-        try {
-            $videosProject=$project->videos();
-            foreach ($videosProject as $video) {
-                unlink(storage_path('storage/app/public/userContent/' . basename($video->url)));
-            }
-            $project->forceDelete();
-        } catch (\Exception $e) {
-        }
+        $project = Project::findOrFail($id);
+        $project->delete();
+        return redirect(route('system.home'));
     }
 
     /**
      *
      * @param Project $project
      */
-    public function moveProject(Project $project):void
+    public function moveProject(Project $project): void
     {
-        $project->father_id=null;
+        $project->father_id = null;
         $project->save();
     }
-
 
 
 }

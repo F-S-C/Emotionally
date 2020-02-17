@@ -30,5 +30,8 @@ return [
     "more" => "More",
     "go_to_project_report" => "Go to report page of project ':name'",
     "report" => "Report",
-    "more_options" => "More options"
+    "more_options" => "More options",
+    "success"=> "Success",
+    "changing"=> "Changing...",
+    "error"=> "Error",
 ];

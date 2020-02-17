@@ -30,5 +30,8 @@ return [
     "more" => "Altro",
     "go_to_project_report" => "Vai alla pagina del report del progetto ':name'",
     "report" => "Report",
-    "more_options" => "Altre opzioni"
+    "more_options" => "Altre opzioni",
+    "success"=> "Successo",
+    "changing"=> "In corso...",
+    "error"=> "Errore",
 ];

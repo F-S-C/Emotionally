@@ -23,6 +23,9 @@ Route::name('system.')
     ->group(function () {
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
+        Route::get('/project/{id}/delete', 'ProjectController@deleteProject')->name('delete-project');
+        Route::any('/project/rename', 'ProjectController@renameProject')->name('rename-project');
+
 
         Route::middleware('permissions:read')
             ->group(function () {
