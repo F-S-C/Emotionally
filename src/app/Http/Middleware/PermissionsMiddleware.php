@@ -18,15 +18,18 @@ class PermissionsMiddleware
      */
     public function handle($request, Closure $next, $permission_required)
     {
-        $has_permission = $request->user()
-            ->permissions()
-            ->where('id', $request->route()->parameters()['id'])
-            ->wherePivot($permission_required, true)
-            ->get()
-            ->isNotEmpty();
+        $is_admin = $request->user()->projects->contains('id', $request->route()->parameters()['id']);
+        if (!$is_admin) {
+            $has_permission = $request->user()
+                ->permissions()
+                ->where('id', $request->route()->parameters()['id'])
+                ->wherePivot($permission_required, true)
+                ->get()
+                ->isNotEmpty();
 
-        if (!$has_permission) {
-            return abort(403);
+            if (!$has_permission) {
+                return abort(403);
+            }
         }
 
         return $next($request);

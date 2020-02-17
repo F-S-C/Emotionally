@@ -50,6 +50,11 @@ class EmotionAnalysis {
      * @property {number} [stop_sec=undefined] Where to stop (in seconds). If
      * undefined or less or equal to secs, the entire video will be analyzed.
      * @property {FaceMode} [faceMode=FaceMode.LARGE_FACES] The type of faces in the video.
+     * @property {Object} detect
+     * @property {boolean} detect.emotions Should it detect emotions?
+     * @property {boolean} detect.expressions Should it detect expressions?
+     * @property {boolean} detect.emojis Should it detect emojis?
+     * @property {boolean} detect.appearance Should it detect appearance?
      * @return {Configuration} The default configuration
      */
     static getDefaultConfiguration() {
@@ -58,6 +63,12 @@ class EmotionAnalysis {
             sec_step: 0.1,
             stop_sec: undefined,
             faceMode: EmotionAnalysis.FaceMode.LARGE_FACES,
+            detect: {
+                emotions: true,
+                expressions: true,
+                emojis: true,
+                appearance: true
+            }
         };
     }
 
@@ -93,8 +104,10 @@ class EmotionAnalysis {
         const detector = new affdex.FrameDetector(faceMode);
 
         // Initialize Emotion and Expression detectors
-        detector.detectAllEmotions();
-        detector.detectAllExpressions();
+        if (options.detect.emotions) detector.detectAllEmotions();
+        if (options.detect.expressions) detector.detectAllExpressions();
+        if (options.detect.emojis) detector.detectAllEmojis();
+        if (options.detect.appearance) detector.detectAllAppearance();
 
         // Init variable to save results
         let detection_results = []; // for logging all detection results.
@@ -166,7 +179,7 @@ class EmotionAnalysis {
                 // Append timestamp
                 faces[0].emotions[time_key] = time_val;
                 // Save both emotions and expressions
-                const json = JSON.stringify(Object.assign({}, faces[0].emotions, faces[0].expressions));
+                const json = Object.assign({}, faces[0].emotions, faces[0].expressions);
                 detection_results.push(json);
             } else {
                 // If face is not detected skip entry.
@@ -223,10 +236,10 @@ class EmotionAnalysis {
         let detection_results = [];
 
         //Enable detection of all Expressions, Emotions and Emojis classifiers.
-        detector.detectAllEmotions();
-        detector.detectAllExpressions();
-        detector.detectAllEmojis();
-        detector.detectAllAppearance();
+        if (options.detect.emotions) detector.detectAllEmotions();
+        if (options.detect.expressions) detector.detectAllExpressions();
+        if (options.detect.emojis) detector.detectAllEmojis();
+        if (options.detect.appearance) detector.detectAllAppearance();
 
         //Add a callback to notify when the detector is initialized and ready for runing.
         detector.addEventListener("onInitializeSuccess", function () {
@@ -292,7 +305,7 @@ class EmotionAnalysis {
             log('#results', "Number of faces found: " + faces.length);
             if (faces.length > 0) {
                 // detection_results = faces[0];
-                let json = JSON.stringify(Object.assign({}, faces[0].emotions, faces[0].expressions));
+                let json = Object.assign({}, faces[0].emotions, faces[0].expressions);
                 // log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
                 // log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function (key, val) {
                 //     return val.toFixed ? Number(val.toFixed(0)) : val;

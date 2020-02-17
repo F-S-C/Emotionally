@@ -7,7 +7,7 @@ _ide_helper*.php
 /public/js/app.js
 /public/js/emotion-analysis.js
 /public/js/vendor/affdex.js
-/public/css/app.scss
+/public/css/app.css
 
 ### Laravel ###
 
