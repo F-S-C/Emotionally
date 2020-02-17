@@ -672,16 +672,6 @@
                 });
 
                 //REALTIME VIDEO FUNCTIONS
-                const constraintObj = {
-                    audio: true,
-                    video: {
-                        facingMode: "user",
-                        width: {min: 200, ideal: 400, max: 500},
-                        height: {min: 100, ideal: 250, max: 300}
-                    }
-                };
-                let start = document.getElementById('btnStart');
-                let stop = document.getElementById('btnStop');
                 let video1 = $('#vid1');
                 let video2 = $('#vid2');
                 let btnStop = $('#btnStop');
@@ -694,9 +684,6 @@
                 $('#realtime-video').on('click', function () {
                     video2.hide();
                     btnStop.hide();
-
-                    //handle older browsers that might implement getUserMedia in some way
-                    checkOlderBrowsers();
 
                     let player = videojs('vid1', {
                         controls: true,
@@ -747,99 +734,7 @@
                         VIDEO_DATA = player.convertedData;
                         DURATION = player.duration;
                     });
-
-                    {{--navigator.mediaDevices.getUserMedia(constraintObj)--}}
-                    {{--    .then(function (mediaStreamObj) {--}}
-                    {{--        //connect the media stream to the first video element--}}
-                    {{--        let video = document.querySelector('video');--}}
-                    {{--        if ("srcObject" in video) {--}}
-                    {{--            video.srcObject = mediaStreamObj;--}}
-                    {{--        } else {--}}
-                    {{--            //old version--}}
-                    {{--            video.src = window.URL.createObjectURL(mediaStreamObj);--}}
-                    {{--        }--}}
-
-                    {{--        //When the video metadata loads, play the realtime webcam in 'video'--}}
-                    {{--        video.onloadedmetadata = function (ev) {--}}
-                    {{--            //show in the video element what is being captured by the webcam--}}
-                    {{--            video.play();--}}
-                    {{--        };--}}
-
-                    {{--        let mediaRecorder = new MediaRecorder(mediaStreamObj, {mimeType: 'video/webm\;codecs=vp8'});--}}
-                    {{--        let chunks = [];--}}
-
-                    {{--        //Start registration--}}
-                    {{--        start.addEventListener('click', (ev) => {--}}
-                    {{--            btnStart.hide();--}}
-                    {{--            btnStop.show();--}}
-                    {{--            video1.show();--}}
-                    {{--            video2.hide();--}}
-                    {{--            btnNext.prop('disabled', true);--}}
-                    {{--            recordingText.fadeIn();--}}
-                    {{--            mediaRecorder.start();--}}
-                    {{--        });--}}
-
-                    {{--        //Stop registration--}}
-                    {{--        stop.addEventListener('click', (ev) => {--}}
-                    {{--            btnStart.show();--}}
-                    {{--            btnStop.hide();--}}
-                    {{--            video1.hide();--}}
-                    {{--            video2.show();--}}
-                    {{--            recordingText.fadeOut();--}}
-                    {{--            btnNext.text('{{ trans('dashboard.loading') }}');--}}
-                    {{--            mediaRecorder.stop();--}}
-                    {{--        });--}}
-                    {{--        mediaRecorder.ondataavailable = function (ev) {--}}
-                    {{--            chunks.push(ev.data);--}}
-                    {{--        };--}}
-                    {{--        //Registration stopped--}}
-                    {{--        mediaRecorder.onstop = (ev) => {--}}
-                    {{--            let blob = new Blob(chunks, {'type': 'video/webm\;codecs=vp8'});--}}
-                    {{--            chunks = [];--}}
-                    {{--            vidSave.src = window.URL.createObjectURL(blob);--}}
-                    {{--            videoDuration();--}}
-                    {{--            //Conversion to base64 and set the hidden input--}}
-                    {{--            let b64reader = new FileReader();--}}
-                    {{--            b64reader.addEventListener('load', function () {--}}
-                    {{--                $('#realtimevideo-file').val(b64reader.result);--}}
-                    {{--            });--}}
-                    {{--            b64reader.readAsDataURL(blob);--}}
-                    {{--        }--}}
-                    {{--    })--}}
-                    {{--    .catch(function (err) {--}}
-                    {{--        console.log(err.name, err.message);--}}
-                    {{--    });--}}
                 });
-
-                function toTime(duration) {
-                    var sec_num = parseInt(duration, 10);
-                    var hours = Math.floor(sec_num / 3600);
-                    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-                    var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-                    if (hours < 10) {
-                        hours = "0" + hours;
-                    }
-                    if (minutes < 10) {
-                        minutes = "0" + minutes;
-                    }
-                    if (seconds < 10) {
-                        seconds = "0" + seconds;
-                    }
-                    return hours + ':' + minutes + ':' + seconds;
-                }
-
-                async function videoDuration() {
-                    while (vidSave.duration === Infinity || isNaN(vidSave.duration)) {
-                        await new Promise(r => setTimeout(r, 1000));
-                        vidSave.currentTime = 10000000 * Math.random();
-                    }
-                    document.getElementById('duration').setAttribute('value', toTime(vidSave.duration));
-                    btnNext.prop('disabled', false);
-                    btnNext.text('{{ trans('dashboard.next') }}');
-                    vidSave.play();
-                }
-
                 function stopStreamedVideo(videoElem) {
                     const stream = videoElem.srcObject;
                     const tracks = stream.getTracks();
@@ -850,33 +745,6 @@
 
                     videoElem.srcObject = null;
                 }
-
-                function checkOlderBrowsers() {
-                    if (navigator.mediaDevices === undefined) {
-                        navigator.mediaDevices = {};
-                        navigator.mediaDevices.getUserMedia = function (constraintObj) {
-                            let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-                            if (!getUserMedia) {
-                                return Promise.reject(new Error("{{trans('dashboard.media-error')}}"));
-                            }
-                            return new Promise(function (resolve, reject) {
-                                getUserMedia.call(navigator, constraintObj, resolve, reject);
-                            });
-                        }
-                    } else {
-                        navigator.mediaDevices.enumerateDevices()
-                            .then(devices => {
-                                devices.forEach(device => {
-                                    console.log(device.kind.toUpperCase(), device.label);
-                                    //, device.deviceId
-                                })
-                            })
-                            .catch(err => {
-                                console.log(err.name, err.message);
-                            })
-                    }
-                }
-
                 $('#next-realtime').on('click', function () {
                     $('#realtime-body').hide();
                     btnUpload.show();
