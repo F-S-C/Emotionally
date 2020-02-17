@@ -1,3 +1,20 @@
+<style>
+    .input-color {
+        background-color: #232323 !important;
+        color: white !important;
+    }
+
+    .modal-close {
+        color: white !important;
+        background-color: transparent;
+        border: none;
+    }
+
+    .modal-close:hover {
+        color: rgba(255, 255, 255, 0.5) !important;
+    }
+</style>
+
 <!-- Modal rinomina progetto -->
 <div class="modal fade" id="rename-project-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
