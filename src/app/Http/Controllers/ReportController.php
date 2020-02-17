@@ -68,7 +68,7 @@ class ReportController extends Controller
         self::ANGER_KEY => '&#x1F621;',
         self::FEAR_KEY => '&#x1F628;',
         self::SURPRISE_KEY => '&#x1F62E;',
-        self::__NO_REPORT__ => '&times;'
+        self::__NO_REPORT__ => '&#x2205;'
     ];
 
     public static function get_emoji($emotion)
