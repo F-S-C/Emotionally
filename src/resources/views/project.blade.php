@@ -32,7 +32,11 @@
             <img style="height: 40vh" class="mb-3" aria-hidden="true"
                  src="{{asset('/images/undraw_sentiment_analysis.svg')}}"
                  alt="@lang('project-details.short-empty-project')">
-            <p>@lang('project-details.empty-project')</p>
+            <p>@lang('project-details.empty-project')
+                @if($project->father_id == "")
+                    @lang('project-details.add-project') @lang('project-details.or')
+                @endif
+                @lang('project-details.upload-video')</p>
         </div>
     @else
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
@@ -48,11 +52,23 @@
     <script>
         (function ($) {
             $(document).ready(function () {
-                $('.project-detail-card').on('click', function (event) {
+                $('.project-detail-card').click(function (event) {
                     //prevent execution from bubbling
                     if (event.target === this) {
                         window.location = $(this).data('href');
                     }
+                });
+
+                $('#add-sub-proj').click(function () {
+                    $('#create-project-modal').modal('show');
+                });
+
+                $('#upload-som').click(function () {
+                    let dropdown = $('.dropdown-menu');
+                    if (dropdown.hasClass('show'))
+                        dropdown.removeClass('show');
+                    else
+                        dropdown.addClass('show');
                 });
 
                 //SCRIPT DROPDOWN
@@ -133,7 +149,6 @@
                             console.log(data);
                         }
                     });
-                });
             });
         })(jQuery);
     </script>

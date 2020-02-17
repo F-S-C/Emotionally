@@ -22,5 +22,8 @@ return [
     "more_options_project" => "More options (project: ':name')",
     "more_options_video" => "More options (video: ':name')",
     "short-empty-project" => "Empty project",
-    "empty-project" => "This project is empty. Why don't you <a href='#'>add a sub project</a> or <a href='#'>upload something</a>?"
+    "empty-project" => "This project is empty. Why don't you ",
+    "add-project" => "<button class='btn btn-link' id='add-sub-proj'>add a sub project</button>",
+    "upload-video" => "<button class='btn btn-link' id='upload-som'>upload something</button>?",
+    "or" => "or",
 ];
