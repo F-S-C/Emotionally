@@ -37,6 +37,7 @@ return [
     "choose_file" => "Choose file",
     "duration" => "Duration",
     "start" => "Start",
+    "stop" => "Stop",
     "end" => "End",
     "project" => "Project",
     "upload_successful" => "Upload successful!",

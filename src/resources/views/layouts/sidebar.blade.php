@@ -45,11 +45,11 @@
     <div class="wrapper">
         <nav class="sidebar el-8dp scrollbar-inner" id="main-navigation" aria-label="Sidebar">
             <div class="sidebar-header">
-                <a class="sidebar-brand text-center w-100  d-flex" style="text-decoration: none;"
+                <a class="sidebar-brand text-center w-100 mx-auto d-flex" style="text-decoration: none;"
                    href="{{route('system.home')}}">
                     <img src="{{asset('/logo.png')}}" width="64"
                          height="64"
-                         class="d-inline-block d-md-inline-block align-center mx-auto" alt="Emotionally's logo">
+                         class="d-inline-block d-md-inline-block align-center mr-2" alt="Emotionally's logo">
                     <img src="{{asset('/app_name.svg')}}" width="16"
                          height="64"
                          class="d-none d-md-inline-block flex-fill" alt="Emotionally">
@@ -65,13 +65,13 @@
                                role="button" aria-expanded="false" aria-controls="projects-container"></a>
                             <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                                 <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                                <span class="d-none d-md-inline">Projects</span>
+                                <span class="d-none d-md-inline">{{trans('sidebar.projects')}}</span>
                             </a>
                         </div>
                     @else
                         <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                             <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                            <span class="d-none d-md-inline">Projects</span>
+                            <span class="d-none d-md-inline">{{trans('sidebar.projects')}}</span>
                         </a>
                     @endif
                     <ul class="collapse el-3dp nav flex-column flex-nowrap" id="projects-container">
@@ -81,25 +81,25 @@
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link text-center text-md-left" href="#">
                         <span aria-hidden="true" class="fas fa-info-circle mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">About</span>
+                        <span class="d-none d-md-inline">{{trans('sidebar.about')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="#">
                         <span aria-hidden="true" class="fas fa-file-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Portfolio</span>
+                        <span class="d-none d-md-inline">{{trans('sidebar.portfolio')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="#">
                         <span aria-hidden="true" class="fas fa-phone-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Contact</span>
+                        <span class="d-none d-md-inline">{{trans('sidebar.contact')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
                     <a class="nav-link" href="{{ route('logout') }}">
                         <span aria-hidden="true" class="fas fa-sign-out-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Logout</span>
+                        <span class="d-none d-md-inline">{{trans('sidebar.logout')}}</span>
                     </a>
                 </li>
             </ul>
@@ -278,8 +278,8 @@
                                         Recording... <span class="fas fa-video"></span></p>
                                     <video id="vid1" width="400" height="250"></video>
                                     <video id="vid2" width="400" height="250" controls></video>
-                                    <button id="btnStart" class="btn btn-outline-success">Start</button>
-                                    <button id="btnStop" class="btn btn-outline-danger">Stop</button>
+                                    <button id="btnStart" class="btn btn-outline-success">{{trans('dashboard.start')}}</button>
+                                    <button id="btnStop" class="btn btn-outline-danger">{{trans('dashboard.stop')}}</button>
                                     <button id="next-realtime" class="btn btn-primary float-right"
                                             disabled>{{ trans('dashboard.next') }}</button>
                                 </div>

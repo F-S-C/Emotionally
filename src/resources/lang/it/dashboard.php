@@ -37,6 +37,7 @@ return [
     "choose_file" => "Scegli file",
     "duration" => "Durata",
     "start" => "Inizio",
+    "stop" => "Stop",
     "end" => "Fine",
     "project" => "Progetto",
     "upload_succesful" => "Caricamento effettuato con successo!",
