@@ -40,17 +40,98 @@
             @each('partials.video-card', $videos, 'video')
         </div>
     @endif
+    @include('shared.modals')
 @endsection
 
 @section('scripts')
     @parent
     <script>
         $(document).ready(function () {
-            $('.project-detail-card').click(function (event) {
+            $('.project-detail-card').on('click', function (event) {
                 //prevent execution from bubbling
                 if (event.target === this) {
                     window.location = $(this).data('href');
                 }
+            });
+
+            //SCRIPT DROPDOWN
+            let renameComplete = $('#project-rename-complete');
+            let renameChanging = $('#project-rename-updating');
+            let renameError = $('#project-rename-error');
+            let deleteComplete = $('#project-delete-complete');
+            let deleteChanging = $('#project-delete-updating');
+            let deleteError = $('#project-delete-error');
+
+
+            $('.rename-project-btn').on('click', function () {
+                $('#rename-project-modal').modal('show');
+                $('#project_rename_id').val($(this).attr('value'));
+                $('#project-rename-form').show();
+                renameError.hide();
+                renameChanging.hide();
+                renameComplete.hide();
+            });
+
+            $('.delete-project-btn').on('click', function () {
+                $('#delete-project-modal').modal('show');
+                $('#project_delete_id').val($(this).attr('value'));
+                $('#project-delete-form').show();
+                renameError.hide();
+                renameChanging.hide();
+                renameComplete.hide();
+            });
+
+            $('#project-rename-form').on('submit', function (event) {
+                event.preventDefault();
+                $('#project-rename-form').hide();
+                renameChanging.show();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (data) {
+                        $('#project_new_name').val('');
+                        renameChanging.hide();
+                        renameComplete.show();
+                        $('#rename-project-modal').on('hidden.bs.modal', function () {
+                            location.reload();
+                        });
+                    },
+                    error: function (data) {
+                        renameChanging.hide();
+                        renameError.show();
+                        console.log(data);
+                    }
+                });
+            });
+            $('#project-delete-form').on('submit', function (event) {
+                event.preventDefault();
+                $('#project-delete-form').hide();
+                deleteChanging.show();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (data) {
+                        $('#project_delete').val('');
+                        deleteChanging.hide();
+                        deleteComplete.show();
+                        $('#delete-project-modal').on('hidden.bs.modal', function () {
+                            location.reload();
+                        });
+                    },
+                    error: function (data) {
+                        deleteChanging.hide();
+                        deleteError.show();
+                        console.log(data);
+                    }
+                });
             });
         });
     </script>
