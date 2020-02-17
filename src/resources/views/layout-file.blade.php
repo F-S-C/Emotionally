@@ -11,12 +11,12 @@
                 <div class="text-left">
                     <img src="{{asset('/logo.png')}}" width="150"
                          height="150"
-                          alt="Emotionally's logo">
+                         alt="Emotionally's logo">
                     <img src="{{asset('/app_name_black.svg')}}" width="150"
                          height="150"
-                          alt="Emotionally">
+                         alt="Emotionally">
                 </div>
-               <div class="col text-right">
+                <div class="col text-right">
                     <img src="{{asset('/fsc_logo_nero.svg')}}" width="150"
                          height="150"
                          alt="FSC's logo">
@@ -24,35 +24,37 @@
             </div>
         </div>
         <div class="text-center my-4">
-            <h1>File video report: {{$video->name}}</h1>
+            <h1>File video report: {{ $video->name }}</h1>
         </div>
         <div class="row my-4">
             <div class="col-12">
                 <table class="table" style="color:black">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">Creator</th>
-                <th scope="col">Project </th>
-                <th scope="col">Video's Duration</th>
-                <th scope="col">Range analyzed</th>
-                <th scope="col">Frequent emoji</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{(new Emotionally\Http\Controllers\VideoController)->getCreator($video)->name }}
-                    {{(new Emotionally\Http\Controllers\VideoController)->getCreator($video)->surname}}</td>
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Creator</th>
+                        <th scope="col">Project</th>
+                        <th scope="col">Video's Duration</th>
+                        <th scope="col">Range analyzed</th>
+                        <th scope="col">Frequent emoji</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            {{ $video->author->name }}
+                            {{ $video->author->surname }}
+                        </td>
 
-                <td>{{(new Emotionally\Http\Controllers\VideoController)->getProject($video)->name}}</td>
+                        <td>{{ $video->project->name }}</td>
 
-                <td>{{$video->duration}}</td>
+                        <td>{{$video->duration}}</td>
 
-                <td>[ {{$video->start}} , {{$video->end}} ]</td>
-                <td> {{\Emotionally\Http\Controllers\ReportController::get_emoji(\Emotionally\Http\Controllers\ReportController::highestEmotion($video->average_report))}}</td>
-            </tr>
+                        <td>[ {{$video->start}} , {{$video->end}} ]</td>
+                        <td> {{\Emotionally\Http\Controllers\ReportController::get_emoji(\Emotionally\Http\Controllers\ReportController::highestEmotion($video->average_report))}}</td>
+                    </tr>
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="row">

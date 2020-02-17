@@ -20,16 +20,6 @@ class VideoController extends Controller
         $video->save();
     }
 
-    public function getCreator(Video $video): User{
-        $user= User::findOrFail($video->user_id);
-        return $user;
-    }
-
-    public function getProject(Video $video): Project{
-        $project= Project::findOrFail($video->project_id);
-        return $project;
-
-    }
     /**
      * This function get and reset a interval of the video
      * @param Video $video The video
