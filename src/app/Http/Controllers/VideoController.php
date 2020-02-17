@@ -22,14 +22,28 @@ class VideoController extends Controller
 
     /**
      * This function get and reset a interval of the video
-     * @param Video $video The video
-     * @param $start_interval The new start interval
-     * @param $end_interval The new end interval
+     * @param int $video_id The video
+     * @param Request $request The request.
+     * @return string A json response.
      */
-    public function resetInterval(Video $video, $start_interval,  $end_interval ){
-        $video->start=$start_interval;
-        $video->end=$end_interval;
+    public function resetInterval(int $video_id, Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            // TODO: Edit
+            'start_interval' => 'bail|required',
+            'end_interval' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return json_encode(array('done' => false, 'errors' => $validator->errors()->toArray()));
+        }
+
+        $video = Video::findOrFail($video_id);
+        $start_interval = $request->start_interval;
+        $end_interval = $request->end_interval;
+        $video->start = $start_interval;
+        $video->end = $end_interval;
         $video->save();
+        return json_encode(array('done' => true));
     }
 
     /**
