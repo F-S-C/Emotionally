@@ -55,5 +55,6 @@ return [
     "loading" => "Caricamento...",
     "framerate" => "Analisi al secondo",
     "title" => "Titolo",
-    "media-error" => "getUserMedia non è supportato da questo browser"
+    "media-error" => "getUserMedia non è supportato da questo browser",
+    "add" => "Aggiungi",
 ];

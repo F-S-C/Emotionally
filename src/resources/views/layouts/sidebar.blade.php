@@ -122,7 +122,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="{{trans('dashboard.upload_video')}}">
                         <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
-                        Add
+                        {{trans('dashboard.add')}}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="add-video">
                         @if(isset($project))
