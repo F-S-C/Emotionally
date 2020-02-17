@@ -215,12 +215,16 @@
 
                                         <div class="card card-body el-16dp">
                                             <div class="form-inline">
-                                                <label for="framerate">{{trans('dashboard.framerate')}}</label>
-                                                <input type="number" id="framerate-video" name="framerate"
-                                                       class="form-control mx-sm-3" min="1" max="60" value="30">
+                                                <label for="framerate"
+                                                       id="framerate-video-text">{{trans('dashboard.framerate')}}:
+                                                    30</label>
+                                                <input type="range" class="custom-range" id="framerate-video"
+                                                       name="framerate"
+                                                       min="1" max="60" value="30" step="1">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="modal-footer">
                                         <button type="button" id="close-video" class="btn btn-secondary"
                                                 data-dismiss="modal">
@@ -810,6 +814,10 @@
 
                 $('#framerate-realtime').on('input', function () {
                     $('#realtime-framerate-text').text("{{trans('dashboard.framerate')}}: " + $('#framerate-realtime').val());
+                });
+
+                $('#framerate-video').on('input', function () {
+                    $('#framerate-video-text').text("{{trans('dashboard.framerate')}}: " + $('#framerate-video').val());
                 });
 
                 $('#title').change(function () {
