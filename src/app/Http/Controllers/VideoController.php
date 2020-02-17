@@ -6,8 +6,8 @@ use Emotionally\Project;
 use Emotionally\User;
 use Emotionally\Video;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Console\Output\ConsoleOutput;
+
 
 class VideoController extends Controller
 {
@@ -19,6 +19,10 @@ class VideoController extends Controller
     {
         $id = $request->input('video_delete_id');
         $video = Video::findOrFail($id);
+        $video_path = "user-content/" . basename($video->url);
+        if(\File::exists(public_path($video_path))) {
+            \File::delete(public_path($video_path));
+        }
         $video->delete();
     }
 
