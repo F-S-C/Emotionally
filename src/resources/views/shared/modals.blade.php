@@ -77,11 +77,11 @@
                     <input type="hidden" id="project_delete_id" name="project_delete_id">
                     <p>Sei sicuro di voler eliminare il progetto?</p><!-- TODO: Translate -->
                     <div class="modal-footer mt-3">
-                        <button type="button" id="close-delete-project" class="btn btn-secondary"
+                        <button id="close-delete-project" class="btn btn-secondary"
                                 data-dismiss="modal">
                             No
                         </button>
-                        <button type="button" id="accept-delete-project" class="btn btn-primary"
+                        <button type="submit" id="accept-delete-project" class="btn btn-primary"
                                 data-dismiss="modal">
                             Si
                         </button>

@@ -65,7 +65,7 @@
 
             $('.rename-project-btn').on('click', function () {
                 $('#rename-project-modal').modal('show');
-                $('#project_rename_id').val($(this).attr('value'));
+                $('#project_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-project-',''));
                 $('#project-rename-form').show();
                 renameError.hide();
                 renameChanging.hide();
@@ -74,7 +74,7 @@
 
             $('.delete-project-btn').on('click', function () {
                 $('#delete-project-modal').modal('show');
-                $('#project_delete_id').val($(this).attr('value'));
+                $('#project_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-project-',''));
                 $('#project-delete-form').show();
                 renameError.hide();
                 renameChanging.hide();
