@@ -80,8 +80,8 @@ class Project extends Model
 
     public function getReportAttribute()
     {
-        $REPORTS = $this->videos()->get()->map(function ($element) {
-            return json_decode($element['report'], true);
+        $REPORTS = $this->videos()->get()->map(function (Video $element) {
+            return json_decode($element->report, true);
         })->toArray();
         return ReportController::average($REPORTS);
     }

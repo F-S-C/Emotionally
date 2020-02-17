@@ -58,6 +58,8 @@ class ReportController extends Controller
     private const CHEEK_RAISE_KEY = "cheekRaise";
     private const LIP_STRETCH_KEY = "lipStretch";
 
+    private const __NO_REPORT__ = "__no_report__";
+
     private const EMOJIS = [
         self::JOY_KEY => '&#x1F602;',
         self::SADNESS_KEY => '&#x1F622;',
@@ -65,7 +67,8 @@ class ReportController extends Controller
         self::CONTEMPT_KEY => '&#x1F928;',
         self::ANGER_KEY => '&#x1F621;',
         self::FEAR_KEY => '&#x1F628;',
-        self::SURPRISE_KEY => '&#x1F62E;'
+        self::SURPRISE_KEY => '&#x1F62E;',
+        self::__NO_REPORT__ => '&times;'
     ];
 
     public static function get_emoji($emotion)
@@ -83,7 +86,7 @@ class ReportController extends Controller
      */
     private static function getReportType(array $report)
     {
-        if (substr(json_encode($report), 0, 1) == "{") {
+        if (empty($report) || substr(json_encode($report), 0, 1) == "{") {
             $type = 1;
         } elseif (substr(json_encode($report), 0, 2) == "[[") {
             $type = 3;
@@ -185,13 +188,16 @@ class ReportController extends Controller
      * @param string|array ...$reports The reports.
      * @return string The emotion with the highest value in the average report (derived from the given reports).
      */
-    public static function highestEmotion(...$reports)
+    public static function highestEmotion($reports)
     {
         self::fixType($reports);
 
         $totalAverageReport = self::average($reports);
 
         $useful_values = self::getEmotionValues($totalAverageReport);
+        if (empty($useful_values)) {
+            return self::__NO_REPORT__;
+        }
         return array_keys($useful_values, max($useful_values))[0];
     }
 
@@ -214,7 +220,7 @@ class ReportController extends Controller
         ];
         $type = self::getReportType($report);
 
-        if ($type == 1) {
+        if (empty($report) || $type == 1) {
             return array_intersect_key($report, $useful_values);
         } elseif ($type == 2) {
             foreach ($report as &$frame) {
@@ -269,14 +275,15 @@ class ReportController extends Controller
         return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
     }
 
-    public function projectDownloadJSON ($id){
+    public function projectDownloadJSON($id)
+    {
         $project = Project::findOrFail($id);
-        $fileName = "Project-report-". time().".json";
+        $fileName = "Project-report-" . time() . ".json";
         $handle = fopen($fileName, 'w+');
         fputs($handle, json_encode($project->report));
         fclose($handle);
         $headers = array('Content-type' => 'Analysis to json', 'Project analyzed' => $project->name);;
-        return response()->download($fileName,$fileName,$headers)->deleteFileAfterSend();
+        return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
 
     }
 
