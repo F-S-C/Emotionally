@@ -1,4 +1,3 @@
-{{-- TODO: URGENT - Fix the dropdown in the sidebar to work in the dashboard, where $project is not (and shouldn't be) defined. --}}
 @extends('layouts.master')
 
 @section('head')
@@ -217,7 +216,6 @@
                                         <div class="card card-body el-16dp">
                                             <div class="form-inline">
                                                 <label for="framerate">{{trans('dashboard.framerate')}}</label>
-                                                <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
                                                 <input type="number" id="framerate-video" name="framerate"
                                                        class="form-control mx-sm-3" min="1" max="60" value="30">
                                             </div>
