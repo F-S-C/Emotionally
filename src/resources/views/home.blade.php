@@ -81,14 +81,9 @@
 
                 $('.clickable').on('click', function (event) {
                     // prevent execution from bubbling if a link or a button were clicked
-                    if (event.target.tagName.toLowerCase() !== 'a' && event.target.tagName.toLowerCase() !== 'button') {
+                    if (!$(event.target).is('a, button, .dropdown,.dropdown *')) {
                         window.location = $(this).data('href');
                     }
-                });
-
-                $('.dropdown-toggle').click(function (e) {
-                    e.stopPropagation();
-                    $(this).parent().children('.dropdown-menu').toggle();
                 });
 
                 //SCRIPT DROPDOWN
