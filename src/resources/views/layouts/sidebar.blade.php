@@ -216,7 +216,7 @@
 
                                         <div class="card card-body el-16dp">
                                             <div class="form-inline">
-                                                <label for="framerate">Framerate:</label>
+                                                <label for="framerate">{{trans('dashboard.framerate')}}</label>
                                                 <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
                                                 <input type="number" id="framerate-video" name="framerate"
                                                        class="form-control mx-sm-3" min="1" max="60" value="30">
@@ -294,13 +294,12 @@
 
                                     <div id="title-fps-menu" style="display: none;">
                                         <div class="form-group">
-                                            <label for="title">Title:</label><!---TODO Translate--->
+                                            <label for="title">{{trans('dashboard.title')}}</label>
                                             <input type="text" id="title" name="title"
                                                    class="form-control input-color" required>
                                         </div>
                                         <div class="form-inline">
-                                            <label for="framerate">Framerate:</label>
-                                            <!---TODO: Cambiare da framerate a "Tempo tra una rilevazione e l'altra"--->
+                                            <label for="framerate">{{trans('dashboard.framerate')}}:</label>
                                             <input type="range" class="custom-range" id="framerate-realtime" name="framerate"
                                                    min="1" max="60" value="30" step="1">
                                         </div>
@@ -763,7 +762,7 @@
                         navigator.mediaDevices.getUserMedia = function (constraintObj) {
                             let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
                             if (!getUserMedia) {
-                                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                                return Promise.reject(new Error({{trans('dashboard.media-error')}}));
                             }
                             return new Promise(function (resolve, reject) {
                                 getUserMedia.call(navigator, constraintObj, resolve, reject);

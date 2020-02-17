@@ -52,4 +52,7 @@ return [
     "project_created" => "Progetto creato con successo.",
     "next" => "Avanti",
     "loading" => "Caricamento...",
+    "framerate" => "Analisi al secondo",
+    "title" => "Titolo",
+    "media-error" => "getUserMedia non è supportato da questo browser"
 ];

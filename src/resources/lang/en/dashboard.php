@@ -52,5 +52,8 @@ return [
     "project_created" => "Project successfully created.",
     "next" => "Next",
     "loading" => "Loading...",
+    "framerate" => " Analysis per second",
+    "title" => "Title",
+    "media-error" => "getUserMedia is not implemented in this browser",
 ];
 
