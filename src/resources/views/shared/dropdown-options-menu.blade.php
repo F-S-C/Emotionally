@@ -14,6 +14,5 @@
         <button class="dropdown-item btn btn-link delete-project-btn">Delete</button>
         <button class="dropdown-item btn btn-link rename-project-btn">Rename</button>
         <button class="dropdown-item btn btn-link move-project-btn">Move</button>
-
     </div>
 </div>
