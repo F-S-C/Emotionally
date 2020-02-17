@@ -72,9 +72,12 @@
                 });
 
                 //SCRIPT DROPDOWN
-                let renameComplete = $('#project-rename-complete');
-                let renameChanging = $('#project-rename-updating');
-                let renameError = $('#project-rename-error');
+                let projectRenameComplete = $('#project-rename-complete');
+                let projectRenameChanging = $('#project-rename-updating');
+                let projectRenameError = $('#project-rename-error');
+                let videoRenameComplete = $('#video-rename-complete');
+                let videoRenameChanging = $('#video-rename-updating');
+                let videoRenameError = $('#video-rename-error');
                 let deleteComplete = $('#project-delete-complete');
                 let deleteChanging = $('#project-delete-updating');
                 let deleteError = $('#project-delete-error');
@@ -84,24 +87,33 @@
                     $('#rename-project-modal').modal('show');
                     $('#project_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-rename-form').show();
-                    renameError.hide();
-                    renameChanging.hide();
-                    renameComplete.hide();
+                    videoRenameError.hide();
+                    videoRenameChanging.hide();
+                    videoRenameComplete.hide();
+                });
+
+                $('.rename-video-btn').on('click', function () {
+                    $('#rename-video-modal').modal('show');
+                    $('#video_rename_id').val($(this).parent().attr('aria-labelledby').replace('more-video-', ''));
+                    $('#video-rename-form').show();
+                    projectRenameError.hide();
+                    projectRenameChanging.hide();
+                    projectRenameComplete.hide();
                 });
 
                 $('.delete-project-btn').on('click', function () {
                     $('#delete-project-modal').modal('show');
                     $('#project_delete_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
                     $('#project-delete-form').show();
-                    renameError.hide();
-                    renameChanging.hide();
-                    renameComplete.hide();
+                    projectRenameError.hide();
+                    projectRenameChanging.hide();
+                    projectRenameComplete.hide();
                 });
 
                 $('#project-rename-form').on('submit', function (event) {
                     event.preventDefault();
                     $('#project-rename-form').hide();
-                    renameChanging.show();
+                    projectRenameChanging.show();
                     $.ajax({
                         url: this.action,
                         type: this.method,
@@ -111,19 +123,20 @@
                         cache: false,
                         success: function (data) {
                             $('#project_new_name').val('');
-                            renameChanging.hide();
-                            renameComplete.show();
+                            projectRenameChanging.hide();
+                            projectRenameComplete.show();
                             $('#rename-project-modal').on('hidden.bs.modal', function () {
                                 location.reload();
                             });
                         },
                         error: function (data) {
-                            renameChanging.hide();
-                            renameError.show();
+                            projectRenameChanging.hide();
+                            projectRenameError.show();
                             console.log(data);
                         }
                     });
                 });
+
                 $('#project-delete-form').on('submit', function (event) {
                     event.preventDefault();
                     $('#project-delete-form').hide();
@@ -146,6 +159,33 @@
                         error: function (data) {
                             deleteChanging.hide();
                             deleteError.show();
+                            console.log(data);
+                        }
+                    });
+                });
+
+                $('#video-rename-form').on('submit', function (event) {
+                    event.preventDefault();
+                    $('#video-rename-form').hide();
+                    videoRenameChanging.show();
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: function (data) {
+                            $('#video_new_name').val('');
+                            videoRenameChanging.hide();
+                            videoRenameComplete.show();
+                            $('#rename-video-modal').on('hidden.bs.modal', function () {
+                                location.reload();
+                            });
+                        },
+                        error: function (data) {
+                            videoRenameChanging.hide();
+                            videoRenameError.show();
                             console.log(data);
                         }
                     });

@@ -12,18 +12,6 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 class VideoController extends Controller
 {
     /**
-     * This function get and rename a video
-     * @param Video $video The video
-     * @param string $name The new name
-     */
-    public function renameVideo(Video $video, string $name): void
-    {
-        $video->name = $name;
-        $video->save();
-    }
-
-
-    /**
      * This function get and delete a video
      * @param Video $video The video.
      * @throws \Exception
@@ -31,6 +19,18 @@ class VideoController extends Controller
     public function deleteVideo(Video $video): void
     {
         $video->delete();
+    }
+
+    /**
+     * This public function allow to rename video.
+     * @param Request $request The HTTP request
+     */
+    public function renameVideo(Request $request): void
+    {
+        $name = $request->input('video_name', 'NO_NAME');
+        $video = Video::findOrFail($request->input('video_rename_id'));
+        $video->name = $name;
+        $video->save();
     }
 
     /**

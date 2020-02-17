@@ -100,3 +100,46 @@
         </div>
     </div>
 </div>
+
+<!-- Modal rinomina video -->
+<div class="modal fade" id="rename-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content el-16dp">
+            <div class="modal-header">
+                <h5 class="modal-title">Rename video</h5> <!-- TODO: Translate -->
+                <button type="button" class="modal-close" data-dismiss="modal"
+                        aria-label="{{trans('dashboard.close')}}">
+                    <span class="fas fa-times"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('system.rename-video') }}"
+                      id="video-rename-form">
+                    @csrf
+                    <input type="hidden" id="video_rename_id" name="video_rename_id" >
+                    <label for="video_new_name">{{trans('dashboard.video_rename')}}</label>
+                    <input type="text" class="form-control input-color" id="video_new_name"
+                           name="video_name" placeholder="{{trans('dashboard.name')}}" required>
+
+                    <div class="modal-footer mt-3">
+                        <button type="button" id="close-rename-project" class="btn btn-secondary"
+                                data-dismiss="modal">
+                            {{trans('dashboard.close')}}
+                        </button>
+                        <input type="submit" value="{{ trans('dashboard.submit') }}" class="btn btn-primary"
+                               style="color: white;">
+                    </div>
+                </form>
+                <div id="video-rename-complete" class="alert alert-success" role="alert" style="display:none;">
+                    {{ trans('dashboard.success') }}
+                </div>
+                <div id="video-rename-updating" class="alert alert-warning" role="alert" style="display:none;">
+                    {{ trans('dashboard.changing') }}
+                </div>
+                <div id="video-rename-error" class="alert alert-danger" role="alert" style="display:none;">
+                    {{ trans('dashboard.error') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

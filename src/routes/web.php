@@ -24,11 +24,11 @@ Route::name('system.')
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
         Route::get('/project/delete', 'ProjectController@deleteProject')->name('delete-project');
-        Route::any('/project/rename', 'ProjectController@renameProject')->name('rename-project');
-
+        Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project');
+        Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video');
 
         Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
-        Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
+        Route::post('/project/new', 'ProjectController@createProject')->name('newProject');
         Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
         Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
 

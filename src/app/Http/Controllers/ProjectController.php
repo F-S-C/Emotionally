@@ -65,12 +65,11 @@ class ProjectController extends Controller
 
     /**
      * This public function allow to rename the project.
-     * @param Project $project The project
-     * @param string $name The new name of the project.
+     * @param Request $request The HTTP request
      */
     public function renameProject(Request $request): void
     {
-        $name = $request->input('project_name','cacca');
+        $name = $request->input('project_name','NO_NAME');
         $project=Project::findOrFail($request->input('project_rename_id'));
         $project->name = $name;
         $project->save();

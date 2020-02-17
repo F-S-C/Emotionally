@@ -60,4 +60,5 @@ return [
     "title" => "Titolo",
     "media-error" => "getUserMedia non è supportato da questo browser",
     "add" => "Aggiungi",
+    "video_rename" => "Rinomina video",
 ];

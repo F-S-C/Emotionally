@@ -60,5 +60,6 @@ return [
     "title" => "Title",
     "media-error" => "getUserMedia is not implemented in this browser",
     "add" => "Add",
+    "video_rename" => "Rename video",
 ];
 
