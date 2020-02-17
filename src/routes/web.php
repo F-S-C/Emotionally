@@ -29,13 +29,13 @@ Route::name('system.')
                 Route::get('/', 'ProjectController@getProjectReport')->name('report-project');
                 Route::get('/HTML', 'ReportController@getProjectReportFile')->name('layout-file-project');
 
-               Route::name('project.download-')
-                   ->group(function () {
+                Route::name('project.download-')
+                    ->group(function () {
 //                        Route::get('/downloadPDF', '#')->name('pdf');
                         Route::get('/downloadJSON', 'ReportController@projectDownloadJSON')->name('json');
 //                        Route::get('/downloadPPTX', '#')->name('pptx');
 //                        Route::get('/downloadExcel', '#')->name('excel');
-                   });
+                    });
             });
 
         Route::prefix('/video/{id}')
@@ -45,34 +45,36 @@ Route::name('system.')
                 Route::get('/file', 'ReportController@getReportFile')->name('layout-file');
                 Route::name('download-')
                     ->group(function () {
-                    Route::get('/downloadPDF', 'ReportController@downloadPDF')->name('pdf');
-                    Route::get('/downloadJSON', 'ReportController@downloadJSON')->name('json');
-                    Route::get('/downloadPPTX', 'ReportController@downloadPPTX')->name('pptx');
-                    Route::get('/downloadExcel', 'ReportController@downloadExcel')->name('excel');
-                });
-            });
-
-        Route::middleware('permissions:read')
-            ->group(function () {
-                Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
-                Route::prefix('/project/{project_id}/share')
-                    ->name('permissions.')
-                    ->group(function () {
-                        Route::get('/', 'PermissionsController@getProjectPermissions')
-                            ->name('index');
-                        Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
-                            ->name('delete');
-
-                        Route::put('/add', 'PermissionsController@addPermission')
-                            ->name('add');
-
-                        Route::any('/edit', 'PermissionsController@editPermission')
-                            ->name('edit');
+                        Route::get('/downloadPDF', 'ReportController@downloadPDF')->name('pdf');
+                        Route::get('/downloadJSON', 'ReportController@downloadJSON')->name('json');
+                        Route::get('/downloadPPTX', 'ReportController@downloadPPTX')->name('pptx');
+                        Route::get('/downloadExcel', 'ReportController@downloadExcel')->name('excel');
                     });
             });
+        /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
+        ->group(function () {*/
+        Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
+        Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
+        Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
+        Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
+        Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+        Route::prefix('/project/{project_id}/share')
+            ->name('permissions.')
+            ->group(function () {
+                Route::get('/', 'PermissionsController@getProjectPermissions')
+                    ->name('index');
+                Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
+                    ->name('delete');
+
+                Route::put('/add', 'PermissionsController@addPermission')
+                    ->name('add');
+
+                Route::any('/edit', 'PermissionsController@editPermission')
+                    ->name('edit');
+            });
+        //});
     });
 
-Auth::routes(/*['verify' => true]*/);
 
 Route::get('/logout', function () {
     Auth::logout();
@@ -80,7 +82,8 @@ Route::get('/logout', function () {
     return redirect()->route('landing');
 })->name('logout');
 
-// TODO: Implement a 'not logged in' notice
+// TODO: Reactivate 'verify' and remove the route verification.notice
+Auth::routes(/*['verify' => true]*/);
 Route::name('verification.notice')->get('/not-logged', function () {
     return 'not logged';
 });

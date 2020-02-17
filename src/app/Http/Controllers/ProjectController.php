@@ -77,4 +77,18 @@ class ProjectController extends Controller
             ->with('path', self::getProjectChain($current_project));
     }
 
+    /*
+     * Create a project via an HTTP request.
+     * @param Request $request The HTTP request received by the form.
+     */
+    public function createProject(Request $request)
+    {
+        $project = new Project();
+        $project->name = $request->input('project_name');
+        $project->user_id = Auth::user()->id;
+        if ($request->has('father_id'))
+            $project->father_id = $request->input('father_id');
+        $project->save();
+    }
+
 }
