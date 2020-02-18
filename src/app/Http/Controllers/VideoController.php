@@ -56,9 +56,8 @@ class VideoController extends Controller
     public function resetInterval(int $video_id, Request $request)
     {
         $validator = \Validator::make($request->all(), [
-            // TODO: Edit
-            'start' => 'bail|required',
-            'end' => 'required',
+            'start' => 'bail|required|date_format:H:i:s',
+            'end' => 'required|date_format:H:i:s',
             'report' => 'required|json',
         ]);
         if ($validator->fails()) {
@@ -95,22 +94,6 @@ class VideoController extends Controller
 
         return json_encode(array('done' => true));
     }
-
-    // public function uploadVideo(Request $request,int $project_id,int $user_id):void
-    // {
-    //     TODO: To be implemented by Graziano Montanaro
-    //     $video=new Video();
-    //     $video->name = $request->input('name');
-    //     $video->report=array();
-    //     $video->url=$request->file('video')->store(User::findOrFail($user_id));
-    //     $video->project_id=$project_id;
-    //     $video->user_id=$user_id;
-    //     $video->start=0;
-    //     $video->end=;
-    //     $video->framerate=;
-    //     $video->duration=;
-    //     $video->save();
-    // }
 
     /*
      * Upload and manages the video passed through HTTP request.
@@ -185,10 +168,10 @@ class VideoController extends Controller
                 array_push($urls, array('url' => $video->url, 'id' => $video->id));
                 return json_encode(array('result' => true, 'files' => $urls));
             } catch (\Exception $e) {
-                echo json_encode(array('result' => false, 'error' => $e->getMessage()));
+                return json_encode(array('result' => false, 'error' => $e->getMessage()));
             }
         } else {
-            echo json_encode(array('result' => false));
+            return json_encode(array('result' => false));
         }
     }
 

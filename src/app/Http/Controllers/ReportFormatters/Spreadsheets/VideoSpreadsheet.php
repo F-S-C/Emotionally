@@ -52,7 +52,9 @@ class VideoSpreadsheet extends ReportSpreadsheet
                 $sheet->getStyle($this->getColumnFromNumber($index + 2) . '1')->getFont()->setBold(true);
                 $value_index = 2;
                 foreach ($frame as $key => $value) {
-                    if ($key == 'Timestamp') continue;
+                    if ($key == 'Timestamp') {
+                        continue;
+                    }
                     if ($index == 0) {
                         $sheet->setCellValue('A' . $value_index, $key);
                         $sheet->getStyle('A' . $value_index)->getFont()->setBold(true);

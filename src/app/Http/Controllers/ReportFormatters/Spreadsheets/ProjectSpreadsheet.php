@@ -34,7 +34,9 @@ class ProjectSpreadsheet extends ReportSpreadsheet
             $sheet->getStyle('B1')->getFont()->setBold(true);
             $i = 2;
             foreach ($this->report as $index => $value) {
-                if ($index == 'Timestamp') continue;
+                if ($index == 'Timestamp') {
+                    continue;
+                }
                 $sheet->setCellValue('A' . $i, $index);
                 $sheet->getStyle('A'.$i)->getFont()->setBold(true);
                 $sheet->setCellValue('B' . $i, $value);

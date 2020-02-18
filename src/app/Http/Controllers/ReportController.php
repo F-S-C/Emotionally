@@ -293,7 +293,7 @@ class ReportController extends Controller
         $handle = fopen($fileName, 'w+');
         fputs($handle, json_encode($project->report));
         fclose($handle);
-        $headers = array('Content-type' => 'Analysis to json', 'Project analyzed' => $project->name);;
+        $headers = array('Content-type' => 'Analysis to json', 'Project analyzed' => $project->name);
         return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
 
     }
