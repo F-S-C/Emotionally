@@ -8,7 +8,14 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 // FontAwesome
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+@import "_scrollbar";
+
+// Import modified jQuery DataTables
+@import "datatables";
 
 // A custom stylesheet
 @import "custom/style";

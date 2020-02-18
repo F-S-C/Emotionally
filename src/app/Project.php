@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+
+    protected $appends = ['number_of_subprojects', 'number_of_videos', 'average_emotion'];
+
     /**
      * This function use to view users of the project.
      *
@@ -55,4 +58,32 @@ class Project extends Model
     {
         return $this->belongsTo('Emotionally\Project', 'father_id');
     }
+
+    /**
+     * Get the number of subprojects of the project.
+     * @return int The number of subprojects.
+     */
+    public function getNumberOfSubprojectsAttribute()
+    {
+        return Project::where('father_id', $this->id)->count();
+    }
+
+    /**
+     * Get the number of videos in the project.
+     * @return int The number of videos.
+     */
+    public function getNumberOfVideosAttribute()
+    {
+        return $this->videos()->count();
+    }
+
+    /**
+     * Get the average emotion of the project.
+     * @return string The average emotion.
+     */
+    public function getAverageEmotionAttribute()
+    {
+        return ':-)'; // TODO: Implement
+    }
+
 }

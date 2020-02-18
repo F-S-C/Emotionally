@@ -26,5 +26,6 @@ return [
     'descriptionfeatures2' => 'Fragagnano per sempre',
     'descriptionfeatures3' => 'La vita secondo Polillo',
     'descriptionfeatures4' => '100 cose che odio di polillo',
-
+    'login' => 'Log in',
+    'system' => 'Sistema',
 ];

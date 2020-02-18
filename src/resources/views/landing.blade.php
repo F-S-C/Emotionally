@@ -1,6 +1,6 @@
 @extends('layouts.navbar')
 
-@section('title', 'Emotionally')
+@section('title', 'Landing')
 
 @section('head')
     @parent
@@ -45,7 +45,13 @@
             <a class="nav-link text-center" href="#">About</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-outline-primary nav-link" href="#">Log in</a>
+            <a class="btn btn-outline-primary nav-link"
+               href="{{ route('login') }}">
+                @if (Auth::check())
+                    {{ trans('landing.system') }}
+                @else
+                    {{ trans('landing.login') }}
+                @endif</a>
         </li>
     </ul>
 @endsection
@@ -56,7 +62,7 @@
     <section id="landing">
         <div class="splash-screen">
             <div class="inner el-12dp">
-                <img class="logo" src="logo.png"
+                <img class="logo" src="{{asset('/logo.png')}}"
                      alt="Emotionally's Logo">
                 <h1 itemprop="name">Emotionally</h1>
                 <p itemprop="headline">{{ trans('metadata.description') }}</p>
@@ -96,8 +102,4 @@
     <section class="container my-5">
         <h2>About</h2>
     </section>
-    {{--
-        @todo Complete implementation
-        @body Complete the layout as designed.
-    --}}
 @endsection

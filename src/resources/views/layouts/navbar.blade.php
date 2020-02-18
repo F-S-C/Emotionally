@@ -14,12 +14,12 @@
              aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" style="text-decoration: none;" href="#">
-                    <img src="./logo.png" width="30"
+                    <img src="{{asset('/logo.png')}}" width="30"
                          height="30"
                          class="d-inline-block align-top" alt="Emotionally's logo">
-                    <img src="./app_name.svg" width="150"
+                    <img src="{{asset('/app_name.svg')}}" width="150"
                          height="30"
-                         class="d-inline-block align-top" alt="Emotionally">
+                         class="d-inline-block align-tp" alt="Emotionally">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#main-navigation-content"

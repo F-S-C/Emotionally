@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
+    protected $appends = ["thumbnail"];
+
     /**
      * This function use to view user who uploaded video.
      *
@@ -23,5 +25,14 @@ class Video extends Model
     public function project()
     {
         return $this->belongsTo('Emotionally\Project');
+    }
+
+    /**
+     * Get the thumbnail of a video.
+     * @return string The thumbnail.
+     */
+    public function getThumbnailAttribute()
+    {
+        return 'https://picsum.photos/848/480'; // TODO: Implement thumbnail
     }
 }

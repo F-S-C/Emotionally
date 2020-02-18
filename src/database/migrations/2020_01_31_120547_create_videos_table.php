@@ -21,7 +21,7 @@ class CreateVideosTable extends Migration
             $table->time('end');
             $table->time('duration');
             $table->string('url');
-            $table->longText('report');
+            $table->longText('report')->nullable();
 
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')
@@ -34,8 +34,6 @@ class CreateVideosTable extends Migration
                 ->on('users');
 
             $table->timestamps();
-
-            $table->unique(['project_id', 'name']);
         });
     }
 
