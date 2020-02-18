@@ -18,8 +18,8 @@
 
 namespace Emotionally\Http\Controllers;
 
-use Emotionally\Http\Controllers\ReportFormatters\VideoPresentation;
-use Emotionally\Http\Controllers\ReportFormatters\VideoSpreadsheet;
+use Emotionally\Http\Controllers\ReportFormatters\Presentations\VideoPresentation;
+use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\VideoSpreadsheet;
 use Emotionally\Project;
 use Emotionally\Video;
 use Symfony\Component\Console\Output\ConsoleOutput;
@@ -297,13 +297,6 @@ class ReportController extends Controller
         return response()->streamDownload(function () use ($spreadsheet) {
             $spreadsheet->getFileAsBinaryOutput();
         }, $spreadsheet->getFileName());
-//        $fileName= "Video-report-". time() . ".csv";
-//        $handle = fopen($fileName, 'w+');
-//        fputs($handle, response()->json($video->report));
-//        fclose($handle);
-//        $headers = array ('Content-type'=> 'Analysis to json', 'Video analyzed' => $video->name);
-//
-//        return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
     }
 
     public function downloadPPTX($id)
