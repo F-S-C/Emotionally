@@ -22,7 +22,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content el-16dp">
             <div class="modal-header">
-                <h5 class="modal-title">Rename project</h5> <!-- TODO: Translate -->
+                <h5 class="modal-title">{{trans('dashboard.rename-project')}}</h5>
                 <button type="button" class="modal-close" data-dismiss="modal"
                         aria-label="{{trans('dashboard.close')}}">
                     <span class="fas fa-times"></span>
@@ -65,7 +65,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content el-16dp">
             <div class="modal-header">
-                <h5 class="modal-title">Delete project</h5> <!-- TODO: Translate -->
+                <h5 class="modal-title">{{trans('dashboard.delete-project')}}</h5>
                 <button type="button" class="modal-close" data-dismiss="modal"
                         aria-label="{{trans('dashboard.close')}}">
                     <span class="fas fa-times"></span>
@@ -77,14 +77,14 @@
                       id="project-delete-form">
                     @csrf
                     <input type="hidden" id="project_delete_id" name="project_delete_id">
-                    <p>Sei sicuro di voler eliminare il progetto?</p><!-- TODO: Translate -->
+                    <p>{{trans('dashboard.confirm-remove.project')}}</p>
                     <div class="modal-footer mt-3">
                         <button id="close-delete-project" class="btn btn-secondary"
                                 data-dismiss="modal">
-                            No
+                            {{trans('dashboard.no')}}
                         </button>
                         <input type="submit" id="submit-delete-project" class="btn btn-primary"
-                               data-dismiss="modal" value="Si">
+                               data-dismiss="modal" value="{{trans('dashboard.yes')}}">
                     </div>
                 </form>
                 <div id="project-delete-complete" class="alert alert-success" role="alert" style="display:none;">
@@ -106,7 +106,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content el-16dp">
             <div class="modal-header">
-                <h5 class="modal-title">Rename video</h5> <!-- TODO: Translate -->
+                <h5 class="modal-title">{{trans('dashboard.rename-video')}}</h5>
                 <button type="button" class="modal-close" data-dismiss="modal"
                         aria-label="{{trans('dashboard.close')}}">
                     <span class="fas fa-times"></span>
@@ -149,7 +149,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content el-16dp">
             <div class="modal-header">
-                <h5 class="modal-title">Delete video</h5> <!-- TODO: Translate -->
+                <h5 class="modal-title">{{trans('dashboard.delete-video')}}</h5>
                 <button type="button" class="modal-close" data-dismiss="modal"
                         aria-label="{{trans('dashboard.close')}}">
                     <span class="fas fa-times"></span>
@@ -161,14 +161,14 @@
                       id="video-delete-form">
                     @csrf
                     <input type="hidden" id="video_delete_id" name="video_delete_id">
-                    <p>Sei sicuro di voler eliminare il video?</p><!-- TODO: Translate -->
+                    <p>{{trans('dashboard.confirm-delete-video')}}</p>
                     <div class="modal-footer mt-3">
                         <button id="close-delete-video" class="btn btn-secondary"
                                 data-dismiss="modal">
-                            No
+                            {{trans('dashboard.no')}}
                         </button>
                         <input type="submit" id="submit-delete-video" class="btn btn-primary"
-                               data-dismiss="modal" value="Si">
+                               data-dismiss="modal" value="{{trans('dashboard.yes')}}">
                     </div>
                 </form>
                 <div id="video-delete-complete" class="alert alert-success" role="alert" style="display:none;">
@@ -190,7 +190,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content el-16dp">
             <div class="modal-header">
-                <h5 class="modal-title">Move project</h5> <!-- TODO: Translate -->
+                <h5 class="modal-title">{{trans('dashboard.move-project')}}</h5>
                 <button type="button" class="modal-close" data-dismiss="modal"
                         aria-label="{{trans('dashboard.close')}}">
                     <span class="fas fa-times"></span>
@@ -198,8 +198,8 @@
             </div>
             <div class="modal-body">
                 <div id="project-move-tree" class="container-fluid">
-                    <p class="text-left">Select a destination project:</p>
-                    <button class="btn btn-outline-primary btn-list-project" onclick="selectProject(this,'')"><span class="fas fa-home mr-1"></span>Root</button>
+                    <p class="text-left">{{trans('dashboard.select-destination')}}</p>
+                    <button class="btn btn-outline-primary btn-list-project" onclick="selectProject(this,'')"><span class="fas fa-home mr-1"></span>{{trans('dashboard.root')}}</button>
                     <ul class="ml-3 list-unstyled" id="pr_list">
                         @each('partials.project-tree', Auth::user()->projects->where('father_id', null), 'main_project')
                     </ul>
@@ -212,10 +212,10 @@
                     <div class="modal-footer mt-3">
                         <button id="close-move-project" class="btn btn-secondary"
                                 data-dismiss="modal">
-                            No
+                            {{trans('dashboard.no')}}
                         </button>
                         <input type="submit" id="submit-move-project" class="btn btn-primary disabled"
-                               data-dismiss="modal" style="color: white;" value="Sposta" disabled>
+                               data-dismiss="modal" style="color: white;" value="{{trans('dashboard.move')}}" disabled>
                     </div>
                 </form>
                 <div id="project-move-complete" class="alert alert-success" role="alert" style="display:none;">
@@ -237,7 +237,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content el-16dp">
             <div class="modal-header">
-                <h5 class="modal-title">Move video</h5> <!-- TODO: Translate -->
+                <h5 class="modal-title">{{trans('dashboard.move-video')}}</h5>
                 <button type="button" class="modal-close" data-dismiss="modal"
                         aria-label="{{trans('dashboard.close')}}">
                     <span class="fas fa-times"></span>
@@ -245,7 +245,7 @@
             </div>
             <div class="modal-body">
                 <div id="video-move-tree" class="container-fluid">
-                    <p class="text-left">Select a destination project:</p>
+                    <p class="text-left">{{trans('dashboard.select-destination')}}</p>
                     <ul class="ml-3 list-unstyled">
                         @each('partials.video_project-tree', Auth::user()->projects->where('father_id', null), 'main_project')
                     </ul>
@@ -258,10 +258,10 @@
                     <div class="modal-footer mt-3">
                         <button id="close-move-video" class="btn btn-secondary"
                                 data-dismiss="modal">
-                            No
+                            {{trans('dashboard.no')}}
                         </button>
                         <input type="submit" id="submit-move-video" class="btn btn-primary disabled"
-                               data-dismiss="modal" style="color: white;" value="Sposta" disabled>
+                               data-dismiss="modal" style="color: white;" value="{{trans('dashboard.move')}}" disabled>
                     </div>
                 </form>
                 <div id="video-move-complete" class="alert alert-success" role="alert" style="display:none;">
