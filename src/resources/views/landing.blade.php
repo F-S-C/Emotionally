@@ -39,10 +39,10 @@
             <a class="nav-link text-center" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center" href="#">Features</a>
+            <a class="nav-link text-center" href="#features">Features</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center" href="#">About</a>
+            <a class="nav-link text-center" href="#about">About</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-outline-primary nav-link"
@@ -74,7 +74,7 @@
             </div>
         </div>
     </section>
-    <section class="container my-5" id="content">
+    <section class="container my-5" id="features">
         <h2>@lang('landing.features')</h2>
         <div class="row text-center mt-5">
             <div class="col-sm-3">
@@ -101,5 +101,132 @@
     </section>
     <section class="container my-5">
         <h2>About</h2>
+
+        <div class="row">
+            <div class="col bd-content" id="about">
+                <section class="team-section text-center my-5" id="team">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-6">
+                            <!-- SPACER -->
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
+                           <div class="avatar mx-auto" >
+                                <img src="https://strumentalmente.it/assets/images/team/Alessandro.jpg" width="100%" class="rounded-circle z-depth-1" alt="Alessandro">
+                            </div>
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Alessandro</span><br>
+                                <span itemprop="familyName">Annese</span>
+                            </p>
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" href="https://github.com/Ax3lFernus" target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" href="https://www.linkedin.com/in/alessandro-annese-79683913b/" target="_blank">
+                                        <span class="fab fa-linkedin"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author" >
+                           <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Davide.jpg" width="100%" class="rounded-circle z-depth-1" alt="Davide">
+                            </div>
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Davide</span><br>
+                                <span itemprop="familyName">De Salvo</span>
+                            </p>
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" href="https://github.com/Davidedes" target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
+                           <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Andrea.jpg" width="100%" class="rounded-circle z-depth-1" alt="Andrea">
+                            </div>
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Andrea</span><br>
+                                <span itemprop="familyName">Esposito</span>
+                            </p>
+
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" href="https://github.com/espositoandrea" target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" href="https://www.linkedin.com/in/andrea-esposito-183bb016b/" target="_blank">
+                                        <span class="fab fa-linkedin"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author" >
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Graziano.jpg" width="100%" class="rounded-circle z-depth-1" alt="Graziano">
+                            </div>
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Graziano</span><br>
+                                <span itemprop="familyName">Montanaro</span>
+                            </p>
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" href="https://github.com/prewarning" target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author" >
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Regina.jpg" width="100%" class="rounded-circle z-depth-1" alt="Regina">
+                            </div>
+
+
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Regina</span><br>
+                                <span itemprop="familyName">Zaccaria</span>
+                            </p>
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" href="https://github.com/ReginaZaccaria" target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-1 col-md-6">
+                            <!-- SPACER -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </section>
 @endsection
+
