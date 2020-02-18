@@ -18,4 +18,6 @@
 
 return [
     'features' => 'Features',
+    'login' => 'Log in',
+    'system' => 'System',
 ];

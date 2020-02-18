@@ -45,7 +45,13 @@
             <a class="nav-link text-center" href="#">About</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-outline-primary nav-link" href="{{ route('login') }}">@if (Auth::check()) Home @else Log in @endif</a>
+            <a class="btn btn-outline-primary nav-link"
+               href="{{ route('login') }}">
+                @if (Auth::check())
+                    {{ trans('landing.system') }}
+                @else
+                    {{ trans('landing.login') }}
+                @endif</a>
         </li>
     </ul>
 @endsection
