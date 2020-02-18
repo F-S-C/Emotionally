@@ -77,22 +77,22 @@
     <section class="container my-5" id="features">
         <h2>@lang('landing.features')</h2>
         <div class="row text-center mt-5">
-            <div class="col-sm-3">
+            <div class="col-12 col-sm-6 col-md-3">
                 <span class="fas fa-grin-alt fa-4x text-primary" aria-hidden="true"></span>
                 <p class="my-4 h5">@lang('landing.features1')</p>
                 <p>@lang('landing.descriptionfeatures1')</p>
             </div>
-            <div class="col-sm-3">
+            <div class="col-12 col-sm-6 col-md-3">
                 <span class="fas fa-file-video fa-4x text-primary" aria-hidden="true"></span>
                 <p class="my-4 h5">@lang('landing.features2')</p>
                 <p>@lang('landing.descriptionfeatures2')</p>
             </div>
-            <div class="col-sm-3">
+            <div class="col-12 col-sm-6 col-md-3">
                 <span class="fas fa-folder fa-4x text-primary" aria-hidden="true"></span>
                 <p class="my-4 h5">@lang('landing.features3')</p>
                 <p>@lang('landing.descriptionfeatures3')</p>
             </div>
-            <div class="col-sm-3">
+            <div class="col-12 col-sm-6 col-md-3">
                 <span class="fas fa-file-export fa-4x text-primary" aria-hidden="true"></span>
                 <p class="my-4 h5">@lang('landing.features4')</p>
                 <p>@lang('landing.descriptionfeatures4')</p>

@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         &:hover {
             text-decoration: none;
         }
-        
+
         &:focus {
             @extend .btn-outline-danger;
         }
@@ -96,4 +96,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .dropdown.more-icon button::after {
     content: none
+}
+
+.team-member{
+    img{
+        max-width: 256px;
+    }
+    a[target='_blank']{
+        &:after{
+            content: '';
+        }
+        &:hover{
+            border: 0;
+        }
+    }
 }
