@@ -121,13 +121,13 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" href="https://github.com/Ax3lFernus" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/Ax3lFernus" target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" href="https://www.linkedin.com/in/alessandro-annese-79683913b/" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://www.linkedin.com/in/alessandro-annese-79683913b/" target="_blank">
                                         <span class="fab fa-linkedin"></span>
                                     </a>
                                 </li>
@@ -146,7 +146,7 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" href="https://github.com/Davidedes" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/Davidedes" target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
@@ -166,13 +166,13 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" href="https://github.com/espositoandrea" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/espositoandrea" target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" href="https://www.linkedin.com/in/andrea-esposito-183bb016b/" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://www.linkedin.com/in/andrea-esposito-183bb016b/" target="_blank">
                                         <span class="fab fa-linkedin"></span>
                                     </a>
                                 </li>
@@ -191,7 +191,7 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" href="https://github.com/prewarning" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/prewarning" target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
@@ -212,7 +212,7 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" href="https://github.com/ReginaZaccaria" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/ReginaZaccaria" target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
