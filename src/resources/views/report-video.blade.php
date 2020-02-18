@@ -394,9 +394,7 @@
                 let duration = "{{$video->duration}}";
                 let end = "{{$video->end}}";
                 let start = "{{$video->start}}";
-                video.addEventListener('loadedmetadata', () => {
-                    video.currentTime = timeStringToSeconds(start);
-                });
+                video.currentTime = timeStringToSeconds(start);
                 $("#slider-range .ui-slider-range").css('background-color', '#121212');
                 $("#slider-range").slider({
                     range: true,
