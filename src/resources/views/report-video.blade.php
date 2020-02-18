@@ -53,8 +53,8 @@
 
 @section('inner-content')
 
-    <div class="dropleft text-right mb-2 mx-3">
-        <button type="button" id="save-button" class="btn btn-md-text d-none">
+    <div class="dropdown text-right mb-2 mx-3">
+        <button type="button" id="save-button" class="btn btn-outline-primary d-none">
             Save
         </button>
         <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -415,11 +415,8 @@
                         $("#loading-modal").modal('show');
                         EmotionAnalysis.analyzeVideo("{{$video->url}}", function (report) {
                             databaseReport = JSON.parse(report);
-                            console.log(databaseReport);
                             fullReport = EmotionAnalysis.getEmotionValues(databaseReport);
-                            console.log(fullReport);
                             averageReport = EmotionAnalysis.getEmotionValues(EmotionAnalysis.average(fullReport));
-                            console.log(averageReport);
 
                             lineChart.data = {
                                 labels: fullReport.map((_, i) => i),
@@ -468,18 +465,19 @@
                             barChart.update();
 
                             $("#loading-modal").modal('hide');
-                        });
+                        }, {start: timeStringToSeconds(start), stop: timeStringToSeconds(end)});
                     }
                 });
                 saveButton.click(function () {
-                    $.post({
+                    $.post('{{route('system.edit-video-duration', $video->id)}}', {
                         '_method': 'PUT',
                         '_token': '{{csrf_token()}}',
                         'start': start,
                         'end': end,
-                        'report': databaseReport
+                        'report': JSON.stringify(databaseReport)
                     })
                         .done(out => {
+                            out = JSON.parse(out);
                             if (out['done']) {
                                 saveButton.addClass('d-none');
                             } else {
@@ -489,7 +487,7 @@
                         })
                         .fail(() => {
                             $('#error-modal').modal('show');
-                            $('#error-text').set("Fold communication!!");
+                            $('#error-text').set("We're sorry... An unknown error occurred...");
                         });
                 });
                 video.addEventListener('timeupdate', () => {

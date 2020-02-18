@@ -89,6 +89,8 @@ class EmotionAnalysis {
         // Set verbose = true to print images and detection succes, false if you don't want info
         if (options === undefined) {
             options = EmotionAnalysis.getDefaultConfiguration();
+        } else {
+            options = _.assign({}, EmotionAnalysis.getDefaultConfiguration(), options);
         }
 
         const verbose = false;
@@ -118,7 +120,6 @@ class EmotionAnalysis {
         // Get video duration and set as global variable;
         let video = document.createElement('video');
         video.src = filename;
-        console.log(filename);
         // video.crossOrigin = 'anonymous';
         let duration;
         // print success message when duration of video is loaded.
@@ -223,6 +224,8 @@ class EmotionAnalysis {
     static analyzeCamera(callback = undefined, options = undefined) {
         if (options === undefined) {
             options = EmotionAnalysis.getDefaultConfiguration();
+        } else {
+            options = _.assign({}, EmotionAnalysis.getDefaultConfiguration(), options);
         }
 
         // SDK Needs to create video and canvas nodes in the DOM in order to function
