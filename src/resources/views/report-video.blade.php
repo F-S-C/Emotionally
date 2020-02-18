@@ -371,7 +371,7 @@
                 let video = document.getElementById("video");
                 video.addEventListener('timeupdate', () => {
                     lineChart.options["verticalLine"] = [{
-                        "x": video.currentTime,
+                        "x": video.currentTime*10,
                         "style": "rgba(255, 255, 0, 1)"
                     }];
                     lineChart.update();
