@@ -34,7 +34,7 @@ Route::name('system.')
 //                        Route::get('/downloadPDF', '#')->name('pdf');
                         Route::get('/downloadJSON', 'ReportController@projectDownloadJSON')->name('json');
 //                        Route::get('/downloadPPTX', '#')->name('pptx');
-//                        Route::get('/downloadExcel', '#')->name('excel');
+                        Route::get('/downloadExcel', 'ReportController@downloadProjectExcel')->name('excel');
                     });
             });
 

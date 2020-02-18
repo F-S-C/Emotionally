@@ -19,6 +19,7 @@
 namespace Emotionally\Http\Controllers;
 
 use Emotionally\Http\Controllers\ReportFormatters\Presentations\VideoPresentation;
+use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\ProjectSpreadsheet;
 use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\VideoSpreadsheet;
 use Emotionally\Project;
 use Emotionally\Video;
@@ -291,6 +292,18 @@ class ReportController extends Controller
     {
         $video = Video::findOrFail($id);
         $spreadsheet = new VideoSpreadsheet($video->name, $video->report);
+
+        $spreadsheet->generateDefault();
+
+        return response()->streamDownload(function () use ($spreadsheet) {
+            $spreadsheet->getFileAsBinaryOutput();
+        }, $spreadsheet->getFileName());
+    }
+
+    public function downloadProjectExcel($id)
+    {
+        $project = Project::findOrFail($id);
+        $spreadsheet = new ProjectSpreadsheet($project->name, $project->report);
 
         $spreadsheet->generateDefault();
 
