@@ -29,8 +29,8 @@ Route::name('system.')
         Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
         Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
 
-        /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
-            ->group(function () {*/
+        Route::middleware('permissions:read')
+            ->group(function () {
                 Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
                 Route::prefix('/project/{project_id}/share')
                     ->name('permissions.')
@@ -46,7 +46,7 @@ Route::name('system.')
                         Route::any('/edit', 'PermissionsController@editPermission')
                             ->name('edit');
                     });
-            //});
+            });
     });
 
 
@@ -57,9 +57,6 @@ Route::get('/logout', function () {
 })->name('logout');
 
 // TODO: Reactivate 'verify' and remove the route verification.notice
-Auth::routes(/*['verify' => true]*/);
-Route::name('verification.notice')->get('/not-logged', function () {
-    return 'not logged';
-});
+Auth::routes(['verify' => true]);
 
 Route::redirect('/home', '/system');
