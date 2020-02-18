@@ -27,14 +27,15 @@ Route::name('system.')
         Route::prefix('/project/{id}/report')
             ->group(function () {
                 Route::get('/', 'ProjectController@getProjectReport')->name('report-project');
-                Route::get('/HTML', 'ReportController@getProjectReportFile')->name('layout-file-project');
+                Route::get('/file', 'ReportController@getProjectReportFile')->name('layout-file-project');
 
                 Route::name('project.download-')
+                    ->prefix('/download')
                     ->group(function () {
-                        Route::get('/downloadPDF', 'ReportController@downloadProjectPDF')->name('pdf');
-                        Route::get('/downloadJSON', 'ReportController@downloadProjectJSON')->name('json');
-                        Route::get('/downloadPPTX', 'ReportController@downloadProjectPPTX')->name('pptx');
-                        Route::get('/downloadExcel', 'ReportController@downloadProjectExcel')->name('excel');
+                        Route::get('/pdf', 'ReportController@downloadProjectPDF')->name('pdf');
+                        Route::get('/json', 'ReportController@downloadProjectJSON')->name('json');
+                        Route::get('/powerpoint', 'ReportController@downloadProjectPPTX')->name('pptx');
+                        Route::get('/excel', 'ReportController@downloadProjectExcel')->name('excel');
                     });
             });
 
@@ -44,11 +45,12 @@ Route::name('system.')
                 Route::put('/edit/duration', 'VideoController@resetInterval')->name('edit-video-duration');
                 Route::get('/file', 'ReportController@getReportFile')->name('layout-file');
                 Route::name('download-')
+                    ->prefix('/download')
                     ->group(function () {
-                        Route::get('/downloadPDF', 'ReportController@downloadPDF')->name('pdf');
-                        Route::get('/downloadJSON', 'ReportController@downloadJSON')->name('json');
-                        Route::get('/downloadPPTX', 'ReportController@downloadPPTX')->name('pptx');
-                        Route::get('/downloadExcel', 'ReportController@downloadExcel')->name('excel');
+                        Route::get('/pdf', 'ReportController@downloadPDF')->name('pdf');
+                        Route::get('/json', 'ReportController@downloadJSON')->name('json');
+                        Route::get('/powerpoint', 'ReportController@downloadPPTX')->name('pptx');
+                        Route::get('/excel', 'ReportController@downloadExcel')->name('excel');
                     });
             });
         /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
