@@ -33,6 +33,8 @@ Route::name('system.')
         Route::post('/project/new', 'ProjectController@createProject')->name('newProject');
         Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
         Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
+        Route::view('/profile','profile')->name('profile');
+        Route::post('/editProfile','UserController@editProfile')->name('edit-profile');
 
         /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
             ->group(function () {*/

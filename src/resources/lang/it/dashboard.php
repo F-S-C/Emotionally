@@ -66,4 +66,5 @@ return [
     "root" => "Radice",
     "yes" => "Si",
     "no" => "No",
+    "profile"=>"Profilo",
 ];
