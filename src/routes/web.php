@@ -25,6 +25,7 @@ Route::name('system.')
         Route::redirect('/home', '/system/');
         Route::post('/project/delete', 'ProjectController@deleteProject')->name('delete-project');
         Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project');
+        Route::post('/project/move', 'ProjectController@moveProject')->name('move-project');
         Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video');
         Route::post('/video/delete', 'VideoController@deleteVideo')->name('delete-video');
 

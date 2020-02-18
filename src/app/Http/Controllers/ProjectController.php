@@ -87,12 +87,16 @@ class ProjectController extends Controller
     }
 
     /**
-     *
-     * @param Project $project
+     * Move a project
+     * @param Request $request The HTTP request
      */
-    public function moveProject(Project $project): void
+    public function moveProject(Request $request): void
     {
-        $project->father_id = null;
+        $project = Project::findOrFail($request->input('project_selected_id'));
+        if($request->input('project_destination_id') != "")
+            $project->father_id = $request->input('project_destination_id');
+        else
+            $project->father_id = null;
         $project->save();
     }
 

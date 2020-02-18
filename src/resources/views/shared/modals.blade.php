@@ -13,6 +13,8 @@
     .modal-close:hover {
         color: rgba(255, 255, 255, 0.5) !important;
     }
+
+
 </style>
 
 <!-- Modal rinomina progetto -->
@@ -195,22 +197,36 @@
                 </button>
             </div>
             <div class="modal-body">
-                <ul class="collapse show el-3dp nav flex-column flex-nowrap" id="pr_list">
-                    @each('partials.project-tree', Auth::user()->projects, 'main_project')
-                </ul>
-                <form method="POST" action="{{ route('system.delete-video') }}"
+                <div id="project-move-tree" class="container-fluid">
+                    <p class="text-left">Select a destination project:</p>
+                    <button class="btn btn-outline-primary btn-list-project" onclick="selectProject(this,'')"><span class="fas fa-home mr-1"></span>Root</button>
+                    <ul class="ml-3 list-unstyled" id="pr_list">
+                        @each('partials.project-tree', Auth::user()->projects->where('father_id', null), 'main_project')
+                    </ul>
+                </div>
+                <form method="POST" action="{{ route('system.move-project') }}"
                       id="project-move-form">
                     @csrf
                     <input type="hidden" id="project_selected_id" name="project_selected_id">
+                    <input type="hidden" id="project_destination_id" name="project_destination_id">
                     <div class="modal-footer mt-3">
                         <button id="close-move-project" class="btn btn-secondary"
                                 data-dismiss="modal">
                             No
                         </button>
-                        <input type="submit" id="submit-move-project" class="btn btn-primary"
-                               data-dismiss="modal" value="Si">
+                        <input type="submit" id="submit-move-project" class="btn btn-primary disabled"
+                               data-dismiss="modal" style="color: white;" value="Sposta" disabled>
                     </div>
                 </form>
+                <div id="project-move-complete" class="alert alert-success" role="alert" style="display:none;">
+                    {{ trans('dashboard.success') }}
+                </div>
+                <div id="project-move-updating" class="alert alert-warning" role="alert" style="display:none;">
+                    {{ trans('dashboard.changing') }}
+                </div>
+                <div id="project-move-error" class="alert alert-danger" role="alert" style="display:none;">
+                    {{ trans('dashboard.error') }}
+                </div>
             </div>
         </div>
     </div>
