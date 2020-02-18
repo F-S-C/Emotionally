@@ -18,6 +18,7 @@
 
 namespace Emotionally\Http\Controllers;
 
+use Emotionally\Http\Controllers\ReportFormatters\Presentations\ProjectPresentation;
 use Emotionally\Http\Controllers\ReportFormatters\Presentations\VideoPresentation;
 use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\ProjectSpreadsheet;
 use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\VideoSpreadsheet;
@@ -256,11 +257,20 @@ class ReportController extends Controller
 
     public function downloadPDF($id)
     {
-        /*$video = Video::findOrFail($id);
-        $pdf = \Pdf::loadView('layout-file', compact('video'));
-        $pdf->setOptions(['enable-javascript'=> true, 'javascript-delay'=>5000, 'enable-smart-shrinking'=> true, 'no-stop-slow-scripts'=>true]);
+//        $video = Video::findOrFail($id);
+//        $pdf = \Pdf::loadView('layout-file', compact('video'));
+//        $pdf->setOptions(['enable-javascript'=> true, 'javascript-delay'=>5000, 'enable-smart-shrinking'=> true, 'no-stop-slow-scripts'=>true]);
+//
+//        return $pdf->download('chart.pdf');
+    }
 
-        return $pdf->download('chart.pdf');*/
+    public function downloadProjectPDF($id)
+    {
+//        $project = Project::findOrFail($id);
+//        $pdf = \Pdf::loadView('layout-file', compact('project'));
+//        $pdf->setOptions(['enable-javascript'=> true, 'javascript-delay'=>5000, 'enable-smart-shrinking'=> true, 'no-stop-slow-scripts'=>true]);
+//
+//        return $pdf->download('chart.pdf');
     }
 
     public function downloadJSON($id)
@@ -276,7 +286,7 @@ class ReportController extends Controller
         return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
     }
 
-    public function projectDownloadJSON($id)
+    public function downloadProjectJSON($id)
     {
         $project = Project::findOrFail($id);
         $fileName = "Project-report-" . time() . ".json";
@@ -316,6 +326,18 @@ class ReportController extends Controller
     {
         $video = Video::findOrFail($id);
         $presentation = new VideoPresentation($video->name, $video->report);
+
+        $presentation->generateDefault();
+
+        return response()->streamDownload(function () use ($presentation) {
+            $presentation->getFileAsBinaryOutput();
+        }, $presentation->getFileName());
+    }
+
+    public function downloadProjectPPTX($id)
+    {
+        $project = Project::findOrFail($id);
+        $presentation = new ProjectPresentation($project->name, $project->report);
 
         $presentation->generateDefault();
 

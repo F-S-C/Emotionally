@@ -31,9 +31,9 @@ Route::name('system.')
 
                 Route::name('project.download-')
                     ->group(function () {
-//                        Route::get('/downloadPDF', '#')->name('pdf');
-                        Route::get('/downloadJSON', 'ReportController@projectDownloadJSON')->name('json');
-//                        Route::get('/downloadPPTX', '#')->name('pptx');
+                        Route::get('/downloadPDF', 'ReportController@downloadProjectPDF')->name('pdf');
+                        Route::get('/downloadJSON', 'ReportController@downloadProjectJSON')->name('json');
+                        Route::get('/downloadPPTX', 'ReportController@downloadProjectPPTX')->name('pptx');
                         Route::get('/downloadExcel', 'ReportController@downloadProjectExcel')->name('excel');
                     });
             });
