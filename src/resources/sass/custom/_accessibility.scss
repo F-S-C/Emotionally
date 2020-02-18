@@ -58,3 +58,18 @@ a, .btn-link {
         margin-left: .5em;
     }
 }
+
+// The following hash map contains, for each font size level, the base font size.
+$accessibility-font-sizes: (
+    "xs": 60%,
+    "s": 80%,
+    "m": initial,
+    "l": 120%,
+    "xl": 140%,
+);
+
+@each $size, $value in $accessibility-font-sizes {
+    .font-size-#{$size} {
+        font-size: $value !important;
+    }
+}

@@ -2,6 +2,7 @@
 
 namespace Emotionally;
 
+use Emotionally\Http\Controllers\ReportController;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -28,7 +29,7 @@ class Project extends Model
      */
     public function creator()
     {
-        return $this->belongsTo('Emotionally\User');
+        return $this->belongsTo('Emotionally\User', 'user_id');
     }
 
     /**
@@ -77,13 +78,21 @@ class Project extends Model
         return $this->videos()->count();
     }
 
+    public function getReportAttribute()
+    {
+        $REPORTS = $this->videos()->get()->map(function (Video $element) {
+            return json_decode($element->report, true);
+        })->toArray();
+        return ReportController::average($REPORTS);
+    }
+
     /**
      * Get the average emotion of the project.
      * @return string The average emotion.
      */
     public function getAverageEmotionAttribute()
     {
-        return ':-)'; // TODO: Implement
+        return ReportController::highestEmotion($this->report);
     }
 
 }

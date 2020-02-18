@@ -18,5 +18,7 @@
 // Import modified jQuery DataTables
 @import "datatables";
 
+@import "~jquery-ui-dist/jquery-ui.min.css";
+
 // A custom stylesheet
 @import "custom/style";

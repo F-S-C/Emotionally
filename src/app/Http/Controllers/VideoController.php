@@ -22,7 +22,6 @@ class VideoController extends Controller
         $video->save();
     }
 
-
     /**
      * This function get and delete a video
      * @param Video $video The video.
@@ -49,6 +48,32 @@ class VideoController extends Controller
     }
 
     /**
+     * This function get and reset a interval of the video
+     * @param int $video_id The video
+     * @param Request $request The request.
+     * @return string A json response.
+     */
+    public function resetInterval(int $video_id, Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'start' => 'bail|required|date_format:H:i:s',
+            'end' => 'required|date_format:H:i:s',
+            'report' => 'required|json',
+        ]);
+        if ($validator->fails()) {
+            return json_encode(array('done' => false, 'errors' => $validator->errors()->toArray()));
+        }
+
+        $video = Video::findOrFail($video_id);
+        $video->start = $request->start;
+        $video->end = $request->end;
+        $video->report = $request->report;
+        $video->save();
+        return json_encode(array('done' => true));
+    }
+
+
+    /**
      * Set the report field for a video.
      * @param Request $request The request. It must contain the report and the id of the video.
      * @return false|string A json response.
@@ -70,7 +95,7 @@ class VideoController extends Controller
         return json_encode(array('done' => true));
     }
 
-    /**
+    /*
      * Upload and manages the video passed through HTTP request.
      * @param Request $request The HTTP request.
      * @throws \getid3_exception \\getid3_exception
@@ -143,10 +168,10 @@ class VideoController extends Controller
                 array_push($urls, array('url' => $video->url, 'id' => $video->id));
                 return json_encode(array('result' => true, 'files' => $urls));
             } catch (\Exception $e) {
-                echo json_encode(array('result' => false, 'error' => $e->getMessage()));
+                return json_encode(array('result' => false, 'error' => $e->getMessage()));
             }
         } else {
-            echo json_encode(array('result' => false));
+            return json_encode(array('result' => false));
         }
     }
 
@@ -173,6 +198,20 @@ class VideoController extends Controller
     }
 
     /**
+     * Get report of a video to analyze.
+     * @param int $id The video to be analyzed.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getVideoReport(int $id)
+    {
+        $current_video = Video::findOrFail($id);
+        return view('report-video')
+            ->with('video', $current_video)
+            ->with('path', ProjectController::getProjectChain($current_video->project))
+            ->with('project', $current_video->project);
+    }
+
+    /*
      * Returns the report of a video.
      * @param int $id The video id.
      * @return mixed The report.
