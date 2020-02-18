@@ -35,14 +35,14 @@
 
 @section('navbar-content')
     <ul class="ml-auto navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link text-center" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item active" id="home-li">
+            <a class="nav-link text-center" id="home-a" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-center" href="#features">Features</a>
+        <li class="nav-item" id="features-li">
+            <a class="nav-link text-center" id="features-a" href="#features">Features</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-center" href="#about">About</a>
+        <li class="nav-item" id="about-li">
+            <a class="nav-link text-center" id="about-a" href="#about">About</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-outline-primary nav-link"
@@ -230,3 +230,36 @@
     </section>
 @endsection
 
+@section("scripts")
+    @parent
+    <script type="text/javascript" src="{{mix('/js/vendor/affdex.js')}}"></script>
+    <script type="text/javascript" src="{{mix('/js/emotion-analysis.js')}}"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+
+                $('#features-a').on('click', function () {
+                    $('#features-li').addClass('active');
+                    $('#home-li').removeClass('active');
+                    $('#about-li').removeClass('active');
+                    document.location.href = '#features';
+                });
+
+                $('#about-a').on('click', function () {
+                    $('#about-li').addClass('active');
+                    $('#home-li').removeClass('active');
+                    $('#features-li').removeClass('active');
+                    document.location.href = '#about';
+                });
+
+                $('#home-a').on('click', function () {
+                    $('#home-li').addClass('active');
+                    $('#about-li').removeClass('active');
+                    $('#features-li').removeClass('active');
+                    document.location.href = '#';
+                });
+
+            });
+        })(jQuery);
+    </script>
+@endsection
