@@ -27,6 +27,7 @@
         <div class="row my-4">
             <div class="col-12">
                 <table class="table" style="color:black">
+                    <caption class="sr-only">The video report</caption>
                     <thead class="thead-light">
                     <tr>
                         <th scope="col">Creator</th>

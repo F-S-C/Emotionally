@@ -425,7 +425,7 @@ class EmotionAnalysis {
         };
 
         if (!Array.isArray(report)) {
-            Object.keys(useful_values).map(key => {
+            Object.keys(useful_values).forEach(key => {
                 useful_values[key] = report[key];
             });
             return useful_values;
