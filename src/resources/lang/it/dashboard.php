@@ -66,6 +66,7 @@ return [
     "root" => "Radice",
     "yes" => "Si",
     "no" => "No",
+    "profile"=>"Profilo",
     "confirm-project-delete" => "Sei sicuro di voler eliminare il progetto?",
     "delete-project" => "Elmina progetto",
     "delete-video" => "Elimina video",

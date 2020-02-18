@@ -66,6 +66,7 @@ return [
     "root" => "Root",
     "yes" => "Yes",
     "no" => "No",
+    "profile"=>"Profile",
     "confirm-remove-project" => "Are you sure you want to delete the project?",
     "delete-project" => "Delete project",
     "delete-video" => "Delete video",
