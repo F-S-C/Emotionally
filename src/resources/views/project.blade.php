@@ -116,6 +116,11 @@
                     $('#video-delete-form').show();
                 });
 
+                $('.move-project-btn').on('click', function () {
+                    $('#project_selected_id').val($(this).parent().attr('aria-labelledby').replace('more-project-', ''));
+                    $('#move-project-modal').modal('show');
+                });
+
                 $('#project-rename-form').on('submit', function (event) {
                     event.preventDefault();
                     $('#project-rename-form').hide();
@@ -223,7 +228,71 @@
                         }
                     });
                 });
+
+                let projectMoveComplete = $('#project-move-complete');
+                let projectMoveChanging = $('#project-move-updating');
+                let projectMoveError = $('#project-move-error');
+
+                $('#move-project-modal').on('show.bs.modal', function () {
+                    projectMoveChanging.hide();
+                    projectMoveComplete.hide();
+                    projectMoveError.hide();
+                    $('#project-move-form').show();
+                    $('#project-move-tree').show();
+                    let submit = $('#submit-move-project');
+                    let buttons = $('.btn-list-project');
+                    submit.addClass('disabled');
+                    submit.prop('disabled', true);
+                    buttons.removeClass('active');
+                    buttons.prop('disabled', false);
+                    let val = $('#project_selected_id').val();
+                    for( let i = 1; i < buttons.length; i++){
+                        if(buttons.eq(i).attr('aria-labelledby').replace('project-', '') === val){
+                            buttons.eq(i).prop('disabled', true);
+                        }
+                    }
+                });
+
+                $('#submit-move-project').on('click', function (event) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    projectMoveChanging.show();
+                    $('#project-move-form').hide();
+                    $('#project-move-tree').hide();
+                    $.ajax({
+                        url: '{{route('system.move-project')}}',
+                        type: 'POST',
+                        data: new FormData(document.getElementById('project-move-form')),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: function () {
+                            projectMoveChanging.hide();
+                            projectMoveComplete.show();
+                            $('#move-project-modal').on('hidden.bs.modal', function () {
+                                location.reload();
+                            });
+                        },
+                        error: function (data) {
+                            projectMoveChanging.hide();
+                            projectMoveError.show();
+                            console.log(data);
+                        }
+                    });
+                });
             });
         })(jQuery);
+
+        function selectProject(elem, id) {
+            if (id != $('#project_selected_id').val()) {
+                $('.btn-list-project').removeClass('active');
+                $(elem).addClass('active');
+                $('#project_destination_id').val(id);
+                $('#submit-move-project').removeClass('disabled');
+                $('#submit-move-project').removeAttr('disabled');
+            }else{
+                alert("Cannot move a project into itself!");
+            }
+        }
     </script>
 @endsection
