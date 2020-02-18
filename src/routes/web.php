@@ -23,16 +23,16 @@ Route::name('system.')
     ->group(function () {
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
-        Route::post('/project/delete', 'ProjectController@deleteProject')->name('delete-project');
         Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project');
+        Route::post('/project/delete', 'ProjectController@deleteProject')->name('delete-project');
         Route::post('/project/move', 'ProjectController@moveProject')->name('move-project');
         Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video');
         Route::post('/video/delete', 'VideoController@deleteVideo')->name('delete-video');
         Route::post('/video/move', 'VideoController@moveVideo')->name('move-video');
 
         Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
-        Route::post('/project/new', 'ProjectController@createProject')->name('newProject');
         Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
+        Route::post('/project/new', 'ProjectController@createProject')->name('newProject');
         Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
 
         /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
