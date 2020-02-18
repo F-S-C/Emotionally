@@ -2,7 +2,9 @@
 
 namespace Emotionally;
 
+use Emotionally\Http\Controllers\ReportController;
 use Illuminate\Database\Eloquent\Model;
+use function MongoDB\BSON\toJSON;
 
 class Video extends Model
 {
@@ -15,7 +17,7 @@ class Video extends Model
      */
     public function author()
     {
-        return $this->belongsTo('Emotionally\User');
+        return $this->belongsTo('Emotionally\User', 'user_id');
     }
 
     /**
@@ -34,5 +36,10 @@ class Video extends Model
     public function getThumbnailAttribute()
     {
         return 'https://picsum.photos/848/480'; // TODO: Implement thumbnail
+    }
+
+    public function getAverageReportAttribute()
+    {
+        return ReportController::getEmotionValues(ReportController::average($this->report));
     }
 }
