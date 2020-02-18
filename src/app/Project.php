@@ -83,6 +83,10 @@ class Project extends Model
         $REPORTS = $this->videos()->get()->map(function (Video $element) {
             return json_decode($element->report, true);
         })->toArray();
+        $SUB_REPORTS = $this->sub_projects()->get()->map(function (Project $sub_project) {
+            return $sub_project->report;
+        })->toArray();
+        array_push($REPORTS, $SUB_REPORTS);
         return ReportController::average($REPORTS);
     }
 
