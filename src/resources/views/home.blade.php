@@ -94,6 +94,10 @@
                 let projectDeleteChanging = $('#project-delete-updating');
                 let projectDeleteError = $('#project-delete-error');
 
+                $('.permission-project-btn').on('click', function () {
+                    window.alert("ciao");
+                })
+
 
                 $('.rename-project-btn').on('click', function () {
                     $('#rename-project-modal').modal('show');

@@ -169,6 +169,7 @@
                     "dom": '<"top"i>rt<"bottom"><"clear">',
                 });
 
+
                 $('#search-bar').on('keydown click change paste mouseup', function () {
                     table.search($('#search-bar').val()).draw();
                 });
