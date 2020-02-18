@@ -421,15 +421,6 @@
                     $('#realtime-video-modal').modal('show');
                 });
 
-                $('#realtime-video-modal').on('hidden.bs.modal', function () {
-                    stopStreamedVideo(document.querySelector('video'));
-                    $('#vid1').show();
-                    $('#title-fps-menu').hide();
-                    $('#realtime-body').show();
-                    $('#realtime-submit-close').hide();
-                    $('#realtimevideo-upload-notcomplete').hide();
-                });
-
                 $('#upload-video').on('click', function () {
                     $('#upload-video-modal').modal('show');
                 });
@@ -663,12 +654,28 @@
                     });
                 });
 
+
+                let player;
+
+                $('#realtime-video-modal').on('hidden.bs.modal', function () {
+                    console.log('hey');
+                    // stopStreamedVideo(document.querySelector('video'));
+                    $('#vid1').show();
+                    $('#title-fps-menu').hide();
+                    $('#realtime-body').show();
+                    $('#realtime-submit-close').hide();
+                    $('#realtimevideo-upload-notcomplete').hide();
+                    player.record().stopDevice();
+                    player.record().reset();
+                });
+
+
                 //REALTIME VIDEO FUNCTIONS
                 let btnNext = $('#next-realtime');
                 let btnUpload = $('#submit-realtime-video');
 
                 $('#realtime-video').on('click', function () {
-                    let player = videojs('vid1', {
+                    player = videojs('vid1', {
                         controls: true,
                         width: 400,
                         height: 250,
@@ -676,7 +683,7 @@
                         plugins: {
                             record: {
                                 debug: false,
-                                audio: false,
+                                audio: true,
                                 video: true,
                                 maxLength: Infinity,
                                 convertEngine: 'ts-ebml'
@@ -694,7 +701,6 @@
                     player.on('deviceError', function () {
                         console.log('device error:', player.deviceErrorCode);
                     });
-
                     // Handle error events of the video player
                     player.on('error', function (error) {
                         console.log('error:', error);
