@@ -22,7 +22,7 @@
         "james-heinrich/getid3": "^1.9",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "phpoffice/phppresentation": "^0.9.0",
+        "phpoffice/phppresentation": "dev-master",
         "phpoffice/phpspreadsheet": "^1.10"
     },
     "require-dev": {

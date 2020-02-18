@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c46a2daaa3179f0da92b419c43476ecc",
+    "content-hash": "41a03fd187fcd79ae34e395daa9cfc0a",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1419,7 +1419,7 @@
         },
         {
             "name": "phpoffice/phppresentation",
-            "version": "0.9.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PHPPresentation.git",
@@ -6302,7 +6302,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "phpoffice/phppresentation": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

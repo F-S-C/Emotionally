@@ -40,15 +40,16 @@ use Emotionally\Http\Controllers\ReportFormatters\ReportFormatter;
 use PhpOffice\PhpPresentation\DocumentLayout;
 use PhpOffice\PhpPresentation\IOFactory;
 use PhpOffice\PhpPresentation\PhpPresentation;
+use PhpOffice\PhpPresentation\Shape\Chart;
 use PhpOffice\PhpPresentation\Shape\Chart\Series;
 use PhpOffice\PhpPresentation\Shape\Chart\Type\Bar;
-use PhpOffice\PhpPresentation\Shape\Drawing\Base64;
 use PhpOffice\PhpPresentation\Shape\RichText;
 use PhpOffice\PhpPresentation\Slide;
 use PhpOffice\PhpPresentation\Slide\Background\Color as BackgroundColor;
 use PhpOffice\PhpPresentation\Style\Alignment;
-use PhpOffice\PhpPresentation\Style\Border;
 use PhpOffice\PhpPresentation\Style\Color;
+use PhpOffice\PhpPresentation\Style\Fill;
+use PhpOffice\PhpPresentation\Style\Shadow;
 
 abstract class ReportPresentation extends ReportFormatter
 {
@@ -229,11 +230,14 @@ abstract class ReportPresentation extends ReportFormatter
 
     /**
      * Add a slide containing a bar chart with the emotion values
+     * @warning Due to a bug in the used library this method can't be used to generate
+     * a slide, otherwise it will break the whole powerpoint. The error is in the writing of
+     * the XML file (as in https://github.com/PHPOffice/PHPPresentation/issues/382)
      * @return $this
+     * @throws \Exception
      */
     public function addEmotionsChartSlide()
     {
-        error_reporting(E_ALL);
         $emotions = ReportController::getEmotionValues($this->report);
         $slide = $this->presentation->createSlide();
 
@@ -242,15 +246,21 @@ abstract class ReportPresentation extends ReportFormatter
         $barChart = new Bar();
         $barChart->addSeries($series);
 
-        $shape = $slide->createChartShape();
+        $shape = new Chart();
+        $slide->addShape($shape);
         $shape->setName('PHPPresentation Monthly Downloads')
             ->setResizeProportional(false)
             ->setHeight(550)
             ->setWidth(700)
             ->setOffsetX(120)
             ->setOffsetY(80);
-//        $shape->setShadow($oShadow);
-//        $shape->setFill($oFill);
+
+        $oFill = new Fill();
+        $oFill->setFillType(Fill::FILL_SOLID)->setStartColor(new Color('FFE06B20'));
+        $oShadow = new Shadow();
+        $oShadow->setVisible(true)->setDirection(45)->setDistance(10);
+        $shape->setShadow($oShadow);
+        $shape->setFill($oFill);
         $shape->getBorder()->setLineStyle(Border::LINE_SINGLE);
         $shape->getTitle()->setText('PHPPresentation Monthly Downloads');
         $shape->getTitle()->getFont()->setItalic(true);

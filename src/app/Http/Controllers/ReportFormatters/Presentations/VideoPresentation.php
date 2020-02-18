@@ -54,8 +54,8 @@ class VideoPresentation extends ReportPresentation
     public function generateDefault()
     {
         $this->createTitleSlide()
-            ->addHighestEmotionSlide()
-            ->addEmotionsChartSlide();
+            ->addHighestEmotionSlide();
+
         return $this;
     }
 }
