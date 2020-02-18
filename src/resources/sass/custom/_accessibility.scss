@@ -37,6 +37,9 @@ a, .btn-link {
 
     &:hover, &:focus {
         text-decoration: none;
+    }
+
+    &:focus {
         border: 1px solid rgba($primary, 0.75);
     }
 
