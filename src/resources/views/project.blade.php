@@ -85,9 +85,8 @@
                 let videoDeleteChanging = $('#video-delete-updating');
                 let videoDeleteError = $('#video-delete-error');
 
-                $('.permission-project-btn').on('click', function () {
-                    {{route('system.permissions.index', $project->id)}};
-                    window.alert('diocane');
+                $('.permissions-project-btn').on('click', function () {
+                    document.location = "{{route('system.permissions.index', $project->id)}}";
                 });
 
 

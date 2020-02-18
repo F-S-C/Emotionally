@@ -94,9 +94,10 @@
                 let projectDeleteChanging = $('#project-delete-updating');
                 let projectDeleteError = $('#project-delete-error');
 
-                $('.permission-project-btn').on('click', function () {
-                    window.alert("ciao");
-                })
+                $('.permissions-project-btn').on('click', function () {
+                    document.location = "{{route('system.permissions.index', $project->id)}}";
+                });
+
 
 
                 $('.rename-project-btn').on('click', function () {
