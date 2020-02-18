@@ -119,12 +119,12 @@
                 </div>
                 <div class="ml-auto btn-group dropleft">
                     @if(!strpos($_SERVER['REQUEST_URI'], "report") && !strpos($_SERVER['REQUEST_URI'], "video"))
-                    <button class="btn btn-outline-primary rounded-pill mr-0 mr-md-4" type="button" id="add-video"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            title="{{trans('dashboard.upload_video')}}">
-                        <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
-                        {{trans('dashboard.add')}}
-                    </button>
+                        <button class="btn btn-outline-primary rounded-pill mr-0 mr-md-4" type="button" id="add-video"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                title="{{trans('dashboard.upload_video')}}">
+                            <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
+                            {{trans('dashboard.add')}}
+                        </button>
                     @endif
                     <div class="dropdown-menu" aria-labelledby="add-video">
                         @if(isset($project))
@@ -194,11 +194,13 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div id="video-upload-complete" class="alert alert-success" role="alert" aria-atomic="true"
+                                <div id="video-upload-complete" class="alert alert-success" role="alert"
+                                     aria-atomic="true"
                                      style="display:none;">
                                     {{trans('dashboard.upload_successful')}}
                                 </div>
-                                <div id="video-upload-notcomplete" class="alert alert-danger" role="alert" aria-atomic="true"
+                                <div id="video-upload-notcomplete" class="alert alert-danger" role="alert"
+                                     aria-atomic="true"
                                      style="display:none;">
                                     {{trans('dashboard.upload_failed')}}
                                 </div>
@@ -275,11 +277,13 @@
                             </div>
                             <div class="modal-body el-16dp">
 
-                                <div id="realtimevideo-upload-complete" class="alert alert-success" role="alert" aria-atomic="true"
+                                <div id="realtimevideo-upload-complete" class="alert alert-success" role="alert"
+                                     aria-atomic="true"
                                      style="display:none;">
                                     {{trans('dashboard.upload_successful')}}
                                 </div>
-                                <div id="realtimevideo-upload-notcomplete" class="alert alert-danger" role="alert" aria-atomic="true"
+                                <div id="realtimevideo-upload-notcomplete" class="alert alert-danger" role="alert"
+                                     aria-atomic="true"
                                      style="display:none;">
                                     {{trans('dashboard.upload_failed')}}
                                 </div>
@@ -499,7 +503,7 @@
                                                 container.hide();
                                                 form.show();
                                             });
-                                    });
+                                    }, {sec_step: 1 / parseFloat($('#framerate-video').val())});
                                 });
 
 
@@ -640,7 +644,7 @@
                                                 container.hide();
                                                 form.hide();
                                             });
-                                    });
+                                    }, {sec_step: 1 / parseFloat($('#framerate-realtime').val())});
                                 });
                             }
                         },
