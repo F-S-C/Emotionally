@@ -36,13 +36,19 @@
                         <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
                         <td class="text-center">{{$project->number_of_videos}}</td>
                         <td class="text-center">{{$project->number_of_subprojects}}</td>
-                        <td class="text-center">{{$project->average_emotion}}</td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-md-text"
+                            <span class="sr-only">@lang('emotions.'.$project->average_emotion)</span>
+                            <span class="emojis" title="@lang('emotions.'.$project->average_emotion)"
+                                  aria-hidden="true">
+                        {{\Emotionally\Http\Controllers\ReportController::get_emoji($project->average_emotion)}}
+                    </span>
+                        </td>
+                        <td class="text-center">
+                            <a href="{{route('system.report-project', $project->id)}}" class="btn btn-md-text"
                                aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
                         </td>
                         <td>
-                            @include('shared.dropdown-options-project', ['id'=>'more-project-'.$project->id,'title'=>trans('dashboard.more_options'), 'item_id'=>$project->id])
+                            @include('shared.dropdown-options-menu', ['id'=>'more-project-'.$project->id,'title'=>trans('dashboard.more_options')])
                         </td>
                     </tr>
                 @endforeach
@@ -97,7 +103,6 @@
                 $('.permissions-project-btn').on('click', function () {
                     document.location = "{{route('system.permissions.index', $project->id)}}";
                 });
-
 
 
                 $('.rename-project-btn').on('click', function () {
