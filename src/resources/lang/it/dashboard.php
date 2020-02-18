@@ -61,4 +61,9 @@ return [
     "media-error" => "getUserMedia non è supportato da questo browser",
     "add" => "Aggiungi",
     "video_rename" => "Rinomina video",
+    "move-video" => "Sposta video",
+    "select-destination" => "Seleziona il progetto di destinazione:",
+    "root" => "Radice",
+    "yes" => "Si",
+    "no" => "No",
 ];

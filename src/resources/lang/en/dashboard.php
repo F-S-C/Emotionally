@@ -61,5 +61,10 @@ return [
     "media-error" => "getUserMedia is not implemented in this browser",
     "add" => "Add",
     "video_rename" => "Rename video",
+    "move-video" => "Move video",
+    "select-destination" => "Select a destination project:",
+    "root" => "Radice",
+    "yes" => "Yes",
+    "no" => "No",
 ];
 
