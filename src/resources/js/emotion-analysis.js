@@ -44,10 +44,10 @@ class EmotionAnalysis {
     /**
      * Create a new default configuration.
      * @typedef {Object} Configuration
-     * @property {number} [secs=0] Where to start (in seconds)
+     * @property {number} [start=0] Where to start (in seconds)
      * @property {number} [sec_step=0.1] The step size of extracting emotion (in
      * seconds).
-     * @property {number} [stop_sec=undefined] Where to stop (in seconds). If
+     * @property {number} [stop=undefined] Where to stop (in seconds). If
      * undefined or less or equal to secs, the entire video will be analyzed.
      * @property {FaceMode} [faceMode=FaceMode.LARGE_FACES] The type of faces in the video.
      * @property {Object} detect
@@ -59,9 +59,9 @@ class EmotionAnalysis {
      */
     static getDefaultConfiguration() {
         return {
-            secs: 0,
+            start: 0,
             sec_step: 0.1,
-            stop_sec: undefined,
+            stop: undefined,
             faceMode: EmotionAnalysis.FaceMode.LARGE_FACES,
             detect: {
                 emotions: true,
@@ -92,9 +92,9 @@ class EmotionAnalysis {
         }
 
         const verbose = false;
-        let secs = options.secs;
+        let secs = options.start;
         let sec_step = options.sec_step;
-        let stop_sec = options.stop_sec;
+        let stop_sec = options.stop;
 
         // Decide whether your video has large or small face
         const faceMode = options.faceMode;
