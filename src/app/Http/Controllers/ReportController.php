@@ -238,7 +238,7 @@ class ReportController extends Controller
         }
     }
 
-    public function getReportFile(int $id)
+    public function downloadVideoHTML(int $id)
     {
         $current_video = Video::findOrFail($id);
         return view('layout-file')
@@ -247,7 +247,7 @@ class ReportController extends Controller
             ->with('project', $current_video->project);
     }
 
-    public function getProjectReportFile(int $id)
+    public function downloadProjectHTML(int $id)
     {
         $current_project = Project::findOrFail($id);
         (new ConsoleOutput())->writeln($current_project->creator === null);
@@ -255,25 +255,17 @@ class ReportController extends Controller
             ->with('project', $current_project);
     }
 
-    public function downloadPDF($id)
+    public function downloadVideoPDF($id)
     {
-//        $video = Video::findOrFail($id);
-//        $pdf = \Pdf::loadView('layout-file', compact('video'));
-//        $pdf->setOptions(['enable-javascript'=> true, 'javascript-delay'=>5000, 'enable-smart-shrinking'=> true, 'no-stop-slow-scripts'=>true]);
-//
-//        return $pdf->download('chart.pdf');
+        return $this->downloadVideoHTML($id)->with('to_pdf', true);
     }
 
     public function downloadProjectPDF($id)
     {
-//        $project = Project::findOrFail($id);
-//        $pdf = \Pdf::loadView('layout-file', compact('project'));
-//        $pdf->setOptions(['enable-javascript'=> true, 'javascript-delay'=>5000, 'enable-smart-shrinking'=> true, 'no-stop-slow-scripts'=>true]);
-//
-//        return $pdf->download('chart.pdf');
+        return $this->downloadProjectHTML($id)->with('to_pdf', true);
     }
 
-    public function downloadJSON($id)
+    public function downloadVideoJSON($id)
     {
 
         $video = Video::findOrFail($id);
@@ -298,7 +290,7 @@ class ReportController extends Controller
 
     }
 
-    public function downloadExcel($id)
+    public function downloadVideoExcel($id)
     {
         $video = Video::findOrFail($id);
         $spreadsheet = new VideoSpreadsheet($video->name, $video->report);
@@ -322,7 +314,7 @@ class ReportController extends Controller
         }, $spreadsheet->getFileName());
     }
 
-    public function downloadPPTX($id)
+    public function downloadVideoPPTX($id)
     {
         $video = Video::findOrFail($id);
         $presentation = new VideoPresentation($video->name, $video->report);

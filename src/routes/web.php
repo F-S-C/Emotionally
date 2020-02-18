@@ -27,7 +27,7 @@ Route::name('system.')
         Route::prefix('/project/{id}/report')
             ->group(function () {
                 Route::get('/', 'ProjectController@getProjectReport')->name('report-project');
-                Route::get('/file', 'ReportController@getProjectReportFile')->name('layout-file-project');
+                Route::get('/download/html', 'ReportController@downloadProjectHTML')->name('layout-file-project');
 
                 Route::name('project.download-')
                     ->prefix('/download')
@@ -43,14 +43,14 @@ Route::name('system.')
             ->group(function () {
                 Route::get('/', 'VideoController@getVideoReport')->name('report-video');
                 Route::put('/edit/duration', 'VideoController@resetInterval')->name('edit-video-duration');
-                Route::get('/file', 'ReportController@getReportFile')->name('layout-file');
+                Route::get('/download/html', 'ReportController@downloadVideoHTML')->name('layout-file');
                 Route::name('download-')
                     ->prefix('/download')
                     ->group(function () {
-                        Route::get('/pdf', 'ReportController@downloadPDF')->name('pdf');
-                        Route::get('/json', 'ReportController@downloadJSON')->name('json');
-                        Route::get('/powerpoint', 'ReportController@downloadPPTX')->name('pptx');
-                        Route::get('/excel', 'ReportController@downloadExcel')->name('excel');
+                        Route::get('/pdf', 'ReportController@downloadVideoPDF')->name('pdf');
+                        Route::get('/json', 'ReportController@downloadVideoJSON')->name('json');
+                        Route::get('/powerpoint', 'ReportController@downloadVideoPPTX')->name('pptx');
+                        Route::get('/excel', 'ReportController@downloadVideoExcel')->name('excel');
                     });
             });
         /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE

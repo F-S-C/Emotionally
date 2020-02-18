@@ -79,7 +79,7 @@
             </div>
         </div>
         <footer>
-            <div class="copyright text-white-50 my-5">
+            <div class="copyright text-white-50 my-3">
                 <div class="container-fluid px-3">
                     <p class="d-inline-block mt-md-1" style="color: black;">
                         Copyright &copy; 2019,
@@ -96,6 +96,17 @@
     <script type="text/javascript">
         (function () {
             $(document).ready(function () {
+
+                let radarReady = false, barReady = false, lineReady = false;
+
+                let onLoadedCallback = function () {
+                    if (radarReady && barReady && lineReady) {
+                        radarReady = barReady = lineReady = false;
+                        @if(isset($to_pdf) && $to_pdf)
+                        window.print();
+                        @endif
+                    }
+                };
 
                 let averageReport = @json($video->average_report);
                 let fullReport = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($video->report));
@@ -145,7 +156,14 @@
                                 fontColor: '#000'
                             }
                         },
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 0,
+                            onComplete: function () {
+                                radarReady = true;
+                                onLoadedCallback();
+                            },
+                        }
                     }
                 });
 
@@ -193,7 +211,14 @@
                                 fontColor: '#000'
                             }
                         },
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 0,
+                            onComplete: function () {
+                                barReady = true;
+                                onLoadedCallback();
+                            },
+                        }
                     }
                 });
 
@@ -244,6 +269,13 @@
                             }
                         },
                         maintainAspectRatio: false,
+                        animation: {
+                            duration: 0,
+                            onComplete: function () {
+                                lineReady = true;
+                                onLoadedCallback();
+                            },
+                        },
                         plugins: {
                             colorschemes: {
                                 scheme: 'brewer.SetOne3'

@@ -63,7 +63,7 @@
             </div>
         </div>
         <footer>
-            <div class="copyright text-white-50 my-5">
+            <div class="copyright text-white-50 my-3">
                 <div class="container-fluid px-3">
                     <p class="d-inline-block mt-md-1" style="color: black;">
                         Copyright &copy; 2019,
@@ -78,102 +78,131 @@
 
 @section('scripts')
     <script>
-        let data = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($project->report));
+        (function () {
+            $(document).ready(function () {
+                let radarReady = false, barReady = false;
 
-        let radar = document.getElementById("radar").getContext("2d");
-        let bar = document.getElementById("bar").getContext("2d");
+                let onLoadedCallback = function () {
+                    if (radarReady && barReady) {
+                        radarReady = barReady = false;
+                        @if(isset($to_pdf) && $to_pdf)
+                        window.print();
+                        @endif
+                    }
+                };
 
-        /**
-         * Create a new radar chart.
-         */
-        new Chart(radar, {
-            type: 'radar',
-            data: {
-                labels: Object.keys(data).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
-                datasets: [
-                    {
-                        label: 'Emotions',
-                        data: Object.keys(data).map(el => data[el]),
-                        fill: true,
-                        backgroundColor: 'rgba(255, 152, 0, 0.3)',
-                        borderColor: 'rgba(255, 152, 0, 0.7)',
-                        pointBackgroundColor: 'rgba(255, 152, 0, 1)',
-                        pointBorderColor: 'rgba(255, 255, 255, 0.9)'
-                    }
-                ]
-            },
-            options: {
-                scale: {
-                    angleLines: {
-                        color: 'rgba(0, 0, 0, 0.5)'
-                    },
-                    gridLines: {
-                        color: 'rgba(0, 0, 0, 0.5)'
-                    },
-                    pointLabels: {
-                        fontColor: 'rgba(0, 0, 0, 0.7)',
-                        fontSize: 12
-                    },
-                    ticks: {
-                        showLabelBackdrop: false,
-                        fontColor: 'rgba(0, 0, 0, 0.7)'
-                    }
-                },
-                legend: {
-                    labels: {
-                        fontColor: '#000'
-                    }
-                },
-                maintainAspectRatio: false
-            }
-        });
+                let data = @json(\Emotionally\Http\Controllers\ReportController::getEmotionValues($project->report));
+                let radar = document.getElementById("radar").getContext("2d");
 
-        /**
-         * Create a new bar chart.
-         */
-        new Chart(bar, {
-            type: 'bar',
-            data: {
-                labels: Object.keys(data).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
-                datasets: [
-                    {
-                        label: 'Emotions',
-                        data: Object.keys(data).map(el => data[el]),
-                        fill: false,
-                        barPercentage: 0.25,
-                        backgroundColor: 'rgba(255, 152, 0, 1)',
-                        hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        gridLines: {
-                            color: 'rgba(0, 0, 0, 0.2)',
-                            zeroLineColor: 'rgba(0, 0, 0, 0.5)'
+                let bar = document.getElementById("bar").getContext("2d");
+
+                /**
+                 * Create a new radar chart.
+                 */
+                new Chart(radar, {
+                    type: 'radar',
+                    data: {
+                        labels: Object.keys(data).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                        datasets: [
+                            {
+                                label: 'Emotions',
+                                data: Object.keys(data).map(el => data[el]),
+                                fill: true,
+                                backgroundColor: 'rgba(255, 152, 0, 0.3)',
+                                borderColor: 'rgba(255, 152, 0, 0.7)',
+                                pointBackgroundColor: 'rgba(255, 152, 0, 1)',
+                                pointBorderColor: 'rgba(255, 255, 255, 0.9)'
+                            }
+                        ]
+                    },
+                    options: {
+                        scale: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.5)'
+                            },
+                            gridLines: {
+                                color: 'rgba(0, 0, 0, 0.5)'
+                            },
+                            pointLabels: {
+                                fontColor: 'rgba(0, 0, 0, 0.7)',
+                                fontSize: 12
+                            },
+                            ticks: {
+                                showLabelBackdrop: false,
+                                fontColor: 'rgba(0, 0, 0, 0.7)'
+                            }
                         },
-                        ticks: {
-                            fontColor: '#000'
-                        }
-                    }],
-                    yAxes: [{
-                        gridLines: {
-                            color: 'rgba(0, 0, 0, 0.2)',
-                            zeroLineColor: 'rgba(0, 0, 0, 0.5)'
+                        legend: {
+                            labels: {
+                                fontColor: '#000'
+                            }
                         },
-                        ticks: {
-                            fontColor: '#000'
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 0,
+                            onComplete: function () {
+                                radarReady = true;
+                                onLoadedCallback();
+                            },
                         }
-                    }]
-                },
-                legend: {
-                    labels: {
-                        fontColor: '#000'
+                    },
+                });
+
+                /**
+                 * Create a new bar chart.
+                 */
+                new Chart(bar, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(data).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                        datasets: [
+                            {
+                                label: 'Emotions',
+                                data: Object.keys(data).map(el => data[el]),
+                                fill: false,
+                                barPercentage: 0.25,
+                                backgroundColor: 'rgba(255, 152, 0, 1)',
+                                hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [{
+                                gridLines: {
+                                    color: 'rgba(0, 0, 0, 0.2)',
+                                    zeroLineColor: 'rgba(0, 0, 0, 0.5)'
+                                },
+                                ticks: {
+                                    fontColor: '#000'
+                                }
+                            }],
+                            yAxes: [{
+                                gridLines: {
+                                    color: 'rgba(0, 0, 0, 0.2)',
+                                    zeroLineColor: 'rgba(0, 0, 0, 0.5)'
+                                },
+                                ticks: {
+                                    fontColor: '#000'
+                                }
+                            }]
+                        },
+                        legend: {
+                            labels: {
+                                fontColor: '#000'
+                            }
+                        },
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 0,
+                            onComplete: function () {
+                                barReady = true;
+                                onLoadedCallback();
+                            },
+                        }
                     }
-                },
-                maintainAspectRatio: false
-            }
-        });
+                });
+            });
+        })($);
     </script>
 @endsection
