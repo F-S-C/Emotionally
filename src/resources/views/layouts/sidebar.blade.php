@@ -118,12 +118,14 @@
                            aria-label="Search" id="search-bar">
                 </div>
                 <div class="ml-auto btn-group dropleft">
+                    @if(!strpos($_SERVER['REQUEST_URI'], "report") && !strpos($_SERVER['REQUEST_URI'], "video"))
                     <button class="btn btn-outline-primary rounded-pill mr-0 mr-md-4" type="button" id="add-video"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="{{trans('dashboard.upload_video')}}">
                         <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
                         {{trans('dashboard.add')}}
                     </button>
+                    @endif
                     <div class="dropdown-menu" aria-labelledby="add-video">
                         @if(isset($project))
                             @if( $project->father_id == "")

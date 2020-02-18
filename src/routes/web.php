@@ -56,8 +56,8 @@ Route::name('system.')
                     });
             });
 
-        Route::middleware('permissions:read')
-            ->group(function () {
+        /*Route::middleware('permissions:read')
+            ->group(function () {*/
                 Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
                 Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
                 Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
@@ -77,7 +77,7 @@ Route::name('system.')
                         Route::any('/edit', 'PermissionsController@editPermission')
                             ->name('edit');
                     });
-            });
+            //});
     });
 
 Route::get('/logout', function () {
