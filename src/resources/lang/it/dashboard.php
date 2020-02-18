@@ -60,11 +60,19 @@ return [
     "title" => "Titolo",
     "media-error" => "getUserMedia non è supportato da questo browser",
     "add" => "Aggiungi",
-    "video_rename" => "Rinomina video",
+    "rename-video" => "Rinomina video",
     "move-video" => "Sposta video",
     "select-destination" => "Seleziona il progetto di destinazione:",
     "root" => "Radice",
     "yes" => "Si",
     "no" => "No",
     "profile"=>"Profilo",
+    "confirm-project-delete" => "Sei sicuro di voler eliminare il progetto?",
+    "delete-project" => "Elmina progetto",
+    "delete-video" => "Elimina video",
+    "confirm-delete-video" => "Sei sicuro di voler eliminare il video?",
+    "move-project" => "Sposta progetto",
+    "Move" => "Sposta",
+
+
 ];

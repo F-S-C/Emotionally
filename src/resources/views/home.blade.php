@@ -94,6 +94,11 @@
                 let projectDeleteChanging = $('#project-delete-updating');
                 let projectDeleteError = $('#project-delete-error');
 
+                $('.permissions-project-btn').on('click', function () {
+                    document.location = "{{route('system.permissions.index', $project->id)}}";
+                });
+
+
 
                 $('.rename-project-btn').on('click', function () {
                     $('#rename-project-modal').modal('show');

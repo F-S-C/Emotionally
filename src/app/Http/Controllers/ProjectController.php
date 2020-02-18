@@ -93,10 +93,12 @@ class ProjectController extends Controller
     public function moveProject(Request $request): void
     {
         $project = Project::findOrFail($request->input('project_selected_id'));
-        if($request->input('project_destination_id') != "")
+        if($request->input('project_destination_id') != "") {
             $project->father_id = $request->input('project_destination_id');
-        else
+        }
+        else {
             $project->father_id = null;
+        }
         $project->save();
     }
 
