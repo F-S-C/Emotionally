@@ -231,3 +231,49 @@
         </div>
     </div>
 </div>
+
+<!-- Modal sposta video -->
+<div class="modal fade" id="move-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content el-16dp">
+            <div class="modal-header">
+                <h5 class="modal-title">Move video</h5> <!-- TODO: Translate -->
+                <button type="button" class="modal-close" data-dismiss="modal"
+                        aria-label="{{trans('dashboard.close')}}">
+                    <span class="fas fa-times"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="video-move-tree" class="container-fluid">
+                    <p class="text-left">Select a destination project:</p>
+                    <ul class="ml-3 list-unstyled">
+                        @each('partials.video_project-tree', Auth::user()->projects->where('father_id', null), 'main_project')
+                    </ul>
+                </div>
+                <form method="POST" action="{{ route('system.move-video') }}"
+                      id="video-move-form">
+                    @csrf
+                    <input type="hidden" id="video_selected_id" name="video_selected_id">
+                    <input type="hidden" id="video_project_destination_id" name="video_project_destination_id">
+                    <div class="modal-footer mt-3">
+                        <button id="close-move-video" class="btn btn-secondary"
+                                data-dismiss="modal">
+                            No
+                        </button>
+                        <input type="submit" id="submit-move-video" class="btn btn-primary disabled"
+                               data-dismiss="modal" style="color: white;" value="Sposta" disabled>
+                    </div>
+                </form>
+                <div id="video-move-complete" class="alert alert-success" role="alert" style="display:none;">
+                    {{ trans('dashboard.success') }}
+                </div>
+                <div id="video-move-updating" class="alert alert-warning" role="alert" style="display:none;">
+                    {{ trans('dashboard.changing') }}
+                </div>
+                <div id="video-move-error" class="alert alert-danger" role="alert" style="display:none;">
+                    {{ trans('dashboard.error') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

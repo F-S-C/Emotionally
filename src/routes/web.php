@@ -28,6 +28,7 @@ Route::name('system.')
         Route::post('/project/move', 'ProjectController@moveProject')->name('move-project');
         Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video');
         Route::post('/video/delete', 'VideoController@deleteVideo')->name('delete-video');
+        Route::post('/video/move', 'VideoController@moveVideo')->name('move-video');
 
         Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
         Route::post('/project/new', 'ProjectController@createProject')->name('newProject');

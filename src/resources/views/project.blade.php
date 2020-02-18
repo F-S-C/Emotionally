@@ -121,6 +121,11 @@
                     $('#move-project-modal').modal('show');
                 });
 
+                $('.move-video-btn').on('click', function () {
+                    $('#video_selected_id').val($(this).parent().attr('aria-labelledby').replace('more-video-', ''));
+                    $('#move-video-modal').modal('show');
+                });
+
                 $('#project-rename-form').on('submit', function (event) {
                     event.preventDefault();
                     $('#project-rename-form').hide();
@@ -229,6 +234,7 @@
                     });
                 });
 
+                //PROJECT MOVE
                 let projectMoveComplete = $('#project-move-complete');
                 let projectMoveChanging = $('#project-move-updating');
                 let projectMoveError = $('#project-move-error');
@@ -246,8 +252,8 @@
                     buttons.removeClass('active');
                     buttons.prop('disabled', false);
                     let val = $('#project_selected_id').val();
-                    for( let i = 1; i < buttons.length; i++){
-                        if(buttons.eq(i).attr('aria-labelledby').replace('project-', '') === val){
+                    for (let i = 1; i < buttons.length; i++) {
+                        if (buttons.eq(i).attr('aria-labelledby').replace('project-', '') === val) {
                             buttons.eq(i).prop('disabled', true);
                         }
                     }
@@ -280,6 +286,58 @@
                         }
                     });
                 });
+
+                //VIDEO MOVE
+                let videoMoveComplete = $('#video-move-complete');
+                let videoMoveChanging = $('#video-move-updating');
+                let videoMoveError = $('#video-move-error');
+
+                $('#move-video-modal').on('show.bs.modal', function () {
+                    videoMoveChanging.hide();
+                    videoMoveComplete.hide();
+                    videoMoveError.hide();
+                    $('#video-move-form').show();
+                    $('#video-move-tree').show();
+                    let submit = $('#submit-move-video');
+                    let buttons = $('.btn-list-video-project');
+                    submit.addClass('disabled');
+                    submit.prop('disabled', true);
+                    buttons.removeClass('active');
+                    buttons.prop('disabled', false);
+                    for (let i = 0; i < buttons.length; i++) {
+                        if (buttons.eq(i).attr('aria-labelledby').replace('project-', '') == '{{$project->id}}') {
+                            buttons.eq(i).prop('disabled', true);
+                        }
+                    }
+                });
+
+                $('#submit-move-video').on('click', function (event) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    videoMoveChanging.show();
+                    $('#video-move-form').hide();
+                    $('#video-move-tree').hide();
+                    $.ajax({
+                        url: '{{route('system.move-video')}}',
+                        type: 'POST',
+                        data: new FormData(document.getElementById('video-move-form')),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: function () {
+                            videoMoveChanging.hide();
+                            videoMoveComplete.show();
+                            $('#move-video-modal').on('hidden.bs.modal', function () {
+                                location.reload();
+                            });
+                        },
+                        error: function (data) {
+                            videoMoveChanging.hide();
+                            videoMoveError.show();
+                            console.log(data);
+                        }
+                    });
+                });
             });
         })(jQuery);
 
@@ -290,9 +348,17 @@
                 $('#project_destination_id').val(id);
                 $('#submit-move-project').removeClass('disabled');
                 $('#submit-move-project').removeAttr('disabled');
-            }else{
+            } else {
                 alert("Cannot move a project into itself!");
             }
+        }
+
+        function selectVideo(elem, id) {
+            $('.btn-list-video-project').removeClass('active');
+            $(elem).addClass('active');
+            $('#video_project_destination_id').val(id);
+            $('#submit-move-video').removeClass('disabled');
+            $('#submit-move-video').removeAttr('disabled');
         }
     </script>
 @endsection

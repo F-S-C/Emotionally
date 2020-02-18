@@ -187,4 +187,15 @@ class VideoController extends Controller
         $video = Video::find($id);
         return $video->report;
     }
+
+    /**
+     * Move a video
+     * @param Request $request The HTTP request
+     */
+    public function moveVideo(Request $request): void
+    {
+        $video = Video::findOrFail($request->input('video_selected_id'));
+        $video->project_id = $request->input('video_project_destination_id');
+        $video->save();
+    }
 }
