@@ -57,13 +57,17 @@
                 <div class="col-12 col-md-4 text-md-right text-center">
                     <h5 class="mb-3 mt-3 mt-md-1">@lang('navbar.title_other_link')</h5>
                     <p>
-                        <a href="https://f-s-c.github.io/" target="_blank">FSC</a><br>
-                        <a href="https://strumentalmente.it/" target="_blank">Strumentalmente</a><br>
-                        <a href="https://github.com/F-S-C/Cicerone" target="_blank">Repository Cicerone</a> <br>
-                        <a href="https://github.com/F-S-C/Emotionally" target="_blank">Repository Emotionally</a><br>
-                        <a href="https://github.com/F-S-C/StrumentalMente" target="_blank">Repository
+                        <a href="https://f-s-c.github.io/" rel="noopener noreferrer" target="_blank">FSC</a><br>
+                        <a href="https://strumentalmente.it/" rel="noopener noreferrer"
+                           target="_blank">Strumentalmente</a><br>
+                        <a href="https://github.com/F-S-C/Cicerone" rel="noopener noreferrer" target="_blank">Repository
+                            Cicerone</a> <br>
+                        <a href="https://github.com/F-S-C/Emotionally" rel="noopener noreferrer" target="_blank">Repository
+                            Emotionally</a><br>
+                        <a href="https://github.com/F-S-C/StrumentalMente" rel="noopener noreferrer" target="_blank">Repository
                             Strumentalmente</a><br>
-                        <a href="https://github.com/F-S-C/The-Doomed-Ship" target="_blank">The Doomed Ship</a>
+                        <a href="https://github.com/F-S-C/The-Doomed-Ship" rel="noopener noreferrer" target="_blank">The
+                            Doomed Ship</a>
                     </p>
                 </div>
             </div>
