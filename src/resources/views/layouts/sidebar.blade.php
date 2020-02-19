@@ -148,7 +148,7 @@
                              height="40"
                              src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>
                         <div class="ml-2">
-                        <span aria-label="Your name"
+                        <span aria-label="Your name" id="user-profile-name-surname"
                               class="font-weight-bold text-white d-block">{{Auth::user()->name}} {{Auth::user()->surname}}</span>
                             <small aria-label="Your email" class="d-block">{{Auth::user()->email}}</small>
                         </div>
