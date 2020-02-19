@@ -74,7 +74,7 @@
             </div>
         </div>
     </section>
-    <section class="container my-5" id="features">
+    <section class="container my-5" id="content">
         <h2>@lang('landing.features')</h2>
         <div class="row text-center mt-5">
             <div class="col-12 col-sm-6 col-md-3">
