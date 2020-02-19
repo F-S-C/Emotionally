@@ -62,7 +62,8 @@
             Download
         </button>
         <div class="dropdown-menu">
-            <button class="dropdown-item" id="report-pdf">Report in PDF</button>
+            <a class="dropdown-item" href="{{route('system.download-pdf', $video->id)}}" rel="noopener noreferrer"
+               target="_blank">Report in PDF</a>
             <a class="dropdown-item" href="{{route('system.layout-file', $video->id)}}" rel="noopener noreferrer"
                target="_blank">Report in HTML</a>
             <a class="dropdown-item" href="{{route('system.download-json', $video->id)}}" rel="noopener noreferrer">Report
@@ -371,7 +372,7 @@
                 let video = document.getElementById("video");
                 video.addEventListener('timeupdate', () => {
                     lineChart.options["verticalLine"] = [{
-                        "x": video.currentTime*10,
+                        "x": video.currentTime * 10,
                         "style": "rgba(255, 255, 0, 1)"
                     }];
                     lineChart.update();
