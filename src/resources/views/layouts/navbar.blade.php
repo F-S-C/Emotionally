@@ -56,18 +56,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-4 text-left">
-                    @lang('navbar.description_emotionally')
+                   <p> @lang('navbar.description_emotionally')</p>
                 </div>
                 <div class="col-4 ">
                     <p>@lang('navbar.description_information')</p>
                 </div>
                 <div class="col-4 text-right">
+                    <p>
                     <a href="https://f-s-c.github.io/" target="_blank"> FSC</a><br>
                     <a href="https://strumentalmente.it/" target="_blank">Strumentalmente</a><br>
                     <a href="https://github.com/F-S-C/Cicerone" target="_blank">Repository Cicerone</a> <br>
                     <a href="https://github.com/F-S-C/Emotionally" target="_blank">Repository Emotionally</a><br>
                     <a href="https://github.com/F-S-C/StrumentalMente" target="_blank">Repository Strumentalmente</a><br>
-                    <a href="https://github.com/F-S-C/The-Doomed-Ship" target="_blank">The Doomed Ship</a><br>
+                    <a href="https://github.com/F-S-C/The-Doomed-Ship" target="_blank">The Doomed Ship</a></p>
                 </div>
             </div>
         </div>
