@@ -16,11 +16,10 @@
         <button class="dropdown-item btn btn-link permissions-project-btn">Permissions</button>
         <div class="dropdown-divider"></div>
         <button class="dropdown-item btn btn-link rename-project-btn">Rename</button>
-        <div class="dropdown-divider"></div>
         @if($project->father_project != "")
         <button class="dropdown-item btn btn-link move-project-btn">Move</button>
-            <div class="dropdown-divider"></div>
         @endif
+        <div class="dropdown-divider"></div>
         <button class="dropdown-item btn btn-link delete-project-btn">Delete</button>
     </div>
 </div>

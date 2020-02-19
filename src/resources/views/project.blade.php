@@ -255,9 +255,10 @@
                     submit.prop('disabled', true);
                     buttons.removeClass('active');
                     buttons.prop('disabled', false);
-                    let val = $('#project_selected_id').val();
+                    var parts = $(location).attr('href').split("/");
+                    var last_part = parts[parts.length-1];
                     for (let i = 1; i < buttons.length; i++) {
-                        if (buttons.eq(i).attr('aria-labelledby').replace('project-', '') === val) {
+                        if (buttons.eq(i).attr('aria-labelledby').replace('project-', '') == last_part) {
                             buttons.eq(i).prop('disabled', true);
                         }
                     }
