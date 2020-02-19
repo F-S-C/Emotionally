@@ -16,7 +16,7 @@
                 <label for="name">@lang('auth.name')</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                        <span class="input-group-text input-color @error('name') border border-danger @enderror"
                               id="name-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
                     </div>
                     <input type="text" class="form-control input-color @error('name') border border-danger @enderror"
@@ -29,7 +29,7 @@
                 <label for="surname">@lang('auth.surname')</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                        <span class="input-group-text input-color @error('surname') border border-danger @enderror"
                               id="surname-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
                     </div>
                     <input type="text" class="form-control input-color @error('surname') border border-danger @enderror"
@@ -56,7 +56,7 @@
             <label for="password">{{ __('Password') }}</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                        <span class="input-group-text input-color @error('password') border border-danger @enderror"
                               id="password-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
                 </div>
                 <input type="password"
@@ -69,7 +69,7 @@
             <label for="password-confirm">@lang('auth.password-confirm')</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                        <span class="input-group-text input-color @error('email') border border-danger @enderror"
+                        <span class="input-group-text input-color @error('password') border border-danger @enderror"
                               id="password-confirm-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
                 </div>
                 <input type="password"

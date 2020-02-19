@@ -37,4 +37,6 @@ return [
     'send-another-mail' => 'click here to request another',
     'logout' => 'Logout',
     'email-reset-sent' => 'We have e-mailed your password reset link!',
+    'old-password-wrong' => 'The old password is wrong',
+    'passwords-not-equal' => "The passwords aren't equal"
 ];

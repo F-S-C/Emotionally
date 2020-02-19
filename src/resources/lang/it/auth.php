@@ -53,5 +53,6 @@ return [
     'send-another-mail' => 'clicca qui per richiederne un\'altra',
     'logout' => 'Logout',
     'email-reset-sent' => 'Ti abbiamo inviato un link per reimpostare la password via mail!',
-
+    'old-password-wrong' => 'La vecchia password è errata',
+    'passwords-not-equal' => "Le password non coincidono"
 ];

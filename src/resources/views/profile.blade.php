@@ -4,196 +4,224 @@
 
 @section('inner-content')
     <div class="row">
-        <div class="col-5">
-            <div class="modal-body">
-                <div id="profile-changed" class="alert alert-success" role="alert" aria-atomic="true"
-                     style="display:none;">
-                    {{trans('dashboard.profile-changed')}}
-                </div>
-                <div id="profile-not-changed" class="alert alert-danger" role="alert" aria-atomic="true"
-                     style="display:none;">
-                    {{trans('dashboard.err-changing-profile')}}
-                </div>
-                <div id="profile-changing" class="alert alert-warning" role="alert" aria-atomic="true"
-                     style="display:none;">
-                    {{trans('dashboard.profile-changing')}}
-                </div>
-                <form method="POST" action="{{ route('system.edit-profile') }}"
-                      id="edit-profile-form" novalidate>
-                    @csrf
-                    <label for="name">{{trans('dashboard.name')}}</label>
-                    <input type="text" class="form-control input-color" id="name"
-                           name="name" value="{{Auth::user()->name}}" placeholder="">
-
-                    <label class="mt-2" for="surname">{{trans('dashboard.surname')}}</label>
-                    <input type="text" class="form-control input-color" id="surname"
-                           name="surname" value="{{Auth::user()->surname}}" placeholder="">
-                    <label class="mt-2" for="password">{{trans('dashboard.newpassword')}}</label>
-                    <input type="password" class="form-control input-color" id="password"
-                           name="password" value="" placeholder="{{trans('dashboard.newpassword')}}" required>
-                    <label class="mt-2" for="confirm-password">{{trans('dashboard.confirm-password')}}</label>
-                    <input type="password" class="form-control input-color" id="confirm-password"
-                           name="confirm_password" value="" placeholder="{{trans('dashboard.confirm-password')}}" required>
-                    <div class="invalid-feedback" id="wrong-new-password">Le password non coincidono.</div>
-                    <div class="row mt-4">
-                        <div class="col-7">
-                            <label class="mt-2" for="old-password">{{trans('dashboard.old-password')}}</label>
-                            <input type="password" class="form-control input-color" id="old-password"
-                                   name="old_password" value="" placeholder="{{trans('dashboard.old-password')}}"
-                                   required>
-                            <div class="invalid-feedback" id="wrong-old-password">La vecchia password è errata.</div>
-                        </div>
-                        <div class="col-5 mt-3">
-                            <div class="mt-4 text-right">
-                                <button type="reset" id="close-edit-profile" class="btn btn-secondary"
-                                        style="width:80px;color: white;">
-                                    {{trans('dashboard.reset')}}
-                                </button>
-                                <button type="submit" id="submit-edit-profile" class="btn btn-primary"
-                                        style="width:80px;color: white;"
-                                        value="Invia">{{trans('dashboard.edit')}}</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+        <div class="col-12">
+            <div id="profile-changed" class="alert alert-success" role="alert" aria-atomic="true"
+                 style="display:none;">
+                {{trans('dashboard.profile-changed')}}
             </div>
+            <div id="profile-not-changed" class="alert alert-danger" role="alert" aria-atomic="true"
+                 style="display:none;">
+                {{trans('dashboard.err-changing-profile')}}
+            </div>
+            <div id="profile-changing" class="alert alert-warning" role="alert" aria-atomic="true"
+                 style="display:none;">
+                {{trans('dashboard.profile-changing')}}
+            </div>
+            <form method="POST" action="{{ route('system.edit-profile') }}"
+                  id="edit-profile-form" novalidate>
+                @csrf
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">@lang('auth.name')*</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                    <span
+                                        class="input-group-text input-color @error('name') border border-danger @enderror"
+                                        id="name-icon">
+                                        <em class="fas fa-user" style="padding: 0 2px;"></em>
+                                    </span>
+                            </div>
+                            <input type="text" class="form-control input-color" id="name"
+                                   name="name" value="{{Auth::user()->name}}" placeholder="@lang('auth.name')" required>
+                        </div>
+                        @error('name')<p class="text-center text-danger">{{ $message }}</p>@enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="surname">@lang('auth.surname')*</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('surname') border border-danger @enderror"
+                              id="surname-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
+                            </div>
+                            <input type="text" class="form-control input-color" id="surname"
+                                   name="surname" value="{{Auth::user()->surname}}"
+                                   placeholder="@lang('auth.surname')" required>
+                        </div>
+                        @error('surname')<p class="text-center text-danger">{{ $message }}</p>@enderror
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="old-password">{{trans('dashboard.old-password')}}*</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('password') border border-danger @enderror"
+                              id="password-confirm-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
+                        </div>
+                        <input type="password" class="form-control input-color" id="old-password"
+                               name="old_password" value="" placeholder="{{trans('dashboard.old-password')}}"
+                               required>
+                    </div>
+                    <div class="invalid-feedback" id="wrong-old-password">@lang('auth.old-password-wrong')</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">{{trans('dashboard.newpassword')}}</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('password') border border-danger @enderror"
+                              id="password-confirm-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
+                        </div>
+                        <input type="password" class="form-control input-color" id="password"
+                               name="password" placeholder="{{trans('dashboard.newpassword')}}">
+                    </div>
+                    @error('password')<p class="text-center text-danger">{{ $message }}</p>@enderror
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">{{trans('dashboard.confirm-password')}}</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text input-color @error('password') border border-danger @enderror"
+                              id="password-confirm-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
+                        </div>
+                        <input type="password" class="form-control input-color" id="confirm-password"
+                               name="confirm_password" placeholder="{{trans('dashboard.confirm-password')}}">
+                    </div>
+                    @error('password')<p class="text-center text-danger">{{ $message }}</p>@enderror
+                </div>
+                <div class="invalid-feedback" id="wrong-new-password">@lang('auth.passwords-not-equal')</div>
+                <div class="form-row text-center">
+                    <div class="form-group col-12 col-md-6 pr-2">
+                        <button type="reset" id="close-edit-profile" class="btn btn-md-text">
+                            {{trans('dashboard.reset')}}
+                        </button>
+                    </div>
+                    <div class="form-group col-12 col-md-6 pl-2">
+                        <button type="submit" id="submit-edit-profile" class="btn btn-outline-primary text-uppercase">
+                            {{trans('dashboard.edit')}}
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-        @endsection
+    </div>
+@endsection
 
-        @section('scripts')
-            @parent
-            <script>
-                (function ($) {
-                    $(document).ready(function () {
-                        $('#side-home-btn').removeClass('active');
-                        $('#side-profile-btn').addClass('active');
+@section('scripts')
+    @parent
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                $('#side-home-btn').removeClass('active');
+                $('#side-profile-btn').addClass('active');
 
-                        let table = $('#project-table').DataTable({
-                            "order": [[0, "asc"]],
-                            "paging": false,
-                            "info": false,
-                            "columnDefs": [
-                                {
-                                    "targets": 7,
-                                    "orderable": false
-                                },
-                                {
-                                    "targets": 6,
-                                    "orderable": false
-                                },
-                            ],
-                            "dom": '<"top"i>rt<"bottom"><"clear">',
-                        });
-
-                        (function () {
-                            'use strict';
-                            window.addEventListener('load', function () {
-                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                let forms = document.getElementsByClassName('needs-validation');
-                                // Loop over them and prevent submission
-                                Array.prototype.filter.call(forms, function (form) {
-                                    form.addEventListener('submit', function (event) {
-                                        if (form.checkValidity() === false) {
-                                            event.preventDefault();
-                                            event.stopPropagation();
-                                        }
-                                        form.classList.add('was-validated');
-                                    }, false);
-                                });
+                (function () {
+                    'use strict';
+                    window.addEventListener('load', function () {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        let forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        Array.prototype.filter.call(forms, function (form) {
+                            form.addEventListener('submit', function (event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
                             }, false);
-                        })();
-
-                        $('#password, #confirm-password').on('change', function () {
-                            if (checkPassword()) {
-                                $('#wrong-new-password').hide();
-                                $('#submit-edit-profile').prop('disabled', false);
-                            } else {
-                                $('#wrong-new-password').show();
-                                $('#submit-edit-profile').prop('disabled', true);
-                            }
-
                         });
+                    }, false);
+                })();
 
-                        function checkPassword() {
-                            let newPass = $('#password').val();
-                            let confirmPass = $('#confirm-password').val();
+                $('#password, #confirm-password').on('change', function () {
+                    if (checkPassword()) {
+                        $('#wrong-new-password').hide();
+                        $('#submit-edit-profile').prop('disabled', false);
+                    } else {
+                        $('#wrong-new-password').show();
+                        $('#submit-edit-profile').prop('disabled', true);
+                    }
 
-                            return newPass === confirmPass;
-                        }
+                });
 
-                        $('#edit-profile-form').on('submit', function (event) {
-                            if (checkPassword()) {
-                                event.preventDefault();
-                                let alertComplete = $('#profile-changed');
-                                let alertNotComplete = $('#profile-not-changed');
-                                let creating = $('#profile-changing');
-                                let form = $('#edit-profile-form');
-                                form.hide();
-                                alertComplete.hide();
-                                alertNotComplete.hide();
-                                creating.show();
-                                $.post('{{route('system.user.password.check')}}', {
-                                    '_token': '{{csrf_token()}}',
-                                    'old_password': $('#old-password').val()
-                                })
-                                    .done(function (data) {
-                                        data = JSON.parse(data);
-                                        if (data['done']) {
-                                            let formData = new FormData($('#edit-profile-form')[0]);
-                                            $.ajax({
-                                                url: $('#edit-profile-form')[0].action,
-                                                type: $('#edit-profile-form')[0].method,
-                                                data: formData,
-                                                processData: false,
-                                                contentType: false,
-                                                cache: false,
-                                                success: function (data) {
-                                                    creating.hide();
-                                                    alertComplete.show();
-                                                    $('#user-profile-name-surname').text($('#name').val() + ' ' + $('#surname').val());
-                                                    setTimeout(() => {
-                                                        $('#password').val('');
-                                                        $('#confirm-password').val('');
-                                                        $('#old-password').val('');
-                                                        form.show();
-                                                    })
-                                                },
-                                                error: function (data) {
-                                                    // TODO: ERRORI NELLA CONNESIONE AL SERVER
-                                                    creating.hide();
-                                                    alertNotComplete.show();
-                                                    alertNotComplete.show();
-                                                    console.log(data);
-                                                    form.show();
-                                                }
-                                            });
-                                        } else {
-                                            if (!data.hasOwnProperty('errors')) {
-                                                // TODO: Password errata
-                                                console.log('FOLD PASSWORD')
-                                            } else {
-                                                // TODO: ERRORI NELLA RICHIESTA
-                                                console.log(data['errors']);
-                                            }
+                function checkPassword() {
+                    let newPass = $('#password').val();
+                    let confirmPass = $('#confirm-password').val();
+
+                    return newPass === confirmPass;
+                }
+
+                $('#edit-profile-form').on('submit', function (event) {
+                    if (checkPassword()) {
+                        event.preventDefault();
+                        let alertComplete = $('#profile-changed');
+                        let alertNotComplete = $('#profile-not-changed');
+                        let creating = $('#profile-changing');
+                        let form = $('#edit-profile-form');
+                        form.hide();
+                        alertComplete.hide();
+                        alertNotComplete.hide();
+                        creating.show();
+                        $.post('{{route('system.user.password.check')}}', {
+                            '_token': '{{csrf_token()}}',
+                            'old_password': $('#old-password').val()
+                        })
+                            .done(function (data) {
+                                data = JSON.parse(data);
+                                if (data['done']) {
+                                    let formData = new FormData($('#edit-profile-form')[0]);
+                                    $.ajax({
+                                        url: $('#edit-profile-form')[0].action,
+                                        type: $('#edit-profile-form')[0].method,
+                                        data: formData,
+                                        processData: false,
+                                        contentType: false,
+                                        cache: false,
+                                        success: function (data) {
                                             creating.hide();
+                                            alertComplete.show();
+                                            $('#user-profile-name-surname').text($('#name').val() + ' ' + $('#surname').val());
+                                            setTimeout(() => {
+                                                $('#password').val('');
+                                                $('#confirm-password').val('');
+                                                $('#old-password').val('');
+                                                form.show();
+                                            })
+                                        },
+                                        error: function (data) {
+                                            // TODO: ERRORI NELLA CONNESIONE AL SERVER
+                                            creating.hide();
+                                            alertNotComplete.show();
                                             alertNotComplete.show();
                                             console.log(data);
                                             form.show();
                                         }
-                                    })
-                                    .fail(function (data) {
-                                        // TODO: ERRORI NELLA CONNESIONE AL SERVER
-                                        creating.hide();
-                                        alertNotComplete.show();
-                                        console.log(data);
-                                        form.show();
                                     });
+                                } else {
+                                    if (!data.hasOwnProperty('errors')) {
+                                        // TODO: Password errata
+                                        console.log('FOLD PASSWORD')
+                                    } else {
+                                        // TODO: ERRORI NELLA RICHIESTA
+                                        console.log(data['errors']);
+                                    }
+                                    creating.hide();
+                                    alertNotComplete.show();
+                                    console.log(data);
+                                    form.show();
+                                }
+                            })
+                            .fail(function (data) {
+                                // TODO: ERRORI NELLA CONNESIONE AL SERVER
+                                creating.hide();
+                                alertNotComplete.show();
+                                console.log(data);
+                                form.show();
+                            });
 
-                            } else {
-                                $('.invalid-feedback').show();
-                            }
-                        });
-                    });
-                })(jQuery);
-            </script>
+                    } else {
+                        $('.invalid-feedback').show();
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
 @endsection
