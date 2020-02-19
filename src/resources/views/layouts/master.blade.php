@@ -27,7 +27,7 @@
             <div class="copyright text-white-50 py-2">
                 <div class="container-fluid px-3">
                     <p class="d-inline-block mb-0 mt-md-1">
-                        Copyright &copy; 2019,
+                        Copyright &copy; 2019-{{date('Y')}},
                         <a href="https://F-S-C.github.io/" rel="noopener noreferrer" target="_blank">FSC</a>.
                         @lang('metadata.copyright')
                     </p>
