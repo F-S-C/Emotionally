@@ -34,13 +34,23 @@
         <label class="mt-2"  for="confirm-password">{{trans('dashboard.confirm-password')}}</label>
         <input type="password" class="form-control input-color" id="confirm-password"
                    name="password" value="" placeholder="{{trans('dashboard.newpassword')}}" required>
-            <div class="invalid-feedback">Le password non coincidono.</div>
+            <div class="invalid-feedback" id="wrong-new-password">Le password non coincidono.</div>
+            <div class="row mt-4">
+                <div class="col-7">
+            <label class="mt-2"  for="old-password">{{trans('dashboard.newpassword')}}</label>
+            <input type="password" class="form-control input-color" id="old-password"
+                   name="password" value="" placeholder="{{trans('dashboard.old-password')}}" required>
+                    <div class="invalid-feedback" id="wrong-old-password">La vecchia password è errata.</div>
+                </div>
+            <div class="col-5 mt-3">
             <div class="mt-4 text-right">
             <button type="reset" id="close-edit-profile" class="btn btn-secondary"  style="width:80px;color: white;">
                 {{trans('dashboard.reset')}}
             </button>
             <button type="submit" id="submit-edit-profile" class="btn btn-primary"
                     style="width:80px;color: white;" value="Invia" >{{trans('dashboard.edit')}}</button>
+            </div>
+            </div>
             </div>
         </form>
     </div>
@@ -93,26 +103,41 @@
                     $('#password').on('change', function () {
                         if (checkPassword())
                         {
-                            $('.invalid-feedback').hide();
+                            $('#wrong-new-password').hide();
                             $('#submit-edit-profile').prop('disabled',false);
                         }
                         else
                         {
-                            $('.invalid-feedback').show();
+                            $('#wrong-new-password').show();
                             $('#submit-edit-profile').prop('disabled',true);
                         }
 
                     });
 
-                $('#confirm-password').on('change', function () {
-                    if (checkPassword())
+                $('#old-password').on('change', function () {
+                    let oldpassword = {{Auth::user()->password}}
+                    if ($("old-password").val()==oldpassword)
                     {
-                        $('.invalid-feedback').hide();
+                        $('#wrong-new-password').hide();
                         $('#submit-edit-profile').prop('disabled',false);
                     }
                     else
                     {
-                        $('.invalid-feedback').show();
+                        $('#wrong-new-password').show();
+                        $('#submit-edit-profile').prop('disabled',true);
+                    }
+
+                });
+
+                $('#confirm-password').on('change', function () {
+                    if (checkPassword())
+                    {
+                        $('#wrong-new-password').hide();
+                        $('#submit-edit-profile').prop('disabled',false);
+                    }
+                    else
+                    {
+                        $('#wrong-new-password').show();
                         $('#submit-edit-profile').prop('disabled',true);
                     }
                 });
