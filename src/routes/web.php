@@ -14,6 +14,9 @@
 // Route to test Affectiva
 //Route::view('/test-webcam', 'test-webcam')->name('webcam');
 
+Route::redirect('/', request()->getPreferredLanguage(['en', 'it'])."/");
+foreach (['en', 'it'] as $locale){
+    Route::prefix($locale)->group(function(){
 //TODO: Controllare i middleware dei permessi
 
 Route::view('/', 'landing')->name('landing');
@@ -102,3 +105,5 @@ Route::get('/logout', function () {
 Auth::routes(['verify' => true]);
 
 Route::redirect('/home', '/system');
+    });
+}
