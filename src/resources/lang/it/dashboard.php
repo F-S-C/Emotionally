@@ -73,6 +73,11 @@ return [
     "confirm-delete-video" => "Sei sicuro di voler eliminare il video?",
     "move-project" => "Sposta progetto",
     "Move" => "Sposta",
+    "surname" => "Cognome",
+    "newpassword" => "Nuova password",
+    "reset" => "Annulla",
+    "edit" => "Modifica",
+
 
 
 ];

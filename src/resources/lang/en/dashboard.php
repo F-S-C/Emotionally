@@ -73,5 +73,10 @@ return [
     "confirm-delete-video" => "Are you sure you want to delete the project?",
     "move-project" => "Move project",
     "move" => "Move",
+    "surname" => "Surname",
+    "newpassword" => "New password",
+    "reset" => "Reset",
+    "edit" => "Edit",
+
 ];
 

@@ -2,15 +2,6 @@
 
 @section('title', trans('dashboard.profile'))
 
-@section('breadcrumbs')
-    <!--<li class="breadcrumb-item" aria-current="page"><span class="fas fa-home" aria-hidden="true"></span>
-        @lang('dashboard.home')
-    </li>
-    <li class="breadcrumb-item active" aria-current="page">
-        @lang('dashboard.dashboard')
-    </li>-->
-@endsection
-
 @section('inner-content')
 <div class="row">
     <div class="col-5">
@@ -24,31 +15,25 @@
         <label class="mt-2"  for="surname">{{trans('dashboard.surname')}}</label>
         <input type="text" class="form-control input-color" id="surname"
                name="surname" value="{{Auth::user()->surname}}" placeholder="">
-        <label class="mt-2"  for="password">Nuova password</label>
+        <label class="mt-2"  for="password">{{trans('dashboard.newpassword')}}</label>
         <input type="password" class="form-control input-color" id="password"
-               name="password" value="" placeholder="Nuova password">
+               name="password" value="" placeholder="{{trans('dashboard.newpassword')}}">
             <div class="mt-4 text-right">
-            <button type="reset" id="close-edit-profile" class="btn btn-secondary">
-                Annulla
+            <button type="reset" id="close-edit-profile" class="btn btn-secondary"  style="width:80px;color: white;">
+                {{trans('dashboard.reset')}}
             </button>
             <button type="submit" id="submit-edit-profile" class="btn btn-primary"
-                    style="color: white;" value="Invia" >Modifica</button>
+                    style="width:80px;color: white;" value="Invia" >{{trans('dashboard.edit')}}</button>
             </div>
         </form>
-
-
-    </div>
-
-
-    <div class="col-6">
-
     </div>
 </div>
 @endsection
 
 @section('scripts')
     @parent
-    <script>(function ($) {
+        <script>
+        (function ($) {
             $(document).ready(function () {
                 let table = $('#project-table').DataTable({
                     "order": [[0, "asc"]],
