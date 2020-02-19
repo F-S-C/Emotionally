@@ -54,7 +54,6 @@
             $(document).ready(function () {
                 $('#side-home-btn').removeClass('active');
                 $('#side-profile-btn').addClass('active');
-                $('#submit-edit-profile').prop('disabled',true);
 
                 let table = $('#project-table').DataTable({
                     "order": [[0, "asc"]],
