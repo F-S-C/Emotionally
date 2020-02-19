@@ -26,4 +26,8 @@ return [
     "add-project" => "<button class='btn btn-link' id='add-sub-proj'>add a sub project</button>",
     "upload-video" => "<button class='btn btn-link' id='upload-som'>upload something</button>?",
     "or" => "or",
+    "rename" => "Rename",
+    "move" => "Move",
+    "delete" => "Delete",
+    "permissions" => "Permissions"
 ];

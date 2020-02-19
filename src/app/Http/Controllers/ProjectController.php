@@ -64,6 +64,45 @@ class ProjectController extends Controller
     }
 
     /**
+     * This public function allow to rename the project.
+     * @param Request $request The HTTP request
+     */
+    public function renameProject(Request $request): void
+    {
+        $name = $request->input('project_name','NO_NAME');
+        $project=Project::findOrFail($request->input('project_rename_id'));
+        $project->name = $name;
+        $project->save();
+    }
+
+    /**
+     * This public function allow to delete the project.
+     * @param Request $request The HTTP request
+     */
+    public function deleteProject(Request $request): void
+    {
+        $id = $request->input('project_delete_id');
+        $project = Project::findOrFail($id);
+        $project->delete();
+    }
+
+    /**
+     * Move a project
+     * @param Request $request The HTTP request
+     */
+    public function moveProject(Request $request): void
+    {
+        $project = Project::findOrFail($request->input('project_selected_id'));
+        if($request->input('project_destination_id') != "") {
+            $project->father_id = $request->input('project_destination_id');
+        }
+        else {
+            $project->father_id = null;
+        }
+        $project->save();
+    }
+
+    /**
      * Get a list of all the video reports of a project.
      * @param int $id The id of the project to be analyzed.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

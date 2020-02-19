@@ -13,7 +13,7 @@
         <a class="project-card-link" href="{{route('system.report-video', $video->id)}}"
            aria-labelledby="card-title-video-{{$video->id}}"></a>
         <div class="card-img-overlay project-detail-card-options">
-            @include('shared.dropdown-options-menu', ['id'=>'more-video-'.$video->id,'title'=>trans('project-details.more_options_video', ['name'=>$video->name])])
+            @include('shared.dropdown-options-video', ['video'=> $video])
         </div>
     </div>
 </div>

@@ -35,13 +35,13 @@
 @section('navbar-content')
     <ul class="ml-auto navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link text-center"  href="#landing">{{trans('landing.home')}} <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-center" href="#landing">{{trans('landing.home')}}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center"  href="#features">{{trans('landing.feature')}}</a>
+            <a class="nav-link text-center" href="#features">{{trans('landing.features')}}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center"  href="#about">{{trans('landing.about')}}</a>
+            <a class="nav-link text-center" href="#about">{{trans('landing.about')}}</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-outline-primary nav-link"

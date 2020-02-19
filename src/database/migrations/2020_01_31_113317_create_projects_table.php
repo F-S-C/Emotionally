@@ -25,7 +25,8 @@ class CreateProjectsTable extends Migration
             $table->unsignedBigInteger('father_id')->nullable();
             $table->foreign('father_id')
                 ->references('id')
-                ->on('projects');
+                ->on('projects')
+                ->onDelete('cascade');
 
             $table->timestamps();
 

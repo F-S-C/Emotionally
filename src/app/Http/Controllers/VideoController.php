@@ -6,30 +6,36 @@ use Emotionally\Project;
 use Emotionally\User;
 use Emotionally\Video;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Console\Output\ConsoleOutput;
+
 
 class VideoController extends Controller
 {
     /**
-     * This function get and rename a video
-     * @param Video $video The video
-     * @param string $name The new name
+     * This function get and delete a video
+     * @param Request $request The HTTP request
      */
-    public function renameVideo(Video $video, string $name): void
+    public function deleteVideo(Request $request): void
     {
-        $video->name = $name;
-        $video->save();
+        $id = $request->input('video_delete_id');
+        $video = Video::findOrFail($id);
+        $video_path = "user-content/" . basename($video->url);
+        if(\File::exists(public_path($video_path))) {
+            \File::delete(public_path($video_path));
+        }
+        $video->delete();
     }
 
     /**
-     * This function get and delete a video
-     * @param Video $video The video.
-     * @throws \Exception
+     * This public function allow to rename video.
+     * @param Request $request The HTTP request
      */
-    public function deleteVideo(Video $video): void
+    public function renameVideo(Request $request): void
     {
-        $video->delete();
+        $name = $request->input('video_name', 'NO_NAME');
+        $video = Video::findOrFail($request->input('video_rename_id'));
+        $video->name = $name;
+        $video->save();
     }
 
     /**
@@ -220,5 +226,16 @@ class VideoController extends Controller
     {
         $video = Video::find($id);
         return $video->report;
+    }
+
+    /**
+     * Move a video
+     * @param Request $request The HTTP request
+     */
+    public function moveVideo(Request $request): void
+    {
+        $video = Video::findOrFail($request->input('video_selected_id'));
+        $video->project_id = $request->input('video_project_destination_id');
+        $video->save();
     }
 }

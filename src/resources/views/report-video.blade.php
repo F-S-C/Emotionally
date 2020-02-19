@@ -55,14 +55,15 @@
 
     <div class="dropdown text-right mb-2 mx-3">
         <button type="button" id="save-button" class="btn btn-outline-primary d-none">
-            Save
+            {{trans('report.salva')}}
         </button>
         <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
             Download
         </button>
         <div class="dropdown-menu">
-            <button class="dropdown-item" id="report-pdf">Report in PDF</button>
+            <a class="dropdown-item" href="{{route('system.download-pdf', $video->id)}}" rel="noopener noreferrer"
+               target="_blank">Report in PDF</a>
             <a class="dropdown-item" href="{{route('system.layout-file', $video->id)}}" rel="noopener noreferrer"
                target="_blank">Report in HTML</a>
             <a class="dropdown-item" href="{{route('system.download-json', $video->id)}}" rel="noopener noreferrer">Report
@@ -115,7 +116,7 @@
             <div class="col mb-4">
                 <div class="card el-0dp">
                     <div class="card-body">
-                        <h3 class="card-title">Spider Chart</h3>
+                        <h3 class="card-title">{{trans('report.spider-chart')}}</h3>
                         <div class="smaller-charts">
                             <canvas id="radar"></canvas>
                         </div>
@@ -125,7 +126,7 @@
             <div class="col mb-4">
                 <div class="card el-0dp">
                     <div class="card-body">
-                        <h3 class="card-title">Bar Chart</h3>
+                        <h3 class="card-title">{{trans('report.bar-chart')}}</h3>
                         <div class="smaller-charts">
                             <canvas id="bar"></canvas>
                         </div>
@@ -141,7 +142,7 @@
                                 <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
                             </video>
                             <p>
-                                <label for="amount" style="color: #FF9800;">Time range:</label>
+                                <label for="amount" style="color: #FF9800;">{{trans('dashboard.time-range')}}:</label>
                                 <input type="text" id="amount" readonly
                                        style="border:none; background-color: transparent; color: #FF9800; font-weight:bold;">
                             </p>
@@ -155,7 +156,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h3>Line Chart</h3>
+                <h3>{{trans('report.line-chart')}}</h3>
                 <div class="bigger-charts">
                     <canvas id="line"></canvas>
                 </div>
@@ -371,7 +372,7 @@
                 let video = document.getElementById("video");
                 video.addEventListener('timeupdate', () => {
                     lineChart.options["verticalLine"] = [{
-                        "x": video.currentTime*10,
+                        "x": video.currentTime * 10,
                         "style": "rgba(255, 255, 0, 1)"
                     }];
                     lineChart.update();

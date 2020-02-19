@@ -63,7 +63,7 @@
             </div>
 
             <ul class="nav flex-column">
-                <li class="nav-item active">
+                <li class="nav-item active" id="side-home-btn">
                     @if(Auth::user()->projects->isNotEmpty())
                         <div class="btn-group collapse-button-container">
                             <a type="button" class="nav-link collapse-button d-none d-md-block" data-toggle="collapse"
@@ -71,7 +71,7 @@
                                role="button" aria-expanded="false" aria-controls="projects-container"></a>
                             <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                                 <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                                <span class="d-none d-md-inline">Projects</span>
+                                <span class="d-none d-md-inline">{{trans('dashboard.projects')}}</span>
                             </a>
                         </div>
                     @else
@@ -84,22 +84,10 @@
                         @each('partials.project-tree-view', Auth::user()->projects->where('father_id', null), 'main_project')
                     </ul>
                 </li>
-                <li class="nav-item text-center text-md-left">
-                    <a class="nav-link text-center text-md-left" href="#">
-                        <span aria-hidden="true" class="fas fa-info-circle mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">About</span>
-                    </a>
-                </li>
-                <li class="nav-item text-center text-md-left">
-                    <a class="nav-link" href="#">
-                        <span aria-hidden="true" class="fas fa-file-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Portfolio</span>
-                    </a>
-                </li>
-                <li class="nav-item text-center text-md-left">
-                    <a class="nav-link" href="#">
-                        <span aria-hidden="true" class="fas fa-phone-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Contact</span>
+                <li class="nav-item text-center text-md-left" id="side-profile-btn">
+                    <a class="nav-link" href="{{route('system.profile')}}">
+                        <span aria-hidden="true" class="fas fa-user mr-0 mr-md-1 text-md-center"></span>
+                        <span class="d-none d-md-inline">{{trans('dashboard.profile')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center text-md-left">
@@ -114,11 +102,14 @@
         <div class="content sidebar-content">
             <nav class="navbar navbar-expand-lg navbar-dark el-0dp" style="padding: 20px 30px;" aria-label="navbar">
                 <div class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search"
-                           aria-label="Search" id="search-bar">
+                    @if(! (strpos($_SERVER['REQUEST_URI'], "project") || strpos($_SERVER['REQUEST_URI'], "profile") || strpos($_SERVER['REQUEST_URI'], "video")))
+                        <input class="form-control mr-sm-2 rounded-pill" type="search"
+                               placeholder="{{trans('dashboard.search')}}"
+                               aria-label="{{trans('dashboard.search')}}" id="search-bar">
+                    @endif
                 </div>
                 <div class="ml-auto btn-group dropleft">
-                    @if(!strpos($_SERVER['REQUEST_URI'], "report") && !strpos($_SERVER['REQUEST_URI'], "video"))
+                    @if(!(strpos($_SERVER['REQUEST_URI'], "report") || strpos($_SERVER['REQUEST_URI'], "video") || strpos($_SERVER['REQUEST_URI'], "profile")))
                         <button class="btn btn-outline-primary rounded-pill mr-0 mr-md-4" type="button" id="add-video"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                 title="{{trans('dashboard.upload_video')}}">
@@ -153,12 +144,13 @@
                                     data-modal="realtime-video-modal">{{trans('dashboard.realtime_video')}}</button>
                         @endif
                     </div>
-                    <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex">
+                    <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex clickable"
+                         data-href="{{route('system.profile')}}" role="button">
                         <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="40"
                              height="40"
                              src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>
                         <div class="ml-2">
-                        <span aria-label="Your name"
+                        <span aria-label="Your name" id="user-profile-name-surname"
                               class="font-weight-bold text-white d-block">{{Auth::user()->name}} {{Auth::user()->surname}}</span>
                             <small aria-label="Your email" class="d-block">{{Auth::user()->email}}</small>
                         </div>
@@ -375,19 +367,19 @@
                                 @csrf
                                 @isset($project)
                                     @if(Request::segment(2) == "project")
-                                        <input type="hidden" name="father_id" value="{{ $project->id }}" required>
+                                        <input type="hidden" name="father_id" value="{{ $project->id }}">
                                     @endif
                                 @endisset
                                 <label for="project_name">{{trans('dashboard.project_name')}}</label>
                                 <input type="text" class="form-control input-color" id="project_name"
-                                       name="project_name" placeholder="{{trans('dashboard.name')}}">
+                                       name="project_name" placeholder="{{trans('dashboard.name')}}" required>
 
                                 <div class="modal-footer mt-3">
                                     <button type="button" id="close-project" class="btn btn-secondary"
                                             data-dismiss="modal">
                                         {{trans('dashboard.close')}}
                                     </button>
-                                    <input type="submit" value="{{ trans('dashboard.submit') }}" class="btn btn-primary"
+                                    <input type="submit" value="{{ trans('dashboard.create') }}" class="btn btn-primary"
                                            style="color: white;">
                                 </div>
                             </form>

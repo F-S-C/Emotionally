@@ -51,5 +51,8 @@ return [
     'before-proceed-verify' => 'Prima di procedere, controlla nella tua casella di posta il link di verifica.',
     'did-not-receive' => 'Se non hai ricevuto la mail,',
     'send-another-mail' => 'clicca qui per richiederne un\'altra',
-    'logout' => 'Logout'
+    'logout' => 'Logout',
+    'email-reset-sent' => 'Ti abbiamo inviato un link per reimpostare la password via mail!',
+    'old-password-wrong' => 'La vecchia password è errata',
+    'passwords-not-equal' => "Le password non coincidono"
 ];

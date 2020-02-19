@@ -26,7 +26,20 @@ Route::name('system.')
     ->group(function () {
         Route::get('/', 'ProjectController@getDashboard')->name('home');
         Route::redirect('/home', '/system/');
+        Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project');
+        Route::post('/project/delete', 'ProjectController@deleteProject')->name('delete-project');
+        Route::post('/project/move', 'ProjectController@moveProject')->name('move-project');
+        Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video');
+        Route::post('/video/delete', 'VideoController@deleteVideo')->name('delete-video');
+        Route::post('/video/move', 'VideoController@moveVideo')->name('move-video');
 
+        Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
+        Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
+        Route::post('/project/new', 'ProjectController@createProject')->name('newProject');
+        Route::post('/user/check-password', 'UserController@checkUserPassword')->name('user.password.check');
+        Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
+        Route::view('/profile', 'profile')->name('profile');
+        Route::post('/profile/edit', 'UserController@editProfile')->name('edit-profile');
         Route::prefix('/project/{id}/report')
             ->group(function () {
                 Route::get('/', 'ProjectController@getProjectReport')->name('report-project');
@@ -59,26 +72,26 @@ Route::name('system.')
 
         /*Route::middleware('permissions:read')
             ->group(function () {*/
-                Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
-                Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
-                Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
-                Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
-                Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
-                Route::prefix('/project/{project_id}/share')
-                    ->name('permissions.')
-                    ->group(function () {
-                        Route::get('/', 'PermissionsController@getProjectPermissions')
-                            ->name('index');
-                        Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
-                            ->name('delete');
+        Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
+        Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
+        Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
+        Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
+        Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+        Route::prefix('/project/{project_id}/share')
+            ->name('permissions.')
+            ->group(function () {
+                Route::get('/', 'PermissionsController@getProjectPermissions')
+                    ->name('index');
+                Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
+                    ->name('delete');
 
-                        Route::put('/add', 'PermissionsController@addPermission')
-                            ->name('add');
+                Route::put('/add', 'PermissionsController@addPermission')
+                    ->name('add');
 
-                        Route::any('/edit', 'PermissionsController@editPermission')
-                            ->name('edit');
-                    });
-            //});
+                Route::any('/edit', 'PermissionsController@editPermission')
+                    ->name('edit');
+            });
+        //});
     });
 
 Route::get('/logout', function () {

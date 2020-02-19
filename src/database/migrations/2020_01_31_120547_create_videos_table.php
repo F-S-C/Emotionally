@@ -26,7 +26,8 @@ class CreateVideosTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')
                 ->references('id')
-                ->on('projects');
+                ->on('projects')
+                ->onDelete('cascade');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

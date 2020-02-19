@@ -22,4 +22,14 @@
     @parent
     <script type="text/javascript" src="{{mix('/js/vendor/affdex.js')}}"></script>
     <script type="text/javascript" src="{{mix('/js/emotion-analysis.js')}}"></script>
+    <script>
+        (function ($) {
+            $('.clickable').on('click', function (event) {
+                // prevent execution from bubbling if a link or a button were clicked
+                if (event.target === this || !$(event.target).is('a, button, .dropdown,.dropdown *')) {
+                    window.location = $(this).data('href');
+                }
+            });
+        })(jQuery);
+    </script>
 @endsection
