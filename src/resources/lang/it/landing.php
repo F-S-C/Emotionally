@@ -20,4 +20,8 @@ return [
     'features' => 'Caratteristiche',
     'login' => 'Log in',
     'system' => 'Sistema',
+    'home' => 'Home',
+    'about' => 'Info',
+    'emotionally' => 'Emotionally',
+    'analysis' => 'Analisi',
 ];
