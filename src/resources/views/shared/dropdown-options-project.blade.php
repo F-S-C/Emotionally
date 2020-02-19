@@ -13,13 +13,13 @@
     </button>
     {{-- TODO: Edit options --}}
     <div class="dropdown-menu" aria-labelledby="more-project-{{$project->id}}">
-        <a href="{{route('system.permissions.index', $project->id)}}" class="dropdown-item btn btn-link permissions-project-btn">Permissions</a>
+        <a href="{{route('system.permissions.index', $project->id)}}" class="dropdown-item btn btn-link permissions-project-btn">{{trans('project-details.permissions')}}</a>
         <div class="dropdown-divider"></div>
-        <button class="dropdown-item btn btn-link rename-project-btn">Rename</button>
+        <button class="dropdown-item btn btn-link rename-project-btn">{{trans('project-details.rename')}}</button>
         @if($project->father_project != "")
-        <button class="dropdown-item btn btn-link move-project-btn">Move</button>
+        <button class="dropdown-item btn btn-link move-project-btn">{{trans('project-details.move')}}</button>
         @endif
         <div class="dropdown-divider"></div>
-        <button class="dropdown-item btn btn-link delete-project-btn">Delete</button>
+        <button class="dropdown-item btn btn-link delete-project-btn">{{trans('project-details.delete')}}</button>
     </div>
 </div>

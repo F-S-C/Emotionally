@@ -1,6 +1,8 @@
 @extends('auth.style')
 
-@section('title','Sign Up')
+@section('title')
+    @lang('auth.sign-up')
+    @endsection
 
 @section('form-name')
     @lang('auth.sign-up')
@@ -19,7 +21,7 @@
                     </div>
                     <input type="text" class="form-control input-color @error('name') border border-danger @enderror"
                            id="name" name="name" autocomplete="name"
-                           value="{{ old('name') }}" placeholder="Name" required>
+                           value="{{ old('name') }}" placeholder="@lang('auth.name')" required>
                 </div>
                 @error('name')<p class="text-center text-danger">{{ $message }}</p>@enderror
             </div>
@@ -32,7 +34,7 @@
                     </div>
                     <input type="text" class="form-control input-color @error('surname') border border-danger @enderror"
                            id="surname" name="surname" autocomplete="surname"
-                           value="{{ old('surname') }}" placeholder="Surname" required>
+                           value="{{ old('surname') }}" placeholder="@lang('auth.surname')" required>
                 </div>
                 @error('surname')<p class="text-center text-danger">{{ $message }}</p>@enderror
             </div>

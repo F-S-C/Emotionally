@@ -61,13 +61,15 @@ return [
     "media-error" => "getUserMedia is not implemented in this browser",
     "add" => "Add",
     "rename-video" => "Rename video",
+    "video_rename" => "New video name:",
+    "rename-project" => "Rename project",
     "move-video" => "Move video",
     "select-destination" => "Select a destination project:",
     "root" => "Root",
     "yes" => "Yes",
     "no" => "No",
     "profile"=>"Profile",
-    "confirm-remove-project" => "Are you sure you want to delete the project?",
+    "confirm-remove.project" => "Are you sure you want to delete the project?",
     "delete-project" => "Delete project",
     "delete-video" => "Delete video",
     "confirm-delete-video" => "Are you sure you want to delete the project?",
@@ -81,5 +83,6 @@ return [
     "profile-changed" => "Profile changed",
     "err-changing-profile" => "Error during the operation.",
     "profile-changing" => "Loading...",
+    "rename" => "Rename",
 ];
 
