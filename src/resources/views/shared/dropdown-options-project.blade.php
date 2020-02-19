@@ -11,7 +11,6 @@
         <span class="sr-only">{{trans('project-details.more_options_project', ['name'=>$project->name])}}</span>
         <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
     </button>
-    {{-- TODO: Edit options --}}
     <div class="dropdown-menu" aria-labelledby="more-project-{{$project->id}}">
         <a href="{{route('system.permissions.index', $project->id)}}" class="dropdown-item btn btn-link permissions-project-btn">{{trans('project-details.permissions')}}</a>
         <div class="dropdown-divider"></div>
