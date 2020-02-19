@@ -35,5 +35,6 @@ return [
     'before-proceed-verify' => 'Before proceeding, please check your email for a verification link.',
     'did-not-receive' => 'If you did not receive the email,',
     'send-another-mail' => 'click here to request another',
-    'logout' => 'Logout'
+    'logout' => 'Logout',
+    'email-reset-sent' => 'We have e-mailed your password reset link!',
 ];

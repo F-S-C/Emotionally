@@ -35,7 +35,7 @@ class Video extends Model
      */
     public function getThumbnailAttribute()
     {
-        return 'https://picsum.photos/848/480'; // TODO: Implement thumbnail
+        return 'https://picsum.photos/848/480';
     }
 
     public function getAverageReportAttribute()

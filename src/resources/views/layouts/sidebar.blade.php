@@ -365,19 +365,19 @@
                                 @csrf
                                 @isset($project)
                                     @if(Request::segment(2) == "project")
-                                        <input type="hidden" name="father_id" value="{{ $project->id }}" required>
+                                        <input type="hidden" name="father_id" value="{{ $project->id }}">
                                     @endif
                                 @endisset
                                 <label for="project_name">{{trans('dashboard.project_name')}}</label>
                                 <input type="text" class="form-control input-color" id="project_name"
-                                       name="project_name" placeholder="{{trans('dashboard.name')}}">
+                                       name="project_name" placeholder="{{trans('dashboard.name')}}" required>
 
                                 <div class="modal-footer mt-3">
                                     <button type="button" id="close-project" class="btn btn-secondary"
                                             data-dismiss="modal">
                                         {{trans('dashboard.close')}}
                                     </button>
-                                    <input type="submit" value="{{ trans('dashboard.submit') }}" class="btn btn-primary"
+                                    <input type="submit" value="{{ trans('dashboard.create') }}" class="btn btn-primary"
                                            style="color: white;">
                                 </div>
                             </form>

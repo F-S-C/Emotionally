@@ -12,9 +12,9 @@
         <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
     </button>
     <div class="dropdown-menu" aria-labelledby="more-video-{{$video->id}}">
-        <button class="dropdown-item btn btn-link rename-video-btn">Rename</button>
-        <button class="dropdown-item btn btn-link move-video-btn">Move</button>
+        <button class="dropdown-item btn btn-link rename-video-btn">{{trans('project-details.rename')}}</button>
+        <button class="dropdown-item btn btn-link move-video-btn">{{trans('project-details.move')}}</button>
         <div class="dropdown-divider"></div>
-        <button class="dropdown-item btn btn-link delete-video-btn">Delete</button>
+        <button class="dropdown-item btn btn-link delete-video-btn">{{trans('project-details.delete')}}</button>
     </div>
 </div>

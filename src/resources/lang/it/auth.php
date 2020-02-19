@@ -51,5 +51,7 @@ return [
     'before-proceed-verify' => 'Prima di procedere, controlla nella tua casella di posta il link di verifica.',
     'did-not-receive' => 'Se non hai ricevuto la mail,',
     'send-another-mail' => 'clicca qui per richiederne un\'altra',
-    'logout' => 'Logout'
+    'logout' => 'Logout',
+    'email-reset-sent' => 'Abbiamo inviato il tuo link per reimpostare la password via e-mail!',
+
 ];

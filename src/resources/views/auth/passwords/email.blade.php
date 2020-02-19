@@ -9,7 +9,7 @@
 @section('form')
     @if (session('status'))
         <div class="alert alert-success" role="alert">
-            {{ session('status') }}
+            @lang('auth.email-reset-sent')
         </div>
     @endif
     <form @if(session('status')) method="GET" action="{{ route('landing') }}" @else method="POST"

@@ -42,7 +42,7 @@
                                 data-dismiss="modal">
                             {{trans('dashboard.close')}}
                         </button>
-                        <input type="submit" value="{{ trans('dashboard.submit') }}" class="btn btn-primary"
+                        <input type="submit" value="{{ trans('dashboard.rename') }}" class="btn btn-primary"
                                style="color: white;">
                     </div>
                 </form>
@@ -126,7 +126,7 @@
                                 data-dismiss="modal">
                             {{trans('dashboard.close')}}
                         </button>
-                        <input type="submit" value="{{ trans('dashboard.submit') }}" class="btn btn-primary"
+                        <input type="submit" value="{{ trans('dashboard.rename') }}" class="btn btn-primary"
                                style="color: white;">
                     </div>
                 </form>
