@@ -8,6 +8,10 @@
     </style>
 @endsection
 
+@section('body-attr')
+    data-spy="scroll" data-target="#main-navigation" data-offset="100" style="position: relative;"
+@endsection
+
 @section('body')
     <header>
         <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark el-8dp fixed-top"

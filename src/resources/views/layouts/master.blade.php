@@ -14,7 +14,7 @@
 
     <title>@yield('title') | Emotionally</title>
 </head>
-<body>
+<body @yield('body-attr', '')>
     <nav aria-labelledby="skip-navigation-link">
         <a id="skip-navigation-link" class="skip-navigation" href="#main">Skip to main content</a>
     </nav>

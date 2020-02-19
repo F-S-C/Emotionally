@@ -34,8 +34,8 @@
 
 @section('navbar-content')
     <ul class="ml-auto navbar-nav">
-        <li class="nav-item active" id="home-li">
-            <a class="nav-link text-center" id="home-a" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item" id="home-li">
+            <a class="nav-link text-center" id="home-a" href="#landing">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item" id="features-li">
             <a class="nav-link text-center" id="features-a" href="#features">Features</a>
@@ -110,8 +110,9 @@
                         </div>
 
                         <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
-                           <div class="avatar mx-auto" >
-                                <img src="https://strumentalmente.it/assets/images/team/Alessandro.jpg" width="100%" class="rounded-circle z-depth-1" alt="Alessandro">
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Alessandro.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Alessandro">
                             </div>
                             <p class="font-weight-bold mt-4 mb-3 h5">
                                 <span itemprop="givenName">Alessandro</span><br>
@@ -120,13 +121,15 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/Ax3lFernus" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/Ax3lFernus"
+                                       target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://www.linkedin.com/in/alessandro-annese-79683913b/" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer"
+                                       href="https://www.linkedin.com/in/alessandro-annese-79683913b/" target="_blank">
                                         <span class="fab fa-linkedin"></span>
                                     </a>
                                 </li>
@@ -134,9 +137,10 @@
                             </ul>
                         </div>
 
-                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author" >
-                           <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Davide.jpg" width="100%" class="rounded-circle z-depth-1" alt="Davide">
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Davide.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Davide">
                             </div>
                             <p class="font-weight-bold mt-4 mb-3 h5">
                                 <span itemprop="givenName">Davide</span><br>
@@ -145,7 +149,8 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/Davidedes" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/Davidedes"
+                                       target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
@@ -154,8 +159,9 @@
                         </div>
 
                         <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
-                           <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Andrea.jpg" width="100%" class="rounded-circle z-depth-1" alt="Andrea">
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Andrea.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Andrea">
                             </div>
                             <p class="font-weight-bold mt-4 mb-3 h5">
                                 <span itemprop="givenName">Andrea</span><br>
@@ -165,13 +171,15 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/espositoandrea" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer"
+                                       href="https://github.com/espositoandrea" target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://www.linkedin.com/in/andrea-esposito-183bb016b/" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer"
+                                       href="https://www.linkedin.com/in/andrea-esposito-183bb016b/" target="_blank">
                                         <span class="fab fa-linkedin"></span>
                                     </a>
                                 </li>
@@ -179,9 +187,10 @@
                             </ul>
                         </div>
 
-                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author" >
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
                             <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Graziano.jpg" width="100%" class="rounded-circle z-depth-1" alt="Graziano">
+                                <img src="https://strumentalmente.it/assets/images/team/Graziano.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Graziano">
                             </div>
                             <p class="font-weight-bold mt-4 mb-3 h5">
                                 <span itemprop="givenName">Graziano</span><br>
@@ -190,7 +199,8 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/prewarning" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/prewarning"
+                                       target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
@@ -198,9 +208,10 @@
                             </ul>
                         </div>
 
-                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author" >
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
                             <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Regina.jpg" width="100%" class="rounded-circle z-depth-1" alt="Regina">
+                                <img src="https://strumentalmente.it/assets/images/team/Regina.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Regina">
                             </div>
 
 
@@ -211,7 +222,8 @@
                             <ul class="list-inline list-unstyled mb-0">
 
                                 <li class="list-inline-item">
-                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/ReginaZaccaria" target="_blank">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer"
+                                       href="https://github.com/ReginaZaccaria" target="_blank">
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
@@ -237,26 +249,26 @@
         (function ($) {
             $(document).ready(function () {
 
-                $('#features-a').on('click', function () {
-                    $('#features-li').addClass('active');
-                    $('#home-li').removeClass('active');
-                    $('#about-li').removeClass('active');
-                    document.location.href = '#features';
-                });
-
-                $('#about-a').on('click', function () {
-                    $('#about-li').addClass('active');
-                    $('#home-li').removeClass('active');
-                    $('#features-li').removeClass('active');
-                    document.location.href = '#about';
-                });
-
-                $('#home-a').on('click', function () {
-                    $('#home-li').addClass('active');
-                    $('#about-li').removeClass('active');
-                    $('#features-li').removeClass('active');
-                    document.location.href = '#';
-                });
+                // $('#features-a').on('click', function () {
+                //     $('#features-li').addClass('active');
+                //     $('#home-li').removeClass('active');
+                //     $('#about-li').removeClass('active');
+                //     document.location.href = '#features';
+                // });
+                //
+                // $('#about-a').on('click', function () {
+                //     $('#about-li').addClass('active');
+                //     $('#home-li').removeClass('active');
+                //     $('#features-li').removeClass('active');
+                //     document.location.href = '#about';
+                // });
+                //
+                // $('#home-a').on('click', function () {
+                //     $('#home-li').addClass('active');
+                //     $('#about-li').removeClass('active');
+                //     $('#features-li').removeClass('active');
+                //     document.location.href = '#';
+                // });
 
             });
         })(jQuery);
