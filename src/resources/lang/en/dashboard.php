@@ -78,6 +78,8 @@ return [
     "reset" => "Reset",
     "edit" => "Edit",
     "confirm-password" => "Confirm new password",
-
+    "password-changed" => "Password changed",
+    "err-changing-password" => "Error during the operation.",
+    "changing-password" => "Loading...",
 ];
 
