@@ -5,7 +5,7 @@
 <td class="content-cell" align="center">
 Copyright &copy; 2019-{{date('Y')}} Five Students of Computer Science.
     <br>
-    <img src="{{asset('/fsc_logo_dark.svg')}}" width="50">
+    <img src="https://www.strumentalmente.it/emotionally/fsc_logo_dark.png" width="50">
 </td>
 </tr>
 </table>
