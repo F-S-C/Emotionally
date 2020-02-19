@@ -28,4 +28,5 @@ return [
     'descriptionfeatures4' => 'Emotionally ti permette di espostare i risultati delle analisi di video e/o progetti in vari formati in modo da scegliere quello più adatto alle tue esigenze.',
     'login' => 'Log in',
     'system' => 'Sistema',
+    'about' => 'About',
 ];

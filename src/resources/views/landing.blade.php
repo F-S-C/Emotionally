@@ -99,7 +99,7 @@
         </div>
     </section>
     <section class="container my-5" id="about">
-        <h2>About</h2>
+        <h2>@lang('landing.about')</h2>
 
         <div class="row">
             <div class="col bd-content">
