@@ -245,32 +245,4 @@
     @parent
     <script type="text/javascript" src="{{mix('/js/vendor/affdex.js')}}"></script>
     <script type="text/javascript" src="{{mix('/js/emotion-analysis.js')}}"></script>
-    <script type="text/javascript">
-        (function ($) {
-            $(document).ready(function () {
-
-                // $('#features-a').on('click', function () {
-                //     $('#features-li').addClass('active');
-                //     $('#home-li').removeClass('active');
-                //     $('#about-li').removeClass('active');
-                //     document.location.href = '#features';
-                // });
-                //
-                // $('#about-a').on('click', function () {
-                //     $('#about-li').addClass('active');
-                //     $('#home-li').removeClass('active');
-                //     $('#features-li').removeClass('active');
-                //     document.location.href = '#about';
-                // });
-                //
-                // $('#home-a').on('click', function () {
-                //     $('#home-li').addClass('active');
-                //     $('#about-li').removeClass('active');
-                //     $('#features-li').removeClass('active');
-                //     document.location.href = '#';
-                // });
-
-            });
-        })(jQuery);
-    </script>
 @endsection
