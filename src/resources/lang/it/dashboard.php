@@ -77,7 +77,7 @@ return [
     "newpassword" => "Nuova password",
     "reset" => "Annulla",
     "edit" => "Modifica",
-
+    "confirm-password" => "Conferma la nuova password",
 
 
 ];

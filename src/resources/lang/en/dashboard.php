@@ -77,6 +77,7 @@ return [
     "newpassword" => "New password",
     "reset" => "Reset",
     "edit" => "Edit",
+    "confirm-password" => "Confirm new password",
 
 ];
 
