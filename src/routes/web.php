@@ -17,6 +17,7 @@
 //TODO: Controllare i middleware dei permessi
 
 Route::view('/', 'landing')->name('landing');
+Route::redirect('/landing', '/');
 
 Route::name('system.')
     ->middleware('auth')

@@ -28,7 +28,6 @@
         .splash-screen .inner .logo {
             width: 20vw;
             max-width: 150px;
-            border-radius: 50%;
         }
     </style>
 @endsection
@@ -36,13 +35,13 @@
 @section('navbar-content')
     <ul class="ml-auto navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link text-center" href="#">{{trans('landing.home')}} <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-center"  href="#landing">{{trans('landing.home')}} <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center" href="#">{{trans('landing.features')}}</a>
+            <a class="nav-link text-center" href="#features">{{trans('landing.features')}}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center" href="#">{{trans('landing.about')}}</a>
+            <a class="nav-link text-center"  href="#about">{{trans('landing.about')}}</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-outline-primary nav-link"
@@ -67,43 +66,183 @@
                 <h1 itemprop="name">{{trans('landing.emotionally')}}</h1>
                 <p itemprop="headline">{{ trans('metadata.description') }}</p>
                 <div style="margin-top: 1rem;">
-                    <a class="btn btn-outline-white btn-rounded waves-effect scroll-down" href="#content">
+                    <a class="btn btn-outline-white btn-rounded waves-effect scroll-down" href="#features">
                         <span class="fas fa-chevron-down"></span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="container my-5" id="content">
+    <section class="container my-5" id="features">
         <h2>@lang('landing.features')</h2>
         <div class="row text-center mt-5">
-            <div class="col-sm-3">
-                <span class="fas fa-file-video fa-4x"></span>
-                <p class="my-4 h5">{{trans('landing.analysis')}}</p>
-                <p>Lorem ipsum</p>
+            <div class="col-12 col-sm-6 col-md-3">
+                <span class="fas fa-grin-alt fa-4x text-primary" aria-hidden="true"></span>
+                <p class="my-4 h5">@lang('landing.features1')</p>
+                <p>@lang('landing.descriptionfeatures1')</p>
             </div>
-            <div class="col-sm-3">
-                <span class="fas fa-file-video fa-4x"></span>
-                <p class="my-4 h5">{{trans('landing.analysis')}}</p>
-                <p>Lorem ipsum</p>
+            <div class="col-12 col-sm-6 col-md-3">
+                <span class="fas fa-file-video fa-4x text-primary" aria-hidden="true"></span>
+                <p class="my-4 h5">@lang('landing.features2')</p>
+                <p>@lang('landing.descriptionfeatures2')</p>
             </div>
-            <div class="col-sm-3">
-                <span class="fas fa-folder-open fa-4x"></span>
-                <p class="my-4 h5">{{trans('landing.analysis')}}</p>
-                <p>Lorem ipsum</p>
+            <div class="col-12 col-sm-6 col-md-3">
+                <span class="fas fa-folder fa-4x text-primary" aria-hidden="true"></span>
+                <p class="my-4 h5">@lang('landing.features3')</p>
+                <p>@lang('landing.descriptionfeatures3')</p>
             </div>
-            <div class="col-sm-3">
-                <span class="fas fa-folder-open fa-4x"></span>
-                <p class="my-4 h5">{{trans('landing.analysis')}}</p>
-                <p>Lorem ipsum</p>
+            <div class="col-12 col-sm-6 col-md-3">
+                <span class="fas fa-file-export fa-4x text-primary" aria-hidden="true"></span>
+                <p class="my-4 h5">@lang('landing.features4')</p>
+                <p>@lang('landing.descriptionfeatures4')</p>
             </div>
         </div>
     </section>
-    <section class="container my-5">
-        <h2>{{trans('landing.about')}}</h2>
+    <section class="container my-5" id="about">
+        <h2>@lang('landing.about')</h2>
+
+        <div class="row">
+            <div class="col bd-content">
+                <section class="team-section text-center my-5" id="team">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-6">
+                            <!-- SPACER -->
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Alessandro.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Alessandro">
+                            </div>
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Alessandro</span><br>
+                                <span itemprop="familyName">Annese</span>
+                            </p>
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/Ax3lFernus"
+                                       target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer"
+                                       href="https://www.linkedin.com/in/alessandro-annese-79683913b/" target="_blank">
+                                        <span class="fab fa-linkedin"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Davide.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Davide">
+                            </div>
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Davide</span><br>
+                                <span itemprop="familyName">De Salvo</span>
+                            </p>
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/Davidedes"
+                                       target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Andrea.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Andrea">
+                            </div>
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Andrea</span><br>
+                                <span itemprop="familyName">Esposito</span>
+                            </p>
+
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer"
+                                       href="https://github.com/espositoandrea" target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer"
+                                       href="https://www.linkedin.com/in/andrea-esposito-183bb016b/" target="_blank">
+                                        <span class="fab fa-linkedin"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Graziano.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Graziano">
+                            </div>
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Graziano</span><br>
+                                <span itemprop="familyName">Montanaro</span>
+                            </p>
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer" href="https://github.com/prewarning"
+                                       target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
+                            <div class="avatar mx-auto">
+                                <img src="https://strumentalmente.it/assets/images/team/Regina.jpg" width="100%"
+                                     class="rounded-circle z-depth-1" alt="Regina">
+                            </div>
+
+
+                            <p class="font-weight-bold mt-4 mb-3 h5">
+                                <span itemprop="givenName">Regina</span><br>
+                                <span itemprop="familyName">Zaccaria</span>
+                            </p>
+                            <ul class="list-inline list-unstyled mb-0">
+
+                                <li class="list-inline-item">
+                                    <a class="p-2 fa-lg" rel="noopener noreferrer"
+                                       href="https://github.com/ReginaZaccaria" target="_blank">
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-1 col-md-6">
+                            <!-- SPACER -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </section>
-    {{--
-        @todo Complete implementation
-        @body Complete the layout as designed.
-    --}}
+@endsection
+
+@section("scripts")
+    @parent
+    <script type="text/javascript" src="{{mix('/js/vendor/affdex.js')}}"></script>
+    <script type="text/javascript" src="{{mix('/js/emotion-analysis.js')}}"></script>
 @endsection

@@ -1,4 +1,4 @@
-<?php
+s<?php
 /**
  * This file is part of Emotionally.
  *
@@ -18,10 +18,18 @@
 
 return [
     'features' => 'Caratteristiche',
+    'features1' => 'Analisi grafica delle emozioni',
+    'features2' => 'Analisi in tempo reale e di video',
+    'features3' => 'Gestisci progetti',
+    'features4' => 'Esporta i risultati',
+    'descriptionfeatures1' => 'Emotionally permette di effettuare l&rsquo;analisi delle emozioni di video caricati all&rsquo;interno della nostra piattaforma. I risultati sono quindi mostrati in grafici di facile consultazione.',
+    'descriptionfeatures2' => 'Vuoi analizzare un video registrato in real time? Con Emotionally puoi farlo. Analizza le emozioni di una registrazione effettuata e visualizza i risultati.',
+    'descriptionfeatures3' => 'Emotionally ti permette di gestire i tuoi progetti e condividerli con altri membri del tuo gruppo di lavoro. Gestisci i permessi dei progetti condivisi.',
+    'descriptionfeatures4' => 'Emotionally ti permette di espostare i risultati delle analisi di video e/o progetti in vari formati in modo da scegliere quello più adatto alle tue esigenze.',
     'login' => 'Log in',
     'system' => 'Sistema',
     'home' => 'Home',
-    'about' => 'Info',
+    'about' => 'Informazioni',
     'emotionally' => 'Emotionally',
     'analysis' => 'Analisi',
 ];
