@@ -85,4 +85,8 @@ return [
     "err-changing-profile" => "Errore durante l'operazione",
     "rename" => "Rinomina",
     "create" => "Aggiungi",
+    "projects" => "Progetti",
+    "search" => "Cerca",
+    "time-range" => "Intervallo",
+    "old-password" => "Vecchia password"
 ];

@@ -39,7 +39,7 @@
 @endsection
 
 @section('inner-content')
-    <div class="dropleft text-right mb-2 mx-3">
+    <div class="dropdown text-right mb-2 mx-3">
         <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
             Download
@@ -65,7 +65,7 @@
             <div class="col mb-4">
                 <div class="card el-0dp">
                     <div class="card-body">
-                        <h3 class="card-title">Spider Chart</h3>
+                        <h3 class="card-title">{{trans('report.spider-chart')}}</h3>
                         <div class="smaller-charts">
                             <canvas id="radar"></canvas>
                         </div>
@@ -75,7 +75,7 @@
             <div class="col mb-4">
                 <div class="card el-0dp">
                     <div class="card-body">
-                        <h3 class="card-title">Bar Chart</h3>
+                        <h3 class="card-title">{{trans('report.bar-chart')}}</h3>
                         <div class="smaller-charts">
                             <canvas id="bar"></canvas>
                         </div>
@@ -85,7 +85,7 @@
             <div class="col mb-4">
                 <div class="card el-0dp">
                     <div class="card-body">
-                        <h3 class="card-title">Most frequent emotion</h3>
+                        <h3 class="card-title">{{trans('report.emoji')}}</h3>
                         <img alt="emoji: {{$project->average_emotion}}" class="mx-auto d-block mt-5 mb-1 emj"
                              src="
                 @switch($project->getAverageEmotionAttribute())
@@ -112,7 +112,30 @@
                              @break
                              @default
                              @endswitch">
-                        <p class="h2 text-center text-capitalize">{{ $project->average_emotion }}</p>
+                        <p class="h2 text-center text-capitalize">@switch($project->getAverageEmotionAttribute())
+                                @case('joy')
+                                {{ trans('report.joy') }}
+                                @break
+                                @case('sadness')
+                                {{ trans('report.sadness') }}
+                                @break
+                                @case('anger')
+                                {{ trans('report.anger') }}
+                                @break
+                                @case('contempt')
+                                {{ trans('report.contempt') }}
+                                @break
+                                @case('disgust')
+                                {{ trans('report.disgust') }}
+                                @break
+                                @case('fear')
+                                {{ trans('report.fear') }}
+                                @break
+                                @case('surprise')
+                                {{ trans('report.surprise') }}
+                                @break
+                                @default
+                            @endswitch</p>
                     </div>
                 </div>
             </div>

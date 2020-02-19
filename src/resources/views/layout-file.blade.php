@@ -1,6 +1,8 @@
 @extends('layouts.blank')
 
-@section('title',"File report: " .$video->name)
+@section('title')
+    {{trans('report.video-report') . ': ' . $video->name}}
+    @endsection
 
 @section('body')
 
@@ -22,19 +24,19 @@
             </div>
         </div>
         <div class="text-center my-4">
-            <h1>File video report: {{ $video->name }}</h1>
+            <h1>{{trans('report.video-name')}}: {{ $video->name }}</h1>
         </div>
         <div class="row my-4">
             <div class="col-12">
                 <table class="table" style="color:black">
-                    <caption class="sr-only">The video report</caption>
+                    <caption class="sr-only">{{trans('report.video-report')}}</caption>
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col">Creator</th>
-                        <th scope="col">Project</th>
-                        <th scope="col">Video's Duration</th>
-                        <th scope="col">Range analyzed</th>
-                        <th scope="col">Frequent emoji</th>
+                        <th scope="col">{{trans('report.creator')}}</th>
+                        <th scope="col">{{trans('report.project')}}</th>
+                        <th scope="col">{{trans('report.video-duration')}}</th>
+                        <th scope="col">{{trans('report.range')}}</th>
+                        <th scope="col">{{trans('report.emoji')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,13 +60,13 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <h3>Spider Chart</h3>
+                <h3>{{trans('report.spider-chart')}}</h3>
                 <div class="smaller-charts">
                     <canvas id="radar"></canvas>
                 </div>
             </div>
             <div class="col-6">
-                <h3>Bar Chart</h3>
+                <h3>{{trans('report.bar-chart')}}</h3>
                 <div class="smaller-charts">
                     <canvas id="bar"></canvas>
                 </div>
@@ -72,7 +74,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h3>Line Chart</h3>
+                <h3>{{trans('report.line-chart')}}</h3>
                 <div class="bigger-charts">
                     <canvas id="line"></canvas>
                 </div>
@@ -82,7 +84,7 @@
             <div class="copyright text-white-50 my-3">
                 <div class="container-fluid px-3">
                     <p class="d-inline-block mt-md-1" style="color: black;">
-                        Copyright &copy; 2019,
+                        Copyright &copy; 2019-{{date('Y')}},
                         <a href="https://F-S-C.github.io/" rel="noopener noreferrer" target="_blank">FSC</a>.
                         @lang('metadata.copyright')
                     </p>

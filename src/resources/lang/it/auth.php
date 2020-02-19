@@ -52,6 +52,6 @@ return [
     'did-not-receive' => 'Se non hai ricevuto la mail,',
     'send-another-mail' => 'clicca qui per richiederne un\'altra',
     'logout' => 'Logout',
-    'email-reset-sent' => 'Abbiamo inviato il tuo link per reimpostare la password via e-mail!',
+    'email-reset-sent' => 'Ti abbiamo inviato un link per reimpostare la password via mail!',
 
 ];

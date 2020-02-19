@@ -85,5 +85,9 @@ return [
     "profile-changing" => "Loading...",
     "rename" => "Rename",
     "create" => "Create",
+    "projects" => "Projects",
+    "search" => "Search",
+    "time-range" => "Time range",
+    "old-password" => "Old password"
 ];
 

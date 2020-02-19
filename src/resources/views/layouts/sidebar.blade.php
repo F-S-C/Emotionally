@@ -71,7 +71,7 @@
                                role="button" aria-expanded="false" aria-controls="projects-container"></a>
                             <a class="nav-link text-center text-md-left" href="{{route('system.home')}}">
                                 <span aria-hidden="true" class="fas fa-home mr-0 mr-md-1 text-md-center"></span>
-                                <span class="d-none d-md-inline">Projects</span>
+                                <span class="d-none d-md-inline">{{trans('dashboard.projects')}}</span>
                             </a>
                         </div>
                     @else
@@ -103,8 +103,8 @@
             <nav class="navbar navbar-expand-lg navbar-dark el-0dp" style="padding: 20px 30px;" aria-label="navbar">
                 <div class="form-inline my-2 my-lg-0">
                     @if(! (strpos($_SERVER['REQUEST_URI'], "project") || strpos($_SERVER['REQUEST_URI'], "profile") || strpos($_SERVER['REQUEST_URI'], "video")))
-                        <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search"
-                               aria-label="Search" id="search-bar">
+                        <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="{{trans('dashboard.search')}}"
+                               aria-label="{{trans('dashboard.search')}}" id="search-bar">
                     @endif
                 </div>
                 <div class="ml-auto btn-group dropleft">

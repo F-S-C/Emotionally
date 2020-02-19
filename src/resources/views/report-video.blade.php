@@ -55,7 +55,7 @@
 
     <div class="dropdown text-right mb-2 mx-3">
         <button type="button" id="save-button" class="btn btn-outline-primary d-none">
-            Save
+            {{trans('report.salva')}}
         </button>
         <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
@@ -116,7 +116,7 @@
             <div class="col mb-4">
                 <div class="card el-0dp">
                     <div class="card-body">
-                        <h3 class="card-title">Spider Chart</h3>
+                        <h3 class="card-title">{{trans('report.spider-chart')}}</h3>
                         <div class="smaller-charts">
                             <canvas id="radar"></canvas>
                         </div>
@@ -126,7 +126,7 @@
             <div class="col mb-4">
                 <div class="card el-0dp">
                     <div class="card-body">
-                        <h3 class="card-title">Bar Chart</h3>
+                        <h3 class="card-title">{{trans('report.bar-chart')}}</h3>
                         <div class="smaller-charts">
                             <canvas id="bar"></canvas>
                         </div>
@@ -142,7 +142,7 @@
                                 <source src="{{$video->url}}" type="video/{{pathinfo($video->url,PATHINFO_EXTENSION)}}">
                             </video>
                             <p>
-                                <label for="amount" style="color: #FF9800;">Time range:</label>
+                                <label for="amount" style="color: #FF9800;">{{trans('dashboard.time-range')}}:</label>
                                 <input type="text" id="amount" readonly
                                        style="border:none; background-color: transparent; color: #FF9800; font-weight:bold;">
                             </p>
@@ -156,7 +156,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h3>Line Chart</h3>
+                <h3>{{trans('report.line-chart')}}</h3>
                 <div class="bigger-charts">
                     <canvas id="line"></canvas>
                 </div>
