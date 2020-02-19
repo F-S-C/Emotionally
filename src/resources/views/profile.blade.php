@@ -33,11 +33,11 @@
                            name="password" value="" placeholder="{{trans('dashboard.newpassword')}}" required>
                     <label class="mt-2" for="confirm-password">{{trans('dashboard.confirm-password')}}</label>
                     <input type="password" class="form-control input-color" id="confirm-password"
-                           name="confirm_password" value="" placeholder="{{trans('dashboard.newpassword')}}" required>
+                           name="confirm_password" value="" placeholder="{{trans('dashboard.confirm-password')}}" required>
                     <div class="invalid-feedback" id="wrong-new-password">Le password non coincidono.</div>
                     <div class="row mt-4">
                         <div class="col-7">
-                            <label class="mt-2" for="old-password">{{trans('dashboard.newpassword')}}</label>
+                            <label class="mt-2" for="old-password">{{trans('dashboard.old-password')}}</label>
                             <input type="password" class="form-control input-color" id="old-password"
                                    name="old_password" value="" placeholder="{{trans('dashboard.old-password')}}"
                                    required>
