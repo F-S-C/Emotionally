@@ -3,19 +3,19 @@
 @section('title', trans('dashboard.dashboard'))
 
 @section('breadcrumbs')
-<li class="breadcrumb-item" aria-current="page"><span class="fas fa-home" aria-hidden="true"></span>
-    @lang('dashboard.home')
-</li>
-<li class="breadcrumb-item active" aria-current="page">
-    @lang('dashboard.dashboard')
-</li>
+    <li class="breadcrumb-item" aria-current="page"><span class="fas fa-home" aria-hidden="true"></span>
+        @lang('dashboard.home')
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+        @lang('dashboard.dashboard')
+    </li>
 @endsection
 
 @section('inner-content')
-<div class="table-responsive mt-3">
-    <table id="project-table" class="display w-100 table table-striped table-borderless">
-        <caption class="sr-only">@lang('dashboard.your_projects')</caption>
-        <thead class="text-uppercase">
+    <div class="table-responsive mt-3">
+        <table id="project-table" class="display w-100 table table-striped table-borderless">
+            <caption class="sr-only">@lang('dashboard.your_projects')</caption>
+            <thead class="text-uppercase">
             <tr>
                 <th scope="col">@lang('dashboard.name')</th>
                 <th scope="col" class="text-center">@lang('dashboard.created_at')</th>
@@ -26,35 +26,37 @@
                 <th scope="col"><span class="sr-only">@lang('dashboard.go_to_report')</span></th>
                 <th scope="col"><span class="sr-only">@lang('dashboard.more')</span></th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @if(isset($projects))
-            @foreach($projects as $project)
-            <tr class="clickable" data-href="{{route('system.project-details', $project->id)}}">
-                <td>{{$project['name']}}</td>
-                <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
-                <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
-                <td class="text-center">{{$project->number_of_videos}}</td>
-                <td class="text-center">{{$project->number_of_subprojects}}</td>
-                <td class="text-center">
-                    <span class="sr-only">@lang('emotions.'.$project->average_emotion)</span>
-                    <span class="emojis" title="@lang('emotions.'.$project->average_emotion)" aria-hidden="true">
+                @foreach($projects as $project)
+                    <tr class="clickable" data-href="{{route('system.project-details', $project->id)}}">
+                        <td>{{$project['name']}}</td>
+                        <td class="text-center">{{date('d/m/Y',strtotime($project->created_at))}}</td>
+                        <td class="text-center">{{date('d/m/Y', strtotime($project->updated_at))}}</td>
+                        <td class="text-center">{{$project->number_of_videos}}</td>
+                        <td class="text-center">{{$project->number_of_subprojects}}</td>
+                        <td class="text-center">
+                            <span class="sr-only">@lang('emotions.'.$project->average_emotion)</span>
+                            <span class="emojis" title="@lang('emotions.'.$project->average_emotion)"
+                                  aria-hidden="true">
                         {{\Emotionally\Http\Controllers\ReportController::get_emoji($project->average_emotion)}}
                     </span>
-                </td>
-                <td class="text-center">
-                    <a href="{{route('system.report-project', $project->id)}}" class="btn btn-md-text" aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
-                </td>
-                <td>
-                    @include('shared.dropdown-options-project', ['project'=>$project])
-                </td>
-            </tr>
-            @endforeach
+                        </td>
+                        <td class="text-center">
+                            <a href="{{route('system.report-project', $project->id)}}" class="btn btn-md-text"
+                               aria-label="@lang('dashboard.go_to_project_report', ['name'=>$project->name])">@lang('dashboard.report')</a>
+                        </td>
+                        <td>
+                            @include('shared.dropdown-options-project', ['project'=>$project])
+                        </td>
+                    </tr>
+                @endforeach
             @endif
-        </tbody>
-    </table>
-</div>
-@include('shared.modals')
+            </tbody>
+        </table>
+    </div>
+    @include('shared.modals')
 @endsection
 
 @section('scripts')
@@ -81,13 +83,6 @@
 
                 $('#search-bar').on('keydown click change paste mouseup', function () {
                     table.search($('#search-bar').val()).draw();
-                });
-
-                $('.clickable').on('click', function (event) {
-                    // prevent execution from bubbling if a link or a button were clicked
-                    if (!$(event.target).is('a, button, .dropdown,.dropdown *')) {
-                        window.location = $(this).data('href');
-                    }
                 });
 
                 //SCRIPT DROPDOWN
@@ -167,16 +162,16 @@
                     });
                 });
             });
-            $('#search-bar').on('keydown click', function() {
+            $('#search-bar').on('keydown click', function () {
                 table.search($('#search-bar').val()).draw();
             });
 
-            $('.clickable').click(function(event) {
+            $('.clickable').click(function (event) {
                 // prevent execution from bubbling if a link or a button were clicked
                 if (event.target.tagName.toLowerCase() !== 'a' && event.target.tagName.toLowerCase() !== 'button') {
                     window.location = $(this).data('href');
                 }
             });
-    })(jQuery);
-</script>
+        })(jQuery);
+    </script>
 @endsection

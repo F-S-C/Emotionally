@@ -79,6 +79,7 @@ return [
     "newpassword" => "Nuova password",
     "reset" => "Annulla",
     "edit" => "Modifica",
+    "save" => "Salva",
     "confirm-password" => "Conferma la nuova password",
     "profile-changed" => "Profilo aggiornato",
     "profile-changing" => "In corso...",

@@ -86,9 +86,9 @@
                                name="confirm_password" placeholder="{{trans('dashboard.confirm-password')}}">
                     </div>
                     @error('password')<p class="text-center text-danger">{{ $message }}</p>@enderror
+                    <div class="invalid-feedback" id="wrong-new-password">@lang('auth.passwords-not-equal')</div>
                 </div>
-                <div class="invalid-feedback" id="wrong-new-password">@lang('auth.passwords-not-equal')</div>
-                <div class="form-row text-center">
+                <div class="form-row mt-4 text-center">
                     <div class="form-group col-12 col-md-6 pr-2">
                         <button type="reset" id="close-edit-profile" class="btn btn-md-text">
                             {{trans('dashboard.reset')}}
@@ -96,7 +96,7 @@
                     </div>
                     <div class="form-group col-12 col-md-6 pl-2">
                         <button type="submit" id="submit-edit-profile" class="btn btn-outline-primary text-uppercase">
-                            {{trans('dashboard.edit')}}
+                            {{trans('dashboard.save')}}
                         </button>
                     </div>
                 </div>
@@ -132,14 +132,13 @@
                 })();
 
                 $('#password, #confirm-password').on('change', function () {
-                    if (checkPassword()) {
-                        $('#wrong-new-password').hide();
-                        $('#submit-edit-profile').prop('disabled', false);
-                    } else {
-                        $('#wrong-new-password').show();
-                        $('#submit-edit-profile').prop('disabled', true);
-                    }
+                    let valid = checkPassword();
+                    $('#wrong-new-password').toggle(!valid);
+                    $('#submit-edit-profile').prop('disabled', !valid);
+                });
 
+                $('#old-password').on('change', function () {
+                    $('#wrong-old-password').hide();
                 });
 
                 function checkPassword() {
@@ -187,21 +186,20 @@
                                             })
                                         },
                                         error: function (data) {
-                                            // TODO: ERRORI NELLA CONNESIONE AL SERVER
+                                            // ERRORI NELLA CONNESIONE AL SERVER
                                             creating.hide();
                                             alertNotComplete.show();
                                             alertNotComplete.show();
-                                            console.log(data);
+                                            console.error(data);
                                             form.show();
                                         }
                                     });
                                 } else {
                                     if (!data.hasOwnProperty('errors')) {
-                                        // TODO: Password errata
-                                        console.log('FOLD PASSWORD')
+                                        $('#wrong-old-password').show();
                                     } else {
-                                        // TODO: ERRORI NELLA RICHIESTA
-                                        console.log(data['errors']);
+                                        // ERRORI NELLA RICHIESTA
+                                        console.error(data['errors']);
                                     }
                                     creating.hide();
                                     alertNotComplete.show();

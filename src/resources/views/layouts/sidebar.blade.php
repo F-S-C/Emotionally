@@ -103,7 +103,8 @@
             <nav class="navbar navbar-expand-lg navbar-dark el-0dp" style="padding: 20px 30px;" aria-label="navbar">
                 <div class="form-inline my-2 my-lg-0">
                     @if(! (strpos($_SERVER['REQUEST_URI'], "project") || strpos($_SERVER['REQUEST_URI'], "profile") || strpos($_SERVER['REQUEST_URI'], "video")))
-                        <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="{{trans('dashboard.search')}}"
+                        <input class="form-control mr-sm-2 rounded-pill" type="search"
+                               placeholder="{{trans('dashboard.search')}}"
                                aria-label="{{trans('dashboard.search')}}" id="search-bar">
                     @endif
                 </div>
@@ -143,7 +144,8 @@
                                     data-modal="realtime-video-modal">{{trans('dashboard.realtime_video')}}</button>
                         @endif
                     </div>
-                    <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex">
+                    <div aria-label="Your profile" class="ml-auto my-2 my-lg-0 d-none d-md-flex clickable"
+                         data-href="{{route('system.profile')}}" role="button">
                         <img alt="" aria-hidden="true" class="rounded-circle p-1 border border-text" width="40"
                              height="40"
                              src="https://robohash.org/{{Auth::user()->email}}?set=set3"/>

@@ -79,6 +79,7 @@ return [
     "newpassword" => "New password",
     "reset" => "Reset",
     "edit" => "Edit",
+    "save" => "Save",
     "confirm-password" => "Confirm new password",
     "profile-changed" => "Profile changed",
     "err-changing-profile" => "Error during the operation.",
