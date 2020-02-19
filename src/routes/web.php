@@ -77,9 +77,12 @@ Route::name('system.')
                     });
             });
 
-        Route::post('/video/upload', 'VideoController@uploadVideo')->name('videoUpload');
-        Route::post('/video/realtime-upload', 'VideoController@realtimeUpload')->name('realtimeUpload');
-        Route::post('/project/new', 'ProjectController@createProject')->name('newProject');
+        Route::post('/video/upload', 'VideoController@uploadVideo')->name('videoUpload')
+            ->middleware('permissions.video:add:project_id');
+        Route::post('/video/realtime-upload', 'VideoController@realtimeUpload')->name('realtimeUpload')
+            ->middleware('permissions.video:add:project_id');
+        Route::post('/project/new', 'ProjectController@createProject')->name('newProject')
+            ->middleware('permissions.project:add:father_id');
         Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set')
             ->middleware('permissions.video:modify:video_id');
 
