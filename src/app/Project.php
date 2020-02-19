@@ -85,7 +85,7 @@ class Project extends Model
             return json_decode($element->report, true) ?? array();
         })->toArray();
         $SUB_REPORTS = $this->sub_projects()->get()->map(function (Project $sub_project) {
-            return $sub_project->report ?? array();;
+            return $sub_project->report ?? array();
         })->toArray();
         return ReportController::average(array_merge($REPORTS, $SUB_REPORTS));
     }
