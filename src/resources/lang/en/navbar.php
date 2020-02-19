@@ -21,4 +21,7 @@ return [
     'title_other_link' => 'Other link',
     'description_emotionally' => 'Emotionally was created as an exam\'s project of "Web Programming". Emotionally is a system capable of detecting and analyzing thanks to Affectiva\'s cloud-based APIs.',
     'description_information' => 'This team was born in 2018 to take a group exam and it\'s made of five collegues and friends that saw in that exam the oportunity to start working together as a real group. Now we are ready to take any challenge and give life to our ideas.',
+    'language'=>'Language',
+    'italian'=>'Italian',
+    'english'=>'English',
 ];

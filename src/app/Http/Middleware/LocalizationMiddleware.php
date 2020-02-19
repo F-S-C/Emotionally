@@ -20,9 +20,9 @@ class LocalizationMiddleware
         $accepted_locales = ['en', 'it'];
         $locale = $request->segment(1, config('app.fallback_locale'));
         if (!in_array($locale, $accepted_locales)) {
-            $locale = config('app.fallback_locale');
+            $locale = \Session::get('locale', config('app.fallback_locale'));
         }
-        (new ConsoleOutput())->writeln($locale);
+        \Session::put('locale', $locale);
 
         \App::setLocale($locale);
         return $next($request);

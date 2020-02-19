@@ -84,6 +84,37 @@
                         @each('partials.project-tree-view', Auth::user()->projects->where('father_id', null), 'main_project')
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <div class="btn-group collapse-button-container">
+                        <a type="button" class="nav-link collapse-button hide-xs-icon d-block d-md-block"
+                           data-toggle="collapse"
+                           href="#languages-container"
+                           role="button" aria-expanded="false" aria-controls="languages-container">
+                            <span aria-hidden="true"
+                                  class="d-block d-md-none fas fa-globe mr-0 mr-md-1 text-md-center"></span>
+                        </a>
+                        <a class="nav-link text-center text-md-left d-none d-md-block" href="#">
+                            <span aria-hidden="true" class="fas fa-globe mr-0 mr-md-1 text-md-center"></span>
+                            <span class="d-none d-md-inline">@lang('navbar.language')</span>
+                        </a>
+                    </div>
+                    <ul class="collapse el-3dp nav flex-column flex-nowrap" id="languages-container">
+                        <li class="nav-item ml-0 text-center text-md-left ml-md-4">
+                            <a class="nav-link"
+                               href="{{config('app.url') . '/it/' . implode('/', array_slice(Request::segments(),1))}}">
+                                <span aria-hidden="true" class="d-inline d-md-none">ITA</span>
+                                <span class="d-none d-md-inline">@lang('navbar.italian')</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-0 text-center text-md-left ml-md-4">
+                            <a class="nav-link"
+                               href="{{config('app.url') . '/en/' . implode('/', array_slice(Request::segments(),1))}}">
+                                <span aria-hidden="true" class="d-inline d-md-none">ENG</span>
+                                <span class="d-none d-md-inline">@lang('navbar.english')</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item text-center text-md-left" id="side-profile-btn">
                     <a class="nav-link" href="{{route('system.profile')}}">
                         <span aria-hidden="true" class="fas fa-user mr-0 mr-md-1 text-md-center"></span>
