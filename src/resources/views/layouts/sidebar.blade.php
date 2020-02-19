@@ -63,7 +63,7 @@
             </div>
 
             <ul class="nav flex-column">
-                <li class="nav-item active">
+                <li class="nav-item active" id="side-home-btn">
                     @if(Auth::user()->projects->isNotEmpty())
                         <div class="btn-group collapse-button-container">
                             <a type="button" class="nav-link collapse-button d-none d-md-block" data-toggle="collapse"
@@ -84,19 +84,7 @@
                         @each('partials.project-tree-view', Auth::user()->projects->where('father_id', null), 'main_project')
                     </ul>
                 </li>
-                <li class="nav-item text-center text-md-left">
-                    <a class="nav-link text-center text-md-left" href="#">
-                        <span aria-hidden="true" class="fas fa-info-circle mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">About</span>
-                    </a>
-                </li>
-                <li class="nav-item text-center text-md-left">
-                    <a class="nav-link" href="#">
-                        <span aria-hidden="true" class="fas fa-file-alt mr-0 mr-md-1 text-md-center"></span>
-                        <span class="d-none d-md-inline">Portfolio</span>
-                    </a>
-                </li>
-                <li class="nav-item text-center text-md-left">
+                <li class="nav-item text-center text-md-left" id="side-profile-btn">
                     <a class="nav-link" href="{{route('system.profile')}}">
                         <span aria-hidden="true" class="fas fa-user mr-0 mr-md-1 text-md-center"></span>
                         <span class="d-none d-md-inline">{{trans('dashboard.profile')}}</span>
@@ -114,11 +102,13 @@
         <div class="content sidebar-content">
             <nav class="navbar navbar-expand-lg navbar-dark el-0dp" style="padding: 20px 30px;" aria-label="navbar">
                 <div class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search"
-                           aria-label="Search" id="search-bar">
+                    @if(! (strpos($_SERVER['REQUEST_URI'], "project") || strpos($_SERVER['REQUEST_URI'], "profile") || strpos($_SERVER['REQUEST_URI'], "video")))
+                        <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search"
+                               aria-label="Search" id="search-bar">
+                    @endif
                 </div>
                 <div class="ml-auto btn-group dropleft">
-                    @if(!strpos($_SERVER['REQUEST_URI'], "report") && !strpos($_SERVER['REQUEST_URI'], "video"))
+                    @if(!(strpos($_SERVER['REQUEST_URI'], "report") || strpos($_SERVER['REQUEST_URI'], "video") || strpos($_SERVER['REQUEST_URI'], "profile")))
                         <button class="btn btn-outline-primary rounded-pill mr-0 mr-md-4" type="button" id="add-video"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                 title="{{trans('dashboard.upload_video')}}">

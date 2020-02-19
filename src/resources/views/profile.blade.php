@@ -35,6 +35,9 @@
         <script>
         (function ($) {
             $(document).ready(function () {
+                $('#side-home-btn').removeClass('active');
+                $('#side-profile-btn').addClass('active');
+
                 let table = $('#project-table').DataTable({
                     "order": [[0, "asc"]],
                     "paging": false,
