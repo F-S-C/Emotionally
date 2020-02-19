@@ -3,6 +3,7 @@
 namespace Emotionally;
 
 use Emotionally\Http\Controllers\ReportController;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -81,13 +82,12 @@ class Project extends Model
     public function getReportAttribute()
     {
         $REPORTS = $this->videos()->get()->map(function (Video $element) {
-            return json_decode($element->report, true);
+            return json_decode($element->report, true) ?? array();
         })->toArray();
         $SUB_REPORTS = $this->sub_projects()->get()->map(function (Project $sub_project) {
-            return $sub_project->report;
+            return $sub_project->report ?? array();;
         })->toArray();
-        array_push($REPORTS, $SUB_REPORTS);
-        return ReportController::average($REPORTS);
+        return ReportController::average(array_merge($REPORTS, $SUB_REPORTS));
     }
 
     /**

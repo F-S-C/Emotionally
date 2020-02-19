@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of Emotionally.
  *
@@ -24,6 +25,7 @@ use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\ProjectSpreadshee
 use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\VideoSpreadsheet;
 use Emotionally\Project;
 use Emotionally\Video;
+use Exception;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ReportController extends Controller
@@ -90,10 +92,14 @@ class ReportController extends Controller
     {
         if (empty($report) || substr(json_encode($report), 0, 1) == "{") {
             $type = 1;
-        } elseif (substr(json_encode($report), 0, 2) == "[[") {
-            $type = 3;
         } else {
-            $type = 2;
+            foreach ($report as $sub_report) {
+                if (!empty($sub_report) && substr(json_encode($sub_report), 0, 1) == "[") {
+                    $type = 3;
+                    break;
+                }
+                $type = 2;
+            }
         }
         return $type;
     }
@@ -287,7 +293,6 @@ class ReportController extends Controller
         fclose($handle);
         $headers = array('Content-type' => 'Analysis to json', 'Project analyzed' => $project->name);
         return response()->download($fileName, $fileName, $headers)->deleteFileAfterSend();
-
     }
 
     public function downloadVideoExcel($id)
