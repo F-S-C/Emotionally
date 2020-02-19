@@ -15,6 +15,7 @@
 //Route::view('/test-webcam', 'test-webcam')->name('webcam');
 
 Route::view('/', 'landing')->name('landing');
+Route::redirect('/landing', '/');
 
 Route::name('system.')
     ->middleware('auth')

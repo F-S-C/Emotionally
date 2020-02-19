@@ -28,7 +28,6 @@
         .splash-screen .inner .logo {
             width: 20vw;
             max-width: 150px;
-            border-radius: 50%;
         }
     </style>
 @endsection
@@ -67,14 +66,14 @@
                 <h1 itemprop="name">Emotionally</h1>
                 <p itemprop="headline">{{ trans('metadata.description') }}</p>
                 <div style="margin-top: 1rem;">
-                    <a class="btn btn-outline-white btn-rounded waves-effect scroll-down" href="#content">
+                    <a class="btn btn-outline-white btn-rounded waves-effect scroll-down" href="#features">
                         <span class="fas fa-chevron-down"></span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="container my-5" id="content">
+    <section class="container my-5" id="features">
         <h2>@lang('landing.features')</h2>
         <div class="row text-center mt-5">
             <div class="col-12 col-sm-6 col-md-3">
@@ -99,11 +98,11 @@
             </div>
         </div>
     </section>
-    <section class="container my-5">
+    <section class="container my-5" id="about">
         <h2>About</h2>
 
         <div class="row">
-            <div class="col bd-content" id="about">
+            <div class="col bd-content">
                 <section class="team-section text-center my-5" id="team">
                     <div class="row">
                         <div class="col-lg-1 col-md-6">
