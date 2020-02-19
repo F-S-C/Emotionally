@@ -84,5 +84,6 @@ return [
     "err-changing-profile" => "Error during the operation.",
     "profile-changing" => "Loading...",
     "rename" => "Rename",
+    "create" => "Create",
 ];
 

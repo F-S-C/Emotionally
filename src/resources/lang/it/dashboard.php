@@ -52,7 +52,7 @@ return [
     "submit" => "Invia",
     "upload" => "Carica",
     "creating_project" => "Creazione del progetto...",
-    "err_creating_project" => "Si &egrave; verificato un errore durante la creazione del progetto.",
+    "err_creating_project" => "Si è verificato un errore durante la creazione del progetto.",
     "project_created" => "Progetto creato con successo.",
     "next" => "Avanti",
     "loading" => "Caricamento...",
@@ -84,4 +84,5 @@ return [
     "profile-changing" => "In corso...",
     "err-changing-profile" => "Errore durante l'operazione",
     "rename" => "Rinomina",
+    "create" => "Aggiungi",
 ];
