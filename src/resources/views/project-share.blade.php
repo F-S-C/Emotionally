@@ -56,7 +56,7 @@
         <div class="card-body">
             <p>{{trans('project-share.fill-form')}}</p>
             <form id="share-form" method="post"
-                  action="{{route('system.permissions.add', ['project_id'=>$project->id])}}">
+                  action="{{route('system.permissions.add', $project->id)}}">
                 @csrf
                 @method('PUT')
                 <div class="form-group mr-sm-3">
@@ -134,7 +134,7 @@
                         </td>
                         <td class="text-center align-middle">
                             <form method="post"
-                                  action="{{route('system.permissions.delete', ['project_id'=>$project->id, 'user_id'=>$user->id])}}">
+                                  action="{{route('system.permissions.delete', $project->id, $user->id)}}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-md-text-danger" type="submit"
@@ -189,7 +189,7 @@
                     $(this).html(newPermission ? yesIcon : noIcon);
                     $(this).data('value', newPermission ? 1 : 0);
 
-                    $.post('{{route('system.permissions.edit', ['project_id'=>$project->id])}}',
+                    $.post('{{route('system.permissions.edit', $project->id)}}',
                         {
                             '_token': '{{csrf_token()}}',
                             'user_id': $(this).data('user'),

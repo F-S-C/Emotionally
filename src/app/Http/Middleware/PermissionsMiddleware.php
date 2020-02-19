@@ -13,19 +13,19 @@ class PermissionsMiddleware
      * @param \Illuminate\Http\Request $request
      * @param \Closure $next
      * @param string $permission_required The required permission. Must be one
-     * of: 'read', 'modify', 'add', 'remove' (case unsensitive).
+     * of: 'read', 'modify', 'add', 'remove', 'admin' (case unsensitive).
      * @return mixed
      */
     public function handle($request, Closure $next, $permission_required)
     {
         $is_admin = $request->user()->projects->contains('id', $request->route()->parameters()['id']);
         if (!$is_admin) {
-            $has_permission = $request->user()
-                ->permissions()
-                ->where('id', $request->route()->parameters()['id'])
-                ->wherePivot($permission_required, true)
-                ->get()
-                ->isNotEmpty();
+            $has_permission = $permission_required != 'admin' && $request->user()
+                    ->permissions()
+                    ->where('id', $request->route()->parameters()['id'])
+                    ->wherePivot($permission_required, true)
+                    ->get()
+                    ->isNotEmpty();
 
             if (!$has_permission) {
                 return abort(403);

@@ -35,7 +35,7 @@ class PermissionsController extends Controller
                 'remove' => $request->remove == 'true' ?? false
             ]);
         }
-        return redirect(route('system.permissions.index', ['project_id' => $project_id]));
+        return redirect(route('system.permissions.index', $project_id));
     }
 
     function editPermission($project_id, Request $request)
@@ -59,6 +59,6 @@ class PermissionsController extends Controller
     function deletePermission($project_id, $user_id)
     {
         Project::findOrFail($project_id)->users()->detach($user_id);
-        return redirect(route('system.permissions.index', ['project_id' => $project_id]));
+        return redirect(route('system.permissions.index', $project_id));
     }
 }
