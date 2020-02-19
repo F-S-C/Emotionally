@@ -13,7 +13,7 @@
     </button>
     {{-- TODO: Edit options --}}
     <div class="dropdown-menu" aria-labelledby="more-project-{{$project->id}}">
-        <button class="dropdown-item btn btn-link permissions-project-btn">Permissions</button>
+        <a href="{{route('system.permissions.index', $project->id)}}" class="dropdown-item btn btn-link permissions-project-btn">Permissions</a>
         <div class="dropdown-divider"></div>
         <button class="dropdown-item btn btn-link rename-project-btn">Rename</button>
         @if($project->father_project != "")
