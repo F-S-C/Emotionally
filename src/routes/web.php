@@ -23,30 +23,25 @@ Route::name('system.')
     ->prefix('system')
     ->group(function () {
         Route::get('/', 'ProjectController@getDashboard')->name('home');
-        Route::redirect('/home', '/system/');
+        Route::redirect('/home', '/system');
 
-        Route::middleware('permissions:modify')
-            ->group(function () {
-                Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project');
-                Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video');
-                Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
-            });
-        Route::middleware('permissions:remove')
-            ->group(function () {
-                Route::post('/project/delete', 'ProjectController@deleteProject')->name('delete-project');
-                Route::post('/video/delete', 'VideoController@deleteVideo')->name('delete-video');
-            });
-        Route::middleware('permissions:admin')->group(function () {
-            Route::post('/project/move', 'ProjectController@moveProject')->name('move-project');
-            Route::post('/video/move', 'VideoController@moveVideo')->name('move-video');
-        });
+        Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project')
+            ->middleware('permissions.project:modify:project_rename_id');
+        Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video');
+        Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
+        Route::post('/project/delete', 'ProjectController@deleteProject')->name('delete-project')
+            ->middleware('permissions.project:admin:project_delete_id');
+        Route::post('/video/delete', 'VideoController@deleteVideo')->name('delete-video');
+        Route::post('/project/move', 'ProjectController@moveProject')->name('move-project')
+            ->middleware('permissions.project:admin:project_selected_id');
+        Route::post('/video/move', 'VideoController@moveVideo')->name('move-video');
 
         Route::post('/user/check-password', 'UserController@checkUserPassword')->name('user.password.check');
         Route::view('/profile', 'profile')->name('profile');
         Route::post('/profile/edit', 'UserController@editProfile')->name('edit-profile');
 
         Route::prefix('/project/{id}/report')
-            ->middleware('permissions:read')
+            ->middleware('permissions.project:read')
             ->group(function () {
                 Route::get('/', 'ProjectController@getProjectReport')->name('report-project');
                 Route::get('/download/html', 'ReportController@downloadProjectHTML')->name('layout-file-project');
@@ -63,12 +58,11 @@ Route::name('system.')
 
         Route::prefix('/video/{id}')
             ->group(function () {
-                Route::get('/', 'VideoController@getVideoReport')->name('report-video')->middleware('permissions:read');
-                Route::put('/edit/duration', 'VideoController@resetInterval')->name('edit-video-duration')->middleware('permissions:modify');
-                Route::get('/download/html', 'ReportController@downloadVideoHTML')->name('layout-file')->middleware('permissions:read');
+                Route::get('/', 'VideoController@getVideoReport')->name('report-video');
+                Route::put('/edit/duration', 'VideoController@resetInterval')->name('edit-video-duration');
+                Route::get('/download/html', 'ReportController@downloadVideoHTML')->name('layout-file');
 
                 Route::name('download-')
-                    ->middleware('permissions:read')
                     ->prefix('/download')
                     ->group(function () {
                         Route::get('/pdf', 'ReportController@downloadVideoPDF')->name('pdf');
@@ -78,18 +72,16 @@ Route::name('system.')
                     });
             });
 
-        Route::middleware('permissions:add')
-            ->group(function () {
-                Route::post('/video/upload', 'VideoController@uploadVideo')->name('videoUpload');
-                Route::post('/video/realtime-upload', 'VideoController@realtimeUpload')->name('realtimeUpload');
-            });
+        Route::post('/video/upload', 'VideoController@uploadVideo')->name('videoUpload');
+        Route::post('/video/realtime-upload', 'VideoController@realtimeUpload')->name('realtimeUpload');
         Route::post('/project/new', 'ProjectController@createProject')->name('newProject');
-        Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set')->middleware('permissions:modify');
+        Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
 
-        Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details')->middleware('permissions:read');
-        Route::prefix('/project/{project_id}/share')
+        Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details')
+            ->middleware('permissions.project:read');
+        Route::prefix('/project/{id}/share')
             ->name('permissions.')
-            ->middleware('permissions:admin')
+            ->middleware('permissions.project:admin')
             ->group(function () {
                 Route::get('/', 'PermissionsController@getProjectPermissions')
                     ->name('index');
