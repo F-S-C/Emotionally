@@ -39,7 +39,7 @@
             <a class="nav-link text-center" href="#">{{trans('landing.home')}} <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center" href="#">{{trans('landing.feature')}}</a>
+            <a class="nav-link text-center" href="#">{{trans('landing.features')}}</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-center" href="#">{{trans('landing.about')}}</a>
