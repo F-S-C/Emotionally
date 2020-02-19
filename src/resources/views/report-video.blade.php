@@ -283,7 +283,7 @@
                 let lineChart = new Chart(line, {
                     type: 'line',
                     data: {
-                        labels: fullReport.map((_, i) => i), //TODO: Insert framerate as labels?
+                        labels: fullReport.map((_, i) => i),
                         datasets: Object.keys(fullReport[0]).map((key, i) => {
                             return {
                                 borderColor: colors[i],
