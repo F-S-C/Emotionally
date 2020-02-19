@@ -6,17 +6,17 @@
 <div class="row">
     <div class="col-5">
         <div class="modal-body">
-            <div id="password-changed" class="alert alert-success" role="alert" aria-atomic="true"
+            <div id="profile-changed" class="alert alert-success" role="alert" aria-atomic="true"
                  style="display:none;">
-                {{trans('dashboard.password-changed')}}
+                {{trans('dashboard.profile-changed')}}
             </div>
-            <div id="password-not-changed" class="alert alert-danger" role="alert" aria-atomic="true"
+            <div id="profile-not-changed" class="alert alert-danger" role="alert" aria-atomic="true"
                  style="display:none;">
-                {{trans('dashboard.err-changing-password')}}
+                {{trans('dashboard.err-changing-profile')}}
             </div>
-            <div id="password-changing" class="alert alert-warning" role="alert" aria-atomic="true"
+            <div id="profile-changing" class="alert alert-warning" role="alert" aria-atomic="true"
                  style="display:none;">
-                {{trans('dashboard.password-changing')}}
+                {{trans('dashboard.profile-changing')}}
             </div>
         <form method="POST" action="{{ route('system.edit-profile') }}"
               id="edit-profile-form" novalidate>
@@ -136,9 +136,9 @@
                     if(checkPassword())
                     {
                         event.preventDefault();
-                        let alertComplete = $('#password-changed');
-                        let alertNotComplete = $('#password-not-changed');
-                        let creating = $('#password-changing');
+                        let alertComplete = $('#profile-changed');
+                        let alertNotComplete = $('#profile-not-changed');
+                        let creating = $('#profile-changing');
                         let form = $('#edit-profile-form');
                         form.hide();
                         alertComplete.hide();
@@ -156,9 +156,7 @@
                                 alertComplete.show();
                                 $('#password').val('');
                                 $('#confirm-password').val('');
-                                $('#create-project-modal').on('hidden.bs.modal', function () {
-                                    location.reload();
-                                });
+                                location.reload();
                                 form.show();
                             },
                             error: function (data) {

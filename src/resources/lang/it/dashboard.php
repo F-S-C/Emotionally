@@ -78,7 +78,7 @@ return [
     "reset" => "Annulla",
     "edit" => "Modifica",
     "confirm-password" => "Conferma la nuova password",
-    "password-changed" => "Password cambiata",
-    "password-changing" => "In corso...",
-    "err-changing-password" => "Errore durante l'operazione",
+    "profile-changed" => "Profilo aggiornato",
+    "profile-changing" => "In corso...",
+    "err-changing-profile" => "Errore durante l'operazione",
 ];
