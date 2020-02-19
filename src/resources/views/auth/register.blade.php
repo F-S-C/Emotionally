@@ -15,7 +15,7 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text input-color @error('email') border border-danger @enderror"
-                              id="password-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
+                              id="name-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
                     </div>
                     <input type="text" class="form-control input-color @error('name') border border-danger @enderror"
                            id="name" name="name" autocomplete="name"
@@ -28,7 +28,7 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text input-color @error('email') border border-danger @enderror"
-                              id="password-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
+                              id="surname-icon"><em class="fas fa-user" style="padding: 0 2px;"></em></span>
                     </div>
                     <input type="text" class="form-control input-color @error('surname') border border-danger @enderror"
                            id="surname" name="surname" autocomplete="surname"
@@ -42,7 +42,7 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                         <span class="input-group-text input-color @error('email') border border-danger @enderror"
-                              id="password-icon"><em class="fas fa-envelope" style="padding: 0 2px;"></em></span>
+                              id="email-icon"><em class="fas fa-envelope" style="padding: 0 2px;"></em></span>
                 </div>
                 <input type="email" class="form-control input-color @error('email') border border-danger @enderror"
                        id="email" name="email" aria-describedby="email-icon" autocomplete="email"
@@ -68,7 +68,7 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                         <span class="input-group-text input-color @error('email') border border-danger @enderror"
-                              id="password-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
+                              id="password-confirm-icon"><em class="fas fa-lock" style="padding: 0 2px;"></em></span>
                 </div>
                 <input type="password"
                        class="form-control input-color @error('password') border border-danger @enderror"
@@ -78,7 +78,7 @@
             </div>
             @error('password')<p class="text-center text-danger">{{ $message }}</p>@enderror
         </div>
-        <button type="submit" class="btn btn-primary w-100" style="color: white;">@lang('auth.sign-up')</button>
+        <button type="submit" class="btn btn-outline-primary w-100">@lang('auth.sign-up')</button>
     </form>
     <p id="login" class="text-center mt-3">@lang('auth.ext-user') <a
             href="{{ route('login') }}">@lang('auth.login')</a></p>

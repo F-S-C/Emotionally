@@ -30,4 +30,10 @@ return [
     'change-mind' => 'Did you change your mind?',
     'go-to-landing' => 'Go to landing page',
     'password-confirm' => 'Confirm Password',
+    'verify-email' => 'Verify Email',
+    'verify-link-sent' => 'A fresh verification link has been sent to your email address.',
+    'before-proceed-verify' => 'Before proceeding, please check your email for a verification link.',
+    'did-not-receive' => 'If you did not receive the email,',
+    'send-another-mail' => 'click here to request another',
+    'logout' => 'Logout'
 ];

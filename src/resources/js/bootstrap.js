@@ -14,6 +14,14 @@ try {
 
     // Import jQuery.Scrollbar (https://www.npmjs.com/package/jquery.scrollbar)
     require('jquery.scrollbar');
+    require('jquery-ui-dist/jquery-ui');
+
+    // Import Chart.js
+    window.Chart = require('chart.js');
+    require('chartjs-plugin-colorschemes');
+    require('hammerjs');
+    require('chartjs-plugin-zoom');
+    require('chartjs-lines-plugin');
 
     // Import datatables
     require('datatables.net-bs4')();

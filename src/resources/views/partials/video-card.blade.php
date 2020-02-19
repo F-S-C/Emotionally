@@ -10,7 +10,7 @@
             <h5 class="card-title">{{$video->name}}</h5>
         </div>
         {{-- TODO: Change route --}}
-        <a class="project-card-link" href="{{route('system.project-details', $video->id)}}"
+        <a class="project-card-link" href="{{route('system.report-video', $video->id)}}"
            aria-labelledby="card-title-video-{{$video->id}}"></a>
         <div class="card-img-overlay project-detail-card-options">
             @include('shared.dropdown-options-video', ['video'=> $video])

@@ -8,7 +8,7 @@ use Emotionally\Video;
 use Faker\Generator as Faker;
 
 $factory->define(Video::class, function (Faker $faker) {
-    $duration = $faker->time('m:s');
+    $duration = $faker->time('i:s');
 
     $example_reports = [
         // Chieppa Nicola @ data_Test_02
@@ -27,8 +27,8 @@ $factory->define(Video::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence(rand(1, 4)),
         'framerate' => $faker->numberBetween(1, 60),
-        'start' => $faker->time('m:s', $duration),
-        'end' => $faker->time('m:s', $duration),
+        'start' => $faker->time('i:s', $duration),
+        'end' => $faker->time('i:s', $duration),
         'duration' => $duration,
         'url' => $faker->imageUrl(),
         'report' => $example_reports[array_rand($example_reports)],

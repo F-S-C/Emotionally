@@ -29,7 +29,7 @@ class ProjectController extends Controller
         $current_project = Project::findOrFail($id);
         return view('project')
             ->with('project', $current_project)
-            ->with('path', $this->getProjectChain($current_project))
+            ->with('path', self::getProjectChain($current_project))
             ->with('subprojects', $current_project->sub_projects)
             ->with('videos', $current_project->videos);
     }
@@ -103,14 +103,29 @@ class ProjectController extends Controller
     }
 
     /**
+     * Get a list of all the video reports of a project.
+     * @param int $id The id of the project to be analyzed.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getProjectReport(int $id)
+    {
+        $current_project = Project::findOrFail($id);
+        return view('report-project')
+            ->with('project', $current_project)
+            ->with('report', ReportController::getEmotionValues($current_project->report))
+            ->with('path', self::getProjectChain($current_project));
+    }
+
+    /*
      * Create a project via an HTTP request.
      * @param Request $request The HTTP request received by the form.
      */
-    public function createProject(Request $request){
+    public function createProject(Request $request)
+    {
         $project = new Project();
         $project->name = $request->input('project_name');
         $project->user_id = Auth::user()->id;
-        if($request->has('father_id'))
+        if ($request->has('father_id'))
             $project->father_id = $request->input('father_id');
         $project->save();
     }

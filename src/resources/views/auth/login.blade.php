@@ -19,6 +19,10 @@
             transition: visibility 0s linear 0s, opacity 300ms;
             display: block;
         }
+
+        #go:hover {
+            border: none;
+        }
     </style>
 @endsection
 
@@ -66,7 +70,7 @@
                        id="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label class="custom-control-label" for="remember">@lang('auth.remember')</label>
             </div>
-            <button type="submit" class="btn btn-primary w-100" style="color: white;">@lang('auth.login')</button>
+            <button type="submit" class="btn btn-outline-primary w-100">@lang('auth.login')</button>
         </div>
     </form>
     <p id="forgot" class="text-center mt-3 m-fadeOut"><a

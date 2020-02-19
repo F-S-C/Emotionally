@@ -37,7 +37,7 @@
     @endforeach
     <li class="breadcrumb-item active" aria-current="page">
         <span class="fas fa-share-alt" aria-hidden="true"></span>
-        Share &amp; Permissions
+        {{trans(project-share.share-permission)}}
     </li>
 @endsection
 
@@ -52,15 +52,15 @@
         </div>
     @endif
     <details class="card el-1dp p-3 rounded">
-        <summary>Share the project</summary>
+        <summary>{{trans(project-share.share-project)}}</summary>
         <div class="card-body">
-            <p>Fill the form to share your project.</p>
+            <p>{{trans(project-share.fill-form)}}</p>
             <form id="share-form" method="post"
                   action="{{route('system.permissions.add', ['project_id'=>$project->id])}}">
                 @csrf
                 @method('PUT')
                 <div class="form-group mr-sm-3">
-                    <label for="email-input">Email</label>
+                    <label for="email-input">{{trans(project-share.email)}}</label>
                     <input class="form-control input-color @error('email') border border-danger @enderror" name="email"
                            id="email-input" type="email"
                            placeholder="email@provider.com" required>
@@ -68,40 +68,40 @@
                 <div class="form-group">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="read-input" value="true" checked disabled>
-                        <label class="form-check-label" for="read-input">Can read?</label>
+                        <label class="form-check-label" for="read-input">{{trans(project-share.can-read)}}</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="modify-input" value="true" name="modify">
-                        <label class="form-check-label" for="modify-input">Can edit?</label>
+                        <label class="form-check-label" for="modify-input">{{trans(project-share.can-edit)}}</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="add-input" value="true" name="add">
-                        <label class="form-check-label" for="add-input">Can add?</label>
+                        <label class="form-check-label" for="add-input">{{trans(project-share.can-add)}}</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="remove-input" value="true" name="remove">
-                        <label class="form-check-label" for="remove-input">Can remove?</label>
+                        <label class="form-check-label" for="remove-input">{{trans(project-share.can-remove)}}</label>
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit" id="add-new-permission">
                     <span class="fas fa-plus-circle mr-1" aria-hidden="true"></span>
-                    Add
+                    {{trans(project-share.add)}}
                 </button>
             </form>
         </div>
     </details>
     <div class="table-responsive mt-3">
         <table id="permissions-table" class="display w-100 table table-striped table-borderless">
-            <caption class="sr-only">Users with permissions on this project.</caption>
+            <caption class="sr-only">{{trans(project-share.users-with-project)}}</caption>
             <thead class="text-uppercase">
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">E-mail</th>
-                <th scope="col" class="text-center">Can read?</th>
-                <th scope="col" class="text-center">Can edit?</th>
-                <th scope="col" class="text-center">Can add?</th>
-                <th scope="col" class="text-center">Can remove?</th>
-                <th scope="col"><span class="sr-only">Delete</span></th>
+                <th scope="col">{{trans(project-share.name)}}</th>
+                <th scope="col">{{trans(project-share.email)}}</th>
+                <th scope="col" class="text-center">{{trans(project-share.can-read)}}</th>
+                <th scope="col" class="text-center">{{trans(project-share.can-edit)}}</th>
+                <th scope="col" class="text-center">{{trans(project-share.can-add)}}</th>
+                <th scope="col" class="text-center">{{trans(project-share.can-remove)}}</th>
+                <th scope="col"><span class="sr-only">{{trans(project-share.delete)}}</span></th>
             </tr>
             </thead>
             <tbody>
@@ -139,7 +139,7 @@
                                 @method('DELETE')
                                 <button class="btn btn-md-text-danger" type="submit"
                                         onclick="return confirm('Do you really want to revoke all permissions for {{ $user->email  }}?');">
-                                    Delete
+                                    {{trans(project-share.delete)}}
                                 </button>
                             </form>
                         </td>

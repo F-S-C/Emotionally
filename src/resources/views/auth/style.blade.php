@@ -40,7 +40,7 @@
 @section('body')
     <div class="container-fluid w-small">
     <div class="container mw-100">
-        <div class="row">
+        <header class="row">
             <div class="col py-2 my-4">
                 <a href="{{ route('landing') }}">
                     <div class="row">
@@ -52,12 +52,12 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </header>
         <div class="row">
-            <div class="col px-md-5 pt-4 pb-3 mb-2 rounded el-2dp shadow">
-                <h2 class="text-center mb-3">@yield('form-name')</h2>
+            <main class="col px-md-5 pt-4 pb-3 mb-2 rounded el-2dp shadow" id="main">
+                <h1 class="h2 text-center mb-3">@yield('form-name')</h1>
                 @yield('form')
-            </div>
+            </main>
         </div>
     </div>
     </div>
