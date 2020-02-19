@@ -14,6 +14,8 @@
 // Route to test Affectiva
 //Route::view('/test-webcam', 'test-webcam')->name('webcam');
 
+//TODO: Controllare i middleware dei permessi
+
 Route::view('/', 'landing')->name('landing');
 Route::redirect('/landing', '/');
 
@@ -54,41 +56,36 @@ Route::name('system.')
                         Route::get('/excel', 'ReportController@downloadVideoExcel')->name('excel');
                     });
             });
-        /*Route::middleware('permissions:read') //TODO RIMUOVERE DOPO LA CORREZIONE DEL MIDDLEWARE
-        ->group(function () {*/
-        Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
-        Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
-        Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
-        Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
-        Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
-        Route::prefix('/project/{project_id}/share')
-            ->name('permissions.')
-            ->group(function () {
-                Route::get('/', 'PermissionsController@getProjectPermissions')
-                    ->name('index');
-                Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
-                    ->name('delete');
 
-                Route::put('/add', 'PermissionsController@addPermission')
-                    ->name('add');
+        /*Route::middleware('permissions:read')
+            ->group(function () {*/
+                Route::post('/videoUpload', 'VideoController@uploadVideo')->name('videoUpload');
+                Route::post('/newProject', 'ProjectController@createProject')->name('newProject');
+                Route::post('/realtimeUpload', 'VideoController@realtimeUpload')->name('realtimeUpload');
+                Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set');
+                Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details');
+                Route::prefix('/project/{project_id}/share')
+                    ->name('permissions.')
+                    ->group(function () {
+                        Route::get('/', 'PermissionsController@getProjectPermissions')
+                            ->name('index');
+                        Route::delete('/delete/{user_id}', 'PermissionsController@deletePermission')
+                            ->name('delete');
 
-                Route::any('/edit', 'PermissionsController@editPermission')
-                    ->name('edit');
-            });
-        //});
+                        Route::put('/add', 'PermissionsController@addPermission')
+                            ->name('add');
+
+                        Route::any('/edit', 'PermissionsController@editPermission')
+                            ->name('edit');
+                    });
+            //});
     });
-
 
 Route::get('/logout', function () {
     Auth::logout();
-
     return redirect()->route('landing');
 })->name('logout');
 
-// TODO: Reactivate 'verify' and remove the route verification.notice
-Auth::routes(/*['verify' => true]*/);
-Route::name('verification.notice')->get('/not-logged', function () {
-    return 'not logged';
-});
+Auth::routes(['verify' => true]);
 
 Route::redirect('/home', '/system');

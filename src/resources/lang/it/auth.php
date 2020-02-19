@@ -46,4 +46,10 @@ return [
     'change-mind' => 'Hai cambiato idea?',
     'go-to-landing' => 'Vai alla pagina principale',
     'password-confirm' => 'Reinserisci la Password',
+    'verify-email' => 'Verifica la mail',
+    'verify-link-sent' => 'Un nuovo link di verifica &egrave; stato inviato al tuo indirizzo mail.',
+    'before-proceed-verify' => 'Prima di procedere, controlla nella tua casella di posta il link di verifica.',
+    'did-not-receive' => 'Se non hai ricevuto la mail,',
+    'send-another-mail' => 'clicca qui per richiederne un\'altra',
+    'logout' => 'Logout'
 ];

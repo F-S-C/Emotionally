@@ -8,7 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="icon" type="image/png" href="{{ asset('/images/favicons/16x16.png') }}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{ asset('/images/favicons/32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('/images/favicons/64x64.png') }}" sizes="64x64">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     @yield('head', '')
 
@@ -24,7 +26,7 @@
         @section('footer')
             <div class="copyright text-white-50 py-2">
                 <div class="container-fluid px-3">
-                    <p class="d-inline-block mt-md-1">
+                    <p class="d-inline-block mb-0 mt-md-1">
                         Copyright &copy; 2019,
                         <a href="https://F-S-C.github.io/" rel="noopener noreferrer" target="_blank">FSC</a>.
                         @lang('metadata.copyright')

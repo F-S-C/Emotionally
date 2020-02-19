@@ -34,14 +34,14 @@
 
 @section('navbar-content')
     <ul class="ml-auto navbar-nav">
-        <li class="nav-item" id="home-li">
-            <a class="nav-link text-center" id="home-a" href="#landing">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item active">
+            <a class="nav-link text-center"  href="#landing">{{trans('landing.home')}} <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item" id="features-li">
-            <a class="nav-link text-center" id="features-a" href="#features">Features</a>
+        <li class="nav-item">
+            <a class="nav-link text-center"  href="#features">{{trans('landing.feature')}}</a>
         </li>
-        <li class="nav-item" id="about-li">
-            <a class="nav-link text-center" id="about-a" href="#about">About</a>
+        <li class="nav-item">
+            <a class="nav-link text-center"  href="#about">{{trans('landing.about')}}</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-outline-primary nav-link"
@@ -63,7 +63,7 @@
             <div class="inner el-12dp">
                 <img class="logo" src="{{asset('/logo.png')}}"
                      alt="Emotionally's Logo">
-                <h1 itemprop="name">Emotionally</h1>
+                <h1 itemprop="name">{{trans('landing.emotionally')}}</h1>
                 <p itemprop="headline">{{ trans('metadata.description') }}</p>
                 <div style="margin-top: 1rem;">
                     <a class="btn btn-outline-white btn-rounded waves-effect scroll-down" href="#features">

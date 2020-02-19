@@ -118,12 +118,14 @@
                            aria-label="Search" id="search-bar">
                 </div>
                 <div class="ml-auto btn-group dropleft">
-                    <button class="btn btn-outline-primary rounded-pill mr-0 mr-md-4" type="button" id="add-video"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            title="{{trans('dashboard.upload_video')}}">
-                        <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
-                        {{trans('dashboard.add')}}
-                    </button>
+                    @if(!strpos($_SERVER['REQUEST_URI'], "report") && !strpos($_SERVER['REQUEST_URI'], "video"))
+                        <button class="btn btn-outline-primary rounded-pill mr-0 mr-md-4" type="button" id="add-video"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                title="{{trans('dashboard.upload_video')}}">
+                            <span class="fa fa-plus-circle mr-1" aria-hidden="true"></span>
+                            {{trans('dashboard.add')}}
+                        </button>
+                    @endif
                     <div class="dropdown-menu" aria-labelledby="add-video">
                         @if(isset($project))
                             @if( $project->father_id == "")
@@ -185,7 +187,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content el-16dp">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.upload_video')}}</h5>
+                                <h5 class="modal-title">{{trans('dashboard.upload_video')}}</h5>
                                 <button type="button" class="modal-close" data-dismiss="modal"
                                         aria-label="{{trans('dashboard.close')}}">
                                     <span class="fas fa-times"></span>
@@ -193,10 +195,12 @@
                             </div>
                             <div class="modal-body">
                                 <div id="video-upload-complete" class="alert alert-success" role="alert"
+                                     aria-atomic="true"
                                      style="display:none;">
                                     {{trans('dashboard.upload_successful')}}
                                 </div>
                                 <div id="video-upload-notcomplete" class="alert alert-danger" role="alert"
+                                     aria-atomic="true"
                                      style="display:none;">
                                     {{trans('dashboard.upload_failed')}}
                                 </div>
@@ -222,7 +226,7 @@
 
                                         <div class="card card-body el-16dp">
                                             <div class="form-inline">
-                                                <label for="framerate"
+                                                <label for="framerate-video"
                                                        id="framerate-video-text">{{trans('dashboard.framerate')}}:
                                                     30</label>
                                                 <input type="range" class="custom-range" id="framerate-video"
@@ -265,7 +269,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content el-16dp">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.realtime_video')}}</h5>
+                                <h5 class="modal-title">{{trans('dashboard.realtime_video')}}</h5>
                                 <button type="button" class="modal-close" data-dismiss="modal"
                                         aria-label="{{trans('dashboard.close')}}">
                                     <span class="fas fa-times"></span>
@@ -274,10 +278,12 @@
                             <div class="modal-body el-16dp">
 
                                 <div id="realtimevideo-upload-complete" class="alert alert-success" role="alert"
+                                     aria-atomic="true"
                                      style="display:none;">
                                     {{trans('dashboard.upload_successful')}}
                                 </div>
                                 <div id="realtimevideo-upload-notcomplete" class="alert alert-danger" role="alert"
+                                     aria-atomic="true"
                                      style="display:none;">
                                     {{trans('dashboard.upload_failed')}}
                                 </div>
@@ -303,7 +309,7 @@
                                                    class="form-control input-color" required>
                                         </div>
                                         <div class="form-inline">
-                                            <label for="framerate"
+                                            <label for="framerate-realtime"
                                                    id="realtime-framerate-text">{{trans('dashboard.framerate')}}:
                                                 30</label>
                                             <input type="range" class="custom-range" id="framerate-realtime"
@@ -345,22 +351,22 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content el-16dp">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="UploadVideoLabel">{{trans('dashboard.add_project')}}</h5>
+                            <h5 class="modal-title">{{trans('dashboard.add_project')}}</h5>
                             <button type="button" class="modal-close" data-dismiss="modal"
                                     aria-label="{{trans('dashboard.close')}}">
                                 <span class="fas fa-times"></span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div id="newproject-complete" class="alert alert-success" role="alert"
+                            <div id="newproject-complete" class="alert alert-success" role="alert" aria-atomic="true"
                                  style="display:none;">
                                 {{trans('dashboard.project_created')}}
                             </div>
-                            <div id="newproject-notcomplete" class="alert alert-danger" role="alert"
+                            <div id="newproject-notcomplete" class="alert alert-danger" role="alert" aria-atomic="true"
                                  style="display:none;">
                                 {{trans('dashboard.err_creating_project')}}
                             </div>
-                            <div id="newproject-creating" class="alert alert-warning" role="alert"
+                            <div id="newproject-creating" class="alert alert-warning" role="alert" aria-atomic="true"
                                  style="display:none;">
                                 {{trans('dashboard.creating_project')}}
                             </div>
@@ -497,7 +503,7 @@
                                                 container.hide();
                                                 form.show();
                                             });
-                                    });
+                                    }, {sec_step: 1 / parseFloat($('#framerate-video').val())});
                                 });
 
 
@@ -638,7 +644,7 @@
                                                 container.hide();
                                                 form.hide();
                                             });
-                                    });
+                                    }, {sec_step: 1 / parseFloat($('#framerate-realtime').val())});
                                 });
                             }
                         },

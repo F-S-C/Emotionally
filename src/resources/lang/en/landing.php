@@ -28,5 +28,8 @@ return [
     'descriptionfeatures4' => 'Emotionally let you export the videos and/or projects\' analysis results in various formats so that you can choose the one that better fits your needs.',
     'login' => 'Log in',
     'system' => 'System',
+    'home' => 'Home',
     'about' => 'About',
+    'emotionally' => 'Emotionally',
+    'analysis' => 'Analysis',
 ];
