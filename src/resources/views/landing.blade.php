@@ -36,13 +36,13 @@
 @section('navbar-content')
     <ul class="ml-auto navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link text-center" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-center" href="#">{{trans('landing.home')}} <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center" href="#">Features</a>
+            <a class="nav-link text-center" href="#">{{trans('landing.feature')}}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-center" href="#">About</a>
+            <a class="nav-link text-center" href="#">{{trans('landing.about')}}</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-outline-primary nav-link"
@@ -64,7 +64,7 @@
             <div class="inner el-12dp">
                 <img class="logo" src="{{asset('/logo.png')}}"
                      alt="Emotionally's Logo">
-                <h1 itemprop="name">Emotionally</h1>
+                <h1 itemprop="name">{{trans('landing.emotionally')}}</h1>
                 <p itemprop="headline">{{ trans('metadata.description') }}</p>
                 <div style="margin-top: 1rem;">
                     <a class="btn btn-outline-white btn-rounded waves-effect scroll-down" href="#content">
@@ -79,28 +79,28 @@
         <div class="row text-center mt-5">
             <div class="col-sm-3">
                 <span class="fas fa-file-video fa-4x"></span>
-                <p class="my-4 h5">Analisi</p>
+                <p class="my-4 h5">{{trans('landing.analysis')}}</p>
                 <p>Lorem ipsum</p>
             </div>
             <div class="col-sm-3">
                 <span class="fas fa-file-video fa-4x"></span>
-                <p class="my-4 h5">Analisi</p>
+                <p class="my-4 h5">{{trans('landing.analysis')}}</p>
                 <p>Lorem ipsum</p>
             </div>
             <div class="col-sm-3">
                 <span class="fas fa-folder-open fa-4x"></span>
-                <p class="my-4 h5">Analisi</p>
+                <p class="my-4 h5">{{trans('landing.analysis')}}</p>
                 <p>Lorem ipsum</p>
             </div>
             <div class="col-sm-3">
                 <span class="fas fa-folder-open fa-4x"></span>
-                <p class="my-4 h5">Analisi</p>
+                <p class="my-4 h5">{{trans('landing.analysis')}}</p>
                 <p>Lorem ipsum</p>
             </div>
         </div>
     </section>
     <section class="container my-5">
-        <h2>About</h2>
+        <h2>{{trans('landing.about')}}</h2>
     </section>
     {{--
         @todo Complete implementation
