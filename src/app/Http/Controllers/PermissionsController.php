@@ -27,12 +27,14 @@ class PermissionsController extends Controller
         $current_project = Project::findOrFail($project_id);
         $user = User::whereEmail($request->email)->get()->first();
 
-        $current_project->users()->attach($user['id'], [
-            'read' => true,
-            'modify' => $request->modify == 'true' ?? false,
-            'add' => $request->add == 'true' ?? false,
-            'remove' => $request->remove == 'true' ?? false
-        ]);
+        if ($user->id !== \Auth::user()->id) {
+            $current_project->users()->attach($user->id, [
+                'read' => true,
+                'modify' => $request->modify == 'true' ?? false,
+                'add' => $request->add == 'true' ?? false,
+                'remove' => $request->remove == 'true' ?? false
+            ]);
+        }
         return redirect(route('system.permissions.index', ['project_id' => $project_id]));
     }
 
