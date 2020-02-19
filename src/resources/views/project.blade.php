@@ -39,6 +39,10 @@
                 @lang('project-details.upload-video')</p>
         </div>
     @else
+        <button onclick="window.location.href = '{{route('system.report-project', $project->id)}}';"
+                class="ml-auto btn btn-outline-primary d-block text-uppercase">
+            @lang('dashboard.report')
+        </button>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
             @each('partials.project-card', $subprojects, 'project')
             @each('partials.video-card', $videos, 'video')
@@ -256,7 +260,7 @@
                     buttons.removeClass('active');
                     buttons.prop('disabled', false);
                     var parts = $(location).attr('href').split("/");
-                    var last_part = parts[parts.length-1];
+                    var last_part = parts[parts.length - 1];
                     for (let i = 1; i < buttons.length; i++) {
                         if (buttons.eq(i).attr('aria-labelledby').replace('project-', '') == last_part) {
                             buttons.eq(i).prop('disabled', true);
