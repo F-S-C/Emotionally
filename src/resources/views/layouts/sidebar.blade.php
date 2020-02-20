@@ -94,7 +94,8 @@
                                   class="d-block d-md-none fas fa-globe mr-0 mr-md-1 text-md-center"></span>
                         </a>
                         <a class="nav-link text-center text-md-left d-none d-md-block" data-toggle="collapse"
-                           href="#languages-container" role="button" aria-expanded="false" aria-controls="languages-container">
+                           href="#languages-container" role="button" aria-expanded="false"
+                           aria-controls="languages-container">
                             <span aria-hidden="true" class="fas fa-globe mr-0 mr-md-1 text-md-center"></span>
                             <span class="d-none d-md-inline">@lang('navbar.language')</span>
                         </a>
@@ -138,6 +139,11 @@
                         <input class="form-control mr-sm-2 rounded-pill" type="search"
                                placeholder="{{trans('dashboard.search')}}"
                                aria-label="{{trans('dashboard.search')}}" id="search-bar">
+                    @elseif(Request::segment(2) == 'project')
+                        <button onclick="window.location.href = '{{route('system.report-project', $project->id)}}';"
+                                class="rounded ml-auto btn btn-outline-primary d-block text-uppercase">
+                            @lang('dashboard.report')
+                        </button>
                     @endif
                 </div>
                 <div class="ml-auto btn-group dropleft">
