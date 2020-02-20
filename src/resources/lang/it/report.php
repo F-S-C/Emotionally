@@ -36,6 +36,7 @@ return [
     "contempt" => "Disprezzo",
     "disgust" => "Disgusto",
     "fear" => "Paura",
-    "surprise" => "Sorpresa"
+    "surprise" => "Sorpresa",
+    "no-emotion" => "Nessuna emozione",
 ];
 

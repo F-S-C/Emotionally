@@ -111,6 +111,8 @@
                              {{ asset('images/emotions/surprise.png') }}
                              @break
                              @default
+                             {{ asset('images/emotions/no-emotion.png') }}
+                                 @break
                              @endswitch">
                         <p class="h2 text-center text-capitalize">@switch($project->getAverageEmotionAttribute())
                                 @case('joy')
@@ -135,6 +137,7 @@
                                 {{ trans('report.surprise') }}
                                 @break
                                 @default
+                                  {{ trans('report.no-emotion') }}
                             @endswitch</p>
                     </div>
                 </div>

@@ -55,7 +55,7 @@
 
     <div class="dropdown text-right mb-2 mx-3">
         <button type="button" id="save-button" class="btn btn-outline-primary d-none">
-            {{trans('report.salva')}}
+            {{trans('report.save')}}
         </button>
         <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">

@@ -36,6 +36,7 @@ return [
     "contempt" => "Contempt",
     "disgust" => "Disgust",
     "fear" => "Fear",
-    "surprise" => "Surprise"
+    "surprise" => "Surprise",
+    "no-emotion" => "No emotion",
 ];
 

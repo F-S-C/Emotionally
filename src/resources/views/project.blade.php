@@ -39,10 +39,6 @@
                 @lang('project-details.upload-video')</p>
         </div>
     @else
-        <button onclick="window.location.href = '{{route('system.report-project', $project->id)}}';"
-                class="ml-auto btn btn-outline-primary d-block text-uppercase">
-            @lang('dashboard.report')
-        </button>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
             @each('partials.project-card', $subprojects, 'project')
             @each('partials.video-card', $videos, 'video')
