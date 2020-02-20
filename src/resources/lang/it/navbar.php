@@ -21,6 +21,9 @@ return [
     'title_other_link' => 'Altri link',
     'description_emotionally' => 'Emotionally è stato creato come progetto di "Programmazione per il web". Emotionally è un sistema in grado di rilevare e analizzare le emozioni grazie alle API basate sul cloud di Affectiva.',
     'description_information' => 'Questo team è nato nel 2018 per sostenere un esame di gruppo ed è composta da cinque colleghi e amici che hanno visto in quell\'esame l\'opportunità di iniziare a lavorare insieme come un vero gruppo. Ora siamo pronti a raccogliere qualsiasi sfida e dare vita alle nostre idee.',
+    'language'=>'Lingua',
+    'italian'=>'Italiano',
+    'english'=>'Inglese',
 ];
 
 

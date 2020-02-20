@@ -127,6 +127,10 @@ class ReportController extends Controller
      */
     public static function average($reports)
     {
+        if ($reports == null || empty($reports)) {
+            return array();
+        }
+
         $average_report = [
             self::JOY_KEY => 0,
             self::SADNESS_KEY => 0,
@@ -198,12 +202,16 @@ class ReportController extends Controller
      */
     public static function highestEmotion($reports)
     {
+        if ($reports == null || empty($reports)) {
+            return self::__NO_REPORT__;
+        }
+
         self::fixType($reports);
 
         $totalAverageReport = self::average($reports);
 
         $useful_values = self::getEmotionValues($totalAverageReport);
-        if (empty($useful_values)) {
+        if (empty($useful_values) || array_sum($useful_values) == 0) {
             return self::__NO_REPORT__;
         }
         return array_keys($useful_values, max($useful_values))[0];
@@ -216,6 +224,10 @@ class ReportController extends Controller
      */
     public static function getEmotionValues($report)
     {
+        if ($report == null) {
+            return array();
+        }
+
         self::fixType($report);
         $useful_values = [
             self::JOY_KEY => 0,
