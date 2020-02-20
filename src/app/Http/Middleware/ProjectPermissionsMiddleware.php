@@ -20,6 +20,10 @@ class ProjectPermissionsMiddleware
     public function handle($request, Closure $next, $permission_required, $key = null)
     {
         if ($key) {
+            if($key == 'father_id' && $request->input($key) !== null){
+                return $next($request);
+            }
+
             $id = $request->input($key);
         } else {
             $id = array_key_exists('id', $request->route()->parameters()) ?
