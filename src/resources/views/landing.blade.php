@@ -43,6 +43,15 @@
         <li class="nav-item">
             <a class="nav-link text-center" href="#about">{{trans('landing.about')}}</a>
         </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="language-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @lang('navbar.language')
+            </a>
+            <div class="dropdown-menu" aria-labelledby="language-dropdown">
+                <a class="dropdown-item" href="{{route('language.set', 'it')}}">@lang('navbar.italian')</a>
+                <a class="dropdown-item" href="{{route('language.set', 'en')}}">@lang('navbar.english')</a>
+            </div>
+        </li>
         <li class="nav-item">
             <a class="btn btn-outline-primary nav-link"
                href="{{ route('login') }}">

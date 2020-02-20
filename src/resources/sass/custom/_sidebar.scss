@@ -53,7 +53,7 @@
             border-radius: 5px;
 
             ul > li {
-                @extend .ml-4;
+                margin-left: 1.5rem;
             }
 
             a {
@@ -139,6 +139,18 @@
 
             &[aria-expanded="true"]::before {
                 content: "\f078";
+            }
+
+            @include media-breakpoint-down(md) {
+                &.hide-xs-icon {
+                    padding-right: 20px !important;
+                    width: 100% !important;
+                    text-align: center;
+
+                    &::before {
+                        content: unset;
+                    }
+                }
             }
         }
     }

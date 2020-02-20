@@ -14,6 +14,9 @@
 // Route to test Affectiva
 //Route::view('/test-webcam', 'test-webcam')->name('webcam');
 
+Route::get('/set-language/{language}', 'LanguageController@setLanguage')
+    ->name('language.set');
+
 //TODO: Controllare i middleware dei permessi
 
 Route::view('/', 'landing')->name('landing');
