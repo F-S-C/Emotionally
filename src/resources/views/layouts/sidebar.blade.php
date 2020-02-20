@@ -212,10 +212,6 @@
                         <div class="modal-content el-16dp">
                             <div class="modal-header">
                                 <h5 class="modal-title">{{trans('dashboard.upload_video')}}</h5>
-                                <button type="button" class="modal-close" data-dismiss="modal"
-                                        aria-label="{{trans('dashboard.close')}}">
-                                    <span class="fas fa-times"></span>
-                                </button>
                             </div>
                             <div class="modal-body">
                                 <div id="video-upload-complete" class="alert alert-success" role="alert"
@@ -294,10 +290,6 @@
                         <div class="modal-content el-16dp">
                             <div class="modal-header">
                                 <h5 class="modal-title">{{trans('dashboard.realtime_video')}}</h5>
-                                <button type="button" class="modal-close" data-dismiss="modal"
-                                        aria-label="{{trans('dashboard.close')}}">
-                                    <span class="fas fa-times"></span>
-                                </button>
                             </div>
                             <div class="modal-body el-16dp">
 
@@ -448,11 +440,11 @@
                 });
 
                 $('#realtime-video').on('click', function () {
-                    $('#realtime-video-modal').modal('show');
+                    $('#realtime-video-modal').modal({backdrop: 'static', keyboard: false});
                 });
 
                 $('#upload-video').on('click', function () {
-                    $('#upload-video-modal').modal('show');
+                    $('#upload-video-modal').modal({backdrop: 'static', keyboard: false});
                 });
 
                 $('#customVideo').on('change', function () {
