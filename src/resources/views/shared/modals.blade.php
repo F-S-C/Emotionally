@@ -42,8 +42,7 @@
                                 data-dismiss="modal">
                             {{trans('dashboard.close')}}
                         </button>
-                        <input type="submit" value="{{ trans('dashboard.rename') }}" class="btn btn-primary"
-                               style="color: white;">
+                        <input type="submit" value="{{ trans('dashboard.rename') }}" class="btn btn-primary">
                     </div>
                 </form>
                 <div id="project-rename-complete" class="alert alert-success" role="alert" style="display:none;">
@@ -126,8 +125,7 @@
                                 data-dismiss="modal">
                             {{trans('dashboard.close')}}
                         </button>
-                        <input type="submit" value="{{ trans('dashboard.rename') }}" class="btn btn-primary"
-                               style="color: white;">
+                        <input type="submit" value="{{ trans('dashboard.rename') }}" class="btn btn-primary">
                     </div>
                 </form>
                 <div id="video-rename-complete" class="alert alert-success" role="alert" style="display:none;">
@@ -199,7 +197,8 @@
             <div class="modal-body">
                 <div id="project-move-tree" class="container-fluid">
                     <p class="text-left">{{trans('dashboard.select-destination')}}</p>
-                    <button class="btn btn-outline-primary btn-list-project" onclick="selectProject(this,'')"><span class="fas fa-home mr-1"></span>{{trans('dashboard.root')}}</button>
+                    <button class="btn btn-outline-primary btn-list-project" onclick="selectProject(this,'')"><span
+                            class="fas fa-home mr-1"></span>{{trans('dashboard.root')}}</button>
                     <ul class="ml-3 list-unstyled" id="pr_list">
                         @each('partials.project-tree', Auth::user()->projects->where('father_id', null), 'main_project')
                     </ul>
@@ -215,7 +214,7 @@
                             {{trans('dashboard.no')}}
                         </button>
                         <input type="submit" id="submit-move-project" class="btn btn-primary disabled"
-                               data-dismiss="modal" style="color: white;" value="{{trans('dashboard.move')}}" disabled>
+                               data-dismiss="modal" value="{{trans('dashboard.move')}}" disabled>
                     </div>
                 </form>
                 <div id="project-move-complete" class="alert alert-success" role="alert" style="display:none;">
@@ -261,7 +260,7 @@
                             {{trans('dashboard.no')}}
                         </button>
                         <input type="submit" id="submit-move-video" class="btn btn-primary disabled"
-                               data-dismiss="modal" style="color: white;" value="{{trans('dashboard.move')}}" disabled>
+                               data-dismiss="modal" value="{{trans('dashboard.move')}}" disabled>
                     </div>
                 </form>
                 <div id="video-move-complete" class="alert alert-success" role="alert" style="display:none;">

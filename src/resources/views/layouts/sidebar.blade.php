@@ -94,7 +94,8 @@
                                   class="d-block d-md-none fas fa-globe mr-0 mr-md-1 text-md-center"></span>
                         </a>
                         <a class="nav-link text-center text-md-left d-none d-md-block" data-toggle="collapse"
-                           href="#languages-container" role="button" aria-expanded="false" aria-controls="languages-container">
+                           href="#languages-container" role="button" aria-expanded="false"
+                           aria-controls="languages-container">
                             <span aria-hidden="true" class="fas fa-globe mr-0 mr-md-1 text-md-center"></span>
                             <span class="d-none d-md-inline">@lang('navbar.language')</span>
                         </a>
@@ -262,8 +263,7 @@
                                             {{trans('dashboard.close')}}
                                         </button>
                                         <input type="submit" value="{{ trans('dashboard.upload') }}"
-                                               class="btn btn-primary"
-                                               style="color: white;">
+                                               class="btn btn-primary">
                                     </div>
                                 </form>
                                 <div id="progress-container" style="display: none;">
@@ -341,7 +341,7 @@
                                         </button>
                                         <input type="submit" id="submit-realtime-video"
                                                value="{{ trans('dashboard.upload') }}" class="btn btn-primary disabled"
-                                               style="color: white;" disabled>
+                                               disabled>
                                     </div>
                                 </form>
 
@@ -403,8 +403,8 @@
                                             data-dismiss="modal">
                                         {{trans('dashboard.close')}}
                                     </button>
-                                    <input type="submit" value="{{ trans('dashboard.create') }}" class="btn btn-primary"
-                                           style="color: white;">
+                                    <input type="submit" value="{{ trans('dashboard.create') }}"
+                                           class="btn btn-primary">
                                 </div>
                             </form>
                         </div>
