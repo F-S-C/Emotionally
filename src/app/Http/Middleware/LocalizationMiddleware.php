@@ -17,12 +17,7 @@ class LocalizationMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $accepted_locales = ['en', 'it'];
-        $locale = $request->segment(1, config('app.fallback_locale'));
-        if (!in_array($locale, $accepted_locales)) {
-            $locale = \Session::get('locale', config('app.fallback_locale'));
-        }
-        \Session::put('locale', $locale);
+        $locale = \Session::get('locale', config('app.fallback_locale'));
 
         \App::setLocale($locale);
         return $next($request);

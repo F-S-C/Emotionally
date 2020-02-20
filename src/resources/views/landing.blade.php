@@ -48,8 +48,8 @@
                 @lang('navbar.language')
             </a>
             <div class="dropdown-menu" aria-labelledby="language-dropdown">
-                <a class="dropdown-item" href="{{config('app.url') . '/it/' . implode('/', array_slice(Request::segments(),1))}}">@lang('navbar.italian')</a>
-                <a class="dropdown-item" href="{{config('app.url') . '/en/' . implode('/', array_slice(Request::segments(),1))}}">@lang('navbar.english')</a>
+                <a class="dropdown-item" href="{{route('language.set', 'it')}}">@lang('navbar.italian')</a>
+                <a class="dropdown-item" href="{{route('language.set', 'en')}}">@lang('navbar.english')</a>
             </div>
         </li>
         <li class="nav-item">
