@@ -166,6 +166,11 @@
                                     <div class="dropdown-divider"></div>
                                 @endif
                             @endif
+                        @else
+                            <button class="dropdown-item" id="create-project" data-toggle="modal"
+                                    data-target="create-project-modal"
+                                    data-modal="create-project-modal">{{trans('dashboard.add_project')}}
+                            </button>
                         @endif
                         @if( Request::segment(2) == "project")
                             <button class="dropdown-item" id="upload-video" data-toggle="modal"
