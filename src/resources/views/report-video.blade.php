@@ -369,6 +369,7 @@
                 /**
                  * Update the timeline on the graph by synchronizing it with the video.
                  */
+                /*
                 let video = document.getElementById("video");
                 video.addEventListener('timeupdate', () => {
                     lineChart.options["verticalLine"] = [{
@@ -377,7 +378,7 @@
                     }];
                     lineChart.update();
                 });
-
+                */
 
                 function timeStringToSeconds(hms) {
                     const a = hms.split(':'); // split it at the colons

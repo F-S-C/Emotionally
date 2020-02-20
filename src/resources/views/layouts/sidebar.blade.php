@@ -711,7 +711,12 @@
                             record: {
                                 debug: false,
                                 audio: true,
-                                video: true,
+                                video: {
+                                    width: 1080,
+                                    height: 720
+                                },
+                                frameWidth: 1080,
+                                frameHeight: 720,
                                 maxLength: Infinity,
                                 convertEngine: 'ts-ebml'
                             }
