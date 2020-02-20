@@ -208,7 +208,6 @@
                                 }
                             })
                             .fail(function (data) {
-                                // TODO: ERRORI NELLA CONNESIONE AL SERVER
                                 creating.hide();
                                 alertNotComplete.show();
                                 console.log(data);
