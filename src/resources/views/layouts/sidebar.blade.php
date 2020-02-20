@@ -310,9 +310,12 @@
                                 </div>
 
                                 <div id="realtime-body" class="card-body">
-                                    <video id="vid1" class="video-js vjs-default-skin" width="400" height="250"></video>
+                                    <video id="vid1" class="video-js vjs-default-skin mb-1" width="400"
+                                           height="250"></video>
                                     <button id="next-realtime" class="btn btn-primary float-right"
                                             disabled>{{ trans('dashboard.next') }}</button>
+                                    <button id="close-realtime" data-dismiss="modal"
+                                            class="btn btn-secondary float-right mx-1">{{ trans('dashboard.close') }}</button>
                                 </div>
 
                                 <form method="POST" action="{{ route('system.realtimeUpload') }}"
@@ -446,6 +449,7 @@
 
                 $('#realtime-video').on('click', function () {
                     $('#realtime-video-modal').modal({backdrop: 'static', keyboard: false});
+                    $('#close-realtime').prop('disabled', false);
                 });
 
                 $('#upload-video').on('click', function () {
@@ -740,6 +744,7 @@
 
                     // user clicked the record button and started recording !
                     player.on('startRecord', function () {
+                        $('#close-realtime').prop('disabled',true);
                         console.log('started recording! Do whatever you need to');
                     });
 

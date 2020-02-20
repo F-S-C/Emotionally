@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => /*env('MAIL_DRIVER', 'smtp')*/ 'smtp',
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => /*env('MAIL_HOST', 'smtp.mailgun.org')*/ 'smtp.googlemail.com',
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => /*env('MAIL_PORT', 587)*/ '465',
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => /*env('MAIL_ENCRYPTION', 'tls')*/ 'ssl',
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => /*env('MAIL_USERNAME')*/ 'noreply.cicerone.app@gmail.com',
+    'username' => env('MAIL_USERNAME'),
 
-    'password' => /*env('MAIL_PASSWORD')*/ 'ajpnnoqrpeeopvvc',
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
