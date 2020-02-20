@@ -139,7 +139,7 @@
                         <input class="form-control mr-sm-2 rounded-pill" type="search"
                                placeholder="{{trans('dashboard.search')}}"
                                aria-label="{{trans('dashboard.search')}}" id="search-bar">
-                    @elseif(Request::segment(2) == 'project')
+                    @elseif(Request::segment(2) == 'project' && isset($project))
                         <button onclick="window.location.href = '{{route('system.report-project', $project->id)}}';"
                                 class="rounded ml-auto btn btn-outline-primary d-block text-uppercase">
                             @lang('dashboard.report')
