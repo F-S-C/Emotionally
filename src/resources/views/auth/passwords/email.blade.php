@@ -23,8 +23,7 @@
                    required @if (session('status')) disabled @endif>
             @error('email')<p class="text-center text-danger">{{ $message }}</p>@enderror
         </div>
-        <button type="submit" class="btn btn-primary w-100"
-                style="color: white;">@if(session('status')) @lang('auth.go-to-landing') @else @lang('auth.send-reset-link') @endif</button>
+        <button type="submit" class="btn btn-primary w-100">@if(session('status')) @lang('auth.go-to-landing') @else @lang('auth.send-reset-link') @endif</button>
     </form>
     @if(session('status'))
         <div class="container py-1">&nbsp;</div>

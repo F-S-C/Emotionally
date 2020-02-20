@@ -33,7 +33,7 @@
                    placeholder="••••••••" required>
             @error('password')<p class="text-center text-danger">{{ $message }}</p>@enderror
         </div>
-        <button type="submit" class="btn btn-primary w-100" style="color: white;">@lang('auth.reset-password')</button>
+        <button type="submit" class="btn btn-primary w-100">@lang('auth.reset-password')</button>
     </form>
     <div class="container py-1">&nbsp;</div>
 @endsection

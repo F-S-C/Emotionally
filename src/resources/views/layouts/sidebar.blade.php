@@ -94,7 +94,8 @@
                                   class="d-block d-md-none fas fa-globe mr-0 mr-md-1 text-md-center"></span>
                         </a>
                         <a class="nav-link text-center text-md-left d-none d-md-block" data-toggle="collapse"
-                           href="#languages-container" role="button" aria-expanded="false" aria-controls="languages-container">
+                           href="#languages-container" role="button" aria-expanded="false"
+                           aria-controls="languages-container">
                             <span aria-hidden="true" class="fas fa-globe mr-0 mr-md-1 text-md-center"></span>
                             <span class="d-none d-md-inline">@lang('navbar.language')</span>
                         </a>
@@ -138,6 +139,11 @@
                         <input class="form-control mr-sm-2 rounded-pill" type="search"
                                placeholder="{{trans('dashboard.search')}}"
                                aria-label="{{trans('dashboard.search')}}" id="search-bar">
+                    @elseif(Request::segment(2) == 'project')
+                        <button onclick="window.location.href = '{{route('system.report-project', $project->id)}}';"
+                                class="rounded ml-auto btn btn-outline-primary d-block text-uppercase">
+                            @lang('dashboard.report')
+                        </button>
                     @endif
                 </div>
                 <div class="ml-auto btn-group dropleft">
@@ -207,10 +213,6 @@
                         <div class="modal-content el-16dp">
                             <div class="modal-header">
                                 <h5 class="modal-title">{{trans('dashboard.upload_video')}}</h5>
-                                <button type="button" class="modal-close" data-dismiss="modal"
-                                        aria-label="{{trans('dashboard.close')}}">
-                                    <span class="fas fa-times"></span>
-                                </button>
                             </div>
                             <div class="modal-body">
                                 <div id="video-upload-complete" class="alert alert-success" role="alert"
@@ -261,8 +263,7 @@
                                             {{trans('dashboard.close')}}
                                         </button>
                                         <input type="submit" value="{{ trans('dashboard.upload') }}"
-                                               class="btn btn-primary"
-                                               style="color: white;">
+                                               class="btn btn-primary">
                                     </div>
                                 </form>
                                 <div id="progress-container" style="display: none;">
@@ -289,10 +290,6 @@
                         <div class="modal-content el-16dp">
                             <div class="modal-header">
                                 <h5 class="modal-title">{{trans('dashboard.realtime_video')}}</h5>
-                                <button type="button" class="modal-close" data-dismiss="modal"
-                                        aria-label="{{trans('dashboard.close')}}">
-                                    <span class="fas fa-times"></span>
-                                </button>
                             </div>
                             <div class="modal-body el-16dp">
 
@@ -344,7 +341,7 @@
                                         </button>
                                         <input type="submit" id="submit-realtime-video"
                                                value="{{ trans('dashboard.upload') }}" class="btn btn-primary disabled"
-                                               style="color: white;" disabled>
+                                               disabled>
                                     </div>
                                 </form>
 
@@ -406,8 +403,8 @@
                                             data-dismiss="modal">
                                         {{trans('dashboard.close')}}
                                     </button>
-                                    <input type="submit" value="{{ trans('dashboard.create') }}" class="btn btn-primary"
-                                           style="color: white;">
+                                    <input type="submit" value="{{ trans('dashboard.create') }}"
+                                           class="btn btn-primary">
                                 </div>
                             </form>
                         </div>
@@ -443,11 +440,11 @@
                 });
 
                 $('#realtime-video').on('click', function () {
-                    $('#realtime-video-modal').modal('show');
+                    $('#realtime-video-modal').modal({backdrop: 'static', keyboard: false});
                 });
 
                 $('#upload-video').on('click', function () {
-                    $('#upload-video-modal').modal('show');
+                    $('#upload-video-modal').modal({backdrop: 'static', keyboard: false});
                 });
 
                 $('#customVideo').on('change', function () {
