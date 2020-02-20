@@ -28,13 +28,15 @@ class VideoPermissionsMiddleware
         }
         
         $is_admin = $request->user()->videos->contains('id', $id);
+        $is_project_admin = $request->user()->projects->contains('id', Video::findOrFail($id)->project_id);
         if (!$is_admin) {
-            $has_permission = $permission_required != 'admin' && $request->user()
+            $has_permission = $permission_required != 'admin' && 
+                ($is_project_admin || $request->user()
                     ->permissions()
                     ->where('id', Video::findOrFail($id)->project_id)
                     ->wherePivot($permission_required, true)
                     ->get()
-                    ->isNotEmpty();
+                    ->isNotEmpty());
 
             if (!$has_permission) {
                 return abort(403);
