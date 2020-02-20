@@ -29,19 +29,19 @@ Route::name('system.')
         Route::redirect('/home', '/system');
 
         Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project')
-            ->middleware('permissions.project:modify:project_rename_id');
+            ->middleware('permissions.project:modify,project_rename_id');
         Route::post('/video/rename', 'VideoController@renameVideo')->name('rename-video')
-            ->middleware('permissions.video:modify:video_rename_id');
+            ->middleware('permissions.video:modify,video_rename_id');
         Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set')
-            ->middleware('permissions.video:modify:video_id');
+            ->middleware('permissions.video:modify,video_id');
         Route::post('/project/delete', 'ProjectController@deleteProject')->name('delete-project')
-            ->middleware('permissions.project:admin:project_delete_id');
+            ->middleware('permissions.project:admin,project_delete_id');
         Route::post('/video/delete', 'VideoController@deleteVideo')->name('delete-video')
-            ->middleware('permissions.video:remove:video_delete_id');
+            ->middleware('permissions.video:remove,video_delete_id');
         Route::post('/project/move', 'ProjectController@moveProject')->name('move-project')
-            ->middleware('permissions.project:admin:project_selected_id');
+            ->middleware('permissions.project:admin,project_selected_id');
         Route::post('/video/move', 'VideoController@moveVideo')->name('move-video')
-            ->middleware('permissions.video:admin:video_selected_id');
+            ->middleware('permissions.video:admin,video_selected_id');
 
         Route::post('/user/check-password', 'UserController@checkUserPassword')->name('user.password.check');
         Route::view('/profile', 'profile')->name('profile');
@@ -81,13 +81,13 @@ Route::name('system.')
             });
 
         Route::post('/video/upload', 'VideoController@uploadVideo')->name('videoUpload')
-            ->middleware('permissions.project:add:project_id');
+            ->middleware('permissions.project:add,project_id');
         Route::post('/video/realtime-upload', 'VideoController@realtimeUpload')->name('realtimeUpload')
-            ->middleware('permissions.project:add:project_id');
+            ->middleware('permissions.project:add,project_id');
         Route::post('/project/new', 'ProjectController@createProject')->name('newProject')
-            ->middleware('permissions.project:add:father_id');
+            ->middleware('permissions.project:add,father_id');
         Route::put('/video/report/set', 'VideoController@setReport')->name('video.report.set')
-            ->middleware('permissions.video:modify:video_id');
+            ->middleware('permissions.video:modify,video_id');
 
         Route::get('/project/{id}', 'ProjectController@getProjectDetails')->name('project-details')
             ->middleware('permissions.project:read');
