@@ -65,3 +65,26 @@ image::../../screenshots/email.jpg[alt=Email]
 Cliccato il bottone _Verify mail_, si verrà indirizzati alla dashboard del sistema.
 
 image::../../screenshots/dashboard.jpg[alt=Dashoard]
+
+=== Dashboard
+
+Una volta completata la fase di login, l'utente verrà reindirizzato nella _Dashboard_ del sistema, contente l'elenco dei progetti dell'utente.
+Sarà possibile inoltre interfacciarsi alla siderbar presente sulla sinistra, contenente le sezioni _Progetti_, _Lingua_, e _Profilo_.
+
+image::../../screenshots/dash+lingua.jpeg[alt=lingua]
+
+Dalla sezione _Lingua_ l'utente sarà in grado di cambiare la lingua di sistema in Italiano o Inglese a seconda delle sue preferenze.
+
+La Dashboard presenta un bottone _Aggiungi_ che permette di creare un progetto. Cliccando su di esso l'utente potrà dare un titolo al progetto che intende creare e confermare la sua scelta.
+
+image::../../screenshots/dash+add.jpg[alt=Aggiungi]
+
+image::../../screenshots/creaprogetto1.jpg[alt=Crea progetto]
+
+image::../../screenshots/creaprogetto2.jpg[alt=Progetto creato]
+
+Un messaggio di conferma verrà mostrato ad operazione completata. In caso di errore l'utente verrà notificato di un un problema durante l'operazione.
+
+Una volta terminata l'operazione, il nuovo progetto apparirà nella _Dashboard_.
+
+image::../../screenshots/dash+progetto.jpg[alt= Dashboard con progetto]
