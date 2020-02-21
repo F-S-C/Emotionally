@@ -56,23 +56,6 @@
     - "Uno scenario alternativo viene attivato al punto 2: il sistema informa l'utente che l'email inserita non è valida o corretta"
     - "Uno scenario alternativo viene attivato al punto 3: il sistema informa l'utente che la password inserita non è valida"
 
-- id: 2
-  usecase: "Test analysis"
-  description: >-
-    L'utente visitatore vuole effettuare un test di prova di analisi delle emozioni
-  actors:
-    - "Guest"
-    - "User"
-  preconditions:
-    - "L'utente non deve essere loggato alla piattaforma"
-  actions:
-    - action: "L'utente chiede al sistema di poter effettuare un'analisi di prova delle emozioni"
-    - action: "Il sistema permette l'analisi di prova richiesta"
-  postconditions:
-    - "L'analisi di prova delle emozioni è stata effettuata."
-  alternative:
-    - "Nessuno"
-
 - id: 3
   usecase: "Login"
   description: >-
@@ -343,28 +326,6 @@
         - action: "Il sistema annulla l'operazione di condivisione"
   postconditions:
     - "L'utente ha condiviso il proprio progetto con altri"
-  alternative:
-    - "Nessuno"
-
-- id: 14
-  usecase: "Delete account"
-  description: >-
-    L'utente vuole eliminare il suo account dalla piattaforma Emotionally.
-  actors:
-    - "User"
-  preconditions:
-    - "L'utente deve essere loggato all'interno del sistema"
-  actions:
-    - action: "L'utente chiede al sistema di poter eliminare il suo account dalla piattaforma"
-    - action: "Il sistema chiede conferma all'utente"
-    - action: "Se l'utente conferma"
-      subactions:
-        - action: "Il sistema provvederà a eliminare l'account dell'utente richiedente"
-    - action: "Altrimenti"
-      subactions:
-        - action: "Il sistema annullerà l'operazione di eliminazione account"
-  postconditions:
-    - "L'account dell'utente richiedente è eliminato"
   alternative:
     - "Nessuno"
 
