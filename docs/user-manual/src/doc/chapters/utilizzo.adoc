@@ -4,8 +4,6 @@ Di seguito, si riportano le istruzioni sull'utilizzo del sistema. Saranno
 riportate alcuni scenari d'uso tipici con istruzioni passo passo al fine di
 permettere un semplice raggiungimento degli obiettivi prefissati.
 
-=== Prerequisiti
-
 === Requisiti hardware
 
 Per poter utilizzare il sistema è necessario disporre di una connessione a
@@ -36,3 +34,20 @@ motivo, per godere di un'esperienza d'uso che sia la migliore possibile, è
 fortemente consigliato l'utilizzo di _Firefox_.
 
 === Utilizzo del sistema
+
+==== Registrazione e verifica mail
+
+Una volta entrato nel sistema si può effettuare la registrazione cliccando sul pulsante _Login_. 
+
+Una volta aperta la pagina di login, sarà sufficiente cliccare sul link _Sign-Up_.
+
+Si aprirà la pagina di registrazione dove sarà necessario inserire i seguenti dati:
+- Nome
+- Cognome
+- Indirizzo E-Mail (necessario per il login al sistema)
+- Password
+- Password di conferma
+
+Successivamente al click del bottone _Sign-Up_ verrà inviata una mail all'indirizzo inserito con un link per verificarla. Sarà necessario accedere alla casella di posta e cliccare sul bottone _Verify mail_ presente all'interno della mail ricevuta dal sistema.
+
+Cliccato il bottone, si verrà indirizzati alla dashboard del sistema.
