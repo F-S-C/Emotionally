@@ -118,9 +118,33 @@
 		Descrizione & L'utente vuole modificare un progetto da lui scelto.\\
 		Attori & \begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~User\\\end{tabular}\\
 		Pre-condizioni & \begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~L'utente deve essere loggato alla piattaforma\\~~\llap{\textbullet}~~Il progetto scelto dall'utente deve essere già stato creato\\\end{tabular}\\
-		Sequenza delle azioni & \begin{tabular}{m{0.9\linewidth}}\hspace{0.0cm}1. L'utente chiede al sistema di porter modificare il progetto\\\hspace{0.0cm}2. Il sistema permette all'utente di modificare il progetto richiesto\\\hspace{0.0cm}3. Se l'utente chiede di rinominare il progetto\\\hspace{0.5cm}\hspace{0.0cm}3.1. Fintantochè il nuovo nome del progetto non è valido\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.1.1. Il sistema chiede all'utente di inserire il nuovo nome del progetto\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.1.2. L'utente inserisce il nuovo nome del progetto\\\hspace{0.0cm}4. Se l'utente chiede di spostare un video\\\hspace{0.5cm}\hspace{0.0cm}4.1. Il sistema chiede all'utente in quale progetto vuole spostarlo\\\hspace{0.5cm}\hspace{0.0cm}4.2. Se il video è già presente nel progetto in cui si intende spostarlo\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}4.2.1. Il sistema chiede all'utente conferma per lo spostamento del video\\\hspace{0.5cm}\hspace{0.0cm}4.3. Altrimenti\\\end{tabular}\\
+		Sequenza delle azioni & 
+		\begin{tabular}{m{0.9\linewidth}}\hspace{0.0cm}1. L'utente chiede al 
+		sistema di porter modificare il progetto\\\hspace{0.0cm}2. Il sistema 
+		permette all'utente di modificare il progetto 
+		richiesto\\\hspace{0.0cm}3. Se l'utente chiede di rinominare il 
+		progetto\\\hspace{0.5cm}\hspace{0.0cm}3.1. Fintantochè il nuovo nome 
+		del progetto non è 
+		valido\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.1.1. Il sistema 
+		chiede all'utente di inserire il nuovo nome del 
+		progetto\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.1.2. L'utente 
+		inserisce il nuovo nome del progetto\\\hspace{0.0cm}4. Se l'utente 
+		chiede di spostare un video\\\hspace{0.5cm}\hspace{0.0cm}4.1. Il 
+		sistema chiede all'utente in quale progetto vuole 
+		spostarlo\\\hspace{0.5cm}\hspace{0.0cm}4.2. Se il video non è già 
+		presente nel progetto in cui si intende 
+		spostarlo\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}4.2.1. Il sistema 
+		chiede all'utente conferma per lo spostamento del 
+		video\\\hspace{0.5cm}\hspace{0.0cm}4.3. 
+		Altrimenti\\\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}4.3.1. Il 
+		sistema avvisa l'utente\\\end{tabular}\\
 		Post-condizioni & \begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~Il progetto scelto è stato modificato\\\end{tabular}\\
-		Scenario alternativo & \begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~Uno scenario alternativo viene innescato al punto 4.2: Il sistema chiede all'utente se vuole rinominare il video, se vuole sovrascrivere il video con lo stesso nome di quello che si vuole spostare o se si vuole annullare l'operazione\\\end{tabular}\\\hline
+		Scenario alternativo & 
+		\begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~Uno scenario 
+		alternativo viene innescato al punto 4.3: Il sistema chiede all'utente 
+		se vuole rinominare il video, se vuole sovrascrivere il video con lo 
+		stesso nome di quello che si vuole spostare o se si vuole annullare 
+		l'operazione\\\end{tabular}\\\hline
 		
 	\end{longtable}
 \end{table}
@@ -258,7 +282,40 @@
 		Descrizione & L'utente vuole aggiornare i propri dati inseriti in fase di registrazione.\\
 		Attori & \begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~User\\\end{tabular}\\
 		Pre-condizioni & \begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~L'utente deve aver effettuato già la procedura di login\\\end{tabular}\\
-		Sequenza delle azioni & \begin{tabular}{m{0.9\linewidth}}\hspace{0.0cm}1. L'utente chiede al sistema di poter modificare i propri dati\\\hspace{0.0cm}2. Il sistema permette la modifica dei dati dell'utente richiedente\\\hspace{0.0cm}3. Fintantochè l'utente non salvi le informazioni aggiornate o non annulli l'operazione di modifica\\\hspace{0.5cm}\hspace{0.0cm}3.1. Se l'utente decide di modificare il nome\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.1.1. L'utente modifica il nome\\\hspace{0.5cm}\hspace{0.0cm}3.2. Altrimenti\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.2.1. Il nome non verrà variato da quello già presente\\\hspace{0.5cm}\hspace{0.0cm}3.3. Se l'utente decide di modificare il cognome\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.3.1. L'utente modifica il cognome\\\hspace{0.5cm}\hspace{0.0cm}3.4. Altrimenti\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.4.1. Il cognome non verrà variato da quello già presente\\\hspace{0.5cm}\hspace{0.0cm}3.5. Se l'utente vuole modificare il sesso\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.5.1. L'utente modifica il sesso\\\hspace{0.5cm}\hspace{0.0cm}3.6. Altrimenti\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.6.1. Il sesso non verrà variato da quello già presente\\\hspace{0.0cm}4. Se l'utente chiede di modificare la propria password\\\hspace{0.5cm}\hspace{0.0cm}4.1. Fintantochè l'utente non inserisce la vecchia password valida\\\hspace{0.5cm}\hspace{0.0cm}4.2. Fintantochè l'utente non inserisce una nuova password valida\\\hspace{0.5cm}\hspace{0.0cm}4.3. Fintantochè l'utente non re-inserisce correttamente la nuova password\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}4.3.1. Il sistema chiede all'utente di re-inserire la nuova password\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}4.3.2. L'utente re-inserisce la nuova password\\\hspace{0.5cm}\hspace{0.0cm}4.4. Il sistema provvederà alla modifica della password\\\hspace{0.0cm}5. Altrimenti\\\end{tabular}\\
+		Sequenza delle azioni & 
+		\begin{tabular}{m{0.9\linewidth}}\hspace{0.0cm}1. L'utente chiede al 
+		sistema di poter modificare i propri dati\\\hspace{0.0cm}2. Il sistema 
+		permette la modifica dei dati dell'utente richiedente\\\hspace{0.0cm}3. 
+		Fintantochè l'utente non salvi le informazioni aggiornate o non annulli 
+		l'operazione di modifica\\\hspace{0.5cm}\hspace{0.0cm}3.1. Se l'utente 
+		decide di modificare il 
+		nome\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.1.1. L'utente 
+		modifica il nome\\\hspace{0.5cm}\hspace{0.0cm}3.2. 
+		Altrimenti\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.2.1. Il nome 
+		non verrà variato da quello già 
+		presente\\\hspace{0.5cm}\hspace{0.0cm}3.3. Se l'utente decide di 
+		modificare il cognome\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.3.1. 
+		L'utente modifica il cognome\\\hspace{0.5cm}\hspace{0.0cm}3.4. 
+		Altrimenti\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.4.1. Il cognome 
+		non verrà variato da quello già 
+		presente\\\hspace{0.5cm}\hspace{0.0cm}3.5. Se l'utente vuole modificare 
+		il sesso\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.5.1. L'utente 
+		modifica il sesso\\\hspace{0.5cm}\hspace{0.0cm}3.6. 
+		Altrimenti\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}3.6.1. Il sesso 
+		non verrà variato da quello già presente\\\hspace{0.0cm}4. Se l'utente 
+		chiede di modificare la propria 
+		password\\\hspace{0.5cm}\hspace{0.0cm}4.1. Fintantochè l'utente non 
+		inserisce la vecchia password valida\\\hspace{0.5cm}\hspace{0.0cm}4.2. 
+		Fintantochè l'utente non inserisce una nuova password 
+		valida\\\hspace{0.5cm}\hspace{0.0cm}4.3. Fintantochè l'utente non 
+		re-inserisce correttamente la nuova 
+		password\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}4.3.1. Il sistema 
+		chiede all'utente di re-inserire la nuova 
+		password\\\hspace{1.0cm}\hspace{0.5cm}\hspace{0.0cm}4.3.2. L'utente 
+		re-inserisce la nuova password\\\hspace{0.5cm}\hspace{0.0cm}4.4. Il 
+		sistema provvederà alla modifica della password\\\hspace{0.0cm}5. 
+		Altrimenti\\\hspace{0.5cm}\hspace{0.0cm}5.1. La password non verrà 
+		variata\\\end{tabular}\\
 		Post-condizioni & \begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~I dati richiesti dall'utente sono stati modificati.\\\end{tabular}\\
 		Scenario alternativo & \begin{tabular}{m{0.9\linewidth}}~~\llap{\textbullet}~~Uno scenario alternativo viene innescato nel punto 4.1: il sistema avvisa l'utente che la vecchia password non è stata inserita correttamente.\\~~\llap{\textbullet}~~Uno scenario alternativo viene innescato nel punto 4.2: il sistema avvisa l'utente che la nuova password inserita non è valida.\\~~\llap{\textbullet}~~Uno scenario alternativo viene innescato nel punto 4.3: il sistema avvisa l'utente che la nuova password non è stata re-inserita correttamente.\\\end{tabular}\\\hline
 		

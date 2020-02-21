@@ -453,15 +453,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#colophon">Emotionally: Manuale d&#8217;Uso</a></li>
 <li><a href="#preface">Prefazione</a></li>
 <li><a href="#installazione">1. Installazione</a></li>
-<li><a href="#_come_utilizzare_il_sistema">2. Come utilizzare il sistema</a>
+<li><a href="#_prerequisiti_per_luso_del_sistema">2. Prerequisiti per l&#8217;uso del sistema</a>
 <ul class="sectlevel2">
-<li><a href="#_prerequisiti">2.1. Prerequisiti</a></li>
-<li><a href="#_requisiti_hardware">2.2. Requisiti hardware</a></li>
-<li><a href="#_requisiti_software">2.3. Requisiti software</a></li>
-<li><a href="#_utilizzo_del_sistema">2.4. Utilizzo del sistema</a></li>
+<li><a href="#_requisiti_hardware">2.1. Requisiti hardware</a></li>
+<li><a href="#_requisiti_software">2.2. Requisiti software</a></li>
 </ul>
 </li>
-<li><a href="#_informazioni_aggiuntive">3. Informazioni aggiuntive</a></li>
+<li><a href="#_utilizzo_del_sistema">3. Utilizzo del sistema</a>
+<ul class="sectlevel2">
+<li><a href="#_registrazione_e_verifica_mail">3.1. Registrazione e verifica mail</a></li>
+<li><a href="#_login">3.2. Login</a></li>
+<li><a href="#_dashboard">3.3. Dashboard</a></li>
+<li><a href="#_navigazione_allinterno_di_un_progetto">3.4. Navigazione all&#8217;interno di un progetto</a></li>
+<li><a href="#_report_di_un_progetto">3.5. Report di un progetto</a></li>
+<li><a href="#_report_di_un_video">3.6. Report di un video</a></li>
+<li><a href="#_profilo">3.7. Profilo</a></li>
+</ul>
+</li>
+<li><a href="#_informazioni_aggiuntive">4. Informazioni aggiuntive</a>
+<ul class="sectlevel2">
+<li><a href="#_linee_guida_per_la_progettazione_grafica">4.1. Linee guida per la progettazione grafica</a></li>
+<li><a href="#_linee_guida_per_laccessibilità">4.2. Linee guida per l&#8217;accessibilità</a></li>
+<li><a href="#_responsività_del_sistema">4.3. Responsività del sistema</a></li>
+<li><a href="#_ulteriori_informazioni">4.4. Ulteriori informazioni</a></li>
+</ul>
+</li>
 <li><a href="#_gnu_free_documentation_license">GNU Free Documentation License</a>
 <ul class="sectlevel2">
 <li><a href="#_0_preamble">0. PREAMBLE</a></li>
@@ -476,7 +492,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_9_termination">9. TERMINATION</a></li>
 <li><a href="#_10_future_revisions_of_this_license">10. FUTURE REVISIONS OF THIS LICENSE</a></li>
 <li><a href="#_11_relicensing">11. RELICENSING</a></li>
-<li><a href="#_addendum_how_to_use_this_license_for_your_documents">ADDENDUM: How to use this License for your documents</a></li>
 </ul>
 </li>
 </ul>
@@ -487,7 +502,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="colophon">Emotionally: Manuale d&#8217;Uso</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c)  2019-2020  FSC.</p>
+<p>Copyright (c) 2019-2020 FSC.</p>
 </div>
 <div class="paragraph">
 <p>Permission is granted to copy, distribute and/or modify this document under the
@@ -519,11 +534,23 @@ statistiche a partire da dei video.</p>
 <div class="sect1">
 <h2 id="installazione">1. Installazione</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Se si vuole utilizzare il sistema sulla propria macchina è necessario scaricare l&#8217;ultima versione del pacchetto software (<a href="https://github.com/F-S-C/Emotionally/releases" class="bare">https://github.com/F-S-C/Emotionally/releases</a>).
+Una volta scaricato, si otterrà il pacchetto <em>UwAmp</em> già avviabile senza installazione di componenti aggiuntivi.</p>
+</div>
+<div class="paragraph">
+<p>Basterà accedere alla cartella <em>Emotionally_UwAmp</em> e avviare<strong>*</strong> il file eseguibile chiamato <em>UwAmp.exe</em>.</p>
+</div>
+<div class="paragraph">
+<p>Una volta avviato <em>UwAmp</em> i servizi saranno azionati automaticamente e si potrà utilizzare il sistema aprendo il browser e digitando l&#8217;indirizzo <em><a href="http://localhost/" class="bare">http://localhost/</a></em> .</p>
+</div>
+<div class="paragraph">
+<p><em><strong>*</strong> N.B.: E' consigliato (ma non necessario) avviare il file con i permessi di amministratore per agevolare l&#8217;avvio e l&#8217;arresto dei servizi necessari al corretto funzionamento del software.</em></p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_come_utilizzare_il_sistema">2. Come utilizzare il sistema</h2>
+<h2 id="_prerequisiti_per_luso_del_sistema">2. Prerequisiti per l&#8217;uso del sistema</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Di seguito, si riportano le istruzioni sull&#8217;utilizzo del sistema. Saranno
@@ -531,11 +558,7 @@ riportate alcuni scenari d&#8217;uso tipici con istruzioni passo passo al fine d
 permettere un semplice raggiungimento degli obiettivi prefissati.</p>
 </div>
 <div class="sect2">
-<h3 id="_prerequisiti">2.1. Prerequisiti</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_requisiti_hardware">2.2. Requisiti hardware</h3>
+<h3 id="_requisiti_hardware">2.1. Requisiti hardware</h3>
 <div class="paragraph">
 <p>Per poter utilizzare il sistema è necessario disporre di una connessione a
 internet (a meno che il sistema non sia installato sulla propria macchina, come
@@ -547,7 +570,7 @@ registrare l&#8217;audio.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_requisiti_software">2.3. Requisiti software</h3>
+<h3 id="_requisiti_software">2.2. Requisiti software</h3>
 <div class="paragraph">
 <p>Per utilizzare il sistema non è necessario installare software aggiuntivo ne
 compiere alcuna operazione particolare (salvo l&#8217;eventuale installazione qualora
@@ -578,16 +601,557 @@ fortemente consigliato l&#8217;utilizzo di <em>Firefox</em>.
 </table>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_utilizzo_del_sistema">3. Utilizzo del sistema</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_utilizzo_del_sistema">2.4. Utilizzo del sistema</h3>
-
+<h3 id="_registrazione_e_verifica_mail">3.1. Registrazione e verifica mail</h3>
+<div class="paragraph">
+<p>Andando all&#8217;indirizzo <a href="http://localhost" class="bare">http://localhost</a> si entrerà nella <em>Landing Page</em>.Da qui si può effettuare la registrazione cliccando sul pulsante <em>Login</em>, presente in alto a destra.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/landing.jpg" alt="Landing Page">
+</div>
+</div>
+<div class="paragraph">
+<p>Una volta aperta la pagina di login, sarà sufficiente cliccare sul link <em>Sign Up</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/login1.jpg" alt="Login">
+</div>
+</div>
+<div class="paragraph">
+<p>Si aprirà la pagina di registrazione dove sarà necessario inserire i seguenti dati:
+- Nome
+- Cognome
+- Indirizzo E-Mail (necessario per il login al sistema)
+- Password
+- Password di conferma</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/signup.jpg" alt="Login">
+</div>
+</div>
+<div class="paragraph">
+<p>Successivamente al click del bottone <em>Sign Up</em> verrà inviata una mail all&#8217;indirizzo inserito con un link per verificarla.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/verification.jpg" alt="Verify Email">
+</div>
+</div>
+<div class="paragraph">
+<p>Sarà necessario accedere alla casella di posta e cliccare sul bottone <em>Verify Mail Address</em> presente all&#8217;interno della mail ricevuta dal sistema.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/email.jpg" alt="Email">
+</div>
+</div>
+<div class="paragraph">
+<p>Cliccato il bottone, si verrà indirizzati alla dashboard del sistema.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/dashboard.jpg" alt="Dashoard">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_login">3.2. Login</h3>
+<div class="paragraph">
+<p>Per effettuare il <em>Login</em> è necessario visitare la <em>Landing Page</em> e, successivamente, cliccare sul bottone <em>Log In</em>, presente in alto a destra.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/landing.jpg" alt="Landing Page">
+</div>
+</div>
+<div class="paragraph">
+<p>Si aprirà la pagina di <em>Log In</em> nella quale sarà necessario inserire la mail:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/login1.jpg" alt="Login">
+</div>
+</div>
+<div class="paragraph">
+<p>Dopo aver inserito la mail, premendo il pulsante invio (o cliccando sulla freccia), sarà possibile inserire la password:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/login2.jpg" alt="Login">
+</div>
+</div>
+<div class="paragraph">
+<p>Il toggle <em>Remember me</em> permette di non perdere la sessione alla chiusura il browser. Cliccando sul bottone <em>Login</em>, se i dati inseriti sono corretti, si potrà accedere al sistema.</p>
+</div>
+<div class="paragraph">
+<p><em><strong>N.B.</strong> Se la mail non è stata verificata, si entrerà nella pagina di verifica mail (illustrata nella sezione <a href="#_registrazione_e_verifica_mail">Section 3.1</a>) e non sarà possibile accedere al sistema.</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dashboard">3.3. Dashboard</h3>
+<div class="paragraph">
+<p>Una volta completata la fase di <a href="#_login">Section 3.2</a>, l&#8217;utente verrà reindirizzato nella <em>Dashboard</em> del sistema, contente l&#8217;elenco dei progetti dell&#8217;utente.</p>
+</div>
+<div class="sect3">
+<h4 id="_sidebar">3.3.1. Sidebar</h4>
+<div class="paragraph">
+<p>Sarà possibile inoltre interfacciarsi alla siderbar presente sulla sinistra, contenente le sezioni <em>Progetti</em>, <em>Lingua</em>, e <em>Profilo</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/dash+lingua.jpg" alt="lingua">
+</div>
+</div>
+<div class="paragraph">
+<p>Dalla sezione <em>Lingua</em> l&#8217;utente sarà in grado di cambiare la lingua del sistema in Italiano o Inglese a seconda delle sue preferenze.</p>
+</div>
+<div class="paragraph">
+<p>Dal pulsante di <em>Logout</em>, invece,  si può effettuare la disconnessione dal sito.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parte_destra">3.3.2. Parte destra</h4>
+<div class="paragraph">
+<p>La parte destra del sistema rappresenta la principale zona di interazione con l&#8217;utente.</p>
+</div>
+<div class="paragraph">
+<p>La Dashboard presenta un bottone <em>Add</em> che permette, cliccando sul link <em>Add project</em>, di creare un progetto. I passaggi sono illustrati nella sezione <a href="#_creazione_di_un_progetto">Section 3.3.3</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creazione_di_un_progetto">3.3.3. Creazione di un progetto</h4>
+<div class="paragraph">
+<p>Per creare un progetto basta cliccare il pulsante <em>Add</em>, in alto a destra, e selezionare il link <em>Add project</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/dashboard+add.jpg" alt="Aggiungi">
+</div>
+</div>
+<div class="paragraph">
+<p>Il sistema richiederà il titolo del progetto che si intende creare.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/creaprogetto1.jpg" alt="Crea progetto">
+</div>
+</div>
+<div class="paragraph">
+<p>CLiccando poi su <em>Create</em> il progetto verrà creato.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/creaprogetto2.jpg" alt="Progetto creato">
+</div>
+</div>
+<div class="paragraph">
+<p>Un messaggio di conferma verrà mostrato ad operazione completata. In caso di errore l&#8217;utente verrà notificato di un un problema durante l&#8217;operazione.</p>
+</div>
+<div class="paragraph">
+<p>Una volta terminata l&#8217;operazione, il nuovo progetto apparirà nella <em>Dashboard</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/dash+progetto.jpg" alt="Dashboard con progetto">
+</div>
+</div>
+<div class="paragraph">
+<p>Sarà possibile <em>rinominare</em>, <em>eliminare</em>, o <em>gestire i permessi</em> del progetto appena creato cliccando sul pulsante <em>Altre Opzioni</em> (ovvero tre pallini verticali sulla destra della riga).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/dash+permessi.jpg" alt="Altre opzioni">
+</div>
+</div>
+<div class="paragraph">
+<p>Inoltre, sarà possibile visualizzare l&#8217;intero <a href="#Report del progetto">[Report del progetto]</a> semplicemente cliccando sull&#8217;apposito tasto <em>Report</em>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_permessi">3.3.4. Permessi</h4>
+<div class="paragraph">
+<p>La sezione <em>Permessi</em> permette di scegliere quali utenti possono effettuare operazioni di lettura, modifica, aggiunta o rimozione in un determinato progetto.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/permessi.jpg" alt="Permessi">
+</div>
+</div>
+<div class="paragraph">
+<p>Basterà inserire l&#8217;email dell&#8217;utente di cui si vogliono modificare i permessi e selezionare le operazioni che potrà effettuare.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/permessiAggiunti.jpg" alt="Permessi aggiunti">
+</div>
+</div>
+<div class="paragraph">
+<p>Se la mail inserita è presente nel sistema, l&#8217;utente apparirà nella lista dei permessi presente nella medesima pagina.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rinominare_un_progetto">3.3.5. Rinominare un progetto</h4>
+<div class="paragraph">
+<p>Il pulsante <em>Rename</em> permette di rinominare un progetto già esistente.
+Una volta selezionata l&#8217;opzione, il sistema chiederà all&#8217;utente di inserire un nuovo nome per il progetto selezionato.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/rinomina.jpg" alt="Rinomina">
+</div>
+</div>
+<div class="paragraph">
+<p>Cliccando il pulsante <em>Rename</em>, il sistema notificherà l&#8217;utente dell&#8217;esito dell&#8217;operazione.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/rinomina2.jpg" alt="Rinominazione completata">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_spostare_un_progetto_o_un_video">3.3.6. Spostare un progetto o un video</h4>
+<div class="paragraph">
+<p>Il pulsante <em>Move</em>, accessibile sia cliccando sulle opzioni di un video sia su quelle di un progetto, permette di spostare uno dei due in un altro progetto di proprietà dell&#8217;utente*.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/sposta.jpg" alt="Sposta progetto">
+</div>
+</div>
+<div class="paragraph">
+<p>Selezionata l&#8217;opzione, verrà mostrato l&#8217;albero dei progetti creati dall&#8217;utente, che potrà così scegliere in quale inserire il video/progetto da spostare.</p>
+</div>
+<div class="paragraph">
+<p>Un messaggio notificherà l&#8217;utente dell&#8217;esito dell&#8217;operazione.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/sposta1.jpg" alt="Operazione di spostamento completata">
+</div>
+</div>
+<div class="paragraph">
+<p><em><strong>N.B.:</strong> E' possibile spostare il video anche in progetti che sono di proprietà di altri utenti, a patto di avere i permessi di aggiunta.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_eliminare_un_progetto_o_un_video">3.3.7. Eliminare un progetto o un video</h4>
+<div class="paragraph">
+<p>Tramite il pulsante <em>Delete</em> è possibile eliminare un video o un progetto di proprietà dell&#8217;utente.</p>
+</div>
+<div class="paragraph">
+<p>Una volta cliccato il pulsante, verrà richiesta un&#8217;ulteriore conferma dell&#8217;operazione per scongiurare click involontari.</p>
+</div>
+<div class="paragraph">
+<p><em><strong>N.B.:</strong> L&#8217;eliminazione di un progetto comporterà anche l&#8217;eliminazione di tutti i sottoprogetti e i video al suo interno.</em></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/delete.jpg" alt="Elimina progetto">
+</div>
+</div>
+<div class="paragraph">
+<p>Se l&#8217;utente effettua il click sul bottone <em>Yes</em>, un messaggio notificherà l&#8217;utente dell&#8217;esito dell&#8217;operazione.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/delete1.jpg" alt="Elminazione effettuata">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_navigazione_allinterno_di_un_progetto">3.4. Navigazione all&#8217;interno di un progetto</h3>
+<div class="paragraph">
+<p>Per navigare all&#8217;interno di un progetto è necessario sceglierlo dalla tabella prensente nella <em>Dashboard</em>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/dash+progetto.jpg" alt="Dashboard con progetto">
+</div>
+</div>
+<div class="paragraph">
+<p>Cliccando sul progetto desiderato, si entrerà nella pagina di navigazione dello stesso. Appariranno i sottoprogetti e i video che esso contiene, come se fosse una cartella del sistema operativo.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/progetto+permessi.jpg" alt="Progetto con elementi">
+</div>
+</div>
+<div class="paragraph">
+<p>E' possibile, durante la navigazione, effettuare le operazioni di:
+- Creazione di un sottoprogetto
+- Caricamento di un video
+- Registrazione di un video in tempo reale
+- Gestione dei permessi di un sottoprogetto
+- Visualizzazione del report di un sottoprogetto
+- Visualizzazione di un report del video</p>
+</div>
+<div class="paragraph">
+<p>Qui di seguito verranno illustrate tutte le operazioni sopracitate.</p>
+</div>
+<div class="sect3">
+<h4 id="_creazione_di_un_sottoprogetto">3.4.1. Creazione di un sottoprogetto</h4>
+<div class="paragraph">
+<p>Per creare un sottoprogetto si può fare riferimento al paragrafo <a href="#_creazione_di_un_progetto">Section 3.3.3</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_caricamento_di_un_video">3.4.2. Caricamento di un video</h4>
+<div class="paragraph">
+<p>Per caricare un video all&#8217;interno di un progetto o sottoprogetto è sufficiente cliccare il pulsante <em>Add</em>, presente in alto a destra.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/progetto.jpg" alt="Progetto vuoto">
+</div>
+</div>
+<div class="paragraph">
+<p>Successivamente è necessario cliccare il link <em>Upload video</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/caricavideo1.jpg" alt="Caricamento video">
+</div>
+</div>
+<div class="paragraph">
+<p>Cliccando il campo <em>Choose file</em> si aprirà l&#8217;esplora risorse del sistema operativo da cui si potrà selezionare uno o più video.</p>
+</div>
+<div class="paragraph">
+<p>Successivamente, apparirà un selettore da cui si potrà selezionare la frequenza di analisi per secondo.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/caricavideo2.jpg" alt="Caricamento video 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Per finalizzare il caricamento bisognerà cliccare sul pulsante <em>Upload</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/caricavideo3.jpg" alt="Caricamento video 3">
+</div>
+</div>
+<div class="paragraph">
+<p>A caricamento effettuato apparirà un alert che notificherà l&#8217;utente sull&#8217;esito dell&#8217;operazione. Successivamente si potranno caricare altri video o tornare alla navigazione.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registrazione_di_un_video_in_tempo_reale">3.4.3. Registrazione di un video in tempo reale</h4>
+<div class="paragraph">
+<p>Per registrare un video in tempo reale e aggiungerlo all&#8217;interno di un progetto o sottoprogetto è sufficiente cliccare il pulsante <em>Add</em>, presente in alto a destra.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/progetto.jpg" alt="Progetto vuoto">
+</div>
+</div>
+<div class="paragraph">
+<p>Successivamente è necessario cliccare il link <em>Real time video</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/realtime.jpg" alt="Realtime video 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Cliccando sul pulsante al centro del player video il sistema richiederà i permessi per utilizzare la webcam e il microfono al browser. Sarà quindi necessario consentirne i permessi per il corretto funzionamento.</p>
+</div>
+<div class="paragraph">
+<p>Apparirà, quindi, la visualizzazione in tempo reale della webcam e sarà possibile procedere alla registrazione del video cliccando il "pallino bianco" (o pulsante di <em>Rec</em>) in basso a sinistra nel player.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/realtime2.jpg" alt="Realtime video 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Si potrà poi fermare la registrazione cliccando sul "quadrato" (o pulsante di <em>stop</em>), che apparirà dopo aver cliccato il pulsante di <em>Rec</em>. Successivamente, cliccando sul pulsante <em>Next</em> in basso a destra, sarà possibile assegnare un titolo alla registrazione e seglierne le analisi per secondo.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/realtime3.jpg" alt="Realtime video 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Cliccando poi su <em>Upload</em> si porcederà al caricamento del video e alla successiva analisi.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/realtime4.jpg" alt="Realtime video 4">
+</div>
+</div>
+<div class="paragraph">
+<p>Terminata la procedura l&#8217;utente verrà notificato sull&#8217;esito della stessa e sarà possibile tornare alla navigazione.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_gestione_dei_permessi_di_un_sottoprogetto">3.4.4. Gestione dei permessi di un sottoprogetto</h4>
+<div class="paragraph">
+<p>All&#8217;interno della navigazione è possibile accedere ai permessi di un sottoprogetto per aggiungerli, modificarli o rimuoverli.</p>
+</div>
+<div class="paragraph">
+<p>Sarà sufficiente cliccare sul pulsante <em>Menù</em> del sottoprogetto desiderato (i tre puntini verticali in alto a destra all&#8217;interno del "quadrato") e, successivamente, cliccare sul link <em>Permissions</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/progetto+permessi.jpg" alt="Permessi sottoprogetto">
+</div>
+</div>
+<div class="paragraph">
+<p>Si aprirà la pagina dei permessi, già illustrata nella sezione <a href="#_permessi">Section 3.3.4</a>.</p>
+</div>
+<div class="paragraph">
+<p><em><strong>N.B.:</strong> I permessi possono essere assegnati ai soli progetti o sottoprogetti, non è possibile assegnare permessi ai video. Tuttavia, i video "ereditano" i permessi del progetto in cui si trovano.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_visualizzazione_del_report_di_un_sottoprogetto">3.4.5. Visualizzazione del report di un sottoprogetto</h4>
+<div class="paragraph">
+<p>Una volta entrati in un sottoprogetto, è possibile visualizzare il <a href="#_report_di_un_video">Section 3.6</a>, cliccandovi sopra.
+In alternativa, attraverso il bottone <em>Report</em>, presente in alto a sinistra durante la navigazione all&#8217;interno di un progetto, è possibile visualizzare il <a href="#_report_di_un_progetto">Section 3.5</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/sottoprogetto.jpg" alt="Sottoprogetto">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_report_di_un_progetto">3.5. Report di un progetto</h3>
+<div class="paragraph">
+<p>Attraverso il pulsante <em>Report</em> è possibile visionare l&#8217;intero report di un progetto.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/ReportProgetto.jpg" alt="Report progetto">
+</div>
+</div>
+<div class="paragraph">
+<p>E' possibile visionare l&#8217;analisi delle emozioni media dei video all&#8217;interno del progetto sottoforma di diversi grafici.</p>
+</div>
+<div class="paragraph">
+<p>Lo <em>Spider Chart</em> e il <em>Bar Chart</em> offrono una visualizzazione più dettagliata rispetto all&#8217;emozione media (rappresentata tramite un'<em>Emoji</em>). Essi consentono di conoscere i parametri medi delle emozioni.</p>
+</div>
+<div class="sect3">
+<h4 id="_scaricare_i_dati_di_un_report">3.5.1. Scaricare i dati di un report</h4>
+<div class="paragraph">
+<p>Attraversi il pulsante <em>Download</em> è possibile scaricare il report del progetto in uno dei seguenti formati:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>PDF</em></p>
+</li>
+<li>
+<p><em>HTML</em></p>
+</li>
+<li>
+<p><em>JSON</em></p>
+</li>
+<li>
+<p><em>EXCEL</em></p>
+</li>
+<li>
+<p><em>PPTX</em> (Presentazione Power Point)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Di seguito si mostra un esempio di visualizzazione in formato <em>HTML</em> (analoga alla visualizzazione <em>PDF</em>).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/reportHtml.jpg" alt="Report Html">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_report_di_un_video">3.6. Report di un video</h3>
+<div class="paragraph">
+<p>Cliccando su di un video verrà visualizzato il suo report. E' presente un player per riprodurre il video ed uno slider per effettuare l&#8217;analisi di determinati intervalli del video.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/reportvideocompleto.jpg" alt="Report video">
+</div>
+</div>
+<div class="paragraph">
+<p>Rispetto ai <a href="#_report_di_un_progetto">Section 3.5</a>, il report di un video mostra anche il <em>Line Chart</em> che permette di visualizzare il valore preciso di una determinata emozione (da 0 a 100) in una delle rilevazioni effettuate dal sistema di analisi (variabile in base alle analisi per secondo e alla lunghezza del video).</p>
+</div>
+<div class="sect3">
+<h4 id="_scaricare_i_dati_del_report_di_un_video">3.6.1. Scaricare i dati del report di un video</h4>
+<div class="paragraph">
+<p>E' possibile scaricare i dati di un report video in modalità identiche a quelle viste per i progetti (dettagliati nella sezione <a href="#_scaricare_i_dati_di_un_report">Section 3.5.1</a>).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/scaricareReportVideo.jpg" alt="Download report video">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_profilo">3.7. Profilo</h3>
+<div class="paragraph">
+<p>Dalla sezione <em>Profilo</em> è possibile cambiare i propri dati, quali: <em>Nome</em>, <em>Cognome</em> e <em>Password</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/profilo.jpg" alt="Profilo">
+</div>
+</div>
+<div class="paragraph">
+<p>Attraverso il pulsante <em>Reset</em> è possibile ripristinare le eventuali modifiche effettuate e non salvate, mentre attraverso il tasto <em>Save</em> verranno salvati i cambiamenti effettuati.
+Un messaggio notificherà l&#8217;utente dell&#8217;esito dell&#8217;operazione.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../screenshots/profilo2.jpg" alt="Profilo cambiato">
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_informazioni_aggiuntive">3. Informazioni aggiuntive</h2>
+<h2 id="_informazioni_aggiuntive">4. Informazioni aggiuntive</h2>
 <div class="sectionbody">
-
+<div class="sect2">
+<h3 id="_linee_guida_per_la_progettazione_grafica">4.1. Linee guida per la progettazione grafica</h3>
+<div class="paragraph">
+<p>Il sistema è stato progettato seguendo le linee guida del Material Design adottando un tema <em>Scuro</em> gradevole alla vista. Si è cercato di produrre un sito <em>usabile</em>, alla portata di chiunque, anche di chi non è specializzato nelle analisi delle emozioni.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_linee_guida_per_laccessibilità">4.2. Linee guida per l&#8217;accessibilità</h3>
+<div class="paragraph">
+<p>Sono state rispettate le linee guida <em>Web Content Accessibility Guidelines (WCAG) 2.1</em> (<a href="https://www.w3.org/TR/WCAG21/" class="bare">https://www.w3.org/TR/WCAG21/</a>) portando il sistema ad un livello <em>AA</em> (su scala A, AA e AAA).
+Il tool per testarle è <em>Siteimprove</em> (<a href="https://siteimprove.com/" class="bare">https://siteimprove.com/</a>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_responsività_del_sistema">4.3. Responsività del sistema</h3>
+<div class="paragraph">
+<p>L&#8217;interfaccia è stata realizzata tenendo conto di un possibile utilizzo tramite dispositivi mobili tenendo conto delle risoluzioni dei dispositivi più diffusi in commercio.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ulteriori_informazioni">4.4. Ulteriori informazioni</h3>
+<div class="paragraph">
+<p>Per ulteriori informazioni è possibile contattare il gruppo tramite il <em>referente</em> alla mail <a href="mailto:a.annese23@studenti.uniba.it">a.annese23@studenti.uniba.it</a>.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1061,50 +1625,13 @@ CC-BY-SA on the same site at any time before August 1, 2009, provided the MMC is
 eligible for relicensing.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_addendum_how_to_use_this_license_for_your_documents">ADDENDUM: How to use this License for your documents</h3>
-<div class="paragraph">
-<p>To use this License in a document you have written, include a copy of the
-License in the document and put the following copyright and license notices just
-after the title page:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Copyright (c)  YEAR  YOUR NAME.
-Permission is granted to copy, distribute and/or modify this document under the
-terms of the GNU Free Documentation License, Version 1.3 or any later version
-published by the Free Software Foundation; with no Invariant Sections, no
-Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in
-the section entitled "GNU Free Documentation License".</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts, replace
-the &#8220;with&#8230;&#8203;Texts.&#8221; line with this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover Texts
-being LIST, and with the Back-Cover Texts being LIST.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you have Invariant Sections without Cover Texts, or some other combination of
-the three, merge those two alternatives to suit the situation.</p>
-</div>
-<div class="paragraph">
-<p>If your document contains nontrivial examples of program code, we recommend
-releasing these examples in parallel under your choice of free software license,
-such as the GNU General Public License, to permit their use in free software.</p>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Versione 1.0.0<br>
-Ultimo aggiornamento 2020-02-21 12:35:22 +0100
+Ultimo aggiornamento 2020-02-21 22:23:20 +0100
 </div>
 </div>
 </body>
