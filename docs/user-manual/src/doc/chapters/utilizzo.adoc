@@ -92,7 +92,7 @@ Una volta completata la fase di login, l'utente verrà reindirizzato nella _Dash
 
 Sarà possibile inoltre interfacciarsi alla siderbar presente sulla sinistra, contenente le sezioni _Progetti_, _Lingua_, e _Profilo_.
 
-image::../../screenshots/dash+lingua.jpeg[alt=lingua]
+image::../../screenshots/dash+lingua.jpg[alt=lingua]
 
 Dalla sezione _Lingua_ l'utente sarà in grado di cambiare la lingua di sistema in Italiano o Inglese a seconda delle sue preferenze.
 
@@ -145,7 +145,7 @@ image::../../screenshots/rinomina2.jpg[alt= Rinominazione completata]
 
 Il pulsante _Sposta_ ,accessibile sia cliccando sulle opzioni di un video sia su quelle di un progetto, permette di spostare uno dei due in un altro progetto di proprietà dell'utente.
 
-image::../../screenshots/sposta.jpg 
+image::../../screenshots/sposta.jpg[alt=Sposta progetto] 
 
 Selezionata l'opzione, verrà mostrato l'albero dei progetti creati dall'utente, che potrà così scegliere in quale inserire il video/progetto da spostare.
 
@@ -155,7 +155,7 @@ image::../../screenshots/sposta1.jpg[alt= Operazione di spostamento completata]
 
 ===== Eliminare un progetto o un video
 
-Tramite il pulsante _Elimina_ sarà possibile eliminare un video o un progetto di proprietà dell'utente.
+Tramite il pulsante _Elimina_ è possibile eliminare un video o un progetto di proprietà dell'utente.
 
 L'eliminazione di un progetto comporterà anche l'eliminazione di tutti i sottoprogetti e i video al suo interno.
 
@@ -254,3 +254,24 @@ Si aprirà la pagina dei permessi, già illustrata nella sezione <<Permessi>>.
 ==== Visualizzazione del report di un video
 
 //TODO
+
+=== Report del progetto
+
+Attraverso il pulsante _Report_ è possibile visionare l'intero report di un progetto.
+
+image::../../screenshots/ReportProgetto.jpg[alt=Report progetto]
+
+E' possibile visionare l'analisi delle emozioni media dei video all'interno del progetto sottoforma di diversi grafici.
+ 
+Lo _Spider Chart_ e il _Bar Chart_ offrono una visualizzazione più dettagliata rispetto ad un  l'_Emoji_, e consentono di conoscere anche parametri riguardanti le altre emozioni e non solo quella media.
+
+==== Scaricare i dati di un report
+
+E' possibile scaricare il report del progetto in uno dei seguenti formati:
+
+_PDF_, _HTML_, _JSON_, _EXEL_, _PPTX_.
+ 
+Di seguito si mostra un esempio di visualizzazione in formato HTML.
+
+image::../../screenshots/reportHtml.jpg[alt=Report Html]
+
