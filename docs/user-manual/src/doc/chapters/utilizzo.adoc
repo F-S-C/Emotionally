@@ -66,28 +66,7 @@ Cliccato il bottone _Verify mail_, si verrà indirizzati alla dashboard del sist
 
 image::../../screenshots/dashboard.jpg[alt=Dashoard]
 
-=== Dashboard
 
-Una volta completata la fase di login, l'utente verrà reindirizzato nella _Dashboard_ del sistema, contente l'elenco dei progetti dell'utente.
-Sarà possibile inoltre interfacciarsi alla siderbar presente sulla sinistra, contenente le sezioni _Progetti_, _Lingua_, e _Profilo_.
-
-image::../../screenshots/dash+lingua.jpeg[alt=lingua]
-
-Dalla sezione _Lingua_ l'utente sarà in grado di cambiare la lingua di sistema in Italiano o Inglese a seconda delle sue preferenze.
-
-La Dashboard presenta un bottone _Aggiungi_ che permette di creare un progetto. Cliccando su di esso l'utente potrà dare un titolo al progetto che intende creare e confermare la sua scelta.
-
-image::../../screenshots/dash+add.jpg[alt=Aggiungi]
-
-image::../../screenshots/creaprogetto1.jpg[alt=Crea progetto]
-
-image::../../screenshots/creaprogetto2.jpg[alt=Progetto creato]
-
-Un messaggio di conferma verrà mostrato ad operazione completata. In caso di errore l'utente verrà notificato di un un problema durante l'operazione.
-
-Una volta terminata l'operazione, il nuovo progetto apparirà nella _Dashboard_.
-
-image::../../screenshots/dash+progetto.jpg[alt= Dashboard con progetto]
 === Login 
 
 Per effettuare il _Login_ è necessario visitare la _Landing Page_ e, successivamente, cliccare sul bottone _Log In_, presente in alto a destra.
@@ -105,3 +84,85 @@ image::../../screenshots/login2.jpg[alt=Login]
 Il toggle _Remember me_ permette di non perdere il login anche se si chiude il browser. Cliccando sul bottone _Login_, se i dati inseriti sono corretti, si potrà accedere al sistema.
 
 _**N.B.** Se la mail non è stata verificata, si entrerà nella pagina di verifica mail (illustrata nella sezione <<Registrazione e verifica mail>>) e non sarà possibile accedere al sistema.
+
+==== Dashboard
+
+Una volta completata la fase di login, l'utente verrà reindirizzato nella _Dashboard_ del sistema, contente l'elenco dei progetti dell'utente.
+
+=== Sidebar
+
+Sarà possibile inoltre interfacciarsi alla siderbar presente sulla sinistra, contenente le sezioni _Progetti_, _Lingua_, e _Profilo_.
+
+image::../../screenshots/dash+lingua.jpeg[alt=lingua]
+
+Dalla sezione _Lingua_ l'utente sarà in grado di cambiare la lingua di sistema in Italiano o Inglese a seconda delle sue preferenze.
+
+=== Parte destra
+
+La Dashboard presenta un bottone _Aggiungi_ che permette di creare un progetto. Cliccando su di esso l'utente potrà dare un titolo al progetto che intende creare e confermare la sua scelta.
+
+image::../../screenshots/dash+add.jpg[alt=Aggiungi]
+
+=== Creazione di un progetto
+
+image::../../screenshots/creaprogetto1.jpg[alt=Crea progetto]
+
+image::../../screenshots/creaprogetto2.jpg[alt=Progetto creato]
+
+Un messaggio di conferma verrà mostrato ad operazione completata. In caso di errore l'utente verrà notificato di un un problema durante l'operazione.
+
+Una volta terminata l'operazione, il nuovo progetto apparirà nella _Dashboard_.
+
+image::../../screenshots/dash+progetto.jpg[alt= Dashboard con progetto]
+
+Sarà possibile _rinominare_, _eliminare_, o _gestire i permessi_ del progetto appena creato cliccando sul pulsante _Altre Opzioni_
+
+image::../../screenshots/dash+permessi.jpg[alt=Altre opzioni]
+
+Inoltre, sarà possibile visualizzare l'intero <<Report del progetto>> semplicemente cliccando sull'apposito tasto _Report_.
+
+=== Permessi
+
+La sezione _Permessi_ permette di scegliere quali utenti possono effettuare operazioni di lettura, modifica, aggiunta o rimozione in un determinato progetto. 
+
+image::../../screenshots/permessi.jpg[alt=Permessi]
+
+Basterà inserire l'email dell'utente di cui si vogliono modificare i permessi e selezionare le operazioni che potrà effettuare.
+
+image::../../screenshots/permessiAggiunti.jpg[alt=Permessi aggiunti]
+
+=== Rinominare un progetto
+
+Il pulsante _Rinomina_ permette di rinominare un progetto già esistente.
+Una volta selezionata l'opzione, il sistema chiederà all'utente di inserire un nuovo nome per il progetto selezionato.
+
+image::../../screenshots/rinomina.jpg[alt=Rinomina]
+
+Il sistema notificherà poi l'utente dell'esito dell'operazione.
+
+image::../../screenshots/rinomina2.jpg[alt= Rinominazione completata]
+
+=== Spostare un progetto o un video
+
+Il pulsante _Sposta_ ,accessibile sia cliccando sulle opzioni di un video sia su quelle di un progetto, permette di spostare uno dei due in un altro progetto di proprietà dell'utente.
+
+image::../../screenshots/sposta.jpg 
+
+Selezionata l'opzione, verrà mostrato l'albero dei progetti creati dall'utente, che potrà così scegliere in quale inserire il video/progetto da spostare.
+
+Un messaggio notificherà l'utente dell'esito dell'operazione.
+
+image::../../screenshots/sposta1.jpg[alt= Operazione di spostamento completata]
+
+=== Eliminare un video o un progetto
+
+Tramite il pulsante _Elimina_ sarà possibile eliminare un video o un progetto di proprietà dell'utente.
+
+L'eliminazione di un progetto comporterà anche l'eliminazione di tutti i sottoprogetti e i video al suo interno.
+
+image::../../screenshots/delete.jpg[alt=Elimina progetto]
+
+Un messaggio notificherà l'utente dell'esito dell'operazione.
+
+image::../../screenshots/delete1.jpg[alt= Elminazione effettuata]
+
