@@ -37,9 +37,13 @@ fortemente consigliato l'utilizzo di _Firefox_.
 
 ==== Registrazione e verifica mail
 
-Una volta entrato nel sistema si può effettuare la registrazione cliccando sul pulsante _Login_. 
+Una volta entrato nel sistema si può effettuare la registrazione cliccando sul pulsante _Login_, presente in alto a destra. 
 
-Una volta aperta la pagina di login, sarà sufficiente cliccare sul link _Sign-Up_.
+image::../../screenshots/landing.jpg[alt=Landing Page]
+
+Una volta aperta la pagina di login, sarà sufficiente cliccare sul link _Sign Up_.
+
+image::../../screenshots/login1.jpg[alt=Login]
 
 Si aprirà la pagina di registrazione dove sarà necessario inserire i seguenti dati:
 - Nome
@@ -48,6 +52,16 @@ Si aprirà la pagina di registrazione dove sarà necessario inserire i seguenti 
 - Password
 - Password di conferma
 
-Successivamente al click del bottone _Sign-Up_ verrà inviata una mail all'indirizzo inserito con un link per verificarla. Sarà necessario accedere alla casella di posta e cliccare sul bottone _Verify mail_ presente all'interno della mail ricevuta dal sistema.
+image::../../screenshots/signup.jpg[alt=Login]
 
-Cliccato il bottone, si verrà indirizzati alla dashboard del sistema.
+Successivamente al click del bottone _Sign-Up_ verrà inviata una mail all'indirizzo inserito con un link per verificarla.
+
+image::../../screenshots/verification.jpg[alt=Verify Email]
+
+Sarà necessario accedere alla casella di posta e cliccare sul bottone _Verify mail_ presente all'interno della mail ricevuta dal sistema.
+
+image::../../screenshots/email.jpg[alt=Email]
+
+Cliccato il bottone _Verify mail_, si verrà indirizzati alla dashboard del sistema.
+
+image::../../screenshots/dashboard.jpg[alt=Dashoard]
