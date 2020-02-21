@@ -88,3 +88,20 @@ Un messaggio di conferma verrà mostrato ad operazione completata. In caso di er
 Una volta terminata l'operazione, il nuovo progetto apparirà nella _Dashboard_.
 
 image::../../screenshots/dash+progetto.jpg[alt= Dashboard con progetto]
+=== Login 
+
+Per effettuare il _Login_ è necessario visitare la _Landing Page_ e, successivamente, cliccare sul bottone _Log In_, presente in alto a destra.
+
+image::../../screenshots/landing.jpg[alt=Landing Page]
+
+Si aprirà la pagina di _Log In_ nella quale sarà necessario inserire la mail:
+
+image::../../screenshots/login1.jpg[alt=Login]
+
+Dopo aver inserito la mail, premendo il pulsante invio (o cliccando sulla freccia), sarà possibile inserire la password:
+
+image::../../screenshots/login2.jpg[alt=Login]
+
+Il toggle _Remember me_ permette di non perdere il login anche se si chiude il browser. Cliccando sul bottone _Login_, se i dati inseriti sono corretti, si potrà accedere al sistema.
+
+_**N.B.** Se la mail non è stata verificata, si entrerà nella pagina di verifica mail (illustrata nella sezione <<Registrazione e verifica mail>>) e non sarà possibile accedere al sistema.
