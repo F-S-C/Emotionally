@@ -55,25 +55,40 @@ dai soggetti intervistati (con dati anonimi) durante la fase di Beta Test,
 cercando di sollecitare il sistema nel maggior numero di modi possibili e 
 verificando che esso si comporti secondo le aspettative.
 
-\begin{table}[]
-	\begin{tabular}{ccccccc}
-		\textbf{Problema\#} & \textbf{Rilevato da} & \textbf{in data} & 
-		\textbf{Caso d'uso} & \textbf{Descrizione del 
-		problema}                                                                                                        &
-		 \textbf{Gravità} & \textbf{Risolto in data} \\
-		1                   & Soggetto 1           & 20/02/202        & Upload 
-		video        & \begin{tabular}[c]{@{}c@{}}Il sistema, se avviato con 
-		Google \\ Chrome, non permette l'inserimento \\ di video in real 
-		time\end{tabular} & 3                & -                        \\
-		1                   & Soggetto 2           & 21/02/2020       & Upload 
-		video        & \begin{tabular}[c]{@{}c@{}}Il sistema, se avviato con 
-		Google \\ Chrome, non permette l'inserimento \\ di video in real 
-		time\end{tabular} & 3                & -                        \\
-		4                   & Soggetto 4           & 21/02/2020       & View 
-		report         & \begin{tabular}[c]{@{}c@{}}Ogni tanto, anche se non ci 
-		sono \\ video, nel report si creano grafici\\ valorizzati a 
-		0\end{tabular}        & 1                & -                       
-	\end{tabular}
+\begin{table}[H]
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{ccccccc}
+			\textbf{Problema \#} & \textbf{Rilevato da} & \textbf{in data} & 
+			\textbf{Caso d'uso} & \textbf{Descrizione del 
+				problema}                                                       
+				        
+				                                         &
+			\textbf{Gravità} & \textbf{Risolto in data} \\
+			1                   & Soggetto 1           & 20/02/202        & 
+			Upload 
+			video        & \begin{tabular}[c]{@{}c@{}}Il sistema, se avviato 
+			con 
+				Google \\ Chrome, non permette l'inserimento \\ di video in 
+				real 
+				time\end{tabular} & 3                & -                        
+				\\
+			1                   & Soggetto 2           & 21/02/2020       & 
+			Upload 
+			video        & \begin{tabular}[c]{@{}c@{}}Il sistema, se avviato 
+			con 
+				Google \\ Chrome, non permette l'inserimento \\ di video in 
+				real 
+				time\end{tabular} & 3                & -                        
+				\\
+			2                   & Soggetto 4           & 21/02/2020       & 
+			View 
+			report         & \begin{tabular}[c]{@{}c@{}}Ogni tanto, anche se 
+			non ci 
+				sono \\ video, nel report si creano grafici\\ valorizzati a 
+				0\end{tabular}        & 1                & 
+				-                       
+		\end{tabular}	
+	}
 \end{table}
 
 Gravità:
@@ -85,8 +100,10 @@ Gravità:
 		\item problema bloccante, impedisce l'uso della funzione
 	\end{enumerate}
 
-\paragraph{Note} Il problema \textbf{\#1} è dovuto a un bug presente nel 
-browser 
-Google Chrome che non da la possibilità di poter gestire video real time. Come 
+\paragraph{Note} Il problema \textbf{\#1} è dovuto a un bug 
+(\url{https://bugs.chromium.org/p/chromium/issues/detail?id=642012}) presente 
+nel 
+browser Chromium, su cui Google Chrome è basato, che non memorizza i metadati 
+dei video WebM, rendendoli quindi non riproducibili. Come 
 già riportato nei requisiti di usabilità, per il funzionamento corretto del 
-sistema, è consigliabile l'utilizzo di FireFox.
+sistema, è consigliabile l'utilizzo di Firefox.
