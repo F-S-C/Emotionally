@@ -1,0 +1,38 @@
+== Come utilizzare il sistema
+
+Di seguito, si riportano le istruzioni sull'utilizzo del sistema. Saranno
+riportate alcuni scenari d'uso tipici con istruzioni passo passo al fine di
+permettere un semplice raggiungimento degli obiettivi prefissati.
+
+=== Prerequisiti
+
+=== Requisiti hardware
+
+Per poter utilizzare il sistema è necessario disporre di una connessione a
+internet (a meno che il sistema non sia installato sulla propria macchina, come
+descritto nel <<installazione>>). Non è necessario alcun tipo di hardware
+aggiuntivo al fine di utilizzare il sistema. Tuttavia, per poter usufruire delle
+funzionalità di analisi di video registrati in tempo reale è necessaria una
+webcam (anche esterna) per registrare i video e un microfono (opzionale) per
+registrare l'audio.
+
+=== Requisiti software
+
+Per utilizzare il sistema non è necessario installare software aggiuntivo ne
+compiere alcuna operazione particolare (salvo l'eventuale installazione qualora
+si decidesse di utilizzare una versione non on-line del sistema, come descritto
+nel <<installazione>>) in quanto _Emotionally_ è un sistema basato sul web.
+Questo significa che per poterlo utilizzare è semplicemente necessario un
+browser e un collegamento a internet (qualora il sito non fosse installato).
+
+È tuttavia fortemente consigliato l'utilizzo del *browser _Firefox_*
+(https://www.mozilla.org/firefox/) a causa di alcuni problemi legati al browser
+Chrome e Chromium (e derivati).
+
+WARNING: I problemi riscontrati nei browser _Chromium-based_ (Chromium, Chrome,
+ecc.) non comportano una inutilizzabilità del sistema, ma potrebbero essere
+fonti di errori e comportamenti anomali che non è possibile prevedere. Per tale
+motivo, per godere di un'esperienza d'uso che sia la migliore possibile, è
+fortemente consigliato l'utilizzo di _Firefox_.
+
+=== Utilizzo del sistema

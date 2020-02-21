@@ -3,7 +3,7 @@ BASEFILENAME = Emotionally
 
 .PHONY: pdf html clean pre
 
-all: pdf html clean
+all: pdf html clean manual
 
 pre:
 	cd "$(SOURCE_DIR)" && py -3 helper.py scenarios
@@ -21,3 +21,6 @@ html: pre
 
 clean: 
 	cd "$(SOURCE_DIR)" && rm -f *.bcf *.run.xml *.aux *.glo *.idx *.log *.toc *.ist *.acn *.acr *.alg *.bbl *.blg *.dvi *.glg *.gls *.ilg *.ind *.lof *.lot *.maf *.mtc *.mtc1 *.out *.synctex.gz "*.synctex(busy)" *.thm
+
+manual:
+	cd "./user-manual/" && rake

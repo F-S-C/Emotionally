@@ -36,6 +36,7 @@ sass:
 header_pages:
   - index.md
   - Emotionally.html
+  - manual.html
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -52,6 +53,7 @@ exclude:
   - Makefile
   - make.bat
   - src/
+  - user-manual/
 
 include:
   - src/images/
