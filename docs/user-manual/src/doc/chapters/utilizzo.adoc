@@ -249,11 +249,10 @@ Si aprirà la pagina dei permessi, già illustrata nella sezione <<Permessi>>.
 
 ===== Visualizzazione del report di un sottoprogetto
 
-//TODO
+Una volta entrati in sottoprogetto, è possibile visualizzare il <<Report di un video>> cliccandovi sopra.
+In alternativa, attraverso il bottone _Report_ è possibile visualizzare il <<Report del progetto>>.
 
-==== Visualizzazione del report di un video
-
-//TODO
+image::../../screenshots/sottoprogetto.jpg[alt=Sottoprogetto]
 
 === Report del progetto
 
@@ -267,11 +266,34 @@ Lo _Spider Chart_ e il _Bar Chart_ offrono una visualizzazione più dettagliata 
 
 ==== Scaricare i dati di un report
 
-E' possibile scaricare il report del progetto in uno dei seguenti formati:
+Attraversi il pulsante _Download_ è possibile scaricare il report del progetto in uno dei seguenti formati:
 
 _PDF_, _HTML_, _JSON_, _EXEL_, _PPTX_.
  
 Di seguito si mostra un esempio di visualizzazione in formato HTML.
 
 image::../../screenshots/reportHtml.jpg[alt=Report Html]
+
+=== Visualizzazione del report di un video
+
+Cliccando su di un video verrà visualizzato il suo report. E' presente un player per riprodurre il video ed uno slider per effettuare l'analisi in determinati momenti del video.
+
+image::../../screenshots/reportvideocompleto.jpg[alt=Report video]
+
+==== Scaricare i dati del report di un video
+
+E' possibile <<Scaricare i dati di un report>> video, in modalità identiche a quelle viste per i progetti.
+
+image::../../screenshots/scaricareReportVideo.jpg[alt= Download report video]
+
+=== Profilo
+
+Dalla sezione _Profilo_ è possibile cambiare i propri dati, quali _Nome_, _Cognome_ e _Password_.
+
+image::../../screenshots/profilo.jpg[alt=Profilo]
+
+Attraverso il pulsante _Resetta_ è possibile ripristinare le eventuali modifiche effettuate e non salvate, mentre attraverso il tasto _Modifica_ verranno salvati i cambiamenti effettuati.
+Un messaggio notificherà l'utente dell'esito dell'operazione.
+
+image::../../screenshots/profilo2.jpg[alt=Profilo cambiato]
 
