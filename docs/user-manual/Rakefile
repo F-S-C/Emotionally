@@ -31,5 +31,5 @@ end
 
 task :html do
   puts "Building HTML"
-  Asciidoctor.convert_file ReportFiles::REPORT, backend: "html", safe: :unsafe, to_dir: "../", attributes: { "lang" => "it" }, to_file: "manual.html", mkdirs: true
+  Asciidoctor.convert_file ReportFiles::REPORT, backend: "html", safe: :unsafe, to_dir: "../", attributes: { "lang" => "it", 'imagesdir'=>'user-manual/src/doc' }, to_file: "manual.html", mkdirs: true
 end
