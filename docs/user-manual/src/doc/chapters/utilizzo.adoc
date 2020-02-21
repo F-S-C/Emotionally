@@ -96,6 +96,8 @@ image::../screenshots/dash+lingua.jpg[alt=lingua]
 
 Dalla sezione _Lingua_ l'utente sarà in grado di cambiare la lingua del sistema in Italiano o Inglese a seconda delle sue preferenze.
 
+Dal pulsante di _Logout_, invece,  si può effettuare la disconnessione dal sito.
+
 ==== Parte destra
 
 La parte destra del sistema rappresenta la principale zona di interazione con l'utente.
