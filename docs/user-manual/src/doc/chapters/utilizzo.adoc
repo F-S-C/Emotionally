@@ -155,7 +155,7 @@ image::../../screenshots/sposta1.jpg[alt= Operazione di spostamento completata]
 
 ==== Eliminare un video o un progetto
 
-Tramite il pulsante _Elimina_ sarà possibile eliminare un video o un progetto di proprietà dell'utente.
+Tramite il pulsante _Elimina_ è possibile eliminare un video o un progetto di proprietà dell'utente.
 
 L'eliminazione di un progetto comporterà anche l'eliminazione di tutti i sottoprogetti e i video al suo interno.
 
@@ -164,4 +164,24 @@ image::../../screenshots/delete.jpg[alt=Elimina progetto]
 Un messaggio notificherà l'utente dell'esito dell'operazione.
 
 image::../../screenshots/delete1.jpg[alt= Elminazione effettuata]
+
+=== Report del progetto
+
+Attraverso il pulsante _Report_ è possibile visionare l'intero report di un progetto.
+
+image::../../screenshots/ReportProgetto.jpg[alt=Report progetto]
+
+E' possibile visionare l'analisi delle emozioni media dei video all'interno del progetto sottoforma di diversi grafici.
+ 
+ Lo _Spider Chart_ e il _Bar Chart_ offrono una visualizzazione più dettagliata rispetto ad un  l'_Emoji_, e consentono di conoscere anche parametri riguardanti le altre emozioni e non solo quella media.
+
+ ==== Scaricare i dati di un report
+
+ E' possibile scaricare il report del progetto in uno dei seguenti formati:
+
+ _PDF_, _HTML_, _JSON_, _EXEL_, _PPTX_.
+ 
+Di seguito si mostra un esempio di visualizzazione in formato HTML.
+
+image::../../screenshots/reportHtml.jpg[alt=Report Html]
 
