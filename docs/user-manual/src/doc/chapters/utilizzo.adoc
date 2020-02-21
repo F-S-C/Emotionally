@@ -66,7 +66,7 @@ Cliccato il bottone _Verify mail_, si verrà indirizzati alla dashboard del sist
 
 image::../../screenshots/dashboard.jpg[alt=Dashoard]
 
-=== Login 
+==== Login 
 
 Per effettuare il _Login_ è necessario visitare la _Landing Page_ e, successivamente, cliccare sul bottone _Log In_, presente in alto a destra.
 
@@ -107,3 +107,26 @@ Una volta terminata l'operazione, il nuovo progetto apparirà nella _Dashboard_.
 
 image::../../screenshots/dash+progetto.jpg[alt= Dashboard con progetto]
 
+//DASHBOARD
+
+==== Navigazione all'interno di un progetto
+
+Per navigare all'interno di un progetto è necessario sceglierlo dalla tabella prensente nella _Dashboard_:
+
+image::../../screenshots/dash+progetto.jpg[alt= Dashboard con progetto]
+
+Cliccando sul progetto desiderato, si entrerà nella pagina di navigazione dello stesso. Appariranno i sottoprogetti e i video che esso contiene, come se fosse una cartella del sistema operativo.
+
+image::../../screenshots/progetto+permessi.jpg[alt= Progetto con elementi]
+
+E' possibile, durante la navigazione, effettuare le operazioni di:
+- Creazione di un sottoprogetto
+- Caricamento di un video
+- Registrazione di un video in tempo reale
+- Gestione dei permessi di un sottoprogetto
+- Visualizzazione del report di un sottoprogetto
+- Visualizzazione di un report del video
+
+Qui di seguito verranno illustrate tutte le operazioni sopracitate.
+
+===== Creazione di un sottoprogetto
