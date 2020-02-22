@@ -72,7 +72,7 @@ return [
     "confirm-remove.project" => "Are you sure you want to delete the project?",
     "delete-project" => "Delete project",
     "delete-video" => "Delete video",
-    "confirm-delete-video" => "Are you sure you want to delete the project?",
+    "confirm-delete-video" => "Are you sure you want to delete the video?",
     "move-project" => "Move project",
     "move" => "Move",
     "surname" => "Surname",
