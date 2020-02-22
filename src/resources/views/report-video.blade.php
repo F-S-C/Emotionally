@@ -394,6 +394,13 @@
                     return hours + ':' + minutes + ':' + seconds;
                 }
 
+                function addLeadingZerosToTimeString(timeString) {
+                    const pieces = timeString.split(':');
+                    const addZeros = (str) => ('0' + str).slice(-2);
+
+                    return addZeros(pieces[0]) + ':' + addZeros(pieces[1]) + ':' + addZeros(pieces[2]);
+                }
+
                 let duration = "{{$video->duration}}";
                 let end = "{{$video->end}}";
                 let start = "{{$video->start}}";
@@ -469,8 +476,8 @@
                         $.post('{{route('system.edit-video-duration', $video->id)}}', {
                             '_method': 'PUT',
                             '_token': '{{csrf_token()}}',
-                            'start': start,
-                            'end': end,
+                            'start': addLeadingZerosToTimeString(start),
+                            'end': addLeadingZerosToTimeString(end),
                             'report': JSON.stringify(databaseReport)
                         })
                             .done(out => {
