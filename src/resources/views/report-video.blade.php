@@ -479,12 +479,12 @@
                                     saveButton.addClass('d-none');
                                 } else {
                                     $('#error-modal').modal('show');
-                                    $('#error-text').set(out.errors[0]);
+                                    $('#error-text').text(out.errors[0]);
                                 }
                             })
                             .fail(() => {
                                 $('#error-modal').modal('show');
-                                $('#error-text').set("We're sorry... An unknown error occurred...");
+                                $('#error-text').text("We're sorry... An unknown error occurred...");
                             })
                             .always(() => {
                                 $("#loading-modal").modal('hide');
