@@ -54,7 +54,7 @@
 @section('inner-content')
 
     <div class="dropdown text-right mb-2 mx-3">
-        <button type="button" id="save-button" class="btn btn-outline-primary d-none">
+        <button type="button" id="save-button" class="btn btn-outline-primary d-none text-uppercase">
             {{trans('report.save')}}
         </button>
         <button type="button" class="btn btn-md-text dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -479,7 +479,10 @@
                                     saveButton.addClass('d-none');
                                 } else {
                                     $('#error-modal').modal('show');
-                                    $('#error-text').text(out.errors[0]);
+                                    let errorMessage = '<ul>';
+                                    Object.keys(out.errors).forEach(key => errorMessage += '<li>' + out.errors[key] + '</li>');
+                                    errorMessage += '</ul>';
+                                    $('#error-text').html(errorMessage);
                                 }
                             })
                             .fail(() => {
