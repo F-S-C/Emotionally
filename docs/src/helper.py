@@ -55,16 +55,16 @@ def scenarios():
 % Free Documentation License".
 '''
     for scenario in data:
-        content += f'''\\begin{{table}}[H]
-	\\centering
-	\\caption{{Use Case: {scenario['usecase']}}}
-	\\label{{tab:use-case-{scenario['usecase'].lower().replace(' ', '-')}}}
+        content += f'''%\\begin{{table}}[H]
+	%\\centering
 	\\rowcolors{{2}}{{gray!25}}{{white!0}}
 	\\begin{{longtable}}{{@{{}}|>{{\\centering\\arraybackslash}}m{{.2\\textwidth}}|m{{.7\\textwidth}}|@{{}}}}
+	\\caption{{Use Case: {scenario['usecase']}}}
+	\\label{{tab:use-case-{scenario['usecase'].lower().replace(' ', '-')}}}
 		\hline
 		\\rowcolor{{emotionally-color!35}}
 		{{\\textbf{{Nome caso d'uso}}}} & {{\\textbf{{{scenario['usecase']} (ID: {scenario['id']})}}}} \\\\\hline
-		\\endfirsthead
+		\\endhead
 		Descrizione & {scenario['description']}\\\\
 		Attori & \\begin{{tabular}}{{m{{0.9\\linewidth}}}}{list_to_string(scenario['actors'])}\end{{tabular}}\\\\
 		Pre-condizioni & \\begin{{tabular}}{{m{{0.9\\linewidth}}}}{list_to_string(scenario['preconditions'])}\end{{tabular}}\\\\
@@ -73,7 +73,7 @@ def scenarios():
 		Scenario alternativo & \\begin{{tabular}}{{m{{0.9\\linewidth}}}}{list_to_string(scenario['alternative'])}\end{{tabular}}\\\\\hline
 		
 	\end{{longtable}}
-\end{{table}}\n\n'''
+%\end{{table}}\n\n'''
     with open(os.path.join(os.path.dirname(__file__), 'parts/documento_requisiti/_scenari.tex'), 'w') as f:
         f.write(content[:-1])
 
