@@ -369,6 +369,7 @@
                 /**
                  * Update the timeline on the graph by synchronizing it with the video.
                  */
+
                 /*
                 let video = document.getElementById("video");
                 video.addEventListener('timeupdate', () => {
@@ -411,84 +412,85 @@
                         video.currentTime = ui.values[0];
                         saveButton.removeClass('d-none');
                     },
-                    stop: function () {
-                        $("#loading-modal").modal('show');
-                        EmotionAnalysis.analyzeVideo("{{$video->url}}", function (report) {
-                            databaseReport = JSON.parse(report);
-                            fullReport = EmotionAnalysis.getEmotionValues(databaseReport);
-                            averageReport = EmotionAnalysis.getEmotionValues(EmotionAnalysis.average(fullReport));
-
-                            lineChart.data = {
-                                labels: fullReport.map((_, i) => i),
-                                datasets: Object.keys(fullReport[0]).map((key, i) => {
-                                    return {
-                                        borderColor: colors[i],
-                                        pointBackgroundColor: colors[i],
-                                        pointBorderColor: colors[i],
-                                        label: key.charAt(0).toUpperCase() + key.slice(1),
-                                        data: fullReport.map(el => el[key]),
-                                        fill: false
-                                    };
-                                })
-                            };
-                            lineChart.update();
-
-                            radarChart.data = {
-                                labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
-                                datasets: [
-                                    {
-                                        label: 'Emotions',
-                                        data: Object.keys(averageReport).map(el => averageReport[el]),
-                                        fill: true,
-                                        backgroundColor: 'rgba(255, 152, 0, 0.3)',
-                                        borderColor: 'rgba(255, 152, 0, 0.7)',
-                                        pointBackgroundColor: 'rgba(255, 152, 0, 1)',
-                                        pointBorderColor: 'rgba(255, 255, 255, 0.9)'
-                                    }
-                                ]
-                            };
-                            radarChart.update();
-
-                            barChart.data = {
-                                labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
-                                datasets: [
-                                    {
-                                        label: 'Emotions',
-                                        data: Object.keys(averageReport).map(el => averageReport[el]),
-                                        fill: false,
-                                        barPercentage: 0.25,
-                                        backgroundColor: 'rgba(255, 152, 0, 1)',
-                                        hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
-                                    }
-                                ]
-                            };
-                            barChart.update();
-
-                            $("#loading-modal").modal('hide');
-                        }, {start: timeStringToSeconds(start), stop: timeStringToSeconds(end)});
-                    }
                 });
                 saveButton.click(function () {
-                    $.post('{{route('system.edit-video-duration', $video->id)}}', {
-                        '_method': 'PUT',
-                        '_token': '{{csrf_token()}}',
-                        'start': start,
-                        'end': end,
-                        'report': JSON.stringify(databaseReport)
-                    })
-                        .done(out => {
-                            out = JSON.parse(out);
-                            if (out['done']) {
-                                saveButton.addClass('d-none');
-                            } else {
-                                $('#error-modal').modal('show');
-                                $('#error-text').set(out.errors[0]);
-                            }
+                    $("#loading-modal").modal('show');
+                    EmotionAnalysis.analyzeVideo("{{$video->url}}", function (report) {
+                        databaseReport = JSON.parse(report);
+                        fullReport = EmotionAnalysis.getEmotionValues(databaseReport);
+                        averageReport = EmotionAnalysis.getEmotionValues(EmotionAnalysis.average(fullReport));
+
+                        lineChart.data = {
+                            labels: fullReport.map((_, i) => i),
+                            datasets: Object.keys(fullReport[0]).map((key, i) => {
+                                return {
+                                    borderColor: colors[i],
+                                    pointBackgroundColor: colors[i],
+                                    pointBorderColor: colors[i],
+                                    label: key.charAt(0).toUpperCase() + key.slice(1),
+                                    data: fullReport.map(el => el[key]),
+                                    fill: false
+                                };
+                            })
+                        };
+                        lineChart.update();
+
+                        radarChart.data = {
+                            labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                            datasets: [
+                                {
+                                    label: 'Emotions',
+                                    data: Object.keys(averageReport).map(el => averageReport[el]),
+                                    fill: true,
+                                    backgroundColor: 'rgba(255, 152, 0, 0.3)',
+                                    borderColor: 'rgba(255, 152, 0, 0.7)',
+                                    pointBackgroundColor: 'rgba(255, 152, 0, 1)',
+                                    pointBorderColor: 'rgba(255, 255, 255, 0.9)'
+                                }
+                            ]
+                        };
+                        radarChart.update();
+
+                        barChart.data = {
+                            labels: Object.keys(averageReport).map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+                            datasets: [
+                                {
+                                    label: 'Emotions',
+                                    data: Object.keys(averageReport).map(el => averageReport[el]),
+                                    fill: false,
+                                    barPercentage: 0.25,
+                                    backgroundColor: 'rgba(255, 152, 0, 1)',
+                                    hoverBackgroundColor: 'rgba(255, 152, 0, 0.7)'
+                                }
+                            ]
+                        };
+                        barChart.update();
+
+                        $.post('{{route('system.edit-video-duration', $video->id)}}', {
+                            '_method': 'PUT',
+                            '_token': '{{csrf_token()}}',
+                            'start': start,
+                            'end': end,
+                            'report': JSON.stringify(databaseReport)
                         })
-                        .fail(() => {
-                            $('#error-modal').modal('show');
-                            $('#error-text').set("We're sorry... An unknown error occurred...");
-                        });
+                            .done(out => {
+                                out = JSON.parse(out);
+                                if (out['done']) {
+                                    saveButton.addClass('d-none');
+                                } else {
+                                    $('#error-modal').modal('show');
+                                    $('#error-text').set(out.errors[0]);
+                                }
+                            })
+                            .fail(() => {
+                                $('#error-modal').modal('show');
+                                $('#error-text').set("We're sorry... An unknown error occurred...");
+                            })
+                            .always(() => {
+                                $("#loading-modal").modal('hide');
+                            });
+
+                    }, {start: timeStringToSeconds(start), stop: timeStringToSeconds(end)});
                 });
                 video.addEventListener('timeupdate', () => {
                     if (video.currentTime >= timeStringToSeconds(end)) {
