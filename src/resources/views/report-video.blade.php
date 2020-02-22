@@ -102,7 +102,7 @@
             <div class="modal-content el-16dp">
                 <div class="modal-body">
                     <div class="container d-flex align-items-center">
-                        <strong>Loading...</strong>
+                        <strong>{{trans('report.analysis')}}</strong>
                         <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
                     </div>
                 </div>

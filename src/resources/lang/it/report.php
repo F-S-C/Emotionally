@@ -38,5 +38,6 @@ return [
     "fear" => "Paura",
     "surprise" => "Sorpresa",
     "no-emotion" => "Nessuna emozione",
+    "analysis" => "Analisi in corso...",
 ];
 
