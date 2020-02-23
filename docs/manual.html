@@ -452,7 +452,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#colophon">Emotionally: Manuale d&#8217;Uso</a></li>
 <li><a href="#preface">Prefazione</a></li>
-<li><a href="#installazione">1. Installazione</a></li>
+<li><a href="#installazione">1. Installazione</a>
+<ul class="sectlevel2">
+<li><a href="#_pacchetti_necessari">1.1. Pacchetti necessari</a></li>
+<li><a href="#_comandi_preliminari">1.2. Comandi preliminari</a></li>
+<li><a href="#_avvio_e_termine_dei_servizi_uwamp">1.3. Avvio e termine dei servizi UwAmp</a></li>
+</ul>
+</li>
 <li><a href="#_prerequisiti_per_luso_del_sistema">2. Prerequisiti per l&#8217;uso del sistema</a>
 <ul class="sectlevel2">
 <li><a href="#_requisiti_hardware">2.1. Requisiti hardware</a></li>
@@ -549,16 +555,65 @@ statistiche a partire da dei video.</p>
 <div class="sect1">
 <h2 id="installazione">1. Installazione</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_pacchetti_necessari">1.1. Pacchetti necessari</h3>
 <div class="paragraph">
 <p>Se si vuole utilizzare il sistema sulla propria macchina è necessario scaricare
-l&#8217;ultima versione del pacchetto software
-(<a href="https://github.com/F-S-C/Emotionally/releases/latest" class="bare">https://github.com/F-S-C/Emotionally/releases/latest</a>). Una volta scaricato, si
-otterrà il pacchetto <em>UwAmp</em> già avviabile senza installazione di componenti
-aggiuntivi.</p>
+e installare PHP (vedi <a href="https://www.sitepoint.com/how-to-install-php-on-windows/" class="bare">https://www.sitepoint.com/how-to-install-php-on-windows/</a>).
+Successivamente si può procedere a scaricare l&#8217;ultima versione del pacchetto
+software (<a href="https://github.com/F-S-C/Emotionally/releases/latest" class="bare">https://github.com/F-S-C/Emotionally/releases/latest</a>).</p>
 </div>
 <div class="paragraph">
-<p>Basterà accedere alla cartella <em>Emotionally_UwAmp</em> e avviare il file eseguibile
-chiamato <em>UwAmp.exe</em>.</p>
+<p>Una volta scaricata, bisognerà estrarre la cartella <em>Emotionally_UwAmp</em> e aprirla:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione_estratta.JPG" alt="Cartella estratta">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_comandi_preliminari">1.2. Comandi preliminari</h3>
+<div class="paragraph">
+<p>Entrare nella sottocartella <em>www</em> (presente all&#8217;interno del pacchetto <em>Emotionally_UwAmp</em>) e cliccare sul percorso della cartella, presente nella parte alta della finestra di esplora risorse. Una volta cliccato, digitare il comando <em>cmd</em>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione0.JPG" alt="Esecuzione CMD">
+</div>
+</div>
+<div class="paragraph">
+<p>Si aprirà una finestra simile a questa:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione1.JPG" alt="CMD">
+</div>
+</div>
+<div class="paragraph">
+<p>Successivamente digitare il comando <em>php artisan config:cache</em> e premere il pulsante <strong>INVIO</strong>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione2.JPG" alt="Primo Comando">
+</div>
+</div>
+<div class="paragraph">
+<p>Dopo aver eseguito il comando, digitare <em>php artisan route:cache</em> e cliccare nuovamente <strong>INVIO</strong>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione3.JPG" alt="Secondo Comando">
+</div>
+</div>
+<div class="paragraph">
+<p>Adesso è possibile chiudere la finestra e ritornare all&#8217;interno della cartella <em>Emotionally_UwAmp</em>. Qui è possibile avviare l&#8217;eseguibile di <em>UwAmp</em> (illustrato nella sezione successiva).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_avvio_e_termine_dei_servizi_uwamp">1.3. Avvio e termine dei servizi UwAmp</h3>
+<div class="paragraph">
+<p>Avviare il software <em>UwAmp</em> (<em>Emotionally_UwAmp/UwAmp.exe</em>).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -574,10 +629,67 @@ corretto funzionamento del software.
 </tr>
 </table>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione4.JPG" alt="UwAmp all&#8217;interno della cartella">
+</div>
+</div>
 <div class="paragraph">
-<p>Una volta avviato <em>UwAmp</em> i servizi saranno azionati automaticamente e si potrà
+<p>Una volta avviato <em>UwAmp.exe</em> sarà richiesta la concessione di alcuni permessi <strong>necessari</strong> al pacchetto <em>Apache</em> (solo al primo avvio di <em>UwAmp</em>).
+Cliccare quindi su <em>Consenti accesso</em>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione5.JPG" alt="Permessi Apache">
+</div>
+</div>
+<div class="paragraph">
+<p>Fatto ciò si aprirà la schermata di <em>UwAmp</em>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione6.JPG" alt="Schermata UwAmp">
+</div>
+</div>
+<div class="paragraph">
+<p>I servizi saranno azionati automaticamente e si potrà
 utilizzare il sistema aprendo il browser e digitando l&#8217;indirizzo
 <em><a href="http://localhost/" class="bare">http://localhost/</a></em>.</p>
+</div>
+<div class="paragraph">
+<p>Se la pagina del sistema risulta irraggiungibile e, nella schermata di <em>UwAmp</em> risulta cliccabile il pulsante <em>Start</em> (in alto a sinistra), sarà sufficiente cliccarlo e attendere che le bande alla sua destra si colorino di verde (vedi figura precedente). Sarà quindi possibile riporvare ad accedere al sistema tramite l&#8217;indirizzo <em><a href="http://localhost/" class="bare">http://localhost/</a></em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+Per fermare i servizi basta cliccare sul pulsante <em>Stop</em> e chiudere il pannello di <em>UwAmp</em>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+Nel caso in cui si verificasse un&#8217;eccezione di questo tipo
+all&#8217;apertura dell&#8217;applicazione (vedi immagine successiva) sarà necessario
+avviare il comando 'php artisan config:cache'. Per i passaggi approfonditi è possibile seguire i passaggi descritti in <a href="#_comandi_preliminari">Section 1.2</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="user-manual/src/screenshots/installazione-errore.JPG" alt="Eccezione">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1825,7 +1937,7 @@ eligible for relicensing.</p>
 <div id="footer">
 <div id="footer-text">
 Versione 1.0.0<br>
-Ultimo aggiornamento 2020-02-21 23:18:16 +0100
+Ultimo aggiornamento 2020-02-21 22:23:20 +0100
 </div>
 </div>
 </body>
