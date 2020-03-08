@@ -19,13 +19,9 @@
 
 namespace Emotionally\Http\Controllers;
 
-use Emotionally\Http\Controllers\ReportFormatters\Presentations\ProjectPresentation;
-use Emotionally\Http\Controllers\ReportFormatters\Presentations\VideoPresentation;
-use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\ProjectSpreadsheet;
-use Emotionally\Http\Controllers\ReportFormatters\Spreadsheets\VideoSpreadsheet;
+use Emotionally\Http\Controllers\ReportFormatters\ReportFormatterFactory;
 use Emotionally\Project;
 use Emotionally\Video;
-use Exception;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ReportController extends Controller
@@ -310,9 +306,7 @@ class ReportController extends Controller
     public function downloadVideoExcel($id)
     {
         $video = Video::findOrFail($id);
-        $spreadsheet = new VideoSpreadsheet($video->name, $video->report);
-
-        $spreadsheet->generateDefault();
+        $spreadsheet = \Emotionally\report($video)->to(ReportFormatterFactory::SPREADSHEET);
 
         return response()->streamDownload(function () use ($spreadsheet) {
             $spreadsheet->getFileAsBinaryOutput();
@@ -322,9 +316,7 @@ class ReportController extends Controller
     public function downloadProjectExcel($id)
     {
         $project = Project::findOrFail($id);
-        $spreadsheet = new ProjectSpreadsheet($project->name, $project->report);
-
-        $spreadsheet->generateDefault();
+        $spreadsheet = \Emotionally\report($project)->to(ReportFormatterFactory::SPREADSHEET);
 
         return response()->streamDownload(function () use ($spreadsheet) {
             $spreadsheet->getFileAsBinaryOutput();
@@ -334,9 +326,7 @@ class ReportController extends Controller
     public function downloadVideoPPTX($id)
     {
         $video = Video::findOrFail($id);
-        $presentation = new VideoPresentation($video->name, $video->report);
-
-        $presentation->generateDefault();
+        $presentation = \Emotionally\report($video)->to(ReportFormatterFactory::PRESENTATION);
 
         return response()->streamDownload(function () use ($presentation) {
             $presentation->getFileAsBinaryOutput();
@@ -346,9 +336,7 @@ class ReportController extends Controller
     public function downloadProjectPPTX($id)
     {
         $project = Project::findOrFail($id);
-        $presentation = new ProjectPresentation($project->name, $project->report);
-
-        $presentation->generateDefault();
+        $presentation = \Emotionally\report($project)->to(ReportFormatterFactory::PRESENTATION);
 
         return response()->streamDownload(function () use ($presentation) {
             $presentation->getFileAsBinaryOutput();

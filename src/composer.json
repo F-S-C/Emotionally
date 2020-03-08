@@ -47,6 +47,9 @@
         }
     },
     "autoload": {
+        "files": [
+            "app/Http/Controllers/ReportFormatters/helpers.php"
+        ],
         "psr-4": {
             "Emotionally\\": "app/"
         },
