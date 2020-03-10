@@ -20,8 +20,8 @@
 
 @section("scripts")
     @parent
-    <script type="text/javascript" src="{{mix('/js/vendor/affdex.js')}}"></script>
-    <script type="text/javascript" src="{{mix('/js/emotion-analysis.js')}}"></script>
+    <script type="text/javascript" src="{{asset(mix('/js/vendor/affdex.js'))}}"></script>
+    <script type="text/javascript" src="{{asset(mix('/js/emotion-analysis.js'))}}"></script>
     <script>
         (function ($) {
             $('.clickable').on('click', function (event) {

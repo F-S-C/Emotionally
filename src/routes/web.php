@@ -14,19 +14,21 @@
 // Route to test Affectiva
 //Route::view('/test-webcam', 'test-webcam')->name('webcam');
 
+$base = env('APP_DIR') ? '/' . env('APP_DIR') : '';
+
 Route::get('/set-language/{language}', 'LanguageController@setLanguage')
     ->name('language.set');
 
 Route::view('/', 'landing')->name('landing');
-Route::redirect('/landing', '/');
+Route::redirect('/landing', $base . '/');
 
 Route::name('system.')
     ->middleware('auth')
     ->middleware('verified')
     ->prefix('system')
-    ->group(function () {
+    ->group(function () use ($base) {
         Route::get('/', 'ProjectController@getDashboard')->name('home');
-        Route::redirect('/home', '/system');
+        Route::redirect('/home', $base . '/system');
 
         Route::post('/project/rename', 'ProjectController@renameProject')->name('rename-project')
             ->middleware('permissions.project:modify,project_rename_id');
@@ -115,4 +117,4 @@ Route::get('/logout', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::redirect('/home', '/system');
+Route::redirect('/home', $base . '/system');

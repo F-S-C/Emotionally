@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="{{ asset('/images/favicons/16x16.png') }}" sizes="16x16">
     <link rel="icon" type="image/png" href="{{ asset('/images/favicons/32x32.png') }}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ asset('/images/favicons/64x64.png') }}" sizes="64x64">
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset(mix('/css/app.css')) }}">
     @yield('head', '')
 
     <title>@yield('title') | Emotionally</title>
@@ -54,7 +54,7 @@
         @show
     </footer>
 
-    <script src="{{mix('/js/app.js')}}" type="text/javascript"></script>
+    <script src="{{asset(mix('/js/app.js'))}}" type="text/javascript"></script>
 
     <script>
         (function () {
