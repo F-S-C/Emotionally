@@ -1,4 +1,4 @@
-.PHONY: docs serve dev-install dev-update
+.PHONY: docs serve dev-install
 
 docs:
 	cd docs && $(MAKE)
@@ -14,3 +14,5 @@ clean:
 
 dev-install: # Install the source code dependencies
 	cd src && composer install
+	cd src && npm install
+	cd src && npm run dev

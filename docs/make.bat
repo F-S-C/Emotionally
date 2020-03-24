@@ -25,13 +25,11 @@ GOTO error
 
 :pdf
 	CALL make.bat pre
-	PUSHD "%SOURCE_DIR%"
-	pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex"
-	biber "%BASEFILENAME%"
-	pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex"
-	pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex"
-	XCOPY /Y "%BASEFILENAME%.pdf" ..
-	POPD
+	PUSHD "%SOURCE_DIR%" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex" && POPD
+	PUSHD "%SOURCE_DIR%" && biber "%BASEFILENAME%" && POPD
+	PUSHD "%SOURCE_DIR%" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex" && POPD
+	PUSHD "%SOURCE_DIR%" && pdflatex -synctex=1 -interaction=batchmode --shell-escape "%BASEFILENAME%.tex" && POPD
+	PUSHD "%SOURCE_DIR%" && XCOPY /Y "%BASEFILENAME%.pdf" ..  && POPD
 	GOTO :EOF
 
 :html

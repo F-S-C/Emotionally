@@ -21,6 +21,8 @@ GOTO error
 
 :dev-install
 	PUSHD src && composer install && POPD
+	PUSHD src && npm install && POPD
+	PUSHD src && npm run dev && POPD
 	GOTO :EOF
 
 :error
