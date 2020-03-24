@@ -1,7 +1,16 @@
-# <img src="./logo/logo.png" alt="Emotionally's logo" width="50px"> Emotionally<!-- omit in toc -->
+<p align="center">
+ <img height=200px src="./logo/logo.png" alt="Emotionally's logo"></a>
+</p>
 
-[![License](https://img.shields.io/github/license/F-S-C/Emotionally.svg?style=for-the-badge)](https://github.com/F-S-C/Emotionally/blob/master/LICENSE)
-[![Latest release](https://img.shields.io/github/release/F-S-C/Emotionally.svg?style=for-the-badge)](https://github.com/F-S-C/Emotionally/releases)
+<h1 align="center">Emotionally</h1>
+
+<div align="center">
+  <h4 align="center">Emotional Analysis made simple</h4>
+  <a href="https://github.com/F-S-C/Emotionally/blob/master/LICENSE"><img src="https://img.shields.io/github/license/F-S-C/Emotionally.svg?style=for-the-badge" alt="License: GNU GPL v3"></a>
+  <a href="https://github.com/F-S-C/Emotionally/releases"><img src="https://img.shields.io/github/release/F-S-C/Emotionally.svg?style=for-the-badge" alt="Latest release"></a>
+</div>
+
+* * *
 
 _Read this in other languages:
 [Italiano](https://github.com/F-S-C/Emotionally/blob/master/README.it.md)_
