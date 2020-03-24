@@ -7,7 +7,8 @@ _Read this in other languages:
 [Italiano](https://github.com/F-S-C/Emotionally/blob/master/README.it.md)_
 
 **:warning: WARNING:** This project was created as part of a university exam, so
-(except for this file) it's documented only in *Italian*.
+(except for this file and the [wiki](https://github.com/F-S-C/Emotionally/wiki))
+it's documented only in *Italian*.
 
 ## Table of Contents<!-- omit in toc -->
 
