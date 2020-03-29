@@ -120,7 +120,7 @@
 
                         <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
                             <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Alessandro.jpg" width="100%"
+                                <img src="https://strumentalmente.github.io/assets/images/team/Alessandro.jpg" width="100%"
                                      class="rounded-circle z-depth-1" alt="Alessandro">
                             </div>
                             <p class="font-weight-bold mt-4 mb-3 h5">
@@ -148,7 +148,7 @@
 
                         <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
                             <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Davide.jpg" width="100%"
+                                <img src="https://strumentalmente.github.io/assets/images/team/Davide.jpg" width="100%"
                                      class="rounded-circle z-depth-1" alt="Davide">
                             </div>
                             <p class="font-weight-bold mt-4 mb-3 h5">
@@ -169,7 +169,7 @@
 
                         <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
                             <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Andrea.jpg" width="100%"
+                                <img src="https://strumentalmente.github.io/assets/images/team/Andrea.jpg" width="100%"
                                      class="rounded-circle z-depth-1" alt="Andrea">
                             </div>
                             <p class="font-weight-bold mt-4 mb-3 h5">
@@ -198,7 +198,7 @@
 
                         <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
                             <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Graziano.jpg" width="100%"
+                                <img src="https://strumentalmente.github.io/assets/images/team/Graziano.jpg" width="100%"
                                      class="rounded-circle z-depth-1" alt="Graziano">
                             </div>
                             <p class="font-weight-bold mt-4 mb-3 h5">
@@ -219,7 +219,7 @@
 
                         <div class="col-lg-2 col-md-6 mb-lg-0 mb-5 team-member" itemprop="author">
                             <div class="avatar mx-auto">
-                                <img src="https://strumentalmente.it/assets/images/team/Regina.jpg" width="100%"
+                                <img src="https://strumentalmente.github.io/assets/images/team/Regina.jpg" width="100%"
                                      class="rounded-circle z-depth-1" alt="Regina">
                             </div>
 
