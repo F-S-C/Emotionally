@@ -73,10 +73,10 @@
             <button type="submit" class="btn btn-outline-primary w-100">@lang('auth.login')</button>
         </div>
     </form>
-    <p id="forgot" class="text-center mt-3 m-fadeOut"><a
-            href="{{ route('password.request') }}">@lang('auth.forgot-password')</a></p>
-    <p id="signup" class="text-center mt-3 m-fadeIn">@lang('auth.new-user') <a
+    <p class="text-center mt-3">@lang('auth.new-user') <a
             href="{{ route('register') }}">@lang('auth.sign-up')</a></p>
+    <p class="text-center mt-3"><a
+            href="{{ route('password.request') }}">@lang('auth.forgot-password')</a></p>
 @endsection
 
 @section('scripts')
@@ -85,14 +85,10 @@
         $(document).ready(function () {
             @if($errors->has('email'))
             $("#second-part").removeClass('m-fadeOut').addClass('m-fadeIn');
-            $("#forgot").removeClass('m-fadeOut').addClass('m-fadeIn');
-            $("#signup").removeClass('m-fadeIn').addClass('m-fadeOut');
             $("#go").removeAttr('href').attr('style', 'color:grey;');
             @else
             $("#go").click(function () {
                 $("#second-part").removeClass('m-fadeOut').addClass('m-fadeIn');
-                $("#forgot").removeClass('m-fadeOut').addClass('m-fadeIn');
-                $("#signup").removeClass('m-fadeIn').addClass('m-fadeOut');
                 $("#go").removeAttr('href').attr('style', 'color:grey;');
             });
             $(document).keypress(function (e) {
