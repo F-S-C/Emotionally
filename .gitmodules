@@ -1,0 +1,6 @@
+[submodule "src"]
+	path = src
+	url = https://github.com/emotionally-fsc/server
+[submodule "docs"]
+	path = docs
+	url = https://github.com/emotionally-fsc/documentation.git
